@@ -11,4 +11,5 @@ from .flight_status import FlightStatus
 from .flight import Flight
 from .tier import Tier
 from .frequent_flyer import FrequentFlyer
+from .wallet import Wallet
 from .db import environment, SCHEMA
