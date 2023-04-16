@@ -9,4 +9,5 @@ from .spacecraft_seat import SpacecraftSeat
 from .schedule import Schedule
 from .flight_status import FlightStatus
 from .flight import Flight
+from .tier import Tier
 from .db import environment, SCHEMA
