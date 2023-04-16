@@ -7,4 +7,5 @@ from .spacecraft import Spacecraft
 from .travel_class import TravelClass
 from .spacecraft_seat import SpacecraftSeat
 from .schedule import Schedule
+from .flight_status import FlightStatus
 from .db import environment, SCHEMA
