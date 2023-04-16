@@ -10,4 +10,5 @@ from .schedule import Schedule
 from .flight_status import FlightStatus
 from .flight import Flight
 from .tier import Tier
+from .frequent_flyer import FrequentFlyer
 from .db import environment, SCHEMA
