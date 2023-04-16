@@ -18,4 +18,3 @@ class Wallet(db.Model):
             'address': self.address,
             'funds': self.funds
         }
-    
