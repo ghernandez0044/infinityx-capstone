@@ -98,3 +98,22 @@ def seed_planets():
       synodic_rotation_period_in_days = .666,
       temperature_in_k = 72
     )
+
+    db.session.add(mercury)
+    db.session.add(venus)
+    db.session.add(earth)
+    db.session.add(mars)
+    db.session.add(jupiter)
+    db.session.add(saturn)
+    db.session.add(uranus)
+    db.session.add(neptune)
+    db.session.commit()
+
+
+def undo_planets():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.planets RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM planets"))
+        
+    db.session.commit()
