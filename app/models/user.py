@@ -10,7 +10,6 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    planet_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('planets.id')))
     admin = db.Column(db.Boolean, nullable=False, default=False)
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
@@ -19,7 +18,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profile_pic = db.Column(db.Text())
+    profile_pic = db.Column(db.Text)
     created_at = db.Column(db.String(100), nullable=False)
 
     @property
