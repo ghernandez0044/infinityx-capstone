@@ -10,4 +10,12 @@ class Wallet(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     address = db.Column(db.String(100), nullable=False)
     funds = db.Column(db.Float, nullable=False)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'address': self.address,
+            'funds': self.funds
+        }
     
