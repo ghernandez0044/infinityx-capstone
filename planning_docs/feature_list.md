@@ -64,7 +64,18 @@ InfinityX, a SpaceX and Southwest Airlines/jetBlue Airlines clone, is a website 
 
 ## 9. TravelClasses
 
-- Users will have an option of three travel classes with different perks
-- Base Class will be equivalent to bronze or economy class
-- Cruise Class will be equivalent to silver or premium economy class
-- Launch Class will be equivalent to gold or first class
+- Logged in users will have an option of three travel classes with different perks
+- Base Class will be equivalent to bronze or economy class, will award 10 points (stars) per dollar for frequent flyer members
+- Cruise Class will be equivalent to silver or premium economy class, will award 15 points (stars) per dollar for frequent flyer members
+- Launch Class will be equivalent to gold or first class, will award 20 points (stars) per dollar for frequent flyer members
+
+## 10. FrequentFlyer / Tiers
+
+- Logged in users can create a FrequentFlyerMembership from a selection of tiers each with different perks
+- Level 1 Star Cadet: 0 - 1,000 points (or stars)
+- Level 2 Space Scout: 1,001 - 10,000 points (or stars)
+- Level 3 Ranger 1st Class: 10,001 - 100,000 points (or stars)
+- Level 4 Planetary Pilot: 100,001 - 300,000 points (or stars)
+- Level 5 Space Ace: 300,001 - 600,000 points (or stars)
+- Level 6 Cosmic Commando: 600,001 - 999,998 points (or stars)
+- Level 7 Galactic Hero: 999,999+ points (or stars)
