@@ -1,4 +1,4 @@
-from app.models import db, User, Planet, PlanetComment environment, SCHEMA
+from app.models import db, User, Planet, PlanetComment, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_planet_comments():
