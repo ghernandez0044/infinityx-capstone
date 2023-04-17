@@ -20,7 +20,14 @@ class Spacecraft(db.Model):
     # relationships
     flights = db.relationship(
         'Flight',
-        back_populates='spacecraft'
+        back_populates='spacecraft',
+        cascade="all, delete-orphan"
+    )
+
+    seats = db.relationship(
+        'SpacecraftSeat',
+        back_populates='spacecraft',
+        cascade="all, delete-orphan"
     )
 
     def to_dict(self):

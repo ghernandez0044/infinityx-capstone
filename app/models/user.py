@@ -24,22 +24,26 @@ class User(db.Model, UserMixin):
     # relationships
     wallet = db.relationship(
         'Wallet',
-        back_populates='user'
+        back_populates='user',
+        cascade="all, delete-orphan"
     )
 
     planet_comments = db.relationship(
         'PlanetComment',
-        back_populates='user'
+        back_populates='user',
+        cascade="all, delete-orphan"
     )
 
     transactions = db.relationship(
         'Transaction',
-        back_populates='user'
+        back_populates='user',
+        cascade="all, delete-orphan"
     )
 
     membership = db.relationship(
         'FrequentFlyer',
-        back_populates='user'
+        back_populates='user',
+        cascade="all, delete-orphan"
     )
 
     @property

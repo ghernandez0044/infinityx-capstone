@@ -27,6 +27,11 @@ class SpacecraftSeat(db.Model):
         back_populates='seat'
     )
 
+    spacecraft = db.relationship(
+        'Spacecraft',
+        back_populates='seats'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,
