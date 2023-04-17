@@ -12,7 +12,7 @@ class Flight(db.Model):
     spacecraft_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spacecrafts.id')))
     spacecraft_seat_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spacecraft_seats.id')))
     schedule_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('schedules.id')))
-    flight_status_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('schedules.id')))
+    flight_status_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('flight_status.id')))
     created_at = db.Column(db.String(100), nullable=False)
 
     # relationships
@@ -28,7 +28,8 @@ class Flight(db.Model):
 
     flight_status = db.relationship(
         'FlightStatus',
-        back_populates='flight'
+        back_populates='flight',
+        foreign_keys='Flight.flight_status_id'
     )
 
     spaceport = db.relationship(
