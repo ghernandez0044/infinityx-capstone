@@ -12,4 +12,5 @@ from .flight import Flight
 from .tier import Tier
 from .frequent_flyer import FrequentFlyer
 from .wallet import Wallet
+from .transaction import Transaction
 from .db import environment, SCHEMA
