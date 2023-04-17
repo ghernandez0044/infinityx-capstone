@@ -12,6 +12,17 @@ class Schedule(db.Model):
     departure_time = db.Column(db.String(100), nullable=False)
     arrival_time = db.Column(db.String(100), nullable=False)
 
+    # relationships
+    flight = db.relationship(
+        'Flight',
+        back_populates='schedule'
+    )
+
+    spaceport = db.relationship(
+        'Spaceport',
+        back_populates='schedules'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,

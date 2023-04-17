@@ -11,6 +11,17 @@ class PlanetComment(db.Model):
     planet_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('planets.id')))
     content = db.Column(db.String(255), nullable=False)
 
+    # relationships
+    user = db.relationship(
+        'User',
+        back_populates='planet_comments'
+    )
+
+    planet = db.relationship(
+        'Planet',
+        back_populates='planet_comments'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,

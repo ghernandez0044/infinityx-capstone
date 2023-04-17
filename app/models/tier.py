@@ -10,6 +10,12 @@ class Tier(db.Model):
     name = db.Column(db.String(100), nullable=False, unique=True)
     perks = db.Column(db.String(100), nullable=False, unique=True)
 
+    # relationships
+    membership = db.relationship(
+        'FrequentFlyer',
+        back_populates='tier'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,

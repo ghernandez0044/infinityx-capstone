@@ -10,6 +10,12 @@ class FlightStatus(db.Model):
     status = db.Column(db.String(100), nullable=False)
     updated_at = db.Column(db.String(100), nullable=False)
 
+    # relationships
+    flight = db.relationship(
+        'Flight',
+        back_populates='flight_status'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,

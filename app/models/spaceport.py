@@ -14,6 +14,17 @@ class Spaceport(db.Model):
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
 
+    # relationships
+    flights = db.relationship(
+        'Flight',
+        back_populates='spaceport'
+    )
+
+    schedules = db.relationship(
+        'Schedule',
+        back_populates='spaceport'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,

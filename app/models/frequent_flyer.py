@@ -12,6 +12,17 @@ class FrequentFlyer(db.Model):
     account_no = db.Column(db.String(100), nullable=False)
     points = db.Column(db.Float, nullable=False)
 
+    # relationships
+    user = db.relationship(
+        'User',
+        back_populates='membership'
+    )
+
+    tier = db.relationship(
+        'Tier',
+        back_populates='membership'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,

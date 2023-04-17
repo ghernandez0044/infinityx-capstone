@@ -16,6 +16,17 @@ class Transaction(db.Model):
     total = db.Column(db.Float, nullable=False)
     created_at = db.Column(db.String(100), nullable=False)
 
+    # relationships
+    user = db.relationship(
+        'User',
+        back_populates='transactions'
+    )
+
+    seat = db.relationship(
+        'SpacecraftSeat',
+        back_populates='transactions'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,

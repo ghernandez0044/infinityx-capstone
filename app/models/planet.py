@@ -18,6 +18,12 @@ class Planet(db.Model):
     synodic_rotation_period_in_days = db.Column(db.Float)
     temperature_in_k = db.Column(db.Float)
 
+    # relationships
+    planet_comments = db.relationship(
+        'PlanetComment',
+        back_populates='planets'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,

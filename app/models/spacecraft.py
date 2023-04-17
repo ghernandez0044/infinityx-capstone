@@ -17,6 +17,12 @@ class Spacecraft(db.Model):
     capsule_volume_m = db.Column(db.Float, nullable=False)
     trunk_volume_m = db.Column(db.Float, nullable=False)
 
+    # relationships
+    flights = db.relationship(
+        'Flight',
+        back_populates='spacecraft'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,

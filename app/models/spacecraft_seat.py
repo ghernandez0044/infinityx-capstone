@@ -11,6 +11,22 @@ class SpacecraftSeat(db.Model):
     travel_class_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('travelclass.id')), nullable=False)
     price_usd = db.Column(db.Float, nullable=False)
 
+    # relationships
+    transactions = db.relationship(
+        'Transaction',
+        back_populates='seat'
+    )
+
+    travel_class = db.relationship(
+        'TravelClass',
+        back_populates='spacecraft_seats'
+    )
+
+    flight = db.relationship(
+        'Flight',
+        back_populates='seat'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,

@@ -21,6 +21,27 @@ class User(db.Model, UserMixin):
     profile_pic = db.Column(db.Text)
     created_at = db.Column(db.String(100), nullable=False)
 
+    # relationships
+    wallet = db.relationship(
+        'Wallet',
+        back_populates='user'
+    )
+
+    planet_comments = db.relationship(
+        'PlanetComment',
+        back_populates='user'
+    )
+
+    transactions = db.relationship(
+        'Transaction',
+        back_populates='user'
+    )
+
+    membership = db.relationship(
+        'FrequentFlyer',
+        back_populates='user'
+    )
+
     @property
     def password(self):
         return self.hashed_password

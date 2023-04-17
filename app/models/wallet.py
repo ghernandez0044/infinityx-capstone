@@ -11,6 +11,12 @@ class Wallet(db.Model):
     address = db.Column(db.String(100), nullable=False)
     funds = db.Column(db.Float, nullable=False)
 
+    # relationships
+    user = db.relationship(
+        'User',
+        back_populates='wallet'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,

@@ -10,6 +10,12 @@ class TravelClass(db.Model):
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
 
+    # relationships
+    spacecraft_seats = db.relationship(
+        'SpacecraftSeat',
+        back_populates='travel_class'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,

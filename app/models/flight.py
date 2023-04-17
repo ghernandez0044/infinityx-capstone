@@ -14,3 +14,40 @@ class Flight(db.Model):
     schedule_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('schedules.id')))
     flight_status_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('schedules.id')))
     created_at = db.Column(db.String(100), nullable=False)
+
+    # relationships
+    seat = db.relationship(
+        'SpacecraftSeat',
+        back_populates='flight'
+    )
+
+    spacecraft = db.relationship(
+        'Spacecraft',
+        back_populates='flights'
+    )
+
+    flight_status = db.relationship(
+        'FlightStatus',
+        back_populates='flight'
+    )
+
+    spaceport = db.relationship(
+        'Spaceport',
+        back_populates='flights'
+    )
+
+    schedule = db.relationship(
+        'Schedule',
+        back_populates='flight'
+    )
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'spaceport_id': self.spaceport_id,
+            'spacecraft_id': self.spacecraft_id,
+            'spacecraft_seat_id': self.spacecraft_seat_id,
+            'schedule_id': self.schedule_id,
+            'flight_status_id': self.flight_status_id,
+            'created_at': self.created_at
+        }
