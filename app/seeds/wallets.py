@@ -185,3 +185,5 @@ def undo_wallets():
         db.session.execute(f"TRUNCATE table {SCHEMA}.wallets RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM wallets"))
+
+    db.session.commit()
