@@ -21,7 +21,7 @@ class Planet(db.Model):
     # relationships
     planet_comments = db.relationship(
         'PlanetComment',
-        back_populates='planets'
+        back_populates='planet'
     )
 
     def to_dict(self):

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: d726751f32fb
+Revision ID: d13a608373c3
 Revises: 
-Create Date: 2023-04-17 01:24:14.134119
+Create Date: 2023-04-17 01:27:23.803220
 
 """
 from alembic import op
@@ -14,7 +14,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = 'd726751f32fb'
+revision = 'd13a608373c3'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -189,7 +189,6 @@ def upgrade():
         op.execute(f"ALTER TABLE spacecrafts SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE planets SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE flight_status SET SCHEMA {SCHEMA};")
-
 
     # ### end Alembic commands ###
 
