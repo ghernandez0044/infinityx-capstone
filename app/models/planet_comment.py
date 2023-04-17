@@ -10,6 +10,7 @@ class PlanetComment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     planet_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('planets.id')))
     content = db.Column(db.String(255), nullable=False)
+    created_at = db.Column(db.String(255), nullable=False)
 
     # relationships
     user = db.relationship(
