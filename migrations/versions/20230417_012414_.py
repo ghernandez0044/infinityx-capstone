@@ -1,20 +1,16 @@
 """empty message
 
-Revision ID: c751b538da8a
+Revision ID: d726751f32fb
 Revises: 
-Create Date: 2023-04-17 01:01:50.486521
+Create Date: 2023-04-17 01:24:14.134119
 
 """
 from alembic import op
 import sqlalchemy as sa
-import os
-
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = 'c751b538da8a'
+revision = 'd726751f32fb'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -73,7 +69,7 @@ def upgrade():
     sa.UniqueConstraint('name'),
     sa.UniqueConstraint('perks')
     )
-    op.create_table('travelclass',
+    op.create_table('travel_classes',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
@@ -110,6 +106,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('planet_id', sa.Integer(), nullable=True),
     sa.Column('content', sa.String(length=255), nullable=False),
+    sa.Column('created_at', sa.String(length=255), nullable=False),
     sa.ForeignKeyConstraint(['planet_id'], ['planets.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -130,7 +127,7 @@ def upgrade():
     sa.Column('travel_class_id', sa.Integer(), nullable=False),
     sa.Column('price_usd', sa.Float(), nullable=False),
     sa.ForeignKeyConstraint(['spacecraft_id'], ['spacecrafts.id'], ),
-    sa.ForeignKeyConstraint(['travel_class_id'], ['travelclass.id'], ),
+    sa.ForeignKeyConstraint(['travel_class_id'], ['travel_classes.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('wallets',
@@ -172,23 +169,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE transactions SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE flights SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE wallets SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE spacecraft_seats SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE schedules SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE planet_comments SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE frequent_flyers SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE travelclass SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE tiers SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE spaceports SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE spacecrafts SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE planets SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE flight_status SET SCHEMA {SCHEMA};")
-
     # ### end Alembic commands ###
 
 
@@ -202,7 +182,7 @@ def downgrade():
     op.drop_table('planet_comments')
     op.drop_table('frequent_flyers')
     op.drop_table('users')
-    op.drop_table('travelclass')
+    op.drop_table('travel_classes')
     op.drop_table('tiers')
     op.drop_table('spaceports')
     op.drop_table('spacecrafts')

@@ -8,7 +8,7 @@ class SpacecraftSeat(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     spacecraft_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spacecrafts.id')), nullable=False)
-    travel_class_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('travelclass.id')), nullable=False)
+    travel_class_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('travel_classes.id')), nullable=False)
     price_usd = db.Column(db.Float, nullable=False)
 
     # relationships

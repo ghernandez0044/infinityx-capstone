@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class TravelClass(db.Model):
-    __tablename__ = 'travelclass'
+    __tablename__ = 'travel_classes'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
