@@ -9,6 +9,7 @@ from .tiers import seed_tiers, undo_tiers
 from .frequent_flyers import seed_frequent_flyers, undo_frequent_flyers
 from .travel_classes import seed_travel_class, undo_travel_class
 from .spacecraft_seats import seed_spacecraft_seats, undo_spacecraft_seats
+from .transactions import seed_transactions, undo_transactions
  
 from app.models.db import db, environment, SCHEMA
 
@@ -25,6 +26,7 @@ def seed():
         # command, which will  truncate all tables prefixed with 
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
+        undo_transactions()
         undo_spacecraft_seats()
         undo_travel_class()
         undo_frequent_flyers()
@@ -45,12 +47,14 @@ def seed():
     seed_frequent_flyers()
     seed_travel_class()
     seed_spacecraft_seats()
+    seed_transactions()
     # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
+    undo_transactions()
     undo_spacecraft_seats()
     undo_travel_class()
     undo_frequent_flyers()
