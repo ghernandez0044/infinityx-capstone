@@ -54,7 +54,7 @@ def seed_spacecraft():
     db.session.commit()
 
 
-def undo_spacecrafts():
+def undo_spacecraft():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.spacecrafts RESTART IDENTITY CASCADE;")
     else:
