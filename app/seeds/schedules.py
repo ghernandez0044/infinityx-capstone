@@ -38,18 +38,7 @@ def seed_schedules():
         departure_time = '2023-07-01T08:30:00',
         arrival_time = '2023-07-16T08:30:00'
     )
-    schedule7 = Schedule(
-        launch_spaceport_id = 1,
-        landing_spaceport_id = 4,
-        departure_time = '2023-07-17T08:30:00',
-        arrival_time = '2023-07-30T08:30:00'
-    )
-    schedule8 = Schedule(
-        launch_spaceport_id = 3,
-        landing_spaceport_id = 1,
-        departure_time = '2023-08-01T08:30:00',
-        arrival_time = '2023-08-16T08:30:00'
-    )
+ 
 
     db.session.add(schedule1)
     db.session.add(schedule2)
@@ -57,8 +46,6 @@ def seed_schedules():
     db.session.add(schedule4)
     db.session.add(schedule5)
     db.session.add(schedule6)
-    db.session.add(schedule7)
-    db.session.add(schedule8)
     db.session.commit()
 
 
