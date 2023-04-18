@@ -93,18 +93,3 @@ InfinityX, a SpaceX and Southwest Airlines/jetBlue Airlines clone, is a website 
 - Logged in users will be able to add money to their wallet
 - Logged in users will be able to use money from their wallet to make purchases
 
-Wallet
-id
-user_id
-address
-funds
-
-
-Transaction
-id 
-user_id
-seat_id
-quantity
-unit_price
-total
-createdAt
