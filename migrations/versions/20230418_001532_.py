@@ -1,16 +1,20 @@
 """empty message
 
-Revision ID: 53442e8a3e9f
+Revision ID: 6f00f9cb388f
 Revises: 
-Create Date: 2023-04-17 23:14:46.145346
+Create Date: 2023-04-18 00:15:32.282862
 
 """
 from alembic import op
 import sqlalchemy as sa
+import os
+
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '53442e8a3e9f'
+revision = '6f00f9cb388f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,7 +25,6 @@ def upgrade():
     op.create_table('flight_status',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('status', sa.String(length=100), nullable=False),
-    sa.Column('updated_at', sa.String(length=100), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('planets',
@@ -170,6 +173,23 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE flight_status SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE flights SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE frequent_flyers SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE planets SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE planet_comments SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE schedules SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE spacecrafts SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE spacecraft_seats SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE spaceports SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE tiers SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE transactions SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE travel_classes SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE wallets SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 

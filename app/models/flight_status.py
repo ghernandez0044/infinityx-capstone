@@ -8,7 +8,6 @@ class FlightStatus(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.String(100), nullable=False)
-    updated_at = db.Column(db.String(100), nullable=False)
 
     # relationships
     flight = db.relationship(
