@@ -11,6 +11,7 @@ class Transaction(db.Model):
     seat_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spacecraft_seats.id')))
     quantity = db.Column(db.Integer, nullable=False)
     unit_price = db.Column(db.Float, nullable=False)
+    user_kg = db.Column(db.Float, nullable=False)
     tax_percentage = db.Column(db.Float, nullable=False)
     tax_total = db.Column(db.Float, nullable=False)
     total = db.Column(db.Float, nullable=False)
