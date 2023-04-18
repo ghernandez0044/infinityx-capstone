@@ -71,11 +71,11 @@ def seed_transactions():
         )
 
     db.session.add(transaction1)
-    db.session.add(transaction1)
-    db.session.add(transaction1)
-    db.session.add(transaction1)
-    db.session.add(transaction1)
-    db.session.add(transaction1)
+    db.session.add(transaction2)
+    db.session.add(transaction3)
+    db.session.add(transaction4)
+    db.session.add(transaction5)
+    db.session.add(transaction6)
     db.session.commit()
 
 
