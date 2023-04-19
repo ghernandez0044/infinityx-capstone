@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, PlanetComment
 
 user_routes = Blueprint('users', __name__)
 
@@ -25,3 +25,11 @@ def user(id):
     return user.to_dict()
 
 # NEW CODE FROM BELOW ON OUT
+
+# Get all planet comments for current user
+@user_routes.route('<int:id>/comments')
+def get_user_comments(id):
+    user_comments = PlanetComment.query.filter(PlanetComment.user_id == id).all()
+    if user_comments:
+        return {"comments": [comment.to_dict() for comment in user_comments], "count": PlanetComment.query.filter(PlanetComment.user_id == id).count()}
+    return {"message": "user has no comments"}
