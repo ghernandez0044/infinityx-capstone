@@ -1,10 +1,10 @@
 .spacecraft-gallery-container{
-    border: 3px solid lime;
+    /* border: 3px solid lime; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 3px;
+    gap: 15px;
     height: fit-content;
 }

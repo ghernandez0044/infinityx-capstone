@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SpacecraftGallery from "./components/SpacecraftGallery";
+import SpacecraftDetails from "./components/SpacecraftDetails";
 
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/spacecrafts">
             <SpacecraftGallery />
+          </Route>
+          <Route exact path="/spacecrafts/:id">
+            <SpacecraftDetails />
           </Route>
         </Switch>
       )}

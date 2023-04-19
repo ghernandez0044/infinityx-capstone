@@ -20,7 +20,7 @@ function SpacecraftGallery(){
 
     return (
         <div>
-            <h1>Spacecraft Gallery</h1>
+            <h1 style={{ textAlign: 'center' }}>Spacecraft Gallery</h1>
             <div className="spacecraft-gallery-container">
                 {spacecrafts.map(spacecraft => (
                     <SpacecraftCard key={spacecraft.id} spacecraft={spacecraft} />

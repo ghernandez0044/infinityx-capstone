@@ -1,6 +1,27 @@
 .spacecraft-card-container{
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
+    border-radius: 15px;
     min-height: fit-content;
     height: 500px;
     width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.spacecraft-card-container:hover{
+    box-shadow: 0 0 5px black;
+}
+
+.image-container{
+    /* border: 3px solid brown; */
+    justify-self: flex-start;
+}
+
+.model-container{
+    /* border: 3px solid pink; */
+}
+
+.description-container{
+    /* border: 3px solid purple; */
 }
