@@ -135,3 +135,5 @@ export const normalizingData = (data) => {
     data.forEach((ele) => (obj[ele.id] = ele));
     return obj;
   };
+
+  export default spacecraftReducer
