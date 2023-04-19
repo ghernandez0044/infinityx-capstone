@@ -48,6 +48,9 @@ function ProfileButton({ user }) {
             <div>{user.username}</div>
             <div>{user.email}</div>
             <div>
+              <button>Create A Spacecraft</button>
+            </div>
+            <div>
               <button onClick={handleLogout}>Log Out</button>
             </div>
           </>
