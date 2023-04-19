@@ -34,10 +34,10 @@ export const actionUpdateSpacecraft = (spacecraft) => {
     }
 }
 
-export const actionDeleteSpacecraft = (spacecraft) => {
+export const actionDeleteSpacecraft = (spacecraftId) => {
     return {
         type: DELETE_SPACECRAFT,
-        spacecraft
+        spacecraftId
     }
 }
 
@@ -87,6 +87,16 @@ export const updateSpacecraft = (spacecraft) => async (dispatch) => {
         const updatedSpacecraft = await res.json()
         dispatch(actionUpdateSpacecraft)
         return updatedSpacecraft
+    }
+    return res
+}
+
+export const deleteSpacecraft = (spacecraftId) => async (dispatch) => {
+    const res = await fetch(`/api/spacecrafts/${spacecraftId}`, {
+        method: "DELETE"
+    })
+    if(res.ok){
+        dispatch(actionDeleteSpacecraft(spacecraftId))
     }
     return res
 }
