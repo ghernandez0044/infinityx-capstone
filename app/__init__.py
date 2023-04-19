@@ -33,6 +33,7 @@ app.register_blueprint(spacecraft_routes, url_prefix='/api/spacecraft')
 db.init_app(app)
 Migrate(app, db)
 
+
 # Application Security
 CORS(app)
 

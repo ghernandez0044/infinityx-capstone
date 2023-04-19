@@ -7,3 +7,8 @@ from ..models import db, Spacecraft
 
 spacecraft_routes = Blueprint('spacecrafts', __name__)
 
+# Get all spacecraft route
+@spacecraft_routes.route('/')
+def get_all_spacecraft():
+    all_spacecraft = Spacecraft.query.all()
+    return [spacecraft.to_dict() for spacecraft in all_spacecraft]
