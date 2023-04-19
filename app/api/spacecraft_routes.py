@@ -21,7 +21,7 @@ def get_one_spacecraft():
     return one_spacecraft.to_dict()
 
 # Create a spacecraft route
-@spacecraft_routes.route('/spacecraft', methods=['POST'])
+@spacecraft_routes.route('/', methods=['POST'])
 def create_spacecraft():
     user = current_user.to_dict()
     form = SpacecraftForm()
@@ -48,7 +48,7 @@ def create_spacecraft():
         return {"message": "bad data or user is not an admin"}
     
 # Update a spacecraft route    
-@spacecraft_routes.routes('spacecraft/<int:id>', methods=["PATCH", "PUT"])
+@spacecraft_routes.routes('/<int:id>', methods=["PATCH", "PUT"])
 def update_spacecraft(id):
     user = current_user.to_dict()
     spacecraft = Spacecraft.query.get(id)
@@ -77,7 +77,7 @@ def update_spacecraft(id):
 
 
 # Delete a spacecraft route
-@spacecraft_routes.route('/spacecraft/<int:id>', methods=["DELETE"])
+@spacecraft_routes.route('/<int:id>', methods=["DELETE"])
 def delete_spacecraft(id):
     user = current_user.to_dict()
     spacecraft = Spacecraft.query.get(id)

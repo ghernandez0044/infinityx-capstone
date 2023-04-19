@@ -9,6 +9,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.spacecraft_routes import spacecraft_routes
 from .api.spaceport_routes import spaceport_routes
+from .api.planet_routes import planet_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -32,6 +33,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(spacecraft_routes, url_prefix='/api/spacecraft')
 app.register_blueprint(spaceport_routes, url_prefix='/api/spaceport')
+app.register_blueprint(planet_routes, url_prefix='/api/planets')
 db.init_app(app)
 Migrate(app, db)
 
