@@ -13,3 +13,11 @@ planet_comment_routes = Blueprint('planet_comments', __name__)
 def get_all_planet_comments():
     all_comments = PlanetComment.query.all()
     return [comment.to_dict() for comment in all_comments]
+
+# Get one comment details route
+@planet_comment_routes.route('/<int:id>')
+def get_one_comment(id):
+    one_comment = PlanetComment.query.get(id)
+    if one_comment:
+        return one_comment.to_dict()
+    return {"message": "planet comment not found"}
