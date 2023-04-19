@@ -1,0 +1,6 @@
+.spacecraft-card-container{
+    border: 3px solid blue;
+    min-height: fit-content;
+    height: 500px;
+    width: 400px;
+}
