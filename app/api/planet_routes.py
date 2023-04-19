@@ -2,9 +2,10 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
 from sqlalchemy.orm import joinedload
+import datetime
 
-from ..models import db, Planet
-from ..forms import PlanetForm
+from ..models import db, Planet, PlanetComment
+from ..forms import PlanetForm, PlanetCommentForm
 
 planet_routes = Blueprint('planets', __name__)
 
@@ -96,4 +97,23 @@ def delete_planet(id):
     return {"message": "user is not an admin"}
             
 
+# Create a planet comment
+@planet_routes.route('<int:id>/comments', methods=["POST"])
+def create_comment(id):
+    user = current_user.to_dict()
+    form = PlanetCommentForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
 
+    if form.validate_on_submit():
+        new_planet_comment = PlanetComment(
+            user_id = user.id,
+            planet_id = id,
+            content = form.data["content"],
+            created_at = datetime.datetime.now().strftime('%Y-%m-%d')
+        )
+        db.session.add(new_planet_comment)
+        db.session.commit()
+        return {"planet_comment": new_planet_comment.to_dict()}
+    if form.errors:
+        return {"message": "form errors", "errors": f"{form.errors}"}
+    return {"message": 'Bad Data'}
