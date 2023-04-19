@@ -43,3 +43,29 @@ def create_spaceport():
         if form.errors:
             return {"message": "form errors", "errors": f"{form.errors}"}
     return {"message": "user is not an admin"}
+
+
+# Update a spaceport route
+@spaceport_routes.route('/<int:id>', methods=["PATCH", "PUT"])
+def update_spaceport(id):
+    user = current_user.to_dict()
+    spaceport = Spaceport.query.get(id)
+
+    if user.admin:
+        if spaceport:
+            form = SpaceportForm()
+            form["csrf_token"].data = request.cookies["csrf_token"]
+
+            if form.validate_on_submit():
+                spaceport.name = form.data["name"]
+                spaceport.description = form.data["description"]
+                spaceport.city = form.data["city"]
+                spaceport.state = form.data["state"]
+                spaceport.lat = form.data["lat"]
+                spaceport.lng = form.data["lng"]
+                db.session.commit()
+                updated_spaceport = Spaceport.query.get(id)
+                return {"spaceport": update_spaceport.to_dict()}
+            if form.errors:
+                return {"message": "form errors", "errors": f"{form.errors}"}
+    return {"message": "user is not an admin"}
