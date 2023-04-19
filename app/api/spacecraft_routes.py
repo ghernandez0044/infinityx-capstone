@@ -12,3 +12,12 @@ spacecraft_routes = Blueprint('spacecrafts', __name__)
 def get_all_spacecraft():
     all_spacecraft = Spacecraft.query.all()
     return [spacecraft.to_dict() for spacecraft in all_spacecraft]
+
+# Get one spacecraft details route
+@spacecraft_routes.route('/:id')
+def get_one_spacecraft():
+    one_spacecraft = Spacecraft.query.get(id).one()
+    return one_spacecraft.to_dict()
+
+# Create a spacecraft route
+
