@@ -15,7 +15,7 @@ def get_all_spacecraft():
     return [spacecraft.to_dict() for spacecraft in all_spacecraft]
 
 # Get one spacecraft details route
-@spacecraft_routes.route('/:id')
+@spacecraft_routes.route('/<int:id>')
 def get_one_spacecraft():
     one_spacecraft = Spacecraft.query.get(id).one()
     return one_spacecraft.to_dict()
@@ -46,3 +46,30 @@ def create_spacecraft():
         if form.errors:
             return {"message": "form errors", "errors": f"{form.errors}"}
         return {"message": "bad data or user is not an admin"}
+    
+@spacecraft_routes.routes('spacecraft/<int:id>', methods=["PATCH", "PUT"])
+def update_spacecraft(id):
+    user = current_user.to_dict()
+    spacecraft = Spacecraft.query.get(id)
+
+    if user.admin:
+        form = SpacecraftForm()
+        form["csrf_token"].data = request.cookies["csrf_token"]
+
+        if form.validate_on_submit():
+            spacecraft.model = form.data["model"]
+            spacecraft.year = form.data["year"]
+            spacecraft.load_capacity_kg = form.data["load_capacity_kg"]
+            spacecraft.description = form.data["description"]
+            spacecraft.height_m = form.data["height_m"]
+            spacecraft.diameter_m = form.data["diameter_m"]
+            spacecraft.mass_kg = form.data["mass_kg"]
+            spacecraft.capsule_volume_m = form.data["capsule_volume_m"]
+            spacecraft.trunk_volume = form.data["trunk_volume"]
+            db.session.commit()
+            updated_spacecraft = Spacecraft.query.get(id)
+            return {"spacecraft": update_spacecraft.to_dict(), "user": spacecraft.user}
+        if form.errors:
+            return {"message": "form errors", "statusCode": 400, "errors": f"{form.errors}"}
+        
+    return {"message": "User is not an admin"}
