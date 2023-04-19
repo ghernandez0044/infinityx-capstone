@@ -69,3 +69,15 @@ def update_spaceport(id):
             if form.errors:
                 return {"message": "form errors", "errors": f"{form.errors}"}
     return {"message": "user is not an admin"}
+
+# Delete a spaceport route
+@spaceport_routes.route('/<int:id>', methods=["DELETE"])
+def delete_spaceport(id):
+    user = current_user.to_dict()
+    spaceport = Spaceport.query.get(id)
+    if user.admin and spaceport:
+        db.session.delete(spaceport)
+        db.session.commit()
+        return {"message": "Spaceport Deleted!"}
+    return {"message": "spaceport not found or user is not an admin"}
+        
