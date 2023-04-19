@@ -8,3 +8,8 @@ from ..forms import SpaceportForm
 
 spaceport_routes = Blueprint('spaceports', __name__)
 
+# Get all spaceport route
+@spaceport_routes.route('/')
+def get_all_spaceport():
+    all_spaceport = Spaceport.query.all()
+    return [spaceport.to_dict() for spaceport in all_spaceport]
