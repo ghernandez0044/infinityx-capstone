@@ -49,3 +49,36 @@ def create_planet():
             return {"message": "form errors", "errors": f"{form.errors}"}
     return {"message": "User is not an admin"}
 
+
+# Update a planet route
+@planet_routes.route('/<int:id>', methods=["PATCH", "PUT"])
+def update_planet(id):
+    user = current_user.to_dict()
+    planet = Planet.query.get(id)
+
+    if user.admin:
+        if planet:
+            form = PlanetForm()
+            form["csrf_token"].data = request.cookies["csrf_token"]
+
+            if form.validate_on_submit():
+                planet.name = form.data["name"]
+                planet.description = form.data["description"]
+                planet.distance_from_earth_km = form.data["distance_from_earth_km"]
+                planet.mass_measured_in_earths = form.data["mass_measured_in_earths"]
+                planet.volume_measured_in_earths = form.data["volume_measured_in_earths"]
+                planet.mean_density_in_g_cm_cubed = form.data["mean_density_in_g_cm_cubed"]
+                planet.surface_gravity_in_m_squared = form.data["surface_gravity_in_m_squared"]
+                planet.escape_velocity_in_km_per_sec = form.data["escape_velocity_in_km_per_sec"]
+                planet.synodic_rotation_period_in_days = form.data["synodic_rotation_period_in_days"]
+                planet.temperature_in_k = form.data["temperature_in_k"]
+                db.session.commit()
+                updated_planet = Planet.query.get(id)
+                return {"planet": updated_planet.to_dict()}
+            if form.errors:
+                return {"message": "form errors", "errors": f"{form.errors}"}
+        return {"message": "planet not found"}
+    return {"message": "user is not an admin"}
+            
+
+
