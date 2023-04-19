@@ -43,12 +43,36 @@ export const actionDeleteSpacecraft = (spacecraft) => {
 
 // Thunks
 export const getAllSpacecraft = () => async (dispatch) => {
-    const res = await fetch('api/spacecrafts')
+    const res = await fetch('/api/spacecrafts')
 
     if(res.ok){
         const spacecrafts = await res.json()
         dispatch(actionLoadSpacecrafts(spacecrafts))
         return spacecrafts
+    }
+    return res
+}
+
+export const getOneSpacecraft = (id) => async (dispatch) => {
+    const res = await fetch(`/api/spacecrafts/${id}`)
+    if(res.ok){
+        const spacecraft = await res.json()
+        dispatch(actionLoadSpacecraft(spacecraft))
+        return spacecraft
+    }
+    return res
+}
+
+export const createSpacecraft = (spacecraft) => async (dispatch) => {
+    const res = await fetch('/api/spacecrafts', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(spacecraft)
+    })
+    if(res.ok){
+        const spacecraft = await res.json()
+        dispatch(actionCreateSpacecraft(spacecraft))
+        return spacecraft
     }
     return res
 }
