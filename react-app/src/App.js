@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SpacecraftGallery from "./components/SpacecraftGallery";
 import SpacecraftDetails from "./components/SpacecraftDetails";
+import CreateSpacecraft from "./components/CreateSpacecraft";
 
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/spacecrafts/new">
+            <CreateSpacecraft />
           </Route>
           <Route exact path="/spacecrafts">
             <SpacecraftGallery />
