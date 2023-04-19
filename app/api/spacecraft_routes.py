@@ -47,6 +47,7 @@ def create_spacecraft():
             return {"message": "form errors", "errors": f"{form.errors}"}
         return {"message": "bad data or user is not an admin"}
     
+# Update a spacecraft route    
 @spacecraft_routes.routes('spacecraft/<int:id>', methods=["PATCH", "PUT"])
 def update_spacecraft(id):
     user = current_user.to_dict()
@@ -73,3 +74,15 @@ def update_spacecraft(id):
             return {"message": "form errors", "statusCode": 400, "errors": f"{form.errors}"}
         
     return {"message": "User is not an admin"}
+
+
+# Delete a spacecraft route
+@spacecraft_routes.route('/spacecraft/<int:id>', methods=["DELETE"])
+def delete_spacecraft(id):
+    user = current_user.to_dict()
+    spacecraft = Spacecraft.query.get(id)
+    if user.admin and spacecraft:
+        db.session.delete(spacecraft)
+        db.session.commit()
+        return {"message": "Spacecraft Deleted!"}
+    return {"message": "spacecraft not found or user is not an admin"}
