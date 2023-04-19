@@ -4,4 +4,4 @@ from wtforms.validators import DataRequired, ValidationError
 from app.models import PlanetComment
 
 class PlanetCommentForm(FlaskForm):
-    content = StringField('content')
+    content = StringField('content', validators=[DataRequired()])
