@@ -23,7 +23,7 @@ def get_one_spaceport(id):
 # Create a spaceport route
 @spaceport_routes.route('/', methods=["POST"])
 def create_spaceport():
-    user = current_user.to_dict()
+    user = current_user
     form = SpaceportForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
@@ -48,7 +48,7 @@ def create_spaceport():
 # Update a spaceport route
 @spaceport_routes.route('/<int:id>', methods=["PATCH", "PUT"])
 def update_spaceport(id):
-    user = current_user.to_dict()
+    user = current_user
     spaceport = Spaceport.query.get(id)
 
     if user.admin:
@@ -73,7 +73,7 @@ def update_spaceport(id):
 # Delete a spaceport route
 @spaceport_routes.route('/<int:id>', methods=["DELETE"])
 def delete_spaceport(id):
-    user = current_user.to_dict()
+    user = current_user
     spaceport = Spaceport.query.get(id)
     if user.admin and spaceport:
         db.session.delete(spaceport)

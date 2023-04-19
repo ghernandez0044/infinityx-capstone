@@ -3,12 +3,12 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Redirect } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-
+import { createSpacecraft } from "../../store/spacecraft";
 import './SpacecraftForm.css'
 
 function SpacecraftForm(){
     // Create dipatch method
-    const dipatch = useDispatch()
+    const dispatch = useDispatch()
     
     // Create history method
     const history = useHistory()
@@ -18,15 +18,16 @@ function SpacecraftForm(){
 
     // Create state variables
     const [ errors, setErrors ] = useState({})
+    const [ backendErrors, setBackendErrors ] = useState({})
     const [ model, setModel ] = useState('')
-    const [ year, setYear ] = useState(0)
-    const [ loadCapacity, setLoadCapacity ] = useState(0)
+    const [ year, setYear ] = useState('')
+    const [ loadCapacity, setLoadCapacity ] = useState('')
     const [ description, setDescription ] = useState('')
-    const [ height, setHeight ] = useState(0)
-    const [ diameter, setDiameter ] = useState(0)
-    const [ mass, setMass ] = useState(0)
-    const [ capsuleVolume, setCapsuleVolume ] = useState(0)
-    const [ trunkVolume, setTrunkVolume ] = useState(0)
+    const [ height, setHeight ] = useState('')
+    const [ diameter, setDiameter ] = useState('')
+    const [ mass, setMass ] = useState('')
+    const [ capsuleVolume, setCapsuleVolume ] = useState('')
+    const [ trunkVolume, setTrunkVolume ] = useState('')
 
     // Subscribe to current user slice of state
     const user = useSelector(state => state.session.user)
@@ -42,24 +43,32 @@ function SpacecraftForm(){
         const payload = {
             "user_id": user.id,
             model,
-            year,
-            "load_capacity_kg": loadCapacity,
+            "year": Number(year),
+            "load_capacity_kg": Number(loadCapacity),
             description,
-            "height_m": height,
-            "diameter_m": diameter,
-            "mass_kg": mass,
-            "capsule_volume_m": capsuleVolume,
-            "trunk_volume_m": trunkVolume
+            "height_m": Number(height),
+            "diameter_m": Number(diameter),
+            "mass_kg": Number(mass),
+            "capsule_volume_m": Number(capsuleVolume),
+            "trunk_volume_m": Number(trunkVolume)
         }
 
         console.log("created spacecraft: ", payload)
+
+        dispatch(createSpacecraft(payload)).then(res => { 
+            history.push(`/spacecrafts/${res.spacecraft.id}`)
+         }).catch(res => {
+            const data = res
+            if(data && data.errors) setBackendErrors(data.errors)
+         })
 
     }
 
 
     return (
         <div className="spacecraft-form-container">
-            <form className="form" onSubmit={onSubmit}>
+            <h1 style={{ textAlign: 'center' }}>Create A Spacecraft</h1>
+            <form className="form" onSubmit={onSubmit} method="post">
                 <label>Model: </label>
                 <input id='model' type='text' value={model} onChange={(e) => setModel(e.target.value)} required>
                 </input>
