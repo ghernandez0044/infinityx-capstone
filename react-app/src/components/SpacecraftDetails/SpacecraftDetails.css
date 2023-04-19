@@ -1,0 +1,64 @@
+.spacecraft-details-component{
+    /* border: 3px solid lime; */
+}
+
+.spacecraft-details-img-container{
+    /* border: 3px solid brown; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-model-container{
+    /* border: 2px solid orange; */
+}
+
+.details-year-container{
+    /* border: 3px solid blue; */
+}
+
+.details-description-container{
+    /* border: 3px solid yellow; */
+}
+
+.details-height-container{
+    /* border: 3px solid pink; */
+}
+
+.details-diameter-container{
+    /* border: 3px solid salmon; */
+}
+
+.details-mass-container{
+    /* border: 3px solid brown; */
+}
+
+.details-load-container{
+    /* border: 3px solid gray */
+}
+
+.details-capsule-container{
+    /* border: 3px solid green; */
+}
+
+.details-trunk-container{
+    /* border: 3px solid purple; */
+}
+
+.content-container{
+    /* border: 3px solid red; */
+    min-height: fit-content;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.manage-buttons{
+    /* border: 3px solid burlywood; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px auto;
+}

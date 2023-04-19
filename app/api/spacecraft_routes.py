@@ -16,8 +16,8 @@ def get_all_spacecraft():
 
 # Get one spacecraft details route
 @spacecraft_routes.route('/<int:id>')
-def get_one_spacecraft():
-    one_spacecraft = Spacecraft.query.get(id).one()
+def get_one_spacecraft(id):
+    one_spacecraft = Spacecraft.query.get(id)
     return one_spacecraft.to_dict()
 
 # Create a spacecraft route
