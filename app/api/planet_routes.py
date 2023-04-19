@@ -79,6 +79,21 @@ def update_planet(id):
                 return {"message": "form errors", "errors": f"{form.errors}"}
         return {"message": "planet not found"}
     return {"message": "user is not an admin"}
+
+
+# Delete a planet
+@planet_routes.route('/<int:id>', methods=["DELETE"])
+def delete_planet(id):
+    user = current_user.to_dict()
+    planet = Planet.query.get(id)
+
+    if user.admin:
+        if planet:
+            db.session.delete(planet)
+            db.session.commit()
+            return {"message": "Planet Deleted!"}
+        return {"message": "Planet not found"}
+    return {"message": "user is not an admin"}
             
 
 
