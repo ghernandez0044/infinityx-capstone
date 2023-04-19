@@ -100,3 +100,38 @@ export const deleteSpacecraft = (spacecraftId) => async (dispatch) => {
     }
     return res
 }
+
+// Initial State
+const initialState = {
+    allSpacecraft: {},
+    singleSpacecraft: {}
+}
+
+// Reducer
+const spacecraftReducer = (state = initialState, action) => {
+    let newState = {...state}
+    switch(action.type){
+        case LOAD_SPACECRAFTS:
+            const spacecrafts = normalizingData(action.spacecrafts)
+            newState.allSpacecraft = {...spacecrafts}
+            return newState
+        case LOAD_SPACECRAFT:
+            return {...state, singleSpacecraft: {...action.spacecraft}}
+        case CREATE_SPACECRAFT:
+            return {...state, allSpacecraft: {...state.allSpacecraft, [action.spacecraft.id]: action.spacecraft}}
+        case UPDATE_SPACECRAFT:
+            return {...state, allSpacecraft: {...state.allSpacecraft, [action.spacecraft.id]: action.spacecraft}}
+        case DELETE_SPACECRAFT:
+            delete newState.allSpacecraft[action.id]
+            return newState
+        default:
+            return state
+    }
+}
+
+// Normalize Data
+export const normalizingData = (data) => {
+    const obj = {};
+    data.forEach((ele) => (obj[ele.id] = ele));
+    return obj;
+  };
