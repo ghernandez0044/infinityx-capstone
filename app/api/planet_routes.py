@@ -97,7 +97,7 @@ def delete_planet(id):
     return {"message": "user is not an admin"}
             
 
-# Create a planet comment
+# Create a planet comment route
 @planet_routes.route('<int:id>/comments', methods=["POST"])
 def create_comment(id):
     user = current_user.to_dict()
@@ -117,3 +117,5 @@ def create_comment(id):
     if form.errors:
         return {"message": "form errors", "errors": f"{form.errors}"}
     return {"message": 'Bad Data'}
+
+
