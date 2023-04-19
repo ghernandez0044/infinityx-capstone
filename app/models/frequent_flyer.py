@@ -8,7 +8,7 @@ class FrequentFlyer(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
-    tier_id = db.Column(db.Integer, db.ForeignKey('tiers.id'))
+    tier_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('tiers.id')))
     account_no = db.Column(db.String(100), nullable=False)
     points = db.Column(db.Float, nullable=False)
 
