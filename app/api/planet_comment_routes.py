@@ -42,3 +42,17 @@ def update_planet_comment(id):
                 return {"message": "form errors", "errors": f"{form.errors}"}
         return {"message": "this comment does not belong to this user"}
     return {"message": "planet comment not found"}
+
+# Delete a planet comment route
+@planet_comment_routes.route('/<int:id>', methods=["DELETE"])
+def delete_planet_comment(id):
+    user = current_user.to_dict()
+    planet_comment = PlanetComment.query.get(id)
+
+    if planet_comment:
+        if planet_comment.user_id == user.id:
+            db.session.delete(planet_comment)
+            db.session.commit()
+            return {"message": "Planet Comment Deleted!"}
+        return {"message": "Comment does not belong to this user"}
+    return {"message": "Comment not found"}
