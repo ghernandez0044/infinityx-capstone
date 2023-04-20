@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 6f00f9cb388f
+Revision ID: 6b608fef7b53
 Revises: 
-Create Date: 2023-04-18 00:15:32.282862
+Create Date: 2023-04-20 08:18:32.501447
 
 """
 from alembic import op
@@ -14,7 +14,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '6f00f9cb388f'
+revision = '6b608fef7b53'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -67,7 +67,7 @@ def upgrade():
     op.create_table('tiers',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=100), nullable=False),
-    sa.Column('perks', sa.String(length=100), nullable=False),
+    sa.Column('perks', sa.Text(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name'),
     sa.UniqueConstraint('perks')
