@@ -10,6 +10,7 @@ import SpacecraftDetails from "./components/SpacecraftDetails";
 import CreateSpacecraft from "./components/CreateSpacecraft";
 import EditSpacecraft from "./components/EditSpacecraft";
 import SpaceportGallery from "./components/SpaceportGallery";
+import SpaceportDetails from "./components/SpaceportDetails";
 
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route exact path="/spaceports">
             <SpaceportGallery />
+          </Route>
+          <Route exact path="/spaceports/:id">
+            <SpaceportDetails />
           </Route>
         </Switch>
       )}
