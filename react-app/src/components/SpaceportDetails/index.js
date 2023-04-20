@@ -63,6 +63,12 @@ function SpaceportDetails(){
                 <div>Latitude: {spaceport.lat}</div>
                 <div>Longitude: {spaceport.lng}</div>
             </div>
+            {user?.admin && (
+                <div className="manage-buttons">
+                    <button onClick={redirect}>Edit</button>
+                    <OpenModalButton modalComponent={<Confirmation label='Delete Spaceport' message='Are You Sure You Want To Delete?' onYes={deleteFunction} yesLabel='Delete' noLabel='Keep' onNo={() => closeModal()} />} buttonText='Delete' />
+                </div>
+            )}
         </div>
     )
 }
