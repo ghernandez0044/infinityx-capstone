@@ -53,7 +53,7 @@ function SpaceportForm({ edit, payload }){
 
         if(edit){
             dispatch(updateSpaceport(newSpaceport, id)).then(res => {
-                history.push(`/spaceports/${res.spacecraft.id}`)
+                history.push(`/spaceports/${id}`)
             }).catch(res => {
                 const data = res
                 if(data && data.errors) setBackendErrors(data.errors)
