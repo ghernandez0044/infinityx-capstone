@@ -12,6 +12,9 @@ function SpacecraftDetails(){
     // Create dispatch method
     const dispatch = useDispatch()
 
+    // Create history method
+    const history = useHistory()
+
     // Load spacecraft upon component render
     useEffect(() => {
         dispatch(getOneSpacecraft(id))
@@ -24,6 +27,11 @@ function SpacecraftDetails(){
 
     // Subscribe to current user slice of state
     const user = useSelector(state => state.session.user)
+
+    // Function to redired to edit page
+    const redirect = () => {
+        history.push(`/spacecrafts/${id}/edit`)
+    }
 
     console.log('user: ', user)
 
@@ -46,7 +54,7 @@ function SpacecraftDetails(){
             </div>
             {user?.admin && (
                 <div className="manage-buttons">
-                    <button>Edit</button>
+                    <button onClick={redirect}>Edit</button>
                     <button>Delete</button>
                 </div>
             )}

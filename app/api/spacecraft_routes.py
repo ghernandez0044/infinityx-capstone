@@ -66,10 +66,10 @@ def update_spacecraft(id):
             spacecraft.diameter_m = form.data["diameter_m"]
             spacecraft.mass_kg = form.data["mass_kg"]
             spacecraft.capsule_volume_m = form.data["capsule_volume_m"]
-            spacecraft.trunk_volume = form.data["trunk_volume"]
+            spacecraft.trunk_volume_m = form.data["trunk_volume_m"]
             db.session.commit()
             updated_spacecraft = Spacecraft.query.get(id)
-            return {"spacecraft": update_spacecraft.to_dict(), "user": spacecraft.user}
+            return {"spacecraft": updated_spacecraft.to_dict()}
         if form.errors:
             return {"message": "form errors", "statusCode": 400, "errors": f"{form.errors}"}
         

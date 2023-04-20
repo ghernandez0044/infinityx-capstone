@@ -1,12 +1,13 @@
 // Necessary imports
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Redirect } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { createSpacecraft } from "../../store/spacecraft";
+import { createSpacecraft, updateSpacecraft } from "../../store/spacecraft";
+import { getOneSpacecraft } from "../../store/spacecraft";
 import './SpacecraftForm.css'
 
-function SpacecraftForm(){
+function SpacecraftForm({ edit, payload }){
     // Create dipatch method
     const dispatch = useDispatch()
     
@@ -16,18 +17,21 @@ function SpacecraftForm(){
     // Consume useModal context
     const { closeModal } = useModal()
 
+    // Extract desired variable from useParams
+    const { id } = useParams()
+
     // Create state variables
     const [ errors, setErrors ] = useState({})
     const [ backendErrors, setBackendErrors ] = useState({})
-    const [ model, setModel ] = useState('')
-    const [ year, setYear ] = useState('')
-    const [ loadCapacity, setLoadCapacity ] = useState('')
-    const [ description, setDescription ] = useState('')
-    const [ height, setHeight ] = useState('')
-    const [ diameter, setDiameter ] = useState('')
-    const [ mass, setMass ] = useState('')
-    const [ capsuleVolume, setCapsuleVolume ] = useState('')
-    const [ trunkVolume, setTrunkVolume ] = useState('')
+    const [ model, setModel ] = useState(payload?.model || '')
+    const [ year, setYear ] = useState(payload?.year || '')
+    const [ loadCapacity, setLoadCapacity ] = useState(payload?.load_capacity_kg || '')
+    const [ description, setDescription ] = useState(payload?.description || '')
+    const [ height, setHeight ] = useState(payload?.height_m || '')
+    const [ diameter, setDiameter ] = useState(payload?.diameter_m || '')
+    const [ mass, setMass ] = useState(payload?.mass_kg || '')
+    const [ capsuleVolume, setCapsuleVolume ] = useState(payload?.capsule_volume_m || '')
+    const [ trunkVolume, setTrunkVolume ] = useState(payload?.trunk_volume_m || '')
 
     // Subscribe to current user slice of state
     const user = useSelector(state => state.session.user)
@@ -55,20 +59,33 @@ function SpacecraftForm(){
 
         console.log("created spacecraft: ", payload)
 
-        dispatch(createSpacecraft(payload)).then(res => { 
-            history.push(`/spacecrafts/${res.spacecraft.id}`)
-         }).catch(res => {
-            const data = res
-            if(data && data.errors) setBackendErrors(data.errors)
-         })
+        // If the edit flag is true, run the edit dispatch instead of the create dispatch
+        if(edit){
+            console.log('inside the edit block')
+            console.log('payload: ', payload)
+            console.log('id inside spacecraft form edit: ', id)
+            dispatch(updateSpacecraft(payload, id)).then(res => {
+                history.push(`/spacecrafts/${res.spacecraft.id}`)
+            }).catch(res => {
+                const data = res
+                if(data && data.errors) setBackendErrors(data.errors)
+             })
+        } else {
+            dispatch(createSpacecraft(payload)).then(res => { 
+                history.push(`/spacecrafts/${res.spacecraft.id}`)
+             }).catch(res => {
+                const data = res
+                if(data && data.errors) setBackendErrors(data.errors)
+             })
+        }
 
     }
 
 
     return (
         <div className="spacecraft-form-container">
-            <h1 style={{ textAlign: 'center' }}>Create A Spacecraft</h1>
-            <form className="form" onSubmit={onSubmit} method="post">
+            <h1 style={{ textAlign: 'center' }}>{!edit ? 'Create A Spacecraft' : 'Edit A Spacecraft'}</h1>
+            <form className="form" onSubmit={onSubmit}>
                 <label>Model: </label>
                 <input id='model' type='text' value={model} onChange={(e) => setModel(e.target.value)} required>
                 </input>
@@ -96,7 +113,7 @@ function SpacecraftForm(){
                 <label>Trunk Volume In Meters Squared: </label>
                 <input id='trunk_volume_m' type='number' value={trunkVolume} onChange={(e) => setTrunkVolume(e.target.value)} required>
                 </input>
-                <button type='submit'>Create Spacecraft</button>
+                <button type='submit'>{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</button>
             </form>
         </div>
     )
