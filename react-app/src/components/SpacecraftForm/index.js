@@ -83,7 +83,7 @@ function SpacecraftForm({ edit, payload }){
     }
 
 
-    return (
+    return user.admin && (
         <div className="spacecraft-form-container">
             <h1 style={{ textAlign: 'center' }}>{!edit ? 'Create A Spacecraft' : 'Edit A Spacecraft'}</h1>
             <form className="form" onSubmit={onSubmit}>
