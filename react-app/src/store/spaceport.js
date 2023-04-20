@@ -67,7 +67,7 @@ export const getOneSpaceport = (id) => async (dispatch) => {
 }
 
 export const createSpaceport = (spaceport) => async (dispatch) => {
-    const res = await fetch('/api/spaceports/new', {
+    const res = await fetch('/api/spaceports/', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(spaceport)

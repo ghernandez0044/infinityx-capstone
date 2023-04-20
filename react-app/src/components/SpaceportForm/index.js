@@ -23,6 +23,7 @@ function SpaceportForm({ edit, payload }){
     const [ errors, setErrors ] = useState({})
     const [ backendErrors, setBackendErrors ] = useState({})
     const [ name, setName ] = useState(payload?.name || '')
+    const [ description, setDescription ] = useState(payload?.description || '')
     const [ city, setCity ] = useState(payload?.city || '')
     const [ state, setState ] = useState(payload?.state || '')
     const [ lat, setLat ] = useState(payload?.lat || '')
@@ -65,11 +66,9 @@ function SpaceportForm({ edit, payload }){
                 if(data && data.errors) setBackendErrors(data.errors)
              })
         }
-
-
     }
 
-    return user.admin (
+    return user.admin && (
         <div className="spacecraft-form-container">
             <h1 style={{ textAlign: 'center' }}>{!edit ? 'Create A Spaceport' : 'Edit A Spaceport'}</h1>
             <form className="form" onSubmit={onSubmit}>
