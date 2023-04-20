@@ -78,9 +78,6 @@ export const createSpacecraft = (spacecraft) => async (dispatch) => {
 }
 
 export const updateSpacecraft = (spacecraft, id) => async (dispatch) => {
-    console.log('inside updateSpacecraft thunk')
-    console.log('id inside edit thunk')
-    console.log('spacecraft inside update thunk: ', spacecraft)
     const res = await fetch(`/api/spacecrafts/${Number(id)}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

@@ -3,6 +3,10 @@ import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneSpacecraft } from "../../store/spacecraft";
+import { useModal } from "../../context/Modal";
+import { deleteSpacecraft } from "../../store/spacecraft";
+import OpenModalButton from "../OpenModalButton";
+import Confirmation from "../Confirmation";
 import './SpacecraftDetails.css'
 
 function SpacecraftDetails(){
@@ -14,6 +18,9 @@ function SpacecraftDetails(){
 
     // Create history method
     const history = useHistory()
+
+    // Consume useModal context
+    const { closeModal } = useModal()
 
     // Load spacecraft upon component render
     useEffect(() => {
@@ -28,14 +35,21 @@ function SpacecraftDetails(){
     // Subscribe to current user slice of state
     const user = useSelector(state => state.session.user)
 
-    // Function to redired to edit page
+    // Function to redirect to edit page
     const redirect = () => {
         history.push(`/spacecrafts/${id}/edit`)
     }
 
+    // Function to delete spacecraft
+    const deleteFunction = () => {
+        dispatch(deleteSpacecraft(id))
+        closeModal()
+        history.push('/spacecrafts')
+    }
+
     console.log('user: ', user)
 
-    return (
+    return spacecraft && (
         <div className="spacecraft-details-component">
             <h1 style={{ textAlign: 'center' }}>Spacecraft Details</h1>
             <div className="spacecraft-details-img-container">
@@ -55,7 +69,7 @@ function SpacecraftDetails(){
             {user?.admin && (
                 <div className="manage-buttons">
                     <button onClick={redirect}>Edit</button>
-                    <button>Delete</button>
+                    <OpenModalButton modalComponent={<Confirmation label='Delete Spacecraft' message='Are You Sure You Want To Delete?' onYes={deleteFunction} yesLabel='Delete' noLabel='Keep' onNo={() => closeModal()} />} buttonText='Delete' />
                 </div>
             )}
         </div>
