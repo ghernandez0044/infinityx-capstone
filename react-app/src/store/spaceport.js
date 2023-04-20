@@ -40,7 +40,7 @@ export const actionUpdateSpaceport = (spaceport) => {
 export const actionDeleteSpaceport = (spaceportId) => {
     return {
         type: DELETE_SPACEPORT,
-        spaceporttId
+        spaceportId
     }
 }
 
