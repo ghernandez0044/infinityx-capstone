@@ -36,8 +36,13 @@ function ProfileButton({ user }) {
     dispatch(logout());
   };
 
-  const redirect = () => {
+  const redirectSpacecraft = () => {
     history.push('/spacecrafts/new')
+    closeMenu()
+  }
+
+  const redirectSpaceport = () => {
+    history.push('/spaceports/new')
     closeMenu()
   }
 
@@ -54,9 +59,12 @@ function ProfileButton({ user }) {
           <>
             <div>{user.username}</div>
             <div>{user.email}</div>
-            <div>
-              <button onClick={redirect}>Create A Spacecraft</button>
+            {user.admin && (
+              <div>
+                <button onClick={redirectSpacecraft}>Create A Spacecraft</button>
+                <button onClick={redirectSpaceport}>Create A Spaceport</button>
             </div>
+            )}
             <div>
               <button onClick={handleLogout}>Log Out</button>
             </div>
