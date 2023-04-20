@@ -2,6 +2,7 @@
 import SpacecraftForm from "../SpacecraftForm"
 
 function CreateSpacecraft(){
+
     return (
         <>
            <SpacecraftForm />

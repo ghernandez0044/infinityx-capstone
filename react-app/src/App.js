@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import SpacecraftGallery from "./components/SpacecraftGallery";
 import SpacecraftDetails from "./components/SpacecraftDetails";
 import CreateSpacecraft from "./components/CreateSpacecraft";
+import EditSpacecraft from "./components/EditSpacecraft";
 
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/spacecrafts/:id/edit">
+            <EditSpacecraft />
           </Route>
           <Route exact path="/spacecrafts/new">
             <CreateSpacecraft />
