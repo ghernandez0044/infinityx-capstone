@@ -40,7 +40,7 @@ class Spaceport(db.Model):
             'city': self.city,
             'state': self.state,
             'lat': self.lat,
-            'lng': self.lng
+            'lng': self.lng,
         }
 
     

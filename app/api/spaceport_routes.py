@@ -65,7 +65,7 @@ def update_spaceport(id):
                 spaceport.lng = form.data["lng"]
                 db.session.commit()
                 updated_spaceport = Spaceport.query.get(id)
-                return {"spaceport": update_spaceport.to_dict()}
+                return {"spaceport": updated_spaceport.to_dict()}
             if form.errors:
                 return {"message": "form errors", "errors": f"{form.errors}"}
     return {"message": "user is not an admin"}

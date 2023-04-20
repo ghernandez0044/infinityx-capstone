@@ -40,7 +40,7 @@ export const actionUpdateSpaceport = (spaceport) => {
 export const actionDeleteSpaceport = (spaceportId) => {
     return {
         type: DELETE_SPACEPORT,
-        spaceporttId
+        spaceportId
     }
 }
 
@@ -67,7 +67,7 @@ export const getOneSpaceport = (id) => async (dispatch) => {
 }
 
 export const createSpaceport = (spaceport) => async (dispatch) => {
-    const res = await fetch('/api/spaceports/new', {
+    const res = await fetch('/api/spaceports/', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(spaceport)
@@ -131,3 +131,5 @@ const spaceportReducer = (state = initialState, action) => {
             return state
     }
 }
+
+export default spaceportReducer
