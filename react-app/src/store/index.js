@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import spacecraftReducer from './spacecraft';
+import spaceportReducer from './spaceport';
 
 const rootReducer = combineReducers({
   session,
-  spacecrafts: spacecraftReducer
+  spacecrafts: spacecraftReducer,
+  spaceports: spaceportReducer
 });
 
 

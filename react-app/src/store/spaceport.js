@@ -131,3 +131,5 @@ const spaceportReducer = (state = initialState, action) => {
             return state
     }
 }
+
+export default spaceportReducer
