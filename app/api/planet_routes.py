@@ -24,7 +24,7 @@ def get_one_planet(id):
 # Create a planet route
 @planet_routes.route('/', methods=["POST"])
 def create_planet():
-    user = current_user.to_dict()
+    user = current_user
     form = PlanetForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     
@@ -54,7 +54,7 @@ def create_planet():
 # Update a planet route
 @planet_routes.route('/<int:id>', methods=["PATCH", "PUT"])
 def update_planet(id):
-    user = current_user.to_dict()
+    user = current_user
     planet = Planet.query.get(id)
 
     if user.admin:
@@ -85,7 +85,7 @@ def update_planet(id):
 # Delete a planet
 @planet_routes.route('/<int:id>', methods=["DELETE"])
 def delete_planet(id):
-    user = current_user.to_dict()
+    user = current_user
     planet = Planet.query.get(id)
 
     if user.admin:
@@ -100,7 +100,7 @@ def delete_planet(id):
 # Create a planet comment route
 @planet_routes.route('<int:id>/comments', methods=["POST"])
 def create_comment(id):
-    user = current_user.to_dict()
+    user = current_user
     form = PlanetCommentForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 

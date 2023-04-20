@@ -26,7 +26,7 @@ def get_one_comment(id):
 # Update a planet comment route
 @planet_comment_routes.route('<int:id>', methods=["PATCH", "PUT"])
 def update_planet_comment(id):
-    user = current_user.to_dict()
+    user = current_user
     planet_comment = PlanetComment.query.get(id)
 
     if planet_comment:
@@ -46,7 +46,7 @@ def update_planet_comment(id):
 # Delete a planet comment route
 @planet_comment_routes.route('/<int:id>', methods=["DELETE"])
 def delete_planet_comment(id):
-    user = current_user.to_dict()
+    user = current_user
     planet_comment = PlanetComment.query.get(id)
 
     if planet_comment:

@@ -21,17 +21,17 @@ def get_one_spacecraft(id):
     return one_spacecraft.to_dict()
 
 # Create a spacecraft route
-@spacecraft_routes.route('/', methods=['POST'])
+@spacecraft_routes.route('/new', methods=["POST"])
 def create_spacecraft():
-    user = current_user.to_dict()
+    user = current_user
     form = SpacecraftForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if user.admin:
         if form.validate_on_submit():
             new_spacecraft = Spacecraft(
-                user_id = user["id"],
                 model = form.data["model"],
+                year = form.data["year"],
                 load_capacity_kg = form.data["load_capacity_kg"],
                 description = form.data["description"],
                 height_m = form.data["height_m"],
@@ -42,7 +42,7 @@ def create_spacecraft():
             )
             db.session.add(new_spacecraft)
             db.session.commit()
-            return {"spacecraft": new_spacecraft, "user": new_spacecraft.user.to_dict()}
+            return {"spacecraft": new_spacecraft.to_dict()}
         if form.errors:
             return {"message": "form errors", "errors": f"{form.errors}"}
         return {"message": "bad data or user is not an admin"}
@@ -50,7 +50,7 @@ def create_spacecraft():
 # Update a spacecraft route    
 @spacecraft_routes.route('/<int:id>', methods=["PATCH", "PUT"])
 def update_spacecraft(id):
-    user = current_user.to_dict()
+    user = current_user
     spacecraft = Spacecraft.query.get(id)
 
     if user.admin:
@@ -79,7 +79,7 @@ def update_spacecraft(id):
 # Delete a spacecraft route
 @spacecraft_routes.route('/<int:id>', methods=["DELETE"])
 def delete_spacecraft(id):
-    user = current_user.to_dict()
+    user = current_user
     spacecraft = Spacecraft.query.get(id)
     if user.admin and spacecraft:
         db.session.delete(spacecraft)
