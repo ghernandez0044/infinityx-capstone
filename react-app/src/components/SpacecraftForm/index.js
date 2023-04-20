@@ -5,6 +5,7 @@ import { useHistory, useParams, Redirect } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { createSpacecraft, updateSpacecraft } from "../../store/spacecraft";
 import { getOneSpacecraft } from "../../store/spacecraft";
+import Confirmation from "../Confirmation";
 import './SpacecraftForm.css'
 
 function SpacecraftForm({ edit, payload }){
