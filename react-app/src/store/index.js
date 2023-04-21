@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import spacecraftReducer from './spacecraft';
 import spaceportReducer from './spaceport';
+import planetReducer from './planet';
 
 const rootReducer = combineReducers({
   session,
   spacecrafts: spacecraftReducer,
-  spaceports: spaceportReducer
+  spaceports: spaceportReducer,
+  planets: planetReducer
 });
 
 

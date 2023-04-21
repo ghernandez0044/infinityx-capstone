@@ -13,6 +13,7 @@ import SpaceportGallery from "./components/SpaceportGallery";
 import SpaceportDetails from "./components/SpaceportDetails";
 import CreateSpaceport from "./components/CreateSpaceport";
 import EditSpaceport from "./components/EditSpaceport";
+import PlanetGallery from "./components/PlanetGallery";
 
 
 function App() {
@@ -56,6 +57,9 @@ function App() {
           </Route>
           <Route exact path="/spaceports/:id">
             <SpaceportDetails />
+          </Route>
+          <Route exact path="/planets">
+            <PlanetGallery />
           </Route>
         </Switch>
       )}
