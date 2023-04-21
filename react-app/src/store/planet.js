@@ -59,9 +59,9 @@ export const getAllPlanets = () => async (dispatch) => {
 export const getOnePlanet = (id) => async (dispatch) => {
     const res = await fetch(`/api/planets/${id}`)
     if(res.ok){
-        const planets = await res.json()
-        dispatch(actionLoadPlanets(planets))
-        return planets
+        const planet = await res.json()
+        dispatch(actionLoadPlanet(planet))
+        return planet
     }
     return res
 }
