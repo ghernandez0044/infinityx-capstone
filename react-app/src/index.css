@@ -3,3 +3,8 @@ a {
     text-decoration: none;
     color: black;
 }
+
+:root{
+    margin: 0;
+    padding: 0;
+}
