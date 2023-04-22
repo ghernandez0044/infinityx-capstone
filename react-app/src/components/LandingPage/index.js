@@ -14,7 +14,7 @@ function LandingPage(){
             <div className='header-section'>
                 <img src={starryBackground} alt='' className='background-image' />
                 <img src={astronaut} alt='' className='foreground-image' />
-                <h1 className='title'>Welcome!</h1>
+                <h1 className='title'>Welcome To InfinityX</h1>
             </div>
             <div className='landing-text'>
                 fhkhkhfhksdjhfkjsdfjkfsdfjksdhf

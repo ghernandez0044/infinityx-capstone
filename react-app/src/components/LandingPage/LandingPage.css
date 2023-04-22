@@ -5,6 +5,7 @@
 
 .whole-content-container{
     /* border: 3px solid lime; */
+    background-color: #010203;
     height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
