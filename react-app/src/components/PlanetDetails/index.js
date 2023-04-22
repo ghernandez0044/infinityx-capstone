@@ -53,7 +53,7 @@ function PlanetDetails(){
             <div className="content-container">
                 <div>Name: {planet.name}</div>
                 <div>Description: {planet.description}</div>
-                <div>Distance From Earth: {planet.description} km</div>
+                <div>Distance From Earth: {planet.distance_from_earth_km} km</div>
                 <div>Mass (Measured In Earths): {planet.mass_measured_in_earths} Earths</div>
                 <div>Volume (Measured In Earths): {planet.volume_measured_in_earths} Earths</div>
                 <div>Mean Density (Measured In Grams Per Centimeter Cubed): {planet.mean_density_in_g_cm_cubed} g/cm^3</div>

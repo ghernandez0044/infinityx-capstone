@@ -46,6 +46,11 @@ function ProfileButton({ user }) {
     closeMenu()
   }
 
+  const redirectPlanet = () => {
+    history.push('/planets/new')
+    closeMenu()
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
@@ -63,6 +68,7 @@ function ProfileButton({ user }) {
               <div>
                 <button onClick={redirectSpacecraft}>Create A Spacecraft</button>
                 <button onClick={redirectSpaceport}>Create A Spaceport</button>
+                <button onClick={redirectPlanet}>Create A Planet</button>
             </div>
             )}
             <div>

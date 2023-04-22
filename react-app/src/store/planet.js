@@ -67,7 +67,7 @@ export const getOnePlanet = (id) => async (dispatch) => {
 }
 
 export const createPlanet = (planet) => async (dispatch) => {
-    const res = await fetch('/api/spacecrafts', {
+    const res = await fetch(`/api/planets`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(planet)

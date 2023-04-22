@@ -15,6 +15,7 @@ import CreateSpaceport from "./components/CreateSpaceport";
 import EditSpaceport from "./components/EditSpaceport";
 import PlanetGallery from "./components/PlanetGallery";
 import PlanetDetails from "./components/PlanetDetails";
+import CreatePlanet from "./components/CreatePlanet";
 
 
 function App() {
@@ -58,6 +59,9 @@ function App() {
           </Route>
           <Route exact path="/spaceports/:id">
             <SpaceportDetails />
+          </Route>
+          <Route exact path="/planets/new">
+            <CreatePlanet />
           </Route>
           <Route exact path="/planets">
             <PlanetGallery />
