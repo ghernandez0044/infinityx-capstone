@@ -11,9 +11,10 @@ function SectionALandingPage(){
             <div className="section-content">
                 <h4>Upcoming Launch</h4>
                 <h2>Hawk 9 Mission</h2>
-                <div className="button animate"></div>
-                <div className="hover-effect"></div>
-                <span>Rewatch</span>
+                <div className="button animate">
+                    <div className="hover-effect"></div>
+                    <span>Rewatch</span>
+                </div>
             </div>
         </div>
     )

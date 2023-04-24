@@ -42,3 +42,16 @@
 .section-content span {
     font-size: 20px;
 }
+
+.button {
+    position: relative;
+    display: inline-block;
+    border: 2px solid white;
+    cursor: pointer;
+    text-align: center;
+    padding: 15px 20px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    overflow: hidden;
+    z-index: 3;
+}
