@@ -28,13 +28,17 @@
 
 .section-content h4 {
     border: 3px solid salmon;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 300;
     margin: 0;
 }
 
 .section-content h2 {
     border: 3px solid blue;
-    font-size: 32px;
+    font-size: 48px;
     margin: 12px 0;
+}
+
+.section-content span {
+    font-size: 20px;
 }
