@@ -3,8 +3,38 @@
 }
 
 .sizing{
+    position: relative;
     height: 100vh;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.section-content{
+    border: 3px solid lime;
+    width: 500px;
+    max-width: 600px;
+    height: 300px;
+    max-height: fit-content;
+    position: absolute;
+    bottom: 10%;
+    left: 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 40px;
+}
+
+.section-content h4 {
+    border: 3px solid salmon;
+    font-size: 22px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.section-content h2 {
+    border: 3px solid blue;
+    font-size: 32px;
+    margin: 12px 0;
 }
