@@ -23,7 +23,7 @@ function LandingPage(){
             <div className='landing-text'>
             InfinityX, a SpaceX and Southwest Airlines/jetBlue Airlines clone, is a website for users to book spacecraft flights for inter and multi - planetary travel where this will also serve as a social hub for members who participate or are interested in such travels
             </div>
-            <SectionALandingPage />
+            {/* <SectionALandingPage /> */}
         </div>
     )
 }
