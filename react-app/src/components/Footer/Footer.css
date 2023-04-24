@@ -1,0 +1,12 @@
+footer {
+    /* border: 3px solid blue; */
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+}
+
+i {
+    color: white;
+}

@@ -17,6 +17,7 @@ import EditSpaceport from "./components/EditSpaceport";
 import PlanetGallery from "./components/PlanetGallery";
 import PlanetDetails from "./components/PlanetDetails";
 import CreatePlanet from "./components/CreatePlanet";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }
