@@ -1,13 +1,14 @@
 .profile-dropdown {
   border: 1px solid lightgrey;
+  /* border: 3px solid purple; */
   border-radius: 10px;
   box-shadow: 0 0 5px black;
   position: absolute;
-  right: 3%;
-  top: 5%;
+  right: 2%;
+  top: 80%;
   background: white;
   min-height: fit-content;
-  height: 150px;
+  height: fit-content;
   max-height: fit-content;
   min-width: fit-content;
   width: 150px;
@@ -15,6 +16,12 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  padding: 15px;
+}
+
+.profile-dropdown > div {
+  /* border: 3px solid salmon; */
+  margin: 10px auto;
 }
 
 .hidden {
@@ -23,18 +30,104 @@
 
 .navigation-container{
   /* border: 3px solid lime; */
+  margin: 0;
+  padding: 0 15px;
+  /* background-color: black; */
+  /* opacity: 0.7; */
+  backdrop-filter: blur(10px);
+  /* backdrop-filter: invert(80%); */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  z-index: 14;
+  text-transform: uppercase;
 }
 
 .home-container{
   /* border: 3px solid blue; */
+  height: fit-content;
+  width: fit-content;
   margin: 0 25px;
 }
 
 .profile-button-container{
   /* border: 3px solid palevioletred; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
   margin: 0 25px;
+}
+
+.user-icon-container{
+  /* border: 3px solid red; */
+  height: 100px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-button{
+  backdrop-filter: blur(5px);
+  color: white;
+  border: none;
+}
+
+.user-button:hover{
+  color: red;
+  cursor: pointer;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.pointer:hover {
+  color: red;
+}
+
+.tabs-container{
+  border: 3px solid white;
+  height: 50px;
+  width: 950px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tabs-container > div{
+  color: white;
+}
+
+.tabs-container > div:hover {
+  cursor: pointer;
+}
+
+.hoverable{
+  display: inblock;
+  position: relative;
+}
+
+.hoverable::before{
+  content: '';
+  position: absolute;
+  top: 1.25rem;
+  right: 0;
+  width: 0%;
+  height: 1px;
+  background-color: white;
+  background-image: linear-gradient(to right, gray, white);
+  transition: width 0.25s ease-in-out;
+}
+
+.hoverable:hover::before{
+  width: 100%;
+  left: 0;
+  right: auto;
 }

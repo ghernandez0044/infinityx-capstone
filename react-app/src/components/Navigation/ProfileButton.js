@@ -56,21 +56,26 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
+      <div className="user-button" onClick={openMenu}>
+        <div className="user-icon-container">
+          <i className="fa-solid fa-user-astronaut" />
+        </div>
+      </div>
       <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <div>{user.username}</div>
-            <div>{user.email}</div>
-            {user.admin && (
+            <div>Username: {user.username}</div>
+            <div>Email: {user.email}</div>
+            {/* {user.admin && (
               <div>
                 <button onClick={redirectSpacecraft}>Create A Spacecraft</button>
                 <button onClick={redirectSpaceport}>Create A Spaceport</button>
                 <button onClick={redirectPlanet}>Create A Planet</button>
             </div>
-            )}
+            )} */}
+            {user.admin && ( <div className="pointer" onClick={redirectSpacecraft}>Create A Spacecraft</div> )}
+            {user.admin && ( <div className="pointer" onClick={redirectSpaceport}>Create A Spaceport</div> )}
+            {user.admin && ( <div className="pointer" onClick={redirectPlanet}>Create A Planet</div> )}
             <div>
               <button onClick={handleLogout}>Log Out</button>
             </div>

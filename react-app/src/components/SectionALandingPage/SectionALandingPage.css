@@ -1,0 +1,10 @@
+.section-a-container{
+    background-image: url('../../assets/rocket-launch-ge07909d54_1920.jpg');
+}
+
+.sizing{
+    height: 100vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
