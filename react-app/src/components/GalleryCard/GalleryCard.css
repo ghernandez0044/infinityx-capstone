@@ -3,11 +3,23 @@ body{
 }
 
 .section-a-container{
-    background-image: url('../../assets/rocket-launch-ge07909d54_1920.jpg');
     /* border: 3px solid red; */
+    /* background-image: url('../../assets/missiles-g985026ff1_1920.jpg'); */
     height: 100vh;
     width: 100%;
     min-width: 450px;
+}
+
+.spacecraft-background{
+    background-image: url('../../assets/rocket-launch-ge07909d54_1920.jpg');
+}
+
+.spaceport-background{
+    background-image: url('../../assets/rocket-launch-g564b45938_1920.jpg');
+}
+
+.planet-background{
+    background-image: url('../../assets/earth-gef7361121_1920.jpg');
 }
 
 .sizing{
