@@ -1,8 +1,8 @@
 .profile-dropdown {
-  border: 1px solid lightgrey;
+  /* border: 1px solid lightgrey; */
   /* border: 3px solid purple; */
-  border-radius: 10px;
-  box-shadow: 0 0 5px black;
+  /* border-radius: 10px; */
+  /* box-shadow: 0 0 5px black; */
   position: absolute;
   right: 2%;
   top: 80%;
@@ -11,7 +11,8 @@
   height: 100vh;
   max-height: fit-content;
   min-width: fit-content;
-  width: 150px;
+  width: 200px;
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -22,7 +23,8 @@
 
 .profile-dropdown > div {
   /* border: 3px solid salmon; */
-  margin: 10px auto;
+  margin: 20px auto;
+  /* border-bottom: 1px dotted white; */
 }
 
 .hidden {
