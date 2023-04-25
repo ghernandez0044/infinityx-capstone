@@ -62,6 +62,21 @@ function ProfileButton({ user, set, setter }) {
     setter(false)
   }
 
+  // Function to redirect to Spacecraft gallery
+	const redirectSpacecraftGallery = () => {
+		history.push('/spacecrafts')
+	}
+
+  // Function to redirect to Spaceport gallery
+	const redirectSpaceportGallery = () => {
+		history.push('/spaceports')
+	}
+
+  // Function to redirect to Planet gallery
+	const redirectPlanetGallery = () => {
+		history.push('/planets')
+	}
+
   const redirectSpaceport = () => {
     history.push('/spaceports/new')
     closeMenu()
@@ -104,9 +119,9 @@ function ProfileButton({ user, set, setter }) {
             {user.admin && ( <div className="pointer" onClick={redirectSpacecraft}>Create A Spacecraft</div> )}
             {user.admin && ( <div className="pointer" onClick={redirectSpaceport}>Create A Spaceport</div> )}
             {user.admin && ( <div className="pointer" onClick={redirectPlanet}>Create A Planet</div> )}
-            <div className="mobile-menu pointer">Spacecrafts</div>
-            <div className="mobile-menu pointer">Spaceports</div>
-            <div className="mobile-menu pointer">Planets</div>
+            <div onClick={redirectSpacecraftGallery} className="mobile-menu pointer">Spacecrafts</div>
+            <div onClick={redirectSpaceportGallery} className="mobile-menu pointer">Spaceports</div>
+            <div onClick={redirectPlanetGallery} className="mobile-menu pointer">Planets</div>
             <div className="mobile-menu pointer">Rideshare</div>
             <div>
               <button onClick={handleLogout}>Log Out</button>
