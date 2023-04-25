@@ -10,6 +10,9 @@ function Navigation({ isLoaded }){
 	// Subscribe to current user slice of state
 	const sessionUser = useSelector(state => state.session.user);
 
+	// State variables
+	const [ overlay, setOverlay ] = useState(false)
+
 	// Create history method
 	const history = useHistory()
 
@@ -35,21 +38,21 @@ function Navigation({ isLoaded }){
 
 	return (
 		<div className='navigation-container'>
-			<div className='overlay'></div>
+			{/* <div className={overlay ? 'overlay' : ''}></div> */}
 			<div className='home-container'>
 				<NavLink exact to="/">
 				<img src={logo2} alt='' style={{ height: '75px', width: '75px' }} className='logo' />
 				</NavLink>
 			</div>
 			<div className='tabs-container'>
-				<div className='hoverable' onClick={redirectSpacecraft}>Spacecraft</div>
+				<div className='hoverable' onClick={redirectSpacecraft}>Spacecrafts</div>
 				<div className='hoverable' onClick={redirectSpaceport}>Spaceports</div>
 				<div className='hoverable' onClick={redirectPlanet}>Planets</div>
 				<div className='hoverable' onClick={redirectRideshare}>Rideshare</div>
 			</div>
 			{isLoaded && (
 				<div className='profile-button-container'>
-					<ProfileButton user={sessionUser} />
+					<ProfileButton user={sessionUser} set={overlay} setter={setOverlay} />
 				</div>
 			)}
 		</div>

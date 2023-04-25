@@ -6,7 +6,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 
-function ProfileButton({ user }) {
+function ProfileButton({ user, set, setter }) {
   const dispatch = useDispatch();
   const history = useHistory()
   const [showMenu, setShowMenu] = useState(false);
@@ -24,12 +24,15 @@ function ProfileButton({ user }) {
 	const openHamburger = () => {
 		if(show) setShow(false)
     if(!show) setShow(true)
+    if(set) setter(false)
+    if(!set) setter(true)
 	}
 
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
     setShow(true)
+    setter(true)
   };
 
   useEffect(() => {
@@ -39,6 +42,7 @@ function ProfileButton({ user }) {
       if (!ulRef.current.contains(e.target)) {
         setShowMenu(false);
         setShow(false)
+        setter(false)
       }
     };
 
@@ -55,16 +59,19 @@ function ProfileButton({ user }) {
   const redirectSpacecraft = () => {
     history.push('/spacecrafts/new')
     closeMenu()
+    setter(false)
   }
 
   const redirectSpaceport = () => {
     history.push('/spaceports/new')
     closeMenu()
+    setter(false)
   }
 
   const redirectPlanet = () => {
     history.push('/planets/new')
     closeMenu()
+    setter(false)
   }
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -97,9 +104,14 @@ function ProfileButton({ user }) {
             {user.admin && ( <div className="pointer" onClick={redirectSpacecraft}>Create A Spacecraft</div> )}
             {user.admin && ( <div className="pointer" onClick={redirectSpaceport}>Create A Spaceport</div> )}
             {user.admin && ( <div className="pointer" onClick={redirectPlanet}>Create A Planet</div> )}
+            <div className="mobile-menu pointer">Spacecrafts</div>
+            <div className="mobile-menu pointer">Spaceports</div>
+            <div className="mobile-menu pointer">Planets</div>
+            <div className="mobile-menu pointer">Rideshare</div>
             <div>
               <button onClick={handleLogout}>Log Out</button>
             </div>
+
           </>
         ) : (
           <>
