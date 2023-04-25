@@ -124,7 +124,11 @@ function ProfileButton({ user, set, setter }) {
             <div onClick={redirectPlanetGallery} className="mobile-menu pointer">Planets</div>
             <div className="mobile-menu pointer">Rideshare</div>
             <div>
-              <button onClick={handleLogout}>Log Out</button>
+              {/* <button onClick={handleLogout}>Log Out</button> */}
+              <div onClick={handleLogout} className="button animate">
+                <div className="hover-effect"></div>
+                <span>Log Out</span>
+              </div>
             </div>
 
           </>
