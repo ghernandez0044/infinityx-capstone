@@ -51,12 +51,11 @@ function SpaceportDetails(){
 
 
     return (
-        <div className="spacecraft-details-component">
-            <h1 style={{ textAlign: 'center' }}>Spaceport Details</h1>
-            <div className="spacecraft-details-img-container">
-                <img style={{ height: '300px', width: '300px' }} src="https://media.istockphoto.com/id/1321530574/photo/nasa-building-and-antenna-at-vandenberg-space-force-base-lompoc-ca-usa.jpg?s=1024x1024&w=is&k=20&c=S6wCqzyGFEf3PK1FVUgm-MW4M1yMmV_ac6lp4V_0y3s=" alt='' />
+        <div className="grid-container">
+            <div id="spaceport-image" className="spacecraft-details-img-container">
+                <img style={{ height: '90%', width: '90%' }} src="https://media.istockphoto.com/id/1321530574/photo/nasa-building-and-antenna-at-vandenberg-space-force-base-lompoc-ca-usa.jpg?s=1024x1024&w=is&k=20&c=S6wCqzyGFEf3PK1FVUgm-MW4M1yMmV_ac6lp4V_0y3s=" alt='' />
             </div>
-            <div className="content-container">
+            <div id="spaceport-content-container" className="content-container">
                 <div>Name: {spaceport.name}</div>
                 <div>Location: {spaceport.city}, {spaceport.state}</div>
                 <div>Description: {spaceport.description}</div>
@@ -64,8 +63,12 @@ function SpaceportDetails(){
                 <div>Longitude: {spaceport.lng}</div>
             </div>
             {user?.admin && (
-                <div className="manage-buttons">
-                    <button onClick={redirect}>Edit</button>
+                <div id="spaceport-manage-buttons" className="manage-buttons">
+                    {/* <button onClick={redirect}>Edit</button> */}
+                    <div onClick={redirect} className="button animate">
+                        <div className="hover-effect"></div>
+                        <span>Edit</span>
+                    </div>
                     <OpenModalButton modalComponent={<Confirmation label='Delete Spaceport' message='Are You Sure You Want To Delete?' onYes={deleteFunction} yesLabel='Delete' noLabel='Keep' onNo={() => closeModal()} />} buttonText='Delete' />
                 </div>
             )}

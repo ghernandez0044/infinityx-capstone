@@ -50,12 +50,11 @@ function SpacecraftDetails(){
     console.log('user: ', user)
 
     return spacecraft && (
-        <div className="spacecraft-details-component">
-            <h1 style={{ textAlign: 'center' }}>Spacecraft Details</h1>
-            <div className="spacecraft-details-img-container">
-                <img style={{ height: '300px', width: '300px' }} src="https://media.istockphoto.com/id/1131418344/photo/space-shuttle-in-the-rays-of-sun.jpg?s=1024x1024&w=is&k=20&c=fTUNSaSwt1VwjCFU-GnSBZuB3rbsK-W35AaxTLaRPkA=" alt='' />
+        <div className="grid-container">
+            <div id='spacecraft-image' className="spacecraft-details-img-container">
+                <img style={{ height: '90%', width: '90%' }} src="https://media.istockphoto.com/id/1131418344/photo/space-shuttle-in-the-rays-of-sun.jpg?s=1024x1024&w=is&k=20&c=fTUNSaSwt1VwjCFU-GnSBZuB3rbsK-W35AaxTLaRPkA=" alt='' />
             </div>
-            <div className="content-container">
+            <div id='content-container' className="content-container">
                 <div className="details-model-container">Model: {spacecraft.model}</div>
                 <div className="details-year-container">Year: {spacecraft.year}</div>
                 <div className="details-description-container">Description: {spacecraft.description}</div>
@@ -67,8 +66,12 @@ function SpacecraftDetails(){
                 <div className="details-trunk-container">Trunk Volume: {spacecraft.trunk_volume_m} m^2</div>
             </div>
             {user?.admin && (
-                <div className="manage-buttons">
-                    <button onClick={redirect}>Edit</button>
+                <div id='manage-buttons' className="manage-buttons">
+                    {/* <button onClick={redirect}>Edit</button> */}
+                    <div onClick={redirect} className="button animate">
+                        <div className="hover-effect"></div>
+                        <span>Edit</span>
+                    </div>
                     <OpenModalButton modalComponent={<Confirmation label='Delete Spacecraft' message='Are You Sure You Want To Delete?' onYes={deleteFunction} yesLabel='Delete' noLabel='Keep' onNo={() => closeModal()} />} buttonText='Delete' />
                 </div>
             )}
