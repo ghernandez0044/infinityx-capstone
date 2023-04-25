@@ -45,12 +45,11 @@ function PlanetDetails(){
     }
 
     return planet && (
-        <div className="spacecraft-details-component">
-            <h1 style={{ textAlign: 'center' }}>Planet Details</h1>
-            <div className="spacecraft-details-img-container">
-                <img style={{ height: '300px', width: '300px' }} src="https://media.istockphoto.com/id/1131418344/photo/space-shuttle-in-the-rays-of-sun.jpg?s=1024x1024&w=is&k=20&c=fTUNSaSwt1VwjCFU-GnSBZuB3rbsK-W35AaxTLaRPkA=" alt='' />
+        <div className="grid-container">
+            <div id="planet-image" className="spacecraft-details-img-container">
+                <img style={{ height: '90%', width: '90%' }} src="https://media.istockphoto.com/id/1131418344/photo/space-shuttle-in-the-rays-of-sun.jpg?s=1024x1024&w=is&k=20&c=fTUNSaSwt1VwjCFU-GnSBZuB3rbsK-W35AaxTLaRPkA=" alt='' />
             </div>
-            <div className="content-container">
+            <div id="planet-content-container" className="content-container">
                 <div>Name: {planet.name}</div>
                 <div>Description: {planet.description}</div>
                 <div>Distance From Earth: {planet.distance_from_earth_km} km</div>
@@ -63,8 +62,12 @@ function PlanetDetails(){
                 <div>Average Temperature (Measured In Kalvin): {planet.temperature_in_k} K</div>
             </div>
             {user?.admin && (
-                 <div className="manage-buttons">
-                 <button onClick={redirect}>Edit</button>
+                 <div id="planet-manage-buttons" className="manage-buttons">
+                 {/* <button onClick={redirect}>Edit</button> */}
+                 <div onClick={redirect} className="button animate">
+                    <div className="hover-effect"></div>
+                    <span>Edit</span>
+                </div>
                  <OpenModalButton modalComponent={<Confirmation label='Delete Planet' message='Are You Sure You Want To Delete?' onYes={deletePlanet} yesLabel='Delete' noLabel='Keep' onNo={() => closeModal()} />} buttonText='Delete' />
              </div>
             )}
