@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getAllPlanets } from "../../store/planet"
 import PlanetCard from "../PlanetCard"
+import GalleryCard from "../GalleryCard"
 import './PlanetGallery.css'
 
 function PlanetGallery(){
@@ -20,10 +21,9 @@ function PlanetGallery(){
 
     return (
         <div>
-            <h1 style={{ textAlign: 'center' }}>Planet Gallery</h1>
             <div className="spacecraft-gallery-container">
                 {planets.map(planet => (
-                    <PlanetCard key={planet.id} planet={planet} />
+                    <GalleryCard key={planet.id} smallTag='Planet' bigTag={planet.name} buttonText='Explore' destination='planets' payload={planet} />
                 ))}
             </div>
         </div>

@@ -48,6 +48,7 @@ body{
 
 .section-content h4 {
     /* border: 3px solid salmon; */
+    text-shadow: 0 0 5px black;
     font-size: 26px;
     font-weight: 300;
     margin: 0;
@@ -56,12 +57,14 @@ body{
 
 .section-content h2 {
     /* border: 3px solid blue; */
+    text-shadow: 0 0 5px black;
     font-size: 48px;
     margin: 12px 0;
 }
 
 .section-content span {
     font-size: 20px;
+    text-shadow: 0 0 5px black;
 }
 
 .button {
@@ -111,5 +114,29 @@ body{
         opacity: 1;
         transform: translateY(0);
 
+    }
+}
+
+@media(max-width: 600px){
+    .section-content{
+        /* border: 3px solid red; */
+        bottom: 20px;
+        left: 15px;
+    }
+
+    .section-content h4{
+        font-size: 20px;
+    }
+
+    .section-content h2{
+        font-size: 40px;
+    }
+
+    .button {
+        width: 100px;
+    }
+
+    .button span{
+        font-size: 12px;
     }
 }

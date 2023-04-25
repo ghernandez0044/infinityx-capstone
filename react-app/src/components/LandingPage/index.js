@@ -18,7 +18,7 @@ function LandingPage(){
             <div className='header-section'>
                 <img src={nebula} alt='' className='background-image' />
                 <img src={globe} alt='' className='foreground-image' />
-                <h1 className='title'>Welcome To InfinityX</h1>
+                <h1 className='title'>InfinityX</h1>
             </div>
             <div className='landing-text'>
             InfinityX, a SpaceX and Southwest Airlines/jetBlue Airlines clone, is a website for users to book spacecraft flights for inter and multi - planetary travel where this will also serve as a social hub for members who participate or are interested in such travels

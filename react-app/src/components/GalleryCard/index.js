@@ -8,21 +8,11 @@ function GalleryCard({ smallTag, bigTag, buttonText, destination, payload }){
 
     let choice = ''
 
-    if(destination === 'spacecrafts'){
-        // history.push(`/spacecrafts/${payload.id}`)
-        choice = 'spacecraft-background'
-    }
+    if(destination === 'spacecrafts') choice = 'spacecraft-background'
 
-    if(destination === 'spaceports'){
-        console.log()
-        // history.push(`/spaceports/${payload.id}`)
-        choice = 'spaceport-background'
-    }
+    if(destination === 'spaceports') choice = 'spaceport-background'
 
-    if(destination === 'planets'){
-        // history.push(`/planets/${payload.id}`)
-        choice = 'planet-background'
-    }
+    if(destination === 'planets') choice = 'planet-background'
 
 
     // Create history method
@@ -30,18 +20,11 @@ function GalleryCard({ smallTag, bigTag, buttonText, destination, payload }){
 
     // Function to handle button click
     const onClick = () => {
-        if(destination === 'spacecrafts'){
-            history.push(`/spacecrafts/${payload.id}`)
-        }
+        if(destination === 'spacecrafts') history.push(`/spacecrafts/${payload.id}`)
 
-        if(destination === 'spaceports'){
-            console.log()
-            history.push(`/spaceports/${payload.id}`)
-        }
+        if(destination === 'spaceports') history.push(`/spaceports/${payload.id}`)
 
-        if(destination === 'planets'){
-            history.push(`/planets/${payload.id}`)
-        }
+        if(destination === 'planets') history.push(`/planets/${payload.id}`)
     }
 
 

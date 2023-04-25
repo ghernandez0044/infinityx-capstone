@@ -12,9 +12,24 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
+  // Create state variables
+	const [ show, setShow ] = useState(false)
+
+	let choice = ''
+
+  if(show) choice = 'open'
+	if(!show) choice = ''
+
+  // Function to open hamburger menu
+	const openHamburger = () => {
+		if(show) setShow(false)
+    if(!show) setShow(true)
+	}
+
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
+    setShow(true)
   };
 
   useEffect(() => {
@@ -23,6 +38,7 @@ function ProfileButton({ user }) {
     const closeMenu = (e) => {
       if (!ulRef.current.contains(e.target)) {
         setShowMenu(false);
+        setShow(false)
       }
     };
 
@@ -58,7 +74,12 @@ function ProfileButton({ user }) {
     <>
       <div className="user-button" onClick={openMenu}>
         <div className="user-icon-container">
-          <i className="fa-solid fa-user-astronaut" />
+          {/* <i className="fa-solid fa-user-astronaut" /> */}
+          <div onClick={openHamburger} className={`menu-button hamburger ${choice}`}>
+            <span className="hamburger-top"></span>
+            <span className="hamburger-middle"></span>
+            <span className="hamburger-bottom"></span>
+          </div>
         </div>
       </div>
       <div className={ulClassName} ref={ulRef}>

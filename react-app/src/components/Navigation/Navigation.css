@@ -132,3 +132,64 @@
   left: 0;
   right: auto;
 }
+
+@media(max-width: 960px){
+  .tabs-container{
+    display: none;
+  }
+
+  .logo{
+    width: 150px;
+    margin: auto;
+  }
+}
+
+.hamburger{
+  position: fixed;
+  z-index: 12;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  background: none;
+  border: none;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom{
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  top: 0;
+  left: 0;
+  background: white;
+  transition: all 0.4s;
+}
+
+.hamburger-middle{
+  transform: translateY(5px);
+}
+
+.hamburger-bottom{
+  transform: translateY(10px);
+}
+
+.open{
+  transform: rotate(90deg);
+}
+
+.open .hamburger-top{
+  transform: rotate(45deg) translateY(5px) translateX(5px);
+}
+
+.open .hamburger-middle{
+  display: none;
+}
+
+.open .hamburger-bottom{
+  transform: rotate(-45deg) translateY(5px) translateX(-5px);
+}
+
+.overlay{
+  
+}

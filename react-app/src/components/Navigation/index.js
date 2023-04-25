@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import logo from '../../assets/logo-black.png'
+import logo2 from '../../assets/logo-no-background.svg'
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -27,17 +28,24 @@ function Navigation({ isLoaded }){
 		history.push('/planets')
 	}
 
+	// Function to redirect to Rideshare tab
+	const redirectRideshare = () => {
+	alert('Feature coming soon!')
+	}
+
 	return (
 		<div className='navigation-container'>
+			<div className='overlay'></div>
 			<div className='home-container'>
 				<NavLink exact to="/">
-				<img src={logo} alt='' style={{ height: '75px', width: '75px' }} />
+				<img src={logo2} alt='' style={{ height: '75px', width: '75px' }} className='logo' />
 				</NavLink>
 			</div>
 			<div className='tabs-container'>
 				<div className='hoverable' onClick={redirectSpacecraft}>Spacecraft</div>
 				<div className='hoverable' onClick={redirectSpaceport}>Spaceports</div>
 				<div className='hoverable' onClick={redirectPlanet}>Planets</div>
+				<div className='hoverable' onClick={redirectRideshare}>Rideshare</div>
 			</div>
 			{isLoaded && (
 				<div className='profile-button-container'>
