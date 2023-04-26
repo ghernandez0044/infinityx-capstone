@@ -47,7 +47,7 @@ function PlanetDetails(){
     return planet && (
         <div className="grid-container">
             <div id="planet-image" className="spacecraft-details-img-container">
-                <img style={{ height: '90%', width: '90%' }} src="https://media.istockphoto.com/id/1131418344/photo/space-shuttle-in-the-rays-of-sun.jpg?s=1024x1024&w=is&k=20&c=fTUNSaSwt1VwjCFU-GnSBZuB3rbsK-W35AaxTLaRPkA=" alt='' />
+                <img style={{ height: '90%', width: '90%' }} src="https://cdn.pixabay.com/photo/2017/02/08/12/46/moon-2048727_1280.jpg" alt='' />
             </div>
             <div id="planet-content-container" className="content-container">
                 <div>Name: {planet.name}</div>

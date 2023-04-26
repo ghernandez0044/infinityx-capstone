@@ -52,7 +52,7 @@ function SpacecraftDetails(){
     return spacecraft && (
         <div className="grid-container">
             <div id='spacecraft-image' className="spacecraft-details-img-container">
-                <img style={{ height: '90%', width: '90%' }} src="https://media.istockphoto.com/id/1131418344/photo/space-shuttle-in-the-rays-of-sun.jpg?s=1024x1024&w=is&k=20&c=fTUNSaSwt1VwjCFU-GnSBZuB3rbsK-W35AaxTLaRPkA=" alt='' />
+                <img style={{ height: '90%', width: '90%' }} src="https://cdn.pixabay.com/photo/2012/11/28/11/28/rocket-launch-67723_1280.jpg" alt='' />
             </div>
             <div id='content-container' className="content-container">
                 <div className="details-model-container">Model: {spacecraft.model}</div>
