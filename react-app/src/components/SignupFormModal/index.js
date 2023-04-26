@@ -30,9 +30,9 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
-			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
+		<div className="signup-modal-container">
+			<h1 style={{ textAlign: 'center' }}>Sign Up</h1>
+			<form className="signup-form-container" onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
@@ -40,43 +40,47 @@ function SignupFormModal() {
 				</ul>
 				<label>
 					Email
-					<input
+				</label>
+				<input
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
-					/>
-				</label>
+				/>
 				<label>
 					Username
-					<input
+				</label>
+				<input
 						type="text"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 						required
-					/>
-				</label>
+				/>
 				<label>
 					Password
-					<input
+				</label>
+				<input
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						required
-					/>
-				</label>
+				/>
 				<label>
 					Confirm Password
-					<input
+				</label>
+				<input
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
-					/>
-				</label>
-				<button type="submit">Sign Up</button>
+				/>
+				{/* <button type="submit">Sign Up</button> */}
+				<div onClick={handleSubmit} className="button animate">
+          			<div className="hover-effect"></div>
+          			<span>Sign Up</span>
+       			 </div>
 			</form>
-		</>
+		</div>
 	);
 }
 
