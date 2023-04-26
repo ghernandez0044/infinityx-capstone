@@ -1,0 +1,29 @@
+.login-modal-container{
+    /* border: 3px solid lime; */
+    color: white;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container{
+    /* border: 3px solid blue; */
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    background-color: #aaa;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.form-container > ul > li {
+    color: red;
+}

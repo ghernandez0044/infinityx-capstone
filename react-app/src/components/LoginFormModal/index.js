@@ -22,9 +22,9 @@ function LoginFormModal() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="login-modal-container">
+      <h1 style={{ textAlign: 'center' }}>Log In</h1>
+      <form className="form-container" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -32,25 +32,29 @@ function LoginFormModal() {
         </ul>
         <label>
           Email
+        </label>
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
         <label>
           Password
+        </label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Log In</button>
+        {/* <button type="submit">Log In</button> */}
+        <div onClick={handleSubmit} className="button animate">
+          <div className="hover-effect"></div>
+          <span>Log In</span>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 

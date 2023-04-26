@@ -54,6 +54,9 @@ function ProfileButton({ user, set, setter }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    closeMenu()
+    setter(false)
+    history.push('/')
   };
 
   const redirectSpacecraft = () => {
@@ -130,7 +133,6 @@ function ProfileButton({ user, set, setter }) {
                 <span>Log Out</span>
               </div>
             </div>
-
           </>
         ) : (
           <>
