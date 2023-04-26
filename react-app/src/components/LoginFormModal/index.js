@@ -21,6 +21,18 @@ function LoginFormModal() {
     }
   };
 
+  // Function to log in as a demo user
+  const demoLogin = () => {
+    dispatch(login('demouser@aa.io', 'password'))
+    closeModal()
+  }
+
+  // Function to log in as an admin user
+  const adminLogin = () => {
+    dispatch(login('adminuser@aa.io', 'password'))
+    closeModal()
+  }
+
   return (
     <div className="login-modal-container">
       <h1 style={{ textAlign: 'center' }}>Log In</h1>
@@ -53,6 +65,8 @@ function LoginFormModal() {
           <div className="hover-effect"></div>
           <span>Log In</span>
         </div>
+        <div id='demo' className="hoverable" onClick={demoLogin}>Demo User</div>
+        <div id='admin' className="hoverable" onClick={adminLogin}>Admin User</div>
       </form>
     </div>
   );

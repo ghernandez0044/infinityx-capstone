@@ -14,6 +14,8 @@ function GalleryCard({ smallTag, bigTag, buttonText, destination, payload }){
 
     if(destination === 'planets') choice = 'planet-background'
 
+    if(destination === 'landing') choice = 'landing-page-background'
+
 
     // Create history method
     const history = useHistory()

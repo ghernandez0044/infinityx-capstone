@@ -27,3 +27,13 @@ input{
 .form-container > ul > li {
     color: red;
 }
+
+#demo{
+    margin: 10px 20px;
+    cursor: pointer;
+}
+
+#admin{
+    margin: 10px 20px;
+    cursor: pointer;
+}

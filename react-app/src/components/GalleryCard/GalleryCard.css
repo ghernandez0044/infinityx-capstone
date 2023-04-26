@@ -22,6 +22,10 @@ body{
     background-image: url('../../assets/earth-gef7361121_1920.jpg');
 }
 
+.landing-page-background{
+    background-image: url('../../assets/satellite-ged5ef0855_1920.jpg');
+}
+
 .sizing{
     position: relative;
     height: 100vh;

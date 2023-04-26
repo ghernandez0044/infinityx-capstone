@@ -10,7 +10,7 @@ function Footer(){
     return (
         <footer>
             <div style={{ color: '#aaa' }}>
-                InfinityX &copy; 2022
+                InfinityX &copy; 2023
             </div>
             <NavLink exact to='https://github.com/ghernandez0044'>
                 <i className="fa-brands fa-github fa-xl" />
