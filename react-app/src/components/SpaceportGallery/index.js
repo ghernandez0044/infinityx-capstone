@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getAllSpaceport } from "../../store/spaceport"
 import SpaceportCard from "../SpaceportCard"
+import GalleryCard from "../GalleryCard"
 import './SpaceportGallery.css'
 
 function SpaceportGallery(){
@@ -22,10 +23,12 @@ function SpaceportGallery(){
     
     return (
         <div>
-            <h1 style={{ textAlign: 'center' }}>Spaceport Gallery</h1>
             <div className="spacecraft-gallery-container">
-                {spaceports.map(spaceport => (
+                {/* {spaceports.map(spaceport => (
                     <SpaceportCard key={spaceport.id} spaceport={spaceport} />
+                ))} */}
+                {spaceports.map(spaceport => (
+                    <GalleryCard key={spaceport.id} smallTag='Spaceport' bigTag={spaceport.name} buttonText='Explore' destination='spaceports' payload={spaceport} />
                 ))}
             </div>
         </div>

@@ -64,7 +64,7 @@ export const getOneSpacecraft = (id) => async (dispatch) => {
 }
 
 export const createSpacecraft = (spacecraft) => async (dispatch) => {
-    const res = await fetch('/api/spacecrafts', {
+    const res = await fetch('/api/spacecrafts/', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(spacecraft)

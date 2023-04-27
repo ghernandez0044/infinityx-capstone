@@ -9,7 +9,7 @@ import Confirmation from "../Confirmation";
 import './SpacecraftForm.css'
 
 function SpacecraftForm({ edit, payload }){
-    // Create dipatch method
+    // Create dispatch method
     const dispatch = useDispatch()
     
     // Create history method
@@ -46,7 +46,6 @@ function SpacecraftForm({ edit, payload }){
         e.preventDefault()
 
         const payload = {
-            "user_id": user.id,
             model,
             "year": Number(year),
             "load_capacity_kg": Number(loadCapacity),
@@ -58,13 +57,8 @@ function SpacecraftForm({ edit, payload }){
             "trunk_volume_m": Number(trunkVolume)
         }
 
-        console.log("created spacecraft: ", payload)
-
         // If the edit flag is true, run the edit dispatch instead of the create dispatch
         if(edit){
-            console.log('inside the edit block')
-            console.log('payload: ', payload)
-            console.log('id inside spacecraft form edit: ', id)
             dispatch(updateSpacecraft(payload, id)).then(res => {
                 history.push(`/spacecrafts/${res.spacecraft.id}`)
             }).catch(res => {
@@ -114,7 +108,11 @@ function SpacecraftForm({ edit, payload }){
                 <label>Trunk Volume In Meters Squared: </label>
                 <input id='trunk_volume_m' type='number' value={trunkVolume} onChange={(e) => setTrunkVolume(e.target.value)} required>
                 </input>
-                <button type='submit'>{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</button>
+                {/* <button type='submit'>{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</button> */}
+                <div onClick={onSubmit} className="button animate">
+                    <div className="hover-effect"></div>
+                    <span>{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</span>
+                </div>
             </form>
         </div>
     )

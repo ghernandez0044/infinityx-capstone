@@ -16,7 +16,11 @@ function OpenModalButton({
   };
 
   return (
-    <button onClick={onClick}>{buttonText}</button>
+    // <button onClick={onClick}>{buttonText}</button>
+    <div onClick={onClick} className="button animate">
+        <div className="hover-effect"></div>
+        <span>{buttonText}</span>
+      </div>
   );
 }
 

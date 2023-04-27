@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getAllSpacecraft } from "../../store/spacecraft"
 import SpacecraftCard from "../SpacecraftCard"
+import GalleryCard from "../GalleryCard"
 import './SpacecraftGallery.css'
 
 function SpacecraftGallery(){
@@ -20,10 +21,12 @@ function SpacecraftGallery(){
 
     return (
         <div>
-            <h1 style={{ textAlign: 'center' }}>Spacecraft Gallery</h1>
             <div className="spacecraft-gallery-container">
-                {spacecrafts.map(spacecraft => (
+                {/* {spacecrafts.map(spacecraft => (
                     <SpacecraftCard key={spacecraft.id} spacecraft={spacecraft} />
+                ))} */}
+                {spacecrafts.map(spacecraft => (
+                    <GalleryCard key={spacecraft.id} smallTag='Spacecraft' bigTag={spacecraft.model} buttonText='Explore' destination='spacecrafts' payload={spacecraft} />
                 ))}
             </div>
         </div>

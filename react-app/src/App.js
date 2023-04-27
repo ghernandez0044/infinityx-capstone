@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import LandingPage from "./components/LandingPage";
 import SpacecraftGallery from "./components/SpacecraftGallery";
 import SpacecraftDetails from "./components/SpacecraftDetails";
 import CreateSpacecraft from "./components/CreateSpacecraft";
@@ -13,6 +14,10 @@ import SpaceportGallery from "./components/SpaceportGallery";
 import SpaceportDetails from "./components/SpaceportDetails";
 import CreateSpaceport from "./components/CreateSpaceport";
 import EditSpaceport from "./components/EditSpaceport";
+import PlanetGallery from "./components/PlanetGallery";
+import PlanetDetails from "./components/PlanetDetails";
+import CreatePlanet from "./components/CreatePlanet";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -27,6 +32,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/" >
+            <LandingPage />
+          </Route>
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
@@ -57,8 +65,18 @@ function App() {
           <Route exact path="/spaceports/:id">
             <SpaceportDetails />
           </Route>
+          <Route exact path="/planets/new">
+            <CreatePlanet />
+          </Route>
+          <Route exact path="/planets">
+            <PlanetGallery />
+          </Route>
+          <Route exact path="/planets/:id">
+            <PlanetDetails />
+          </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

@@ -1,9 +1,9 @@
 .spacecraft-form-container{
-    border: 3px solid lime;
+    /* border: 3px solid lime; */
 }
 
 .form{
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     display: flex;
     flex-direction: column;
     justify-content: center;

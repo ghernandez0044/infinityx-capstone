@@ -7,4 +7,13 @@
     align-items: center;
     gap: 15px;
     height: fit-content;
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+.spacecraft-gallery-container > div {
+    scroll-snap-align: center;
 }

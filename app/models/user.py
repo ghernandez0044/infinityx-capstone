@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_pic = db.Column(db.Text)
-    created_at = db.Column(db.String(100), nullable=False)
+    created_at = db.Column(db.String(100))
 
     # relationships
     wallet = db.relationship(
