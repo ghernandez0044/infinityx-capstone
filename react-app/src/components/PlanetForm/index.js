@@ -56,8 +56,6 @@ function PlanetForm({ edit, payload }){
             "temperature_in_k": Number(temperature)
         }
 
-        console.log('created planet: ', payload)
-
         // If the edit flag is true, run the edit dispatch, if it is false, run the create dispatch
         if(edit){
             dispatch(updatePlanet(payload, id)).then(res => {
@@ -84,32 +82,25 @@ function PlanetForm({ edit, payload }){
             <h1 style={{ textAlign: 'center' }}>{!edit ? 'Create A Planet' : 'Edit A Planet'}</h1>
             <form className="form" onSubmit={onSubmit}>
                 <label>Name: </label>
-                <input id='model' type='text' value={name} onChange={(e) => setName(e.target.value)} required>
-                </input>
+                <input id='model' type='text' value={name} onChange={(e) => setName(e.target.value)} required />
+                <label>Description: </label>
+                <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required />
                 <label>Distance From Earth: </label>
-                <input id='distance_from_earth_km' type='number' value={distance} onChange={(e) => setDistance(e.target.value)} required>
-                </input>
+                <input id='distance_from_earth_km' type='number' value={distance} onChange={(e) => setDistance(e.target.value)} required />
                 <label>Mass (Measured In Earths): </label>
-                <input id='mass_measured_in_earths' type='number' value={mass} onChange={(e) => setMass(e.target.value)} required>
-                </input>
+                <input id='mass_measured_in_earths' type='number' value={mass} onChange={(e) => setMass(e.target.value)} required />
                 <label>Volume (Measured In Earths): </label>
-                <input id='volume_measured_in_earths' type='number' value={volume} onChange={(e) => setVolume(e.target.value)} required>
-                </input>
+                <input id='volume_measured_in_earths' type='number' value={volume} onChange={(e) => setVolume(e.target.value)} required />
                 <label>Mean Density (Measured In Grams Per Centimeter Cubed): </label>
-                <input id='mean_density_in_g_cm_cubed' type='number' value={density} onChange={(e) => setDensity(e.target.value)} required>
-                </input>
+                <input id='mean_density_in_g_cm_cubed' type='number' value={density} onChange={(e) => setDensity(e.target.value)} required />
                 <label>Surface Gravity (Measured In Meters Cubed): </label>
-                <input id='surface_gravity_in_m_squared' type='number' value={gravity} onChange={(e) => setGravity(e.target.value)} required>
-                </input>
+                <input id='surface_gravity_in_m_squared' type='number' value={gravity} onChange={(e) => setGravity(e.target.value)} required />
                 <label>Escape Velocity (Measured In Kilo): </label>
-                <input id='surface_gravity_in_m_squared' type='number' value={velocity} onChange={(e) => setVelocity(e.target.value)} required>
-                </input>
+                <input id='surface_gravity_in_m_squared' type='number' value={velocity} onChange={(e) => setVelocity(e.target.value)} required />
                 <label>Synodic Rotation (Measured In Days): </label>
-                <input id='synodic_rotation_period_in_days' type='number' value={synodic} onChange={(e) => setSynodic(e.target.value)} required>
-                </input>
+                <input id='synodic_rotation_period_in_days' type='number' value={synodic} onChange={(e) => setSynodic(e.target.value)} required />
                 <label>Average Temperature (Measured In Kalvin): </label>
-                <input id='temperature_in_k' type='number' value={temperature} onChange={(e) => setTemperature(e.target.value)} required>
-                </input>
+                <input id='temperature_in_k' type='number' value={temperature} onChange={(e) => setTemperature(e.target.value)} required />
                 {/* <button type='submit'>{!edit ? 'Create Planet' : 'Edit Planet'}</button> */}
                 <div onClick={onSubmit} className="button animate">
                     <div className="hover-effect"></div>
