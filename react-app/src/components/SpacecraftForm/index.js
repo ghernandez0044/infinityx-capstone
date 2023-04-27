@@ -46,7 +46,6 @@ function SpacecraftForm({ edit, payload }){
         e.preventDefault()
 
         const payload = {
-            "user_id": user.id,
             model,
             "year": Number(year),
             "load_capacity_kg": Number(loadCapacity),

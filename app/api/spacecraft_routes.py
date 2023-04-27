@@ -21,7 +21,7 @@ def get_one_spacecraft(id):
     return one_spacecraft.to_dict()
 
 # Create a spacecraft route
-@spacecraft_routes.route('/new', methods=["POST"])
+@spacecraft_routes.route('/', methods=["POST"])
 def create_spacecraft():
     user = current_user
     form = SpacecraftForm()
