@@ -110,7 +110,11 @@ function PlanetForm({ edit, payload }){
                 <label>Average Temperature (Measured In Kalvin): </label>
                 <input id='temperature_in_k' type='number' value={temperature} onChange={(e) => setTemperature(e.target.value)} required>
                 </input>
-                <button type='submit'>{!edit ? 'Create Planet' : 'Edit Planet'}</button>
+                {/* <button type='submit'>{!edit ? 'Create Planet' : 'Edit Planet'}</button> */}
+                <div onClick={onSubmit} className="button animate">
+                    <div className="hover-effect"></div>
+                    <span>{!edit ? 'Create Planet' : 'Edit Planet'}</span>
+                </div>
             </form>
         </div>
     )

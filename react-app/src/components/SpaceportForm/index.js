@@ -84,7 +84,11 @@ function SpaceportForm({ edit, payload }){
                 <input id='latitude' type='number' value={lat} onChange={(e) => setLat(e.target.value)} required ></input>
                 <label>Longitude: </label>
                 <input id='longitude' type='number' value={lng} onChange={(e) => setLng(e.target.value)} required ></input>
-                <button type='submit'>{!edit ? 'Create Spaceport' : 'Edit Spaceport'}</button>
+                {/* <button type='submit'>{!edit ? 'Create Spaceport' : 'Edit Spaceport'}</button> */}
+                <div onClick={onSubmit} className="button animate">
+                    <div className="hover-effect"></div>
+                    <span>{!edit ? 'Create Spaceport' : 'Edit Spaceport'}</span>
+                </div>
             </form>
         </div>
     )

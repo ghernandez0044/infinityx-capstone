@@ -109,7 +109,11 @@ function SpacecraftForm({ edit, payload }){
                 <label>Trunk Volume In Meters Squared: </label>
                 <input id='trunk_volume_m' type='number' value={trunkVolume} onChange={(e) => setTrunkVolume(e.target.value)} required>
                 </input>
-                <button type='submit'>{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</button>
+                {/* <button type='submit'>{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</button> */}
+                <div onClick={onSubmit} className="button animate">
+                    <div className="hover-effect"></div>
+                    <span>{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</span>
+                </div>
             </form>
         </div>
     )

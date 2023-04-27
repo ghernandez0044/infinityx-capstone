@@ -48,7 +48,10 @@ function Navigation({ isLoaded }){
 				<div className='hoverable' onClick={redirectSpacecraft}>Spacecrafts</div>
 				<div className='hoverable' onClick={redirectSpaceport}>Spaceports</div>
 				<div className='hoverable' onClick={redirectPlanet}>Planets</div>
-				<div className='hoverable' onClick={redirectRideshare}>Rideshare</div>
+				{/* <div className='hoverable' onClick={redirectRideshare}>Rideshare</div> */}
+				{sessionUser && ( 
+					<div className='hoverable' onClick={redirectRideshare}>Rideshare</div>
+				 )}
 			</div>
 			{isLoaded && (
 				<div className='profile-button-container'>

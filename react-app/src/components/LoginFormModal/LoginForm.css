@@ -18,7 +18,7 @@
     align-items: center;
 }
 
-input{
+input, textarea{
     background-color: #aaa;
     height: 30px;
     border-radius: 5px;

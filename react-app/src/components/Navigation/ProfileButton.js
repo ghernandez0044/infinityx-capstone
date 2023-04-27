@@ -37,6 +37,8 @@ function ProfileButton({ user, set, setter }) {
 
   useEffect(() => {
     if (!showMenu) return;
+    if(set) setter(false)
+    if(!set) setter(true)
 
     const closeMenu = (e) => {
       if (!ulRef.current.contains(e.target)) {
@@ -68,16 +70,19 @@ function ProfileButton({ user, set, setter }) {
   // Function to redirect to Spacecraft gallery
 	const redirectSpacecraftGallery = () => {
 		history.push('/spacecrafts')
+    setter(false)
 	}
 
   // Function to redirect to Spaceport gallery
 	const redirectSpaceportGallery = () => {
 		history.push('/spaceports')
+    setter(false)
 	}
 
   // Function to redirect to Planet gallery
 	const redirectPlanetGallery = () => {
 		history.push('/planets')
+    setter(false)
 	}
 
   const redirectSpaceport = () => {
