@@ -33,11 +33,11 @@ function GalleryCard({ smallTag, bigTag, buttonText, destination, payload }){
     return (
         <div className={`section-a-container sizing ${choice}`}>
             <div className="section-content">
-                <h4>{smallTag}</h4>
-                <h2>{bigTag}</h2>
+                <div className="gallery-card-font">{smallTag}</div>
+                <div className="gallery-card-font-2">{bigTag}</div>
                 <div onClick={onClick} className="button animate">
                     <div className="hover-effect"></div>
-                    <span>{buttonText}</span>
+                    <span className="button-font">{buttonText}</span>
                 </div>
             </div>
         </div>

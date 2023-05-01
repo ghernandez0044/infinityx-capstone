@@ -45,12 +45,12 @@ function Navigation({ isLoaded }){
 				</NavLink>
 			</div>
 			<div className='tabs-container'>
-				<div className='hoverable' onClick={redirectSpacecraft}>Spacecrafts</div>
-				<div className='hoverable' onClick={redirectSpaceport}>Spaceports</div>
-				<div className='hoverable' onClick={redirectPlanet}>Planets</div>
+				<div className='hoverable navbar-font' onClick={redirectSpacecraft}>Spacecrafts</div>
+				<div className='hoverable navbar-font' onClick={redirectSpaceport}>Spaceports</div>
+				<div className='hoverable navbar-font' onClick={redirectPlanet}>Planets</div>
 				{/* <div className='hoverable' onClick={redirectRideshare}>Rideshare</div> */}
 				{sessionUser && ( 
-					<div className='hoverable' onClick={redirectRideshare}>Rideshare</div>
+					<div className='hoverable navbar-font' onClick={redirectRideshare}>Rideshare</div>
 				 )}
 			</div>
 			{isLoaded && (

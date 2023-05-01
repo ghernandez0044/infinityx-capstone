@@ -2,6 +2,8 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
 from sqlalchemy.orm import joinedload
+from .auth_routes import validation_errors_to_error_messages
+
 
 from ..models import db, Spaceport
 from ..forms import SpaceportForm
@@ -41,7 +43,8 @@ def create_spaceport():
             db.session.commit()
             return {"spaceport": new_spaceport.to_dict()}
         if form.errors:
-            return {"message": "form errors", "errors": f"{form.errors}"}
+            # return {"message": "form errors", "errors": f"{form.errors}"}
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {"message": "user is not an admin"}
 
 
@@ -67,7 +70,8 @@ def update_spaceport(id):
                 updated_spaceport = Spaceport.query.get(id)
                 return {"spaceport": updated_spaceport.to_dict()}
             if form.errors:
-                return {"message": "form errors", "errors": f"{form.errors}"}
+                # return {"message": "form errors", "errors": f"{form.errors}"}
+                return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {"message": "user is not an admin"}
 
 # Delete a spaceport route

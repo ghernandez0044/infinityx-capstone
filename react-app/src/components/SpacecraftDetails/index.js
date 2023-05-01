@@ -30,8 +30,6 @@ function SpacecraftDetails(){
     // Subscribe to single spaceport slice of state
     const spacecraft = useSelector(state => state.spacecrafts.singleSpacecraft)
 
-    console.log('spacecraft: ', spacecraft)
-
     // Subscribe to current user slice of state
     const user = useSelector(state => state.session.user)
 
@@ -55,22 +53,22 @@ function SpacecraftDetails(){
                 <img style={{ height: '90%', width: '90%' }} src="https://cdn.pixabay.com/photo/2012/11/28/11/28/rocket-launch-67723_1280.jpg" alt='' />
             </div>
             <div id='content-container' className="content-container">
-                <div className="details-model-container">Model: {spacecraft.model}</div>
-                <div className="details-year-container">Year: {spacecraft.year}</div>
-                <div className="details-description-container">Description: {spacecraft.description}</div>
-                <div className="details-height-container">Height: {spacecraft.height_m} meters</div>
-                <div className="details-diameter-container">Diameter: {spacecraft.diameter_m} meters</div>
-                <div className="details-mass-container">Mass: {spacecraft.mass_kg} kg</div>
-                <div className="details-load-container">Load Capacity: {spacecraft.load_capacity_kg} kg</div>
-                <div className="details-capsule-container">Capsule Volume: {spacecraft.capsule_volume_m} m^2</div>
-                <div className="details-trunk-container">Trunk Volume: {spacecraft.trunk_volume_m} m^2</div>
+                <div className="details-model-container model-font"> {spacecraft.model}</div>
+                <div className="details-year-container year-font"> {spacecraft.year}</div>
+                <div className="details-description-container content-font">{spacecraft.description}</div>
+                <div className="details-height-container content-font">Height: {spacecraft.height_m} meters</div>
+                <div className="details-diameter-container content-font">Diameter: {spacecraft.diameter_m} meters</div>
+                <div className="details-mass-container content-font">Mass: {spacecraft.mass_kg} kg</div>
+                <div className="details-load-container content-font">Load Capacity: {spacecraft.load_capacity_kg} kg</div>
+                <div className="details-capsule-container content-font">Capsule Volume: {spacecraft.capsule_volume_m} m^2</div>
+                <div className="details-trunk-container content-font">Trunk Volume: {spacecraft.trunk_volume_m} m^2</div>
             </div>
             {user?.admin && (
                 <div id='manage-buttons' className="manage-buttons">
                     {/* <button onClick={redirect}>Edit</button> */}
                     <div onClick={redirect} className="button animate">
                         <div className="hover-effect"></div>
-                        <span>Edit</span>
+                        <span className="signup-button-font">Edit</span>
                     </div>
                     <OpenModalButton modalComponent={<Confirmation label='Delete Spacecraft' message='Are You Sure You Want To Delete?' onYes={deleteFunction} yesLabel='Delete' noLabel='Keep' onNo={() => closeModal()} />} buttonText='Delete' />
                 </div>

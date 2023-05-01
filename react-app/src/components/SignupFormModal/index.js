@@ -9,11 +9,11 @@ function SignupFormModal() {
 	const dispatch = useDispatch();
 
 	// Create state variables
-	const [ admin, setAdmin ] = useState(false)
+	const [ admin, setAdmin ] = useState(true)
 	const [ firstName, setFirstName ] = useState('')
 	const [ lastName, setLastName ] = useState('')
 	const [ phone, setPhone ] = useState('')
-	const [ passport, setPassport ] = useState('')
+	const [ passport, setPassport ] = useState('Earthling')
 	const [ profilePic, setProfilePic ] = useState('')
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
@@ -54,24 +54,24 @@ function SignupFormModal() {
 
 	return (
 		<div className="signup-modal-container">
-			<h1 style={{ textAlign: 'center' }}>Sign Up</h1>
+			<h1 className="header-font" style={{ textAlign: 'center' }}>Sign Up</h1>
 			<form className="signup-form-container" onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
-				<label>
+				<label className='label-font'>
 					Email
 				</label>
 				<input
 						id='email'
-						type="text"
+						type="email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
 				/>
-				<label>
+				<label className='label-font'>
 					Username
 				</label>
 				<input
@@ -81,7 +81,7 @@ function SignupFormModal() {
 						onChange={(e) => setUsername(e.target.value)}
 						required
 				/>
-				<label>
+				<label className='label-font'>
 					First Name
 				</label>
 				<input
@@ -91,7 +91,7 @@ function SignupFormModal() {
 						onChange={(e) => setFirstName(e.target.value)}
 						required
 				/>
-				<label>
+				<label className='label-font'>
 					Last Name
 				</label>
 				<input
@@ -101,7 +101,7 @@ function SignupFormModal() {
 						onChange={(e) => setLastName(e.target.value)}
 						required
 				/>
-				<label>
+				<label className='label-font'>
 					Phone
 				</label>
 				<input
@@ -111,7 +111,7 @@ function SignupFormModal() {
 						onChange={(e) => setPhone(e.target.value)}
 						required
 				/>
-				<label>
+				<label className='label-font'>
 					Profile Picture
 				</label>
 				<input
@@ -121,7 +121,7 @@ function SignupFormModal() {
 						onChange={(e) => setProfilePic(e.target.value)}
 						required
 				/>
-				<label>Choose A Passport: </label>
+				<label className='label-font'>Choose A Passport </label>
               <select
                 id="passport"
                 onChange={(e) => {
@@ -139,7 +139,7 @@ function SignupFormModal() {
                   // add a key prop here
                 ))}
               </select>
-				<label>
+				<label className='label-font'>
 					Password
 				</label>
 				<input
@@ -149,7 +149,7 @@ function SignupFormModal() {
 						onChange={(e) => setPassword(e.target.value)}
 						required
 				/>
-				<label>
+				<label className='label-font'>
 					Confirm Password
 				</label>
 				<input
@@ -159,12 +159,12 @@ function SignupFormModal() {
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
 				/>
-				<label>Admin</label>
-				<input id='admin' type='radio' checked={checked} value={admin} onClick={() => setChecked(!checked)} onChange={(e) => setAdmin(true)} />
+				{/* <label>Admin</label>
+				<input id='admin' type='radio' checked={checked} value={admin} onClick={() => setChecked(!checked)} onChange={(e) => setAdmin(true)} /> */}
 				{/* <button type="submit">Sign Up</button> */}
 				<div onClick={handleSubmit} className="button animate">
           			<div className="hover-effect"></div>
-          			<span>Sign Up</span>
+          			<span className="signup-button-font">Sign Up</span>
        			 </div>
 			</form>
 		</div>

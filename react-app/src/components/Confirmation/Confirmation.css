@@ -1,0 +1,14 @@
+.confirmation-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmation-buttons-container{
+    /* border: 3px solid lime; */
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+

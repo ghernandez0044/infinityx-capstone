@@ -35,14 +35,14 @@ function LoginFormModal() {
 
   return (
     <div className="login-modal-container">
-      <h1 style={{ textAlign: 'center' }}>Log In</h1>
+      <h1 className="header-font" style={{ textAlign: 'center' }}>Log In</h1>
       <form className="form-container" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
+        <label className="label-font">
           Email
         </label>
           <input
@@ -51,7 +51,7 @@ function LoginFormModal() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        <label>
+        <label className="label-font">
           Password
         </label>
           <input
@@ -63,10 +63,10 @@ function LoginFormModal() {
         {/* <button type="submit">Log In</button> */}
         <div onClick={handleSubmit} className="button animate">
           <div className="hover-effect"></div>
-          <span>Log In</span>
+          <span className="signup-button-font">Log In</span>
         </div>
-        <div id='demo' className="hoverable" onClick={demoLogin}>Demo User</div>
-        <div id='admin' className="hoverable" onClick={adminLogin}>Admin User</div>
+        {/* <div id='demo' className="hoverable" onClick={demoLogin}>Demo User</div> */}
+        <div id='admin' className="hoverable" onClick={adminLogin}>Demo User</div>
       </form>
     </div>
   );
