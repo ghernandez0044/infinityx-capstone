@@ -79,32 +79,32 @@ function PlanetForm({ edit, payload }){
 
     return user.admin && (
         <div className="spacecraft-form-container">
-            <h1 style={{ textAlign: 'center' }}>{!edit ? 'Create A Planet' : 'Edit A Planet'}</h1>
+            <h1 className="header-font" style={{ textAlign: 'center' }}>{!edit ? 'Create A Planet' : 'Edit A Planet'}</h1>
             <form className="form" onSubmit={onSubmit}>
-                <label>Name: </label>
-                <input id='model' type='text' value={name} onChange={(e) => setName(e.target.value)} required />
-                <label>Description: </label>
-                <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required />
-                <label>Distance From Earth: </label>
-                <input id='distance_from_earth_km' type='number' value={distance} onChange={(e) => setDistance(e.target.value)} required />
-                <label>Mass (Measured In Earths): </label>
-                <input id='mass_measured_in_earths' type='number' value={mass} onChange={(e) => setMass(e.target.value)} required />
-                <label>Volume (Measured In Earths): </label>
-                <input id='volume_measured_in_earths' type='number' value={volume} onChange={(e) => setVolume(e.target.value)} required />
-                <label>Mean Density (Measured In Grams Per Centimeter Cubed): </label>
-                <input id='mean_density_in_g_cm_cubed' type='number' value={density} onChange={(e) => setDensity(e.target.value)} required />
-                <label>Surface Gravity (Measured In Meters Cubed): </label>
-                <input id='surface_gravity_in_m_squared' type='number' value={gravity} onChange={(e) => setGravity(e.target.value)} required />
-                <label>Escape Velocity (Measured In Kilo): </label>
-                <input id='surface_gravity_in_m_squared' type='number' value={velocity} onChange={(e) => setVelocity(e.target.value)} required />
-                <label>Synodic Rotation (Measured In Days): </label>
-                <input id='synodic_rotation_period_in_days' type='number' value={synodic} onChange={(e) => setSynodic(e.target.value)} required />
-                <label>Average Temperature (Measured In Kalvin): </label>
-                <input id='temperature_in_k' type='number' value={temperature} onChange={(e) => setTemperature(e.target.value)} required />
+                <label className="label-font">Name </label>
+                <input id='model' type='text' value={name} onChange={(e) => setName(e.target.value)} required placeholder="Required" />
+                <label className="label-font">Description </label>
+                <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required placeholder="Required" />
+                <label className="label-font">Distance From Earth (Measured In Kilometers) </label>
+                <input id='distance_from_earth_km' type='number' value={distance} onChange={(e) => setDistance(e.target.value)} required placeholder="Required" />
+                <label className="label-font">Mass (Measured In Earths) </label>
+                <input id='mass_measured_in_earths' type='number' value={mass} onChange={(e) => setMass(e.target.value)} />
+                <label className="label-font">Volume (Measured In Earths) </label>
+                <input id='volume_measured_in_earths' type='number' value={volume} onChange={(e) => setVolume(e.target.value)} />
+                <label className="label-font">Mean Density (Measured In Grams Per Centimeter Cubed) </label>
+                <input id='mean_density_in_g_cm_cubed' type='number' value={density} onChange={(e) => setDensity(e.target.value)} />
+                <label className="label-font">Surface Gravity (Measured In Meters Squared) </label>
+                <input id='surface_gravity_in_m_squared' type='number' value={gravity} onChange={(e) => setGravity(e.target.value)} />
+                <label className="label-font">Escape Velocity (Measured In Kilometers Per Second) </label>
+                <input id='surface_gravity_in_m_squared' type='number' value={velocity} onChange={(e) => setVelocity(e.target.value)} />
+                <label className="label-font">Synodic Rotation (Measured In Days) </label>
+                <input id='synodic_rotation_period_in_days' type='number' value={synodic} onChange={(e) => setSynodic(e.target.value)} />
+                <label className="label-font">Average Temperature (Measured In Kalvin) </label>
+                <input id='temperature_in_k' type='number' value={temperature} onChange={(e) => setTemperature(e.target.value)} />
                 {/* <button type='submit'>{!edit ? 'Create Planet' : 'Edit Planet'}</button> */}
                 <div onClick={onSubmit} className="button animate">
                     <div className="hover-effect"></div>
-                    <span>{!edit ? 'Create Planet' : 'Edit Planet'}</span>
+                    <span className="signup-button-font">{!edit ? 'Create Planet' : 'Edit Planet'}</span>
                 </div>
             </form>
         </div>

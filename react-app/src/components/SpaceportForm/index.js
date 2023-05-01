@@ -73,17 +73,17 @@ function SpaceportForm({ edit, payload }){
             <h1 style={{ textAlign: 'center' }}>{!edit ? 'Create A Spaceport' : 'Edit A Spaceport'}</h1>
             <form className="form" onSubmit={onSubmit}>
                 <label>Name: </label>
-                <input id='name' type='text' value={name} onChange={(e) => setName(e.target.value)} required ></input>
+                <input id='name' type='text' value={name} onChange={(e) => setName(e.target.value)} required placeholder="Required"></input>
                 <label>Description: </label>
-                <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required ></textarea>
+                <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required placeholder="Required"></textarea>
                 <label>City: </label>
-                <input id='city' type='text' value={city} onChange={(e) => setCity(e.target.value)} required ></input>
+                <input id='city' type='text' value={city} onChange={(e) => setCity(e.target.value)} required placeholder="Required"></input>
                 <label>State: </label>
-                <input id='state' type='text' value={state} onChange={(e) => setState(e.target.value)} required ></input>
+                <input id='state' type='text' value={state} onChange={(e) => setState(e.target.value)} required placeholder="Required"></input>
                 <label>Latitude: </label>
-                <input id='latitude' type='number' value={lat} onChange={(e) => setLat(e.target.value)} required ></input>
+                <input id='latitude' type='number' value={lat} onChange={(e) => setLat(e.target.value)} ></input>
                 <label>Longitude: </label>
-                <input id='longitude' type='number' value={lng} onChange={(e) => setLng(e.target.value)} required ></input>
+                <input id='longitude' type='number' value={lng} onChange={(e) => setLng(e.target.value)} ></input>
                 {/* <button type='submit'>{!edit ? 'Create Spaceport' : 'Edit Spaceport'}</button> */}
                 <div onClick={onSubmit} className="button animate">
                     <div className="hover-effect"></div>

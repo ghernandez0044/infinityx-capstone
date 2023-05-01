@@ -2,6 +2,7 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
 from sqlalchemy.orm import joinedload
+from .auth_routes import validation_errors_to_error_messages
 import datetime
 
 from ..models import db, Planet, PlanetComment
@@ -47,7 +48,8 @@ def create_planet():
             db.session.commit()
             return {"planet": new_planet.to_dict()}
         if form.errors:
-            return {"message": "form errors", "errors": f"{form.errors}"}
+            # return {"message": "form errors", "errors": f"{form.errors}"}
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {"message": "User is not an admin"}
 
 
@@ -77,7 +79,8 @@ def update_planet(id):
                 updated_planet = Planet.query.get(id)
                 return {"planet": updated_planet.to_dict()}
             if form.errors:
-                return {"message": "form errors", "errors": f"{form.errors}"}
+                # return {"message": "form errors", "errors": f"{form.errors}"}
+                return {'errors': validation_errors_to_error_messages(form.errors)}, 401
         return {"message": "planet not found"}
     return {"message": "user is not an admin"}
 
