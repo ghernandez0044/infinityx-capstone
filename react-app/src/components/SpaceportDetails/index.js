@@ -56,18 +56,18 @@ function SpaceportDetails(){
                 <img style={{ height: '90%', width: '90%' }} src="https://cdn.pixabay.com/photo/2012/11/28/10/35/launch-pad-67645_1280.jpg" alt='' />
             </div>
             <div id="spaceport-content-container" className="content-container">
-                <div>Name: {spaceport.name}</div>
-                <div>Location: {spaceport.city}, {spaceport.state}</div>
-                <div>Description: {spaceport.description}</div>
-                <div>Latitude: {spaceport.lat}</div>
-                <div>Longitude: {spaceport.lng}</div>
+                <div className="model-font">{spaceport.name}</div>
+                <div className="year-font">{spaceport.city}, {spaceport.state}</div>
+                <div className="content-font">{spaceport.description}</div>
+                <div className="content-font">Latitude: {spaceport.lat}</div>
+                <div className="content-font">Longitude: {spaceport.lng}</div>
             </div>
             {user?.admin && (
                 <div id="spaceport-manage-buttons" className="manage-buttons">
                     {/* <button onClick={redirect}>Edit</button> */}
                     <div onClick={redirect} className="button animate">
                         <div className="hover-effect"></div>
-                        <span>Edit</span>
+                        <span className="signup-button-font">Edit</span>
                     </div>
                     <OpenModalButton modalComponent={<Confirmation label='Delete Spaceport' message='Are You Sure You Want To Delete?' onYes={deleteFunction} yesLabel='Delete' noLabel='Keep' onNo={() => closeModal()} />} buttonText='Delete' />
                 </div>
