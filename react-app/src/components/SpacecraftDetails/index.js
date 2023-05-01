@@ -30,8 +30,6 @@ function SpacecraftDetails(){
     // Subscribe to single spaceport slice of state
     const spacecraft = useSelector(state => state.spacecrafts.singleSpacecraft)
 
-    console.log('spacecraft: ', spacecraft)
-
     // Subscribe to current user slice of state
     const user = useSelector(state => state.session.user)
 

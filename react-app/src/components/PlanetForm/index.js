@@ -65,7 +65,6 @@ function PlanetForm({ edit, payload }){
                 if(data && data.errors) setBackendErrors(data.errors)
             })
         } else {
-            console.log('inside the else block')
             dispatch(createPlanet(payload)).then(res => {
                 history.push(`/planets/${res.planet.id}`)
             }).catch(res => {

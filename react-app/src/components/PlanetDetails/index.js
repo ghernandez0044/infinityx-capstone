@@ -2,7 +2,7 @@
 import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getOnePlanet } from "../../store/planet";
+import { getOnePlanet, deletePlanet } from "../../store/planet";
 import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton";
 import Confirmation from "../Confirmation";
@@ -38,7 +38,7 @@ function PlanetDetails(){
     }
 
     // Function to delete planet
-    const deletePlanet = () => {
+    const deletePlanetFunction = () => {
         dispatch(deletePlanet(id))
         closeModal()
         history.push('/planets')
@@ -68,7 +68,7 @@ function PlanetDetails(){
                     <div className="hover-effect"></div>
                     <span>Edit</span>
                 </div>
-                 <OpenModalButton modalComponent={<Confirmation label='Delete Planet' message='Are You Sure You Want To Delete?' onYes={deletePlanet} yesLabel='Delete' noLabel='Keep' onNo={() => closeModal()} />} buttonText='Delete' />
+                 <OpenModalButton modalComponent={<Confirmation label='Delete Planet' message='Are You Sure You Want To Delete?' onYes={deletePlanetFunction} yesLabel='Delete' noLabel='Keep' onNo={() => closeModal()} />} buttonText='Delete' />
              </div>
             )}
         </div>

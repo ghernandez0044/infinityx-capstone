@@ -14,7 +14,7 @@ function EditPlanet(){
 
     // Render planet upon component render
     useEffect(() => {
-
+        dispatch(getOnePlanet(id))
     }, [dispatch, id])
 
     // Subscribe to single planet slice of state
@@ -27,7 +27,7 @@ function EditPlanet(){
 
     return (
         <>
-            null
+            <PlanetForm edit={true} payload={planet} />
         </>
     )
 }
