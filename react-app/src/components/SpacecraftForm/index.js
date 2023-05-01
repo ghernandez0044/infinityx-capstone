@@ -70,48 +70,61 @@ function SpacecraftForm({ edit, payload }){
                 history.push(`/spacecrafts/${res.spacecraft.id}`)
              }).catch(res => {
                 const data = res
-                if(data && data.errors) setBackendErrors(data.errors)
+                if(data && data.errors){
+                    console.log('inside create spacecraft')
+                    setBackendErrors(data.errors)
+                    console.log('create a spacecraft backend errors: ', backendErrors)
+                } 
              })
+            // const data = await dispatch(createSpacecraft(payload))
+            // if(data) setBackendErrors(data)
         }
 
     }
 
+    console.log('create a spacecraft backend errors: ', backendErrors)
+
 
     return user.admin && (
         <div className="spacecraft-form-container">
-            <h1 style={{ textAlign: 'center' }}>{!edit ? 'Create A Spacecraft' : 'Edit A Spacecraft'}</h1>
+            <h1 className="header-font" style={{ textAlign: 'center' }}>{!edit ? 'Create A Spacecraft' : 'Edit A Spacecraft'}</h1>
             <form className="form" onSubmit={onSubmit}>
-                <label>Model: </label>
-                <input id='model' type='text' value={model} onChange={(e) => setModel(e.target.value)} required>
+                {/* <ul>
+					{backendErrors.map((error, idx) => (
+						<li key={idx}>{error}</li>
+					))}
+				</ul> */}
+                <label className='label-font'>Model </label>
+                <input id='model' type='text' value={model} onChange={(e) => setModel(e.target.value)} required placeholder="Required">
                 </input>
-                <label>Year: </label>
-                <input id='year' type='number' value={year} onChange={(e) => setYear(e.target.value)} required>
+                <label className='label-font'>Year </label>
+                <input id='year' type='number' value={year} onChange={(e) => setYear(e.target.value)} required placeholder="Required">
                 </input>
-                <label>Load Capacity In Kilograms: </label>
-                <input id='load_capacity_kg' type='number' value={loadCapacity} onChange={(e) => setLoadCapacity(e.target.value)} required>
+                <label className='label-font'>Load Capacity In Kilograms </label>
+                <input id='load_capacity_kg' type='number' value={loadCapacity} onChange={(e) => setLoadCapacity(e.target.value)} required placeholder="Required">
                 </input>
-                <label>Description: </label>
-                <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required>
+                <label className='label-font'>Description </label>
+                <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required placeholder="Required">
                 </textarea>
-                <label>Height In Meters: </label>
-                <input id='height_m' type='number' value={height} onChange={(e) => setHeight(e.target.value)} required>
+                <label className='label-font'>Height In Meters </label>
+                <input id='height_m' type='number' value={height} onChange={(e) => setHeight(e.target.value)} required placeholder="Required">
                 </input>
-                <label>Diameter In Meters: </label>
-                <input id='diameter_m' type='number' value={diameter} onChange={(e) => setDiameter(e.target.value)} required>
+                <label className='label-font'>Diameter In Meters </label>
+                <input id='diameter_m' type='number' value={diameter} onChange={(e) => setDiameter(e.target.value)} required placeholder="Required">
                 </input>
-                <label>Mass In Kilograms: </label>
-                <input id='mass_kg' type='number' value={mass} onChange={(e) => setMass(e.target.value)} required>
+                <label className='label-font'>Mass In Kilograms </label>
+                <input id='mass_kg' type='number' value={mass} onChange={(e) => setMass(e.target.value)} required placeholder="Required">
                 </input>
-                <label>Capsule Volume In Meters Squared: </label>
-                <input id='capsule_volume_kg' type='number' value={capsuleVolume} onChange={(e) => setCapsuleVolume(e.target.value)} required>
+                <label className='label-font'>Capsule Volume In Meters Squared </label>
+                <input id='capsule_volume_kg' type='number' value={capsuleVolume} onChange={(e) => setCapsuleVolume(e.target.value)} required placeholder="Required">
                 </input>
-                <label>Trunk Volume In Meters Squared: </label>
-                <input id='trunk_volume_m' type='number' value={trunkVolume} onChange={(e) => setTrunkVolume(e.target.value)} required>
+                <label className='label-font'>Trunk Volume In Meters Squared </label>
+                <input id='trunk_volume_m' type='number' value={trunkVolume} onChange={(e) => setTrunkVolume(e.target.value)} required placeholder="Required">
                 </input>
                 {/* <button type='submit'>{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</button> */}
                 <div onClick={onSubmit} className="button animate">
                     <div className="hover-effect"></div>
-                    <span>{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</span>
+                    <span className="signup-button-font">{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</span>
                 </div>
             </form>
         </div>

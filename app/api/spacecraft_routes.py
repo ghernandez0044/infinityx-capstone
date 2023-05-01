@@ -2,6 +2,7 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
 from sqlalchemy.orm import joinedload
+from .auth_routes import validation_errors_to_error_messages
 
 from ..models import db, Spacecraft
 from ..forms import SpacecraftForm
@@ -44,7 +45,8 @@ def create_spacecraft():
             db.session.commit()
             return {"spacecraft": new_spacecraft.to_dict()}
         if form.errors:
-            return {"message": "form errors", "errors": f"{form.errors}"}
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+            # return form.errors
         return {"message": "bad data or user is not an admin"}
     
 # Update a spacecraft route    
