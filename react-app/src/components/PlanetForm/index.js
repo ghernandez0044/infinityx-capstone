@@ -23,7 +23,7 @@ function PlanetForm({ edit, payload }){
     const [ backendErrors, setBackendErrors ] = useState({})
     const [ name, setName ] = useState(payload?.name || '')
     const [ description, setDescription ] = useState(payload?.description || '')
-    const [ distance, setDistance ] = useState(payload?.description || '')
+    const [ distance, setDistance ] = useState(payload?.distance_from_earth_km || '')
     const [ mass, setMass ] = useState(payload?.mass_measured_in_earths || '')
     const [ volume, setVolume ] = useState(payload?.volume_measured_in_earths || '')
     const [ density, setDensity ] = useState(payload?.mean_density_in_g_cm_cubed || '')
@@ -58,6 +58,7 @@ function PlanetForm({ edit, payload }){
 
         // If the edit flag is true, run the edit dispatch, if it is false, run the create dispatch
         if(edit){
+            console.log('edit block is running')
             dispatch(updatePlanet(payload, id)).then(res => {
                 history.push(`/planets/${id}`)
             }).catch(res => {
