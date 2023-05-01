@@ -215,3 +215,10 @@
 .open .hamburger-bottom{
   transform: rotate(-45deg) translateY(5px) translateX(-5px);
 }
+
+.dropdown-menu-font{
+  font-family: 'Merriweather', serif;
+  font-size: 16px;
+  font-weight: lighter;
+  text-transform: uppercase;
+}

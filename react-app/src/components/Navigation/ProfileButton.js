@@ -115,8 +115,8 @@ function ProfileButton({ user, set, setter }) {
       <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <div>Username: {user.username}</div>
-            <div>Email: {user.email}</div>
+            <div className="dropdown-menu-font">Username: {user.username}</div>
+            <div className="dropdown-menu-font">Email: {user.email}</div>
             {/* {user.admin && (
               <div>
                 <button onClick={redirectSpacecraft}>Create A Spacecraft</button>
@@ -124,18 +124,18 @@ function ProfileButton({ user, set, setter }) {
                 <button onClick={redirectPlanet}>Create A Planet</button>
             </div>
             )} */}
-            {user.admin && ( <div className="pointer" onClick={redirectSpacecraft}>Create A Spacecraft</div> )}
-            {user.admin && ( <div className="pointer" onClick={redirectSpaceport}>Create A Spaceport</div> )}
-            {user.admin && ( <div className="pointer" onClick={redirectPlanet}>Create A Planet</div> )}
-            <div onClick={redirectSpacecraftGallery} className="mobile-menu pointer">Spacecrafts</div>
-            <div onClick={redirectSpaceportGallery} className="mobile-menu pointer">Spaceports</div>
-            <div onClick={redirectPlanetGallery} className="mobile-menu pointer">Planets</div>
-            <div className="mobile-menu pointer">Rideshare</div>
+            {user.admin && ( <div className="pointer dropdown-menu-font" onClick={redirectSpacecraft}>Create A Spacecraft</div> )}
+            {user.admin && ( <div className="pointer dropdown-menu-font" onClick={redirectSpaceport}>Create A Spaceport</div> )}
+            {user.admin && ( <div className="pointer dropdown-menu-font" onClick={redirectPlanet}>Create A Planet</div> )}
+            <div onClick={redirectSpacecraftGallery} className="mobile-menu pointer dropdown-menu-font">Spacecrafts</div>
+            <div onClick={redirectSpaceportGallery} className="mobile-menu pointer dropdown-menu-font">Spaceports</div>
+            <div onClick={redirectPlanetGallery} className="mobile-menu pointer dropdown-menu-font">Planets</div>
+            <div className="mobile-menu pointer dropdown-menu-font">Rideshare</div>
             <div>
               {/* <button onClick={handleLogout}>Log Out</button> */}
               <div onClick={handleLogout} className="button animate">
                 <div className="hover-effect"></div>
-                <span>Log Out</span>
+                <span className="signup-button-font">Log Out</span>
               </div>
             </div>
           </>
