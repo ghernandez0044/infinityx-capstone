@@ -18,7 +18,7 @@
 
 .button-font{
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 6px;
+    font-size: 14px;
 }
 
 body{
@@ -163,7 +163,7 @@ body{
         width: 100px;
     }
 
-    .button span{
+    /* .button span{
         font-size: 12px;
-    }
+    } */
 }

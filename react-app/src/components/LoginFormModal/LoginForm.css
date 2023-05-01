@@ -19,13 +19,22 @@
 }
 
 input, textarea{
-    background-color: #aaa;
+    /* background-color: #aaa;
     height: 30px;
-    border-radius: 5px;
+    border-radius: 5px; */
+    width: 220px;
+    height: 35px;
+    background-color: #292929;
+    border: none;
+    color: #fff;
+    margin: 5px auto;
 }
 
 .form-container > ul > li {
     color: red;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 #demo{
