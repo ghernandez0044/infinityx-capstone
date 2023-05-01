@@ -17,6 +17,7 @@ import EditSpaceport from "./components/EditSpaceport";
 import PlanetGallery from "./components/PlanetGallery";
 import PlanetDetails from "./components/PlanetDetails";
 import CreatePlanet from "./components/CreatePlanet";
+import EditPlanet from "./components/EditPlanet";
 import Footer from "./components/Footer";
 
 
@@ -73,6 +74,9 @@ function App() {
           </Route>
           <Route exact path="/planets/:id">
             <PlanetDetails />
+          </Route>
+          <Route exact path="/planets/:id/edit">
+            <EditPlanet />
           </Route>
         </Switch>
       )}

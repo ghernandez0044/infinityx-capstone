@@ -20,8 +20,6 @@ useEffect(() => {
 // Subscribe to single spacecraft slice of state
 const spacecraft = useSelector(state => state.spacecrafts.singleSpacecraft)
 
-console.log('spacecraft to edit: ', spacecraft)
-
 if(Object.values(spacecraft).length === 0) return null
 
     return (
