@@ -20,8 +20,6 @@ function EditPlanet(){
     // Subscribe to single planet slice of state
     const planet = useSelector(state => state.planets.singlePlanet)
 
-    console.log('planet to edit: ', planet)
-
     if(Object.values(planet).length === 0) return null
 
 

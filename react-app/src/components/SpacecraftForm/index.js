@@ -34,6 +34,8 @@ function SpacecraftForm({ edit, payload }){
     const [ capsuleVolume, setCapsuleVolume ] = useState(payload?.capsule_volume_m || '')
     const [ trunkVolume, setTrunkVolume ] = useState(payload?.trunk_volume_m || '')
 
+    // Function to reset all fields on form
+
     // Subscribe to current user slice of state
     const user = useSelector(state => state.session.user)
 
@@ -42,45 +44,50 @@ function SpacecraftForm({ edit, payload }){
     if(!user.admin) return <h1>User Is Not An Admin</h1>
 
     // Create onSubmit function
-    const onSubmit = (e) => {
-        e.preventDefault()
+    const onSubmit = async
 
-        const payload = {
-            model,
-            "year": Number(year),
-            "load_capacity_kg": Number(loadCapacity),
-            description,
-            "height_m": Number(height),
-            "diameter_m": Number(diameter),
-            "mass_kg": Number(mass),
-            "capsule_volume_m": Number(capsuleVolume),
-            "trunk_volume_m": Number(trunkVolume)
-        }
+    // // Create onSubmit function
+    // const onSubmit = async (e) => {
+    //     e.preventDefault()
 
-        // If the edit flag is true, run the edit dispatch instead of the create dispatch
-        if(edit){
-            dispatch(updateSpacecraft(payload, id)).then(res => {
-                history.push(`/spacecrafts/${res.spacecraft.id}`)
-            }).catch(res => {
-                const data = res
-                if(data && data.errors) setBackendErrors(data.errors)
-             })
-        } else {
-            dispatch(createSpacecraft(payload)).then(res => { 
-                history.push(`/spacecrafts/${res.spacecraft.id}`)
-             }).catch(res => {
-                const data = res
-                if(data && data.errors){
-                    console.log('inside create spacecraft')
-                    setBackendErrors(data.errors)
-                    console.log('create a spacecraft backend errors: ', backendErrors)
-                } 
-             })
-            // const data = await dispatch(createSpacecraft(payload))
-            // if(data) setBackendErrors(data)
-        }
+    //     const payload = {
+    //         model,
+    //         "year": Number(year),
+    //         "load_capacity_kg": Number(loadCapacity),
+    //         description,
+    //         "height_m": Number(height),
+    //         "diameter_m": Number(diameter),
+    //         "mass_kg": Number(mass),
+    //         "capsule_volume_m": Number(capsuleVolume),
+    //         "trunk_volume_m": Number(trunkVolume)
+    //     }
 
-    }
+    //     // If the edit flag is true, run the edit dispatch instead of the create dispatch
+    //     if(edit){
+    //         dispatch(updateSpacecraft(payload, id)).then(res => {
+    //             history.push(`/spacecrafts/${res.spacecraft.id}`)
+    //         }).catch(res => {
+    //             const data = res
+    //             if(data && data.errors) setBackendErrors(data.errors)
+    //          })
+    //     } else {
+    //         dispatch(createSpacecraft(payload)).then(res => { 
+    //             history.push(`/spacecrafts/${res.spacecraft.id}`)
+    //          }).catch(res => {
+    //             const data = res
+    //             if(data && data.errors){
+    //                 console.log('inside create spacecraft')
+    //                 setBackendErrors(data.errors)
+    //                 console.log('create a spacecraft backend errors: ', backendErrors)
+    //             } 
+    //          })
+
+
+    //         // const data = await dispatch(createSpacecraft(payload))
+    //         // if(data) setBackendErrors(data)
+    //     }
+
+    // }
 
     console.log('create a spacecraft backend errors: ', backendErrors)
 
@@ -122,7 +129,7 @@ function SpacecraftForm({ edit, payload }){
                 <input id='trunk_volume_m' type='number' value={trunkVolume} onChange={(e) => setTrunkVolume(e.target.value)} required placeholder="Required">
                 </input>
                 {/* <button type='submit'>{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</button> */}
-                <div onClick={onSubmit} className="button animate">
+                <div type='submit' onClick={onSubmit} className="button animate">
                     <div className="hover-effect"></div>
                     <span className="signup-button-font">{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</span>
                 </div>
