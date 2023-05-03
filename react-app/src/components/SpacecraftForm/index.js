@@ -35,6 +35,19 @@ function SpacecraftForm({ edit, payload }){
     const [ trunkVolume, setTrunkVolume ] = useState(payload?.trunk_volume_m || '')
 
     // Function to reset all fields on form
+    const reset = () => {
+        setErrors({})
+        setBackendErrors({})
+        setModel('')
+        setYear('')
+        setLoadCapacity('')
+        setDescription('')
+        setHeight('')
+        setDiameter('')
+        setMass('')
+        setCapsuleVolume('')
+        setTrunkVolume('')
+    }
 
     // Subscribe to current user slice of state
     const user = useSelector(state => state.session.user)
