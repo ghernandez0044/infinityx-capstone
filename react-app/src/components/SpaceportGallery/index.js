@@ -18,8 +18,6 @@ function SpaceportGallery(){
     // Subscribe to the allSpaceports slice of state
     const spaceports = useSelector(state => Object.values(state.spaceports.allSpaceports))
 
-    console.log('spaceports: ', spaceports)
-
     
     return (
         <div>

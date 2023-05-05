@@ -11,8 +11,8 @@ class Spaceport(db.Model):
     description = db.Column(db.Text)
     city = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(255), nullable=False)
-    lat = db.Column(db.Float)
-    lng = db.Column(db.Float)
+    lat = db.Column(db.Float, nullable=False)
+    lng = db.Column(db.Float, nullable=False)
 
     # relationships
     flights = db.relationship(

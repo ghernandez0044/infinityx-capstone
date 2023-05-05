@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { getOneSpaceport } from "../../store/spaceport";
+import { getOneSpaceport, getAllSpaceport } from "../../store/spaceport";
 import { deleteSpaceport } from "../../store/spaceport";
 import OpenModalButton from "../OpenModalButton";
 import Confirmation from "../Confirmation";
@@ -30,8 +30,6 @@ function SpaceportDetails(){
     // Subscribe to single spaceport slice of state
     const spaceport = useSelector(state => state.spaceports.singleSpaceport)
 
-    console.log('spaceport: ', spaceport)
-
     // Subscribe to current user slice of state
     const user = useSelector(state => state.session.user)
 
@@ -44,11 +42,9 @@ function SpaceportDetails(){
     const deleteFunction = () => {
         dispatch(deleteSpaceport(id))
         closeModal()
+        dispatch(getAllSpaceport())
         history.push('/spaceports')
     }
-
-    console.log('user: ', user)
-
 
     return (
         <div className="grid-container">
