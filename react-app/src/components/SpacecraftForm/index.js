@@ -103,16 +103,18 @@ function SpacecraftForm({ edit, payload }){
             // If the edit flag is true, run the edit dispatch instead of the create dispatch
             if(edit){
                 dispatch(updateSpacecraft(payload, id)).then(res => {
-                    history.push(`/spacecrafts/${res.spacecraft.id}`)
                     setIsSubmitted(false)
+                    reset()
+                    history.push(`/spacecrafts/${res.spacecraft.id}`)
                 }).catch(res => {
                     const data = res
                     if(data && data.errors) setBackendErrors(data.errors)
                  })
             } else {
                 dispatch(createSpacecraft(payload)).then(res => { 
-                    history.push(`/spacecrafts/${res.spacecraft.id}`)
                     setIsSubmitted(false)
+                    reset()
+                    history.push(`/spacecrafts/${res.spacecraft.id}`)
                  }).catch(res => {
                     const data = res
                     if(data && data.errors){

@@ -79,6 +79,8 @@ function SpaceportForm({ edit, payload }){
             // If the edit flag is true, run the edit dispatch instead of the create dispatch
             if(edit){
                 dispatch(updateSpaceport(newSpaceport, id)).then(res => {
+                    setIsSubmitted(false)
+                    reset()
                     history.push(`/spaceports/${id}`)
                 }).catch(res => {
                     const data = res
@@ -86,6 +88,8 @@ function SpaceportForm({ edit, payload }){
                 })
             } else {
                 dispatch(createSpaceport(newSpaceport)).then(res => {
+                    setIsSubmitted(false)
+                    reset()
                     history.push(`/spaceports/${res.spaceport.id}`)
                 }).catch(res => {
                     const data = res
