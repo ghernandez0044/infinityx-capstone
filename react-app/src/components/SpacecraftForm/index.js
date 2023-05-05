@@ -73,11 +73,6 @@ function SpacecraftForm({ edit, payload }){
         if(trunkVolume.toString().length === 0) validationErrors.trunkVolumeErr = 'Trunk Volume is required'
 
         setErrors(validationErrors)
-
-        console.log('errors: ', errors)
-        console.log('isSubmitted: ', isSubmitted)
-
-
     }, [ model, year, loadCapacity, description, height, diameter, mass, capsuleVolume, trunkVolume ])
 
     // Subscribe to current user slice of state
@@ -121,9 +116,7 @@ function SpacecraftForm({ edit, payload }){
                  }).catch(res => {
                     const data = res
                     if(data && data.errors){
-                        console.log('inside create spacecraft')
                         setBackendErrors(data.errors)
-                        console.log('create a spacecraft backend errors: ', backendErrors)
                     } 
                  })
             }
