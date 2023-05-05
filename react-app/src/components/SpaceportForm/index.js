@@ -107,21 +107,21 @@ function SpaceportForm({ edit, payload }){
         <div className="spacecraft-form-container">
             <h1 style={{ textAlign: 'center' }}>{!edit ? 'Create A Spaceport' : 'Edit A Spaceport'}</h1>
             <form className="form" onSubmit={onSubmit}>
-                <label>Name: </label>
+                <label className="label-font">Name: </label>
                 {isSubmitted && errors.nameErr && ( <div className='label-font spacecraft-errors'>{errors.nameErr}</div> )}
                 <input id='name' type='text' value={name} onChange={(e) => setName(e.target.value)} required placeholder="Required"></input>
-                <label>Description: </label>
+                <label className="label-font">Description: </label>
                 <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required placeholder="Required"></textarea>
-                <label>City: </label>
+                <label className="label-font">City: </label>
                 {isSubmitted && errors.cityErr && ( <div className='label-font spacecraft-errors'>{errors.cityErr}</div> )}
                 <input id='city' type='text' value={city} onChange={(e) => setCity(e.target.value)} required placeholder="Required"></input>
-                <label>State: </label>
+                <label className="label-font">State: </label>
                 {isSubmitted && errors.stateErr && ( <div className='label-font spacecraft-errors'>{errors.stateErr}</div> )}
                 <input id='state' type='text' value={state} onChange={(e) => setState(e.target.value)} required placeholder="Required"></input>
-                <label>Latitude: </label>
+                <label className="label-font">Latitude: </label>
                 {isSubmitted && errors.latErr && ( <div className='label-font spacecraft-errors'>{errors.latErr}</div> )}
                 <input id='latitude' type='number' value={lat} onChange={(e) => setLat(e.target.value)} ></input>
-                <label>Longitude: </label>
+                <label className="label-font">Longitude: </label>
                 {isSubmitted && errors.lngErr && ( <div className='label-font spacecraft-errors'>{errors.lngErr}</div> )}
                 <input id='longitude' type='number' value={lng} onChange={(e) => setLng(e.target.value)} ></input>
                 {/* <button type='submit'>{!edit ? 'Create Spaceport' : 'Edit Spaceport'}</button> */}
