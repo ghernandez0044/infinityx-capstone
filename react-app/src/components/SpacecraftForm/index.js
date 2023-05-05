@@ -24,6 +24,7 @@ function SpacecraftForm({ edit, payload }){
     // Create state variables
     const [ errors, setErrors ] = useState({})
     const [ backendErrors, setBackendErrors ] = useState({})
+    const [ isSubmitted, setIsSubmitted ] = useState(false)
     const [ model, setModel ] = useState(payload?.model || '')
     const [ year, setYear ] = useState(payload?.year || '')
     const [ loadCapacity, setLoadCapacity ] = useState(payload?.load_capacity_kg || '')
@@ -56,8 +57,51 @@ function SpacecraftForm({ edit, payload }){
 
     if(!user.admin) return <h1>User Is Not An Admin</h1>
 
+
     // Create onSubmit function
-    const onSubmit = async
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        setIsSubmitted(true)
+        const backendErrorObj = {}
+
+        if(Object.keys(errors).length === 0){
+            const payload = {
+                        model,
+                        "year": Number(year),
+                        "load_capacity_kg": Number(loadCapacity),
+                        description,
+                        "height_m": Number(height),
+                        "diameter_m": Number(diameter),
+                        "mass_kg": Number(mass),
+                        "capsule_volume_m": Number(capsuleVolume),
+                        "trunk_volume_m": Number(trunkVolume)
+                    }
+    
+            // If the edit flag is true, run the edit dispatch instead of the create dispatch
+            if(edit){
+                const editedSpacecraft = await dispatch(updateSpacecraft(payload, id)).catch(async (res) => {
+                    const data = await res.json()
+                    if(data && data.errors) backendErrorObj.editErrors = data.errors
+                })
+                setIsSubmitted(false)
+                reset()
+                setBackendErrors(backendErrorObj)
+                history.push(`/spacecrafts/${res.spacecraft.id}`)
+                return
+            } else {
+                const createdSpacecraft = await dispatch(createSpacecraft(payload)).catch(async (res) => {
+                    const data = await res.json()
+                    if(data && data.errors) backendErrorObj.createErrors = data.errors
+                    setIsSubmitted(false)
+                    reset()
+                    setBackendErrors(backendErrorObj)
+                    history.push(`/spacecrafts/${res.spacecraft.id}`)
+                    return
+                })
+            }
+        }
+
+    }
 
     // // Create onSubmit function
     // const onSubmit = async (e) => {
