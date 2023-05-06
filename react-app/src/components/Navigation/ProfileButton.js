@@ -100,6 +100,7 @@ function ProfileButton({ user, set, setter }) {
   // Function to redirect to user profile page
   const redirectUserPage = () => {
     history.push(`/users/${user.id}`)
+    closeMenu()
   }
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");

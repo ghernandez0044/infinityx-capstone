@@ -18,6 +18,7 @@ import PlanetGallery from "./components/PlanetGallery";
 import PlanetDetails from "./components/PlanetDetails";
 import CreatePlanet from "./components/CreatePlanet";
 import EditPlanet from "./components/EditPlanet";
+import ProfilePage from "./components/ProfilePage";
 import Footer from "./components/Footer";
 
 
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/users/:id">
+            <ProfilePage />
           </Route>
           <Route exact path="/spacecrafts/:id/edit">
             <EditSpacecraft />

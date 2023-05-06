@@ -4,14 +4,15 @@ import session from './session'
 import spacecraftReducer from './spacecraft';
 import spaceportReducer from './spaceport';
 import planetReducer from './planet';
+import profileReducer from './profile';
 
 const rootReducer = combineReducers({
   session,
   spacecrafts: spacecraftReducer,
   spaceports: spaceportReducer,
-  planets: planetReducer
+  planets: planetReducer,
+  profiles: profileReducer
 });
-
 
 let enhancer;
 
