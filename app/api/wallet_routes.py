@@ -12,3 +12,10 @@ wallet_routes = Blueprint('wallets', __name__)
 def get_all_wallets():
     all_wallets = Wallet.query.all()
     return [wallet.to_dict() for wallet in all_wallets]
+
+# Get one wallet route
+@wallet_routes.route('/<int:id>')
+def get_one_wallet(id):
+    one_wallet = Wallet.query.get(id)
+    return one_wallet.to_dict()
+
