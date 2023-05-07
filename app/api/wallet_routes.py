@@ -53,3 +53,16 @@ def update_wallet(id):
                 return {"message": "form errors", "statusCode": 400, "errors": f"{form.errors}"}
         return {"mesage": "Wallet does not belong to this user"}
     return {"message": "Wallet is not found"}
+
+# Delete a wallet route
+@wallet_routes.route('/<int:id>', methods=["DELETE"])
+def delete_wallet(id):
+    user = current_user
+    wallet = Wallet.query.get(id)
+    if wallet:
+        if wallet.user_id == user.id:
+            db.session.delete(wallet)
+            db.session.commit()
+            return {"message": "Wallet deleted!"}
+        return {"message": "Wallet does not belong to this user"}
+    return {"message": "Wallet is not found"}
