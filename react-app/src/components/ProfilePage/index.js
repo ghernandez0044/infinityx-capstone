@@ -19,8 +19,6 @@ function ProfilePage(){
 
     // Subscribe to single profile slice of state
     const profile = useSelector(state => state.profiles.singleProfile)
-
-    console.log('profile: ', profile)
     
     // Subscribe to current user slice of state
     const user = useSelector(state => state.session.user)

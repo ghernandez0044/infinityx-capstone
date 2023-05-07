@@ -85,7 +85,6 @@ export const updateSpacecraft = (spacecraft, id) => async (dispatch) => {
     })
     if(res.ok){
         const updatedSpacecraft = await res.json()
-        console.log('updatedSpacecraft: ', updateSpacecraft)
         dispatch(actionUpdateSpacecraft(spacecraft))
         return updatedSpacecraft
     }
