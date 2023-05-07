@@ -11,6 +11,7 @@ from .api.spacecraft_routes import spacecraft_routes
 from .api.spaceport_routes import spaceport_routes
 from .api.planet_routes import planet_routes
 from .api.planet_comment_routes import planet_comment_routes
+from .api.wallet_routes import wallet_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -36,6 +37,7 @@ app.register_blueprint(spacecraft_routes, url_prefix='/api/spacecrafts')
 app.register_blueprint(spaceport_routes, url_prefix='/api/spaceports')
 app.register_blueprint(planet_routes, url_prefix='/api/planets')
 app.register_blueprint(planet_comment_routes, url_prefix='/api/comments')
+app.register_blueprint(wallet_routes, url_prefix='/api/wallets')
 db.init_app(app)
 Migrate(app, db)
 

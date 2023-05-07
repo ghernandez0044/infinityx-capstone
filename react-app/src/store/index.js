@@ -5,13 +5,15 @@ import spacecraftReducer from './spacecraft';
 import spaceportReducer from './spaceport';
 import planetReducer from './planet';
 import profileReducer from './profile';
+import walletReducer from './wallet';
 
 const rootReducer = combineReducers({
   session,
   spacecrafts: spacecraftReducer,
   spaceports: spaceportReducer,
   planets: planetReducer,
-  profiles: profileReducer
+  profiles: profileReducer,
+  wallets: walletReducer
 });
 
 let enhancer;
