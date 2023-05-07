@@ -32,3 +32,24 @@ def create_wallet():
     db.session.add(new_wallet)
     db.session.commit()
     return {"wallet": new_wallet.to_dict()}
+
+# Update a wallet route
+@wallet_routes.route('/<int:id>', methods=["PATCH", "PUT"])
+def update_wallet(id):
+    user = current_user
+    wallet = Wallet.query.get(id)
+
+    if wallet:
+        if wallet.user_id == user.id:
+            form = WalletForm()
+            form["csrf_token"].data = request.cookies["csrf_token"]
+
+            if form.validate_on_submit():
+                wallet.funds = form.data['funds']
+                db.session.commit()
+                updated_wallet = Wallet.query.get(id)
+                return {"wallet": updated_wallet.to_dict()}
+            if form.errors:
+                return {"message": "form errors", "statusCode": 400, "errors": f"{form.errors}"}
+        return {"mesage": "Wallet does not belong to this user"}
+    return {"message": "Wallet is not found"}
