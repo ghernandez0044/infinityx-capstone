@@ -58,7 +58,7 @@ export const getOnePlanetComment = (id) => async (dispatch) => {
     const res = await fetch(`/api/comments/planet/${id}`)
     if(res.ok){
         const comments = await res.json()
-        dispatch(actionLoadPlanetComment(comments))
+        dispatch(actionLoadOnePlanetComments(comments))
         return comments
     }
     return res
@@ -105,7 +105,7 @@ export const deletePlanetComment = (commentId) => async (dispatch) => {
 // Initial State
 const initialState = {
     allPlanetComments: {},
-    singlePlanetComment: {}
+    singlePlanetComments: {}
 }
 
 // Reducer

@@ -1,0 +1,42 @@
+.planet-comment-card-container{
+    /* border: 3px solid red; */
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.planet-comment-card-container > div{
+    margin: auto 60px;
+}
+
+.user-info{
+    /* border: 3px solid yellow; */
+    height: 130px;
+    width: 150px;
+    /* width: fit-content; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-info > div {
+    margin: auto 4px;
+}
+
+.user-info > div > img {
+    margin-bottom: 8px;
+}
+
+.user-info > div {
+    margin: 5px auto;
+}
+
+.comment-info{
+    /* border: 3px solid pink; */
+    height: 75px;
+    padding: 10px;
+}
