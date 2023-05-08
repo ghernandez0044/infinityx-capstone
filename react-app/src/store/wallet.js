@@ -121,7 +121,7 @@ const walletReducer = (state = initialState, action) => {
         case UPDATE_WALLET:
             return {...state, allWallets: {...state.allWallets, [action.wallet.id]: action.wallet}}
         case DELETE_WALLET:
-            delete newState.allWallets[action.id]
+            delete newState.allWallets[action.walletId]
             return newState
         default:
             return state

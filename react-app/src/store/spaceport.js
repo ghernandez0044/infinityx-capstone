@@ -125,7 +125,7 @@ const spaceportReducer = (state = initialState, action) => {
         case UPDATE_SPACEPORT:
             return {...state, allSpaceports: {...state.allSpaceports, [action.spaceport.id]: action.spaceport}}
         case DELETE_SPACEPORT:
-            delete newState.allSpaceports[action.id]
+            delete newState.allSpaceports[action.spaceportId]
             return newState
         default:
             return state

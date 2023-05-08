@@ -6,6 +6,7 @@ import spaceportReducer from './spaceport';
 import planetReducer from './planet';
 import profileReducer from './profile';
 import walletReducer from './wallet';
+import planetCommentReducer from './planetComments';
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   spaceports: spaceportReducer,
   planets: planetReducer,
   profiles: profileReducer,
-  wallets: walletReducer
+  wallets: walletReducer,
+  planetComments: planetCommentReducer
 });
 
 let enhancer;
