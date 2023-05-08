@@ -23,7 +23,9 @@ def user(id):
     """
     user = User.query.get(id)
     # return user.to_dict()
-    return {**user.to_dict(), "membership": user.membership[0].to_dict(), "wallet": user.wallet[0].to_dict(), "transactions": [transaction.to_dict() for transaction in user.transactions], "planet_comments": [comment.to_dict() for comment in user.planet_comments]}
+    print('user: ', user)
+    print('user wallet: ', user.wallet)
+    return {**user.to_dict(), "wallet": [wallet.to_dict() for wallet in user.wallet], "membership": [membership.to_dict() for membership in user.membership], "transactions": [transaction.to_dict() for transaction in user.transactions], "planet_comments": [comment.to_dict() for comment in user.planet_comments]}
 
 # NEW CODE FROM BELOW ON OUT
 

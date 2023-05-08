@@ -64,11 +64,10 @@ export const getOneWallet = (id) => async (dispatch) => {
     return res
 }
 
-export const createWallet = (wallet) => async (dispatch) => {
+export const createWallet = () => async (dispatch) => {
     const res = await fetch('/api/wallets/', {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(wallet)
+        headers: { "Content-Type": "application/json" }
     })
     if(res.ok){
         const wallet = await res.json()
@@ -118,9 +117,9 @@ const walletReducer = (state = initialState, action) => {
         case LOAD_WALLET:
             return {...state, singleWallet: {...action.wallet}}
         case CREATE_WALLET:
-            return {...state, allWallets: {...state, allWallets, [action.wallet.id]: action.wallet}}
+            return {...state, allWallets: {...state.allWallets, [action.wallet.id]: action.wallet}}
         case UPDATE_WALLET:
-            return {...state, allWallets: {...state, allWallets, [action.wallet.id]: action.wallet}}
+            return {...state, allWallets: {...state.allWallets, [action.wallet.id]: action.wallet}}
         case DELETE_WALLET:
             delete newState.allWallets[action.id]
             return newState

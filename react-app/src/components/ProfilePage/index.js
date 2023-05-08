@@ -52,8 +52,8 @@ function ProfilePage(){
             <div className='bottom-content-container'>
                 <div className='wallet-header-container'>
                     <div>Wallet</div>
-                    <div>{profile.wallet.address}</div>
-                    <div>${profile.wallet.funds}</div>
+                    <div>Address: {profile?.wallet[0]?.address}</div>
+                    <div>Funds: ${profile?.wallet[0]?.funds}</div>
                 </div>
                 <div className='transactions-container'>
                     <div style={{textAlign: 'center' }}>Transactions</div>
