@@ -14,6 +14,12 @@ def get_all_planet_comments():
     all_comments = PlanetComment.query.all()
     return [comment.to_dict() for comment in all_comments]
 
+# Get all comments for one planet route
+@planet_comment_routes.route('/planet/<int:id>')
+def get_one_planet_all_comments(id):
+    all_planet_comments = PlanetComment.query.filter(PlanetComment.planet_id == id).all()
+    return [comment.to_dict() for comment in all_planet_comments]
+
 # Get one comment details route
 @planet_comment_routes.route('/<int:id>')
 def get_one_comment(id):

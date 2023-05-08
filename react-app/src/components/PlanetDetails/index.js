@@ -6,6 +6,7 @@ import { getOnePlanet, deletePlanet } from "../../store/planet";
 import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton";
 import Confirmation from "../Confirmation";
+import PlanetCommentGallery from "../PlanetCommentGallery";
 import './PlanetDetails.css'
 
 function PlanetDetails(){
@@ -71,6 +72,7 @@ function PlanetDetails(){
                  <OpenModalButton modalComponent={<Confirmation label='Delete Planet' message='Are You Sure You Want To Delete?' onYes={deletePlanetFunction} yesLabel='Delete' noLabel='Keep' onNo={() => closeModal()} />} buttonText='Delete' />
              </div>
             )}
+            <PlanetCommentGallery />
         </div>
     )
 }

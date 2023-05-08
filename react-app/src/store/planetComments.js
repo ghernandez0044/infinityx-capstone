@@ -2,7 +2,7 @@ import { normalizingData } from "./spacecraft"
 
 // Type Variables
 const LOAD_PLANET_COMMENTS = "planetComments/loadPlanetComments"
-const LOAD_PLANET_COMMENT = "planetComments/loadPlanetComment"
+const LOAD_ONE_PLANET_COMMENTS = "planetComments/loadPlanetComment"
 const CREATE_PLANET_COMMENT = "planetComments/createPlanetComment"
 const UPDATE_PLANET_COMMENT = "planetComments/updatePlanetComment"
 const DELETE_PLANET_COMMENT = "planetComments/deletePlanetComment"
@@ -15,10 +15,10 @@ export const actionLoadPlanetComments = (comments) => {
     }
 }
 
-export const actionLoadPlanetComment = (comment) => {
+export const actionLoadOnePlanetComments = (comments) => {
     return {
-        type: LOAD_PLANET_COMMENT,
-        comment
+        type: LOAD_ONE_PLANET_COMMENTS,
+        comments
     }
 }
 
@@ -55,11 +55,11 @@ export const getAllPlanetComments = () => async (dispatch) => {
 }
 
 export const getOnePlanetComment = (id) => async (dispatch) => {
-    const res = await fetch(`/api/comments/${id}`)
+    const res = await fetch(`/api/comments/planet/${id}`)
     if(res.ok){
-        const comment = await res.json()
-        dispatch(actionLoadPlanetComment(comment))
-        return comment
+        const comments = await res.json()
+        dispatch(actionLoadPlanetComment(comments))
+        return comments
     }
     return res
 }
@@ -116,8 +116,8 @@ const planetCommentReducer = (state = initialState, action) => {
             const comments = normalizingData(action.comments)
             newState.allPlanetComments = {...comments}
             return newState
-        case LOAD_PLANET_COMMENT:
-            return {...state, singlePlanetComment: {...action.comment}}
+        case LOAD_ONE_PLANET_COMMENTS:
+            return {...state, singlePlanetComments: {...action.comments}}
         case CREATE_PLANET_COMMENT:
             return {...state, allPlanetComments: {...state.allPlanetComments, [action.comment.id]: action.comment}}
         case UPDATE_PLANET_COMMENT:
