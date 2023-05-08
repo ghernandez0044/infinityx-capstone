@@ -17,6 +17,16 @@ function ProfilePage(){
         dispatch(getOneProfile(id))
     }, [dispatch, id])
 
+    // Function to share profile
+    const share = () => {
+        console.log('share function')
+    }
+
+    // Function to redirect to edit profile page
+    const editProfile = () => {
+        console.log('edit profile function')
+    }
+
     // Subscribe to single profile slice of state
     const profile = useSelector(state => state.profiles.singleProfile)
     
@@ -31,11 +41,21 @@ function ProfilePage(){
     return (
         <div className='profile-page-container'>
             <div className='main-content-container'>
-                <div>
+                <div className='profile-pic-container'>
                     <img style={{ height: '175px', width: '175px', borderRadius: '50%' }} src={profile.profile_pic} alt='' />
                 </div>
                 <div className='big-content-font'>{profile.first_name}, {profile.last_name}</div>
                 <div className='small-content-font'>@{profile.username}</div>
+                <div className='profile-buttons-container'>
+                    <div onClick={share} className="button animate">
+                        <div className="hover-effect"></div>
+                        <span className="signup-button-font">Share</span>
+                    </div>
+                    <div onClick={editProfile} className="button animate">
+                        <div className="hover-effect"></div>
+                        <span className="signup-button-font">Edit Profile</span>
+                    </div>
+                </div>
                 <div className='passport-font'>{profile.passport}</div>
             </div>
             <div className='middle-content-container'>
