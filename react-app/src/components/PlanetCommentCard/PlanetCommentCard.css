@@ -8,12 +8,20 @@
     align-items: center;
 }
 
+.planet-comment-card-container:hover .delete-icon{
+    display: block;
+}
+
+.planet-comment-card-container:hover .pen-icon{
+    display: block;
+}
+
 .planet-comment-card-container > div{
     margin: auto 60px;
 }
 
 .user-info{
-    border: 3px solid yellow;
+    /* border: 3px solid yellow; */
     height: 130px;
     width: 150px;
     /* width: fit-content; */
@@ -37,12 +45,14 @@
 }
 
 .delete-icon{
+    display: none;
     position: absolute;
     left: -30%;
     top: 10%;
 }
 
 .pen-icon{
+    display: none;
     position: absolute;
     left: -30%;
     top: 60%;

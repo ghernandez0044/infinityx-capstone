@@ -3,6 +3,7 @@ import { NavLink, useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllProfiles } from "../../store/profile";
+import OpenModalIcon from "../OpenModalIcon";
 import './PlanetCommentCard.css'
 
 function PlanetCommentCard({ comment }){
@@ -42,12 +43,14 @@ function PlanetCommentCard({ comment }){
                 <div>{user?.passport}</div>
                 {userPlanetComment && ( 
                     <div className="delete-icon pointer">
-                        <i className="fa-solid fa-trash" />
+                        {/* <i className="fa-solid fa-trash" /> */}
+                        <OpenModalIcon modalComponent={<h1>Delete Confirmation</h1>} icon='fa-solid fa-trash' />
                     </div>
                  )}
                 {userPlanetComment && ( 
                     <div className="pen-icon pointer">
-                        <i className="fa-solid fa-pen" />
+                        {/* <i className="fa-solid fa-pen" /> */}
+                        <OpenModalIcon modalComponent={<h1>Edit Comment Modal</h1>} icon='fa-solid fa-pen' />
                     </div>
                  )}
             </div>
