@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
+import { createWallet } from "../../store/wallet";
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -40,6 +41,7 @@ function SignupFormModal() {
 
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, password, admin, firstName, lastName, phone, passport, profilePic, created_at));
+			await dispatch(createWallet())
 			if (data) {
 				setErrors(data);
 			} else {

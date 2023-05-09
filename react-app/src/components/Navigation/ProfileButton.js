@@ -97,6 +97,12 @@ function ProfileButton({ user, set, setter }) {
     setter(false)
   }
 
+  // Function to redirect to user profile page
+  const redirectUserPage = () => {
+    history.push(`/users/${user.id}`)
+    closeMenu()
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
@@ -117,13 +123,9 @@ function ProfileButton({ user, set, setter }) {
           <>
             <div className="dropdown-menu-font">Username: {user.username}</div>
             <div className="dropdown-menu-font">Email: {user.email}</div>
-            {/* {user.admin && (
-              <div>
-                <button onClick={redirectSpacecraft}>Create A Spacecraft</button>
-                <button onClick={redirectSpaceport}>Create A Spaceport</button>
-                <button onClick={redirectPlanet}>Create A Planet</button>
+            <div onClick={redirectUserPage} className="pointer">
+              <i className="fa-solid fa-user-astronaut" />
             </div>
-            )} */}
             {user.admin && ( <div className="pointer dropdown-menu-font" onClick={redirectSpacecraft}>Create A Spacecraft</div> )}
             {user.admin && ( <div className="pointer dropdown-menu-font" onClick={redirectSpaceport}>Create A Spaceport</div> )}
             {user.admin && ( <div className="pointer dropdown-menu-font" onClick={redirectPlanet}>Create A Planet</div> )}

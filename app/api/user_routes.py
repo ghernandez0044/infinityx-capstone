@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import User, PlanetComment
-\
+from app.models import User, PlanetComment, FrequentFlyer, Wallet, Transaction
 
 user_routes = Blueprint('users', __name__)
 
@@ -23,7 +22,10 @@ def user(id):
     Query for a user by id and returns that user in a dictionary
     """
     user = User.query.get(id)
-    return user.to_dict()
+    # return user.to_dict()
+    print('user: ', user)
+    print('user wallet: ', user.wallet)
+    return {**user.to_dict(), "wallet": [wallet.to_dict() for wallet in user.wallet], "membership": [membership.to_dict() for membership in user.membership], "transactions": [transaction.to_dict() for transaction in user.transactions], "planet_comments": [comment.to_dict() for comment in user.planet_comments]}
 
 # NEW CODE FROM BELOW ON OUT
 

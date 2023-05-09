@@ -125,7 +125,7 @@ const planetReducer = (state = initialState, action) => {
         case UPDATE_PLANET:
             return {...state, allPlanets: {...state.allPlanets, [action.planet.id]: action.planet}}
         case DELETE_PLANET:
-            delete newState.allPlanets[action.id]
+            delete newState.allPlanets[action.planetId]
             return newState
         default:
             return state

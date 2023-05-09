@@ -126,6 +126,7 @@
 .hoverable{
   display: inblock;
   position: relative;
+  cursor: pointer;
 }
 
 .hoverable::before{
