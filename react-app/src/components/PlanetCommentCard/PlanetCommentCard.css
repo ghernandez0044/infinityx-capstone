@@ -1,5 +1,5 @@
 .planet-comment-card-container{
-    /* border: 3px solid red; */
+    border: 3px solid red;
     width: 100%;
     height: 150px;
     display: flex;
@@ -13,7 +13,7 @@
 }
 
 .user-info{
-    /* border: 3px solid yellow; */
+    border: 3px solid yellow;
     height: 130px;
     width: 150px;
     /* width: fit-content; */
@@ -21,6 +21,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .user-info > div {
@@ -33,6 +34,18 @@
 
 .user-info > div {
     margin: 5px auto;
+}
+
+.delete-icon{
+    position: absolute;
+    left: -30%;
+    top: 10%;
+}
+
+.pen-icon{
+    position: absolute;
+    left: -30%;
+    top: 60%;
 }
 
 .comment-info{

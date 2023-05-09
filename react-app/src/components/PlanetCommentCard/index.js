@@ -21,6 +21,12 @@ function PlanetCommentCard({ comment }){
     const profiles = useSelector(state => state.profiles.allProfiles)
     const user = profiles[comment.user_id]
 
+    // Subscribe to current user slice of state
+    const currentUser = useSelector(state => state.session.user)
+
+    // Check to see if current user own planet comment
+    const userPlanetComment = currentUser.id === comment.user_id ? true : false
+
     // Function to redirect to profile page
     const redirectProfile = () => {
         history.push(`/users/${comment.user_id}`)
@@ -34,6 +40,16 @@ function PlanetCommentCard({ comment }){
                 </div>
                 <div onClick={redirectProfile} className="pointer">@{user?.username}</div>
                 <div>{user?.passport}</div>
+                {userPlanetComment && ( 
+                    <div className="delete-icon pointer">
+                        <i className="fa-solid fa-trash" />
+                    </div>
+                 )}
+                {userPlanetComment && ( 
+                    <div className="pen-icon pointer">
+                        <i className="fa-solid fa-pen" />
+                    </div>
+                 )}
             </div>
             <div className="comment-info">
                 <div>{comment.content}</div>
