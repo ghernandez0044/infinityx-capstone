@@ -8,6 +8,7 @@ import OpenModalButton from "../OpenModalButton";
 import Confirmation from "../Confirmation";
 import PlanetCommentGallery from "../PlanetCommentGallery";
 import './PlanetDetails.css'
+import { getOnePlanetComment } from "../../store/planetComments";
 
 function PlanetDetails(){
     // Extract parameter from useParams object
@@ -25,6 +26,7 @@ function PlanetDetails(){
     // Load planet upon component render
     useEffect(() => {
         dispatch(getOnePlanet(id))
+        dispatch(getOnePlanetComment(id))
     }, [dispatch, id])
 
     // Load planet upon component render
@@ -32,6 +34,9 @@ function PlanetDetails(){
 
     // Subscribe to current user slice of state
     const user = useSelector(state => state.session.user)
+
+    // Subscribe to one planet comments slice of state
+    const onePlanetComments = useSelector(state => state.planetComments.singlePlanetComments)
 
     // Function to redirect to edit page
     const redirect = () => {

@@ -1,6 +1,6 @@
 // Necessary imports
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOnePlanetComment, createPlanetComment } from "../../store/planetComments";
 import PlanetCommentCard from "../PlanetCommentCard";
@@ -9,6 +9,9 @@ import './PlanetCommentGallery.css'
 function PlanetCommentGallery(){
     // Create dispatch method
     const dispatch = useDispatch()
+
+    // Create history method
+    const history = useHistory()
 
     // Extract desired variable from parameters object
     const { id } = useParams()
@@ -35,8 +38,9 @@ function PlanetCommentGallery(){
         const comment = {
             content
         }
-        dispatch(createPlanetComment(comment, id))
-        dispatch(getOnePlanetComment(id))
+        dispatch(createPlanetComment(comment, id)).then(res => {
+            dispatch(getOnePlanetComment(id))
+        })
         reset()
     }
     

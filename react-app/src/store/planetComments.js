@@ -29,10 +29,11 @@ export const actionCreatePlanetComment = (comment) => {
     }
 }
 
-export const actionUpdatePlanetComment = (comment) => {
+export const actionUpdatePlanetComment = (comment, commentId) => {
     return {
         type: UPDATE_PLANET_COMMENT,
-        comment
+        comment,
+        commentId
     }
 }
 
@@ -55,6 +56,7 @@ export const getAllPlanetComments = () => async (dispatch) => {
 }
 
 export const getOnePlanetComment = (id) => async (dispatch) => {
+    console.log('inside getOnePlanetComment')
     const res = await fetch(`/api/comments/planet/${id}`)
     if(res.ok){
         const comments = await res.json()
@@ -86,7 +88,7 @@ export const updatePlanetComment = (comment, id) => async (dispatch) => {
     })
     if(res.ok){
         const updatedComment = await res.json()
-        dispatch(actionUpdatePlanetComment(comment))
+        dispatch(actionUpdatePlanetComment(updatedComment, id))
         return updatedComment
     }
     return res
@@ -117,13 +119,16 @@ const planetCommentReducer = (state = initialState, action) => {
             newState.allPlanetComments = {...comments}
             return newState
         case LOAD_ONE_PLANET_COMMENTS:
-            return {...state, singlePlanetComments: {...action.comments}}
+            const onePlanetComments = normalizingData(action.comments)
+            newState.singlePlanetComments = {...onePlanetComments}
+            return newState
         case CREATE_PLANET_COMMENT:
             return {...state, allPlanetComments: {...state.allPlanetComments, [action.comment.id]: action.comment}}
         case UPDATE_PLANET_COMMENT:
-            return {...state, allPlanetComments: {...state.allPlanetComments, [action.comment.id]: action.comment}}
+            return {...state, allPlanetComments: {...state.allPlanetComments, [action.commentId]: action.comment}}
         case DELETE_PLANET_COMMENT:
             delete newState.allPlanetComments[action.commentId]
+            return newState
         default:
             return state
     }

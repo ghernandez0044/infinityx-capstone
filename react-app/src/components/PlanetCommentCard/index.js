@@ -2,8 +2,12 @@
 import { NavLink, useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useModal } from "../../context/Modal";
 import { getAllProfiles } from "../../store/profile";
+import { deletePlanetComment, getOnePlanetComment } from "../../store/planetComments";
 import OpenModalIcon from "../OpenModalIcon";
+import Confirmation from "../Confirmation";
+import PlanetCommentForm from "../PlanetCommentForm";
 import './PlanetCommentCard.css'
 
 function PlanetCommentCard({ comment }){
@@ -12,6 +16,9 @@ function PlanetCommentCard({ comment }){
 
     // Create history method
     const history = useHistory()
+
+    // Consume useModal context for desired function
+    const { closeModal } = useModal()
 
     // Load user information
     useEffect(() => {
@@ -33,6 +40,14 @@ function PlanetCommentCard({ comment }){
         history.push(`/users/${comment.user_id}`)
     }
 
+    // Function to delete planet comment
+    const onYes = () => {
+        dispatch(deletePlanetComment(comment.id)).then(res => {
+            dispatch(getOnePlanetComment(comment.planet_id))
+        })
+        closeModal()
+    }
+
     return (
         <div className="planet-comment-card-container">
             <div className="user-info">
@@ -44,13 +59,13 @@ function PlanetCommentCard({ comment }){
                 {userPlanetComment && ( 
                     <div className="delete-icon pointer">
                         {/* <i className="fa-solid fa-trash" /> */}
-                        <OpenModalIcon modalComponent={<h1>Delete Confirmation</h1>} icon='fa-solid fa-trash' />
+                        <OpenModalIcon modalComponent={<Confirmation label='Delete Comment' message='Are you sure you want to delete this comment?' onYes={onYes} onNo={() => closeModal()} yesLabel='Delete' noLabel='Keep' />} icon='fa-solid fa-trash' />
                     </div>
                  )}
                 {userPlanetComment && ( 
                     <div className="pen-icon pointer">
                         {/* <i className="fa-solid fa-pen" /> */}
-                        <OpenModalIcon modalComponent={<h1>Edit Comment Modal</h1>} icon='fa-solid fa-pen' />
+                        <OpenModalIcon modalComponent={<PlanetCommentForm comment={comment} />} icon='fa-solid fa-pen' />
                     </div>
                  )}
             </div>
