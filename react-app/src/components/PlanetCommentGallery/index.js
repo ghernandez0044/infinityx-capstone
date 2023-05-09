@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getOnePlanetComment } from "../../store/planetComments";
+import { getOnePlanetComment, createPlanetComment } from "../../store/planetComments";
 import PlanetCommentCard from "../PlanetCommentCard";
 import './PlanetCommentGallery.css'
 
@@ -32,12 +32,14 @@ function PlanetCommentGallery(){
     // Create onSubmit function
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log('submit')
+        const comment = {
+            content
+        }
+        dispatch(createPlanetComment(comment, id))
+        dispatch(getOnePlanetComment(id))
+        reset()
     }
-
-    console.log('planet comments: ', planetComments)
     
-
     return (
         <>
             <div className="planet-comment-gallery-page">

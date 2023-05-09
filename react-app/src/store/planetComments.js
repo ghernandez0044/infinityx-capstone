@@ -64,8 +64,8 @@ export const getOnePlanetComment = (id) => async (dispatch) => {
     return res
 }
 
-export const createPlanetComment = (comment) => async (dispatch) => {
-    const res = await fetch(`/api/comments/`, {
+export const createPlanetComment = (comment, id) => async (dispatch) => {
+    const res = await fetch(`/api/planets/${id}/comments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(comment)

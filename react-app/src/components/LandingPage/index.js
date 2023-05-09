@@ -1,30 +1,28 @@
 // Necessary Imports
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
 import './LandingPage.css'
-import starryBackground from './—Pngtree—brush universe starry surreal_6227069.png'
-import astronaut from './—Pngtree—astronaut space planet_5407098.png'
-import globe from '../../assets/favpng_earth-outer-space-information-meteor-shower.png'
-import nebula from '../../assets/orion-nebula-ga5f10a568_1920.jpg'
 import SectionALandingPage from '../SectionALandingPage'
+import { getApod } from '../../store/api'
 import GalleryCard from '../GalleryCard'
 
 
 
 function LandingPage(){
+    // Create dispatch method
+    const dispatch = useDispatch()
 
+    // Fetch API calls upon component render
+    // useEffect(() => {
+    //     dispatch(getApod())
+    // }, [dispatch])
 
+    // Subscribe to apod api slice of state
+    // const apod = useSelector(state => state.api)
 
     return (
         <div className='whole-content-container'>
-            {/* <div className='header-section'>
-                <img src={nebula} alt='' className='background-image' />
-                <img src={globe} alt='' className='foreground-image' />
-                <h1 className='title'>InfinityX</h1>
-            </div>
-            <div className='landing-text'>
-            InfinityX, a SpaceX and Southwest Airlines/jetBlue Airlines clone, is a website for users to book spacecraft flights for inter and multi - planetary travel where this will also serve as a social hub for members who participate or are interested in such travels
-            </div> */}
-            {/* <SectionALandingPage /> */}
             <GalleryCard smallTag='Welcome' bigTag='An Intergalactic Hub' buttonText='Explore' destination='landing' />
         </div>
     )
