@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import { getOneProfile } from '../../store/profile'
+import TransactionCard from '../TransactionCard'
 import './ProfilePage.css'
 
 function ProfilePage(){
@@ -35,6 +36,8 @@ function ProfilePage(){
     
     // Check to see if current user owns profile
     const currentUserProfile = user?.id === profile.id
+
+    console.log('transactions: ', profile?.transactions)
         
     if(Object.values(profile).length === 0) return null
 
@@ -60,7 +63,6 @@ function ProfilePage(){
             </div>
             <div className='middle-content-container'>
                 <div className='profile-tabs-container'>
-                    <div className='hoverable middle-header-font'>Planet Comments</div>
                     <div className='hoverable middle-header-font'>Membership</div>
                     <div className='hoverable middle-header-font'>Flights</div>
                 </div>
@@ -78,7 +80,7 @@ function ProfilePage(){
                 <div className='transactions-container'>
                     <div style={{textAlign: 'center' }}>Transactions</div>
                     {profile?.transactions?.map(transaction => (
-                        <div key={transaction.id}>${transaction.total}</div>
+                        <TransactionCard key={transaction.id} transaction={transaction} />
                     ))}
                 </div>
             </div>
