@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useModal } from "../../context/Modal";
 import OpenModalIcon from "../OpenModalIcon";
 import Confirmation from "../Confirmation";
+import TransactionReceipt from "../TransactionReceipt";
 import './TransactionCard.css'
 
 function TransactionCard({ transaction }){
@@ -28,7 +29,7 @@ function TransactionCard({ transaction }){
                 <div id='quantity'>Quantity: {transaction.quantity}</div>
                 <div id='total'>Total: ${transaction.total.toLocaleString()}</div>
                 <div className="pointer">
-                    <OpenModalIcon modalComponent={<h1>Receipt</h1>} icon='fa-solid fa-receipt' />
+                    <OpenModalIcon modalComponent={<TransactionReceipt transaction={transaction} />} icon='fa-solid fa-receipt' />
                 </div>
             </div>
         </div>
