@@ -2,7 +2,7 @@
 
 
 .transaction-card-container{
-    border: 3px solid lime;
+    /* border: 3px solid lime; */
     height: 250px;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .details-container{
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     height: 50%;
     display: flex;
     justify-content: space-evenly;

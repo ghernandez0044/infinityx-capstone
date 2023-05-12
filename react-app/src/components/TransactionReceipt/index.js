@@ -11,6 +11,9 @@ function TransactionReceipt({ transaction }){
     // Create dispatch method
     const dispatch = useDispatch()
 
+    // Consume useModal context
+    const { closeModal } = useModal()
+
     console.log('transaction: ', transaction)
 
     // let profile = ''
@@ -49,6 +52,12 @@ function TransactionReceipt({ transaction }){
                 <div>Tax Percentage: {transaction.tax_percentage}%</div>
                 <div>Tax Total: ${transaction.tax_total.toLocaleString()}</div>
                 <div>Purchase Total: ${transaction.total.toLocaleString()}</div>
+            </div>
+            <div>
+                <div onClick={() => closeModal()} className="button animate">
+                    <div className="hover-effect"></div>
+                    <span className="signup-button-font">Close</span>
+                </div>
             </div>
         </div>
     )
