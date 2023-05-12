@@ -34,6 +34,7 @@ class Transaction(db.Model):
             'user_id': self.user_id,
             'seat_id': self.seat_id,
             'quantity': self.quantity,
+            'user_kg': self.user_kg,
             'unit_price': self.unit_price,
             'tax_percentage': self.tax_percentage,
             'tax_total': self.tax_total,

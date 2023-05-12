@@ -43,9 +43,9 @@ function TransactionReceipt({ transaction }){
                 <div>Points:{profile?.membership[0]?.points}</div>
             </div>
             <div className="main-receipt-content-container">
-                <div>Price Per Kg: ${transaction.unit_price.toLocaleString()}
+                <div>Price Per kg: ${transaction.unit_price.toLocaleString()}
                 </div>
-                <div>User Kg: {}</div>
+                <div>User kg: {transaction.user_kg} kg</div>
                 <div>Tax Percentage: {transaction.tax_percentage}%</div>
                 <div>Tax Total: ${transaction.tax_total.toLocaleString()}</div>
                 <div>Purchase Total: ${transaction.total.toLocaleString()}</div>
