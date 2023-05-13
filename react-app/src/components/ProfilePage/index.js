@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import { getOneProfile } from '../../store/profile'
 import TransactionCard from '../TransactionCard'
+import MembershipCard from '../MembershipCard'
 import './ProfilePage.css'
 
 function ProfilePage(){
@@ -69,6 +70,12 @@ function ProfilePage(){
                 <div className='icons-container'>
                     <i className='fa-solid fa-bars' />
                     <i className='fa-solid fa-plus' />
+                </div>
+                <div className='membership-content-container'>
+                    <div style={{textAlign: 'center' }}>Membership</div>
+                    {profile?.membership?.map(membership => (
+                        <MembershipCard key={membership.id} membership={membership} profile={profile} />
+                    ))}
                 </div>
             </div>
             <div className='bottom-content-container'>

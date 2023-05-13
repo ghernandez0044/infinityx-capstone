@@ -1,0 +1,30 @@
+.membership-card-container{
+    border: 3px solid purple;
+    margin: 35px auto;
+    width: 600px;
+    height: 400px;
+    max-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.membership-header-container{
+    border: 3px solid lime;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.membership-image-container{
+    border: 3px solid blue;
+}
+
+.membership-card-content-container{
+    border: 3px solid yellow;
+}
+
+.membership-profile-content-container{
+    border: 3px solid red;
+}
