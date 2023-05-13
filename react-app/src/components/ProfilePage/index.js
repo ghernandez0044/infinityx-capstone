@@ -1,5 +1,5 @@
 // Necessary imports
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import { getOneProfile } from '../../store/profile'
@@ -14,6 +14,9 @@ function ProfilePage(){
     // Create dispatch method
     const dispatch = useDispatch()
 
+    // Create state variables
+    const [ membership, setMembership ] = useState(true)
+
     // Render profile upon component render
     useEffect(() => {
         dispatch(getOneProfile(id))
@@ -27,6 +30,16 @@ function ProfilePage(){
     // Function to redirect to edit profile page
     const editProfile = () => {
         console.log('edit profile function')
+    }
+
+    // Function to open membership gallery
+    const membershipGallery = () => {
+        setMembership(true)
+    }
+
+    // Function to open flights gallery
+    const flightsGallery = () => {
+        setMembership(false)
     }
 
     // Subscribe to single profile slice of state
@@ -64,25 +77,37 @@ function ProfilePage(){
             </div>
             <div className='middle-content-container'>
                 <div className='profile-tabs-container'>
-                    <div className='hoverable middle-header-font'>Membership</div>
-                    <div className='hoverable middle-header-font'>Flights</div>
+                    <div className='hoverable middle-header-font' onClick={membershipGallery}>Membership</div>
+                    <div className='hoverable middle-header-font' onClick={flightsGallery}>Flights</div>
                 </div>
                 <div className='icons-container'>
                     <i className='fa-solid fa-bars' />
                     <i className='fa-solid fa-plus' />
                 </div>
-                <div className='membership-content-container'>
+                {membership ? (
+                    <div className='membership-content-container'>
+                        <div style={{textAlign: 'center' }}>Membership</div>
+                        {profile?.membership?.map(membership => (
+                            <MembershipCard key={membership.id} membership={membership} profile={profile} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className='flight-content-container'>
+                        <div style={{textAlign: 'center' }}>Flight</div>
+                    </div>
+                )}
+                {/* <div className='membership-content-container'>
                     <div style={{textAlign: 'center' }}>Membership</div>
                     {profile?.membership?.map(membership => (
                         <MembershipCard key={membership.id} membership={membership} profile={profile} />
                     ))}
-                </div>
+                </div> */}
             </div>
             <div className='bottom-content-container'>
                 <div className='wallet-header-container'>
                     <div>Wallet</div>
                     <div>Address: {profile?.wallet[0]?.address}</div>
-                    <div>Funds: ${profile?.wallet[0]?.funds}</div>
+                    <div>Funds: ${profile?.wallet[0]?.funds.toLocaleString()}</div>
                 </div>
                 <div className='transactions-container'>
                     <div style={{textAlign: 'center' }}>Transactions</div>
