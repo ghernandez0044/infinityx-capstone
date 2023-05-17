@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getAllProfiles } from "../../store/profile"
-import './PlanetGallery.css'
+import ProfileCard from "../ProfileCard"
+import './ProfileGallery.css'
 
 function ProfileGallery(){
     // Create dispatch method 
@@ -13,13 +14,14 @@ function ProfileGallery(){
         dispatch(getAllProfiles())
     }, [dispatch])
 
-    const allProfiles = useSelector(state => state.profiles.allProfiles)
-
-    console.log('allProfiles: ', allProfiles)
+    // Subscribe to allProfiles slice of state
+    const allProfiles = useSelector(state => Object.values(state.profiles.allProfiles))
 
     return (
-        <div className="">
-            null
+        <div className="profile-gallery-container">
+            {allProfiles.map(profile => (
+                <ProfileCard key={profile.id} profile={profile} />
+            ))}
         </div>
     )
 }
