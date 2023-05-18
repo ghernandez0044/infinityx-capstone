@@ -133,6 +133,7 @@ function ProfileButton({ user, set, setter }) {
             <div onClick={redirectSpaceportGallery} className="mobile-menu pointer dropdown-menu-font">Spaceports</div>
             <div onClick={redirectPlanetGallery} className="mobile-menu pointer dropdown-menu-font">Planets</div>
             <div className="mobile-menu pointer dropdown-menu-font">Rideshare</div>
+            <div className="mobile-menu pointer dropdown-menu-font">Group Chats</div>
             <div>
               {/* <button onClick={handleLogout}>Log Out</button> */}
               <div onClick={handleLogout} className="button animate">

@@ -60,6 +60,9 @@ function Navigation({ isLoaded }){
 				{sessionUser && ( 
 					<div className='hoverable navbar-font' onClick={redirectRideshare}>Rideshare</div>
 				 )}
+				{sessionUser && ( 
+					<div className='hoverable navbar-font' onClick={redirectRideshare}>Group Chats</div>
+				 )}
 			</div>
 			{isLoaded && (
 				<div className='profile-button-container'>

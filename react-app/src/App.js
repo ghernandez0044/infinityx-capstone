@@ -32,61 +32,64 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded && (
-        <Switch>
-          <Route exact path="/" >
-            <LandingPage />
-          </Route>
-          <Route exact path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route exact path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route exact path="/users">
-            <ProfileGallery />
-          </Route>
-          <Route exact path="/users/:id">
-            <ProfilePage />
-          </Route>
-          <Route exact path="/spacecrafts/:id/edit">
-            <EditSpacecraft />
-          </Route>
-          <Route exact path="/spacecrafts/new">
-            <CreateSpacecraft />
-          </Route>
-          <Route exact path="/spacecrafts">
-            <SpacecraftGallery />
-          </Route>
-          <Route exact path="/spacecrafts/:id">
-            <SpacecraftDetails />
-          </Route>
-          <Route exact path="/spaceports/:id/edit">
-            <EditSpaceport />
-          </Route>
-          <Route exact path="/spaceports/new">
-            <CreateSpaceport />
-          </Route>
-          <Route exact path="/spaceports">
-            <SpaceportGallery />
-          </Route>
-          <Route exact path="/spaceports/:id">
-            <SpaceportDetails />
-          </Route>
-          <Route exact path="/planets/new">
-            <CreatePlanet />
-          </Route>
-          <Route exact path="/planets">
-            <PlanetGallery />
-          </Route>
-          <Route exact path="/planets/:id">
-            <PlanetDetails />
-          </Route>
-          <Route exact path="/planets/:id/edit">
-            <EditPlanet />
-          </Route>
-        </Switch>
+        <>
+          <Navigation isLoaded={isLoaded} />
+          <Switch>
+            <Route exact path="/" >
+              <LandingPage />
+            </Route>
+            <Route exact path="/login" >
+              <LoginFormPage />
+            </Route>
+            <Route exact path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route exact path="/users">
+              <ProfileGallery />
+            </Route>
+            <Route exact path="/users/:id">
+              <ProfilePage />
+            </Route>
+            <Route exact path="/spacecrafts/:id/edit">
+              <EditSpacecraft />
+            </Route>
+            <Route exact path="/spacecrafts/new">
+              <CreateSpacecraft />
+            </Route>
+            <Route exact path="/spacecrafts">
+              <SpacecraftGallery />
+            </Route>
+            <Route exact path="/spacecrafts/:id">
+              <SpacecraftDetails />
+            </Route>
+            <Route exact path="/spaceports/:id/edit">
+              <EditSpaceport />
+            </Route>
+            <Route exact path="/spaceports/new">
+              <CreateSpaceport />
+            </Route>
+            <Route exact path="/spaceports">
+              <SpaceportGallery />
+            </Route>
+            <Route exact path="/spaceports/:id">
+              <SpaceportDetails />
+            </Route>
+            <Route exact path="/planets/new">
+              <CreatePlanet />
+            </Route>
+            <Route exact path="/planets">
+              <PlanetGallery />
+            </Route>
+            <Route exact path="/planets/:id">
+              <PlanetDetails />
+            </Route>
+            <Route exact path="/planets/:id/edit">
+              <EditPlanet />
+            </Route>
+          </Switch>
+        </>
       )}
       {/* <Footer /> */}
     </>

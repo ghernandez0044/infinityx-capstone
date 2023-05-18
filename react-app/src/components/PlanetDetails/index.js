@@ -51,7 +51,7 @@ function PlanetDetails(){
     }
 
     return planet && (
-        <>
+        <div className="planet-details-container">
             <div className="grid-container">
                 <div id="planet-image" className="spacecraft-details-img-container">
                     <img style={{ height: '70%', width: '70%' }} src="https://cdn.pixabay.com/photo/2017/02/08/12/46/moon-2048727_1280.jpg" alt='' />
@@ -80,7 +80,7 @@ function PlanetDetails(){
                 )}
             </div>
             <PlanetCommentGallery />
-        </>
+        </div>
     )
 }
 
