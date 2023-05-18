@@ -4,6 +4,9 @@
 .transaction-card-container{
     /* border: 3px solid lime; */
     height: 250px;
+    width: 90%;
+    border-bottom: 1px solid lightgray;
+    margin: 3px auto;
 }
 
 #date{
