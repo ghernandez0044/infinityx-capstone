@@ -13,9 +13,10 @@ function ProfileCard({ profile }){
     return (
         <div className='profile-card-container'>
             <div className='profile-card-image-container'>
-                <img style={{ height: '75px', width: '75px', borderRadius: '5px' }} src={profile.profile_pic} alt='' />
+                <img className='pointer' onClick={onClick} style={{ height: '35px', width: '35px', borderRadius: '15px' }} src={profile.profile_pic} alt='' />
+                <div onClick={onClick} className='small-content-font pointer'>@{profile.username}</div>
+                <div>{profile.passport}</div>
             </div>
-            <div className='profile-card-passport-container'>{profile.passport}</div>
             <div className='profile-card-button-container'>
                 <div onClick={onClick} className="button animate">
           			<div className="hover-effect"></div>

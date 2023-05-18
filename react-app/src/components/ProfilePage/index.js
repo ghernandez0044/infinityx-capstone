@@ -103,7 +103,22 @@ function ProfilePage(){
                     ))}
                 </div> */}
             </div>
-            <div className='bottom-content-container'>
+                {currentUserProfile && (
+                    <div className='bottom-content-container'>
+                        <div className='wallet-header-container'>
+                            <div>Wallet</div>
+                            <div>Address: {profile?.wallet[0]?.address}</div>
+                            <div>Funds: ${profile?.wallet[0]?.funds.toLocaleString()}</div>
+                        </div>
+                        <div className='transactions-container'>
+                            <div style={{textAlign: 'center' }}>Transactions</div>
+                            {profile?.transactions?.map(transaction => (
+                            <TransactionCard key={transaction.id}       transaction={transaction} />
+                            ))}
+                        </div>
+                    </div>
+                )}
+            {/* <div className='bottom-content-container'>
                 <div className='wallet-header-container'>
                     <div>Wallet</div>
                     <div>Address: {profile?.wallet[0]?.address}</div>
@@ -115,7 +130,7 @@ function ProfilePage(){
                         <TransactionCard key={transaction.id} transaction={transaction} />
                     ))}
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

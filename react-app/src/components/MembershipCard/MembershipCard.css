@@ -1,5 +1,5 @@
 .membership-card-container{
-    border: 3px solid purple;
+    /* border: 3px solid purple; */
     margin: 35px auto;
     width: 600px;
     height: 400px;
@@ -11,20 +11,20 @@
 }
 
 .membership-header-container{
-    border: 3px solid lime;
+    /* border: 3px solid lime; */
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
 .membership-image-container{
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
 }
 
 .membership-card-content-container{
-    border: 3px solid yellow;
+    /* border: 3px solid yellow; */
 }
 
 .membership-profile-content-container{
-    border: 3px solid red;
+    /* border: 3px solid red; */
 }

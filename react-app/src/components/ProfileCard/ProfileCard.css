@@ -1,5 +1,6 @@
 .profile-card-container{
     /* border: 3px solid red; */
+    border-bottom: 1px solid lightgray;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -7,6 +8,15 @@
 
 .profile-card-image-container{
     /* border: 3px solid purple; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.profile-card-image-container > div{
+    margin: 5px auto;
 }
 
 .profile-card-passport-container{
