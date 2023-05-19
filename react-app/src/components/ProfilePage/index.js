@@ -24,12 +24,12 @@ function ProfilePage(){
 
     // Function to share profile
     const share = () => {
-        console.log('share function')
+        alert('feature coming soon')
     }
 
     // Function to redirect to edit profile page
     const editProfile = () => {
-        console.log('edit profile function')
+        alert('feature coming soon')
     }
 
     // Function to open membership gallery
@@ -66,12 +66,14 @@ function ProfilePage(){
                 <div className='profile-buttons-container'>
                     <div onClick={share} className="button animate">
                         <div className="hover-effect"></div>
-                        <span className="signup-button-font">Share</span>
+                        <span className="signup-button-font">Message</span>
                     </div>
+                    {currentUserProfile && (
                     <div onClick={editProfile} className="button animate">
                         <div className="hover-effect"></div>
                         <span className="signup-button-font">Edit Profile</span>
                     </div>
+                    )}
                 </div>
                 <div className='passport-font'>{profile.passport}</div>
             </div>
