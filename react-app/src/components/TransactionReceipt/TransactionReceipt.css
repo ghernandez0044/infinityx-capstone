@@ -1,0 +1,39 @@
+.transaction-receipt-container{
+    /* border: 3px solid lime; */
+    width: 400px;
+    height: 500px;
+    max-height: fit-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.transaction-receipt-container > div{
+    width: fit-content;
+}
+
+.receipt-logo-container{
+    /* border: 3px solid pink; */
+}
+
+.company-info-container{
+    /* border: 3px solid gray; */
+}
+
+.receipt-date-container{
+    /* border: 3px solid brown; */
+}
+
+.user-information-container{
+    /* border: 3px solid blue; */
+}
+
+.membership-receipt-container{
+    /* border: 3px solid yellow; */
+}
+
+.main-receipt-content-container{
+    /* border: 3px solid orange; */
+}

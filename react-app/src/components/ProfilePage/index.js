@@ -1,8 +1,10 @@
 // Necessary imports
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import { getOneProfile } from '../../store/profile'
+import TransactionCard from '../TransactionCard'
+import MembershipCard from '../MembershipCard'
 import './ProfilePage.css'
 
 function ProfilePage(){
@@ -12,6 +14,9 @@ function ProfilePage(){
     // Create dispatch method
     const dispatch = useDispatch()
 
+    // Create state variables
+    const [ membership, setMembership ] = useState(true)
+
     // Render profile upon component render
     useEffect(() => {
         dispatch(getOneProfile(id))
@@ -19,12 +24,22 @@ function ProfilePage(){
 
     // Function to share profile
     const share = () => {
-        console.log('share function')
+        alert('feature coming soon')
     }
 
     // Function to redirect to edit profile page
     const editProfile = () => {
-        console.log('edit profile function')
+        alert('feature coming soon')
+    }
+
+    // Function to open membership gallery
+    const membershipGallery = () => {
+        setMembership(true)
+    }
+
+    // Function to open flights gallery
+    const flightsGallery = () => {
+        setMembership(false)
     }
 
     // Subscribe to single profile slice of state
@@ -35,6 +50,8 @@ function ProfilePage(){
     
     // Check to see if current user owns profile
     const currentUserProfile = user?.id === profile.id
+
+    console.log('transactions: ', profile?.transactions)
         
     if(Object.values(profile).length === 0) return null
 
@@ -49,39 +66,73 @@ function ProfilePage(){
                 <div className='profile-buttons-container'>
                     <div onClick={share} className="button animate">
                         <div className="hover-effect"></div>
-                        <span className="signup-button-font">Share</span>
+                        <span className="signup-button-font">Message</span>
                     </div>
+                    {currentUserProfile && (
                     <div onClick={editProfile} className="button animate">
                         <div className="hover-effect"></div>
                         <span className="signup-button-font">Edit Profile</span>
                     </div>
+                    )}
                 </div>
                 <div className='passport-font'>{profile.passport}</div>
             </div>
             <div className='middle-content-container'>
                 <div className='profile-tabs-container'>
-                    <div className='hoverable middle-header-font'>Planet Comments</div>
-                    <div className='hoverable middle-header-font'>Membership</div>
-                    <div className='hoverable middle-header-font'>Flights</div>
+                    <div className='hoverable middle-header-font' onClick={membershipGallery}>Membership</div>
+                    <div className='hoverable middle-header-font' onClick={flightsGallery}>Flights</div>
                 </div>
                 <div className='icons-container'>
                     <i className='fa-solid fa-bars' />
                     <i className='fa-solid fa-plus' />
                 </div>
+                {membership ? (
+                    <div className='membership-content-container'>
+                        <div style={{textAlign: 'center' }}>Membership</div>
+                        {profile?.membership?.map(membership => (
+                            <MembershipCard key={membership.id} membership={membership} profile={profile} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className='flight-content-container'>
+                        <div style={{textAlign: 'center' }}>Flight</div>
+                    </div>
+                )}
+                {/* <div className='membership-content-container'>
+                    <div style={{textAlign: 'center' }}>Membership</div>
+                    {profile?.membership?.map(membership => (
+                        <MembershipCard key={membership.id} membership={membership} profile={profile} />
+                    ))}
+                </div> */}
             </div>
-            <div className='bottom-content-container'>
+                {currentUserProfile && (
+                    <div className='bottom-content-container'>
+                        <div className='wallet-header-container'>
+                            <div>Wallet</div>
+                            <div>Address: {profile?.wallet[0]?.address}</div>
+                            <div>Funds: ${profile?.wallet[0]?.funds.toLocaleString()}</div>
+                        </div>
+                        <div className='transactions-container'>
+                            <div style={{textAlign: 'center' }}>Transactions</div>
+                            {profile?.transactions?.map(transaction => (
+                            <TransactionCard key={transaction.id}       transaction={transaction} />
+                            ))}
+                        </div>
+                    </div>
+                )}
+            {/* <div className='bottom-content-container'>
                 <div className='wallet-header-container'>
                     <div>Wallet</div>
                     <div>Address: {profile?.wallet[0]?.address}</div>
-                    <div>Funds: ${profile?.wallet[0]?.funds}</div>
+                    <div>Funds: ${profile?.wallet[0]?.funds.toLocaleString()}</div>
                 </div>
                 <div className='transactions-container'>
                     <div style={{textAlign: 'center' }}>Transactions</div>
                     {profile?.transactions?.map(transaction => (
-                        <div key={transaction.id}>${transaction.total}</div>
+                        <TransactionCard key={transaction.id} transaction={transaction} />
                     ))}
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

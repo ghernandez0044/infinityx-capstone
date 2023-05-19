@@ -1,13 +1,17 @@
 .grid-container{
-    /* border: 3px solid lime; */
+    /* border: 3px solid blueviolet; */
     display: grid;
     grid-template-columns: repeat(3, 0.5fr) repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     height: 800px;
-    width: 100%;
+    width: 90%;
     max-width: 100%;
+}
+
+.planet-details-container{
+    /* border: 3px solid yellow; */
 }
 
 #planet-image{

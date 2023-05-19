@@ -55,7 +55,7 @@ function PlanetForm({ edit, payload }){
 
         if(name.length === 0) validationErrors.nameErr = 'Name is required'
         if(description.length === 0) validationErrors.descriptionErr = 'Description is required'
-        if(distance > 1000000000 || distance < 0) validationErrors.distanceErr = 'Distance must be between 0 and 1,000,000,000 km'
+        if(distance > 100000000000 || distance < 0) validationErrors.distanceErr = 'Distance must be between 0 and 100,000,000,000 km'
         if(distance.toString().length === 0) validationErrors.distanceErr = 'Distance From Earth is required'
         if(mass > 100 || mass < 0) validationErrors.massErr = 'Mass must be between 0 and 100 Earths'
         if(mass.toString().length === 0) validationErrors.massErr = 'Mass is required'

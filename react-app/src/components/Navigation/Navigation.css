@@ -3,7 +3,7 @@
 
 .navbar-font{
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 
@@ -28,6 +28,7 @@
   align-items: flex-end;
   padding: 15px;
   color: white;
+  z-index: 20;
 }
 
 .profile-dropdown > div {
@@ -45,17 +46,17 @@
   margin: 0;
   padding: 0 15px;
   /* background-color: black; */
-  /* opacity: 0.7; */
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   /* backdrop-filter: invert(80%); */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 60px;
   width: 100%;
   position: relative;
   /* position: fixed; */
+  /* top: 0; */
   z-index: 3;
   text-transform: uppercase;
 }
@@ -79,7 +80,7 @@
 
 .user-icon-container{
   /* border: 3px solid red; */
-  height: 100px;
+  height: 50px;
   width: 60px;
   display: flex;
   justify-content: center;
@@ -219,7 +220,7 @@
 
 .dropdown-menu-font{
   font-family: 'Merriweather', serif;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: lighter;
   text-transform: uppercase;
 }

@@ -31,6 +31,11 @@ function Navigation({ isLoaded }){
 		history.push('/planets')
 	}
 
+	// Function to redirect to all profiles gallery
+	const redirectSpaceTravelers = () => {
+		history.push('/users')
+	}
+
 	// Function to redirect to Rideshare tab
 	const redirectRideshare = () => {
 	alert('Feature coming soon!')
@@ -50,7 +55,13 @@ function Navigation({ isLoaded }){
 				<div className='hoverable navbar-font' onClick={redirectPlanet}>Planets</div>
 				{/* <div className='hoverable' onClick={redirectRideshare}>Rideshare</div> */}
 				{sessionUser && ( 
+					<div className='hoverable navbar-font' onClick={redirectSpaceTravelers}>Space Travelers</div>
+				 )}
+				{sessionUser && ( 
 					<div className='hoverable navbar-font' onClick={redirectRideshare}>Rideshare</div>
+				 )}
+				{sessionUser && ( 
+					<div className='hoverable navbar-font' onClick={redirectRideshare}>Group Chats</div>
 				 )}
 			</div>
 			{isLoaded && (

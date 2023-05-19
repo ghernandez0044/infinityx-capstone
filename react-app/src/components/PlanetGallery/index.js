@@ -17,8 +17,6 @@ function PlanetGallery(){
 
     const planets = useSelector(state => Object.values(state.planets.allPlanets))
 
-    console.log('planets: ', planets)
-
     return (
         <div>
             <div className="spacecraft-gallery-container">
