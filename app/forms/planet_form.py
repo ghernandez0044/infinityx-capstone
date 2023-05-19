@@ -6,7 +6,7 @@ from app.models import Planet
 class PlanetForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     description = TextAreaField('description', validators=[DataRequired()])
-    distance_from_earth_km = FloatField('distance_from_earth_km', validators=[DataRequired(), NumberRange(min=0, max=1_000_000_000)])
+    distance_from_earth_km = FloatField('distance_from_earth_km', validators=[DataRequired(), NumberRange(min=0, max=100_000_000_000)])
     mass_measured_in_earths = FloatField('mass_measured_in_earths', validators=[DataRequired(), NumberRange(min=0, max=100)])
     volume_measured_in_earths = FloatField('volume_measured_in_earths', validators=[DataRequired(), NumberRange(min=0, max=100)])
     mean_density_in_g_cm_cubed = FloatField('mean_density_in_g_cm_cubed', validators=[DataRequired(), NumberRange(min=0, max=100)])
