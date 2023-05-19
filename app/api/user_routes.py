@@ -51,7 +51,7 @@ def update_user_profile(id):
                 user.profile_pic = form.data["profile_pic"]
                 db.session.commit()
                 updated_user = User.query.get(id)
-                return {"user": updated_user.to_dict()}
+                return updated_user.to_dict()
             if form.errors:
                 return {"message": "form errors", "statusCode": 400, "errors": f"{form.errors}"}
         return {"message": "Profile does not belong to current user"}
