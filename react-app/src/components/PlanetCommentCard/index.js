@@ -33,7 +33,7 @@ function PlanetCommentCard({ comment }){
     const currentUser = useSelector(state => state.session.user)
 
     // Check to see if current user own planet comment
-    const userPlanetComment = currentUser.id === comment.user_id ? true : false
+    const userPlanetComment = currentUser?.id === comment.user_id ? true : false
 
     // Function to redirect to profile page
     const redirectProfile = () => {
