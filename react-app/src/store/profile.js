@@ -49,8 +49,8 @@ export const getAllProfiles = () => async (dispatch) => {
 }
 
 export const updateProfile = (profile, id) => async (dispatch) => {
-    const res = await fetch(`/api/users/${id}`, {
-        method: "PUT",
+    const res = await fetch(`/api/users/${id}/edit`, {
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(profile)
     })

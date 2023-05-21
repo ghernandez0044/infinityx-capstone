@@ -5,6 +5,8 @@ import { useParams, useHistory } from 'react-router-dom'
 import { getOneProfile } from '../../store/profile'
 import TransactionCard from '../TransactionCard'
 import MembershipCard from '../MembershipCard'
+import SignupFormModal from '../SignupFormModal'
+import OpenModalButton from '../OpenModalButton'
 import './ProfilePage.css'
 
 function ProfilePage(){
@@ -69,10 +71,7 @@ function ProfilePage(){
                         <span className="signup-button-font">Message</span>
                     </div>
                     {currentUserProfile && (
-                    <div onClick={editProfile} className="button animate">
-                        <div className="hover-effect"></div>
-                        <span className="signup-button-font">Edit Profile</span>
-                    </div>
+                    <OpenModalButton modalComponent={<SignupFormModal edit={true} payload={profile} />} buttonText='Edit Profile' />
                     )}
                 </div>
                 <div className='passport-font'>{profile.passport}</div>
