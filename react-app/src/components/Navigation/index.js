@@ -38,7 +38,7 @@ function Navigation({ isLoaded }){
 
 	// Function to redirect to Rideshare tab
 	const redirectRideshare = () => {
-	alert('Feature coming soon!')
+		history.push('/rideshare')
 	}
 
 	return (
