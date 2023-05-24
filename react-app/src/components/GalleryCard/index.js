@@ -4,15 +4,25 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import './GalleryCard.css'
 
-function GalleryCard({ smallTag, bigTag, buttonText, destination, payload }){
+function GalleryCard({ smallTag, bigTag, buttonText, destination, imageNumber, planetNumber, payload }){
 
     let choice = ''
 
-    if(destination === 'spacecrafts') choice = 'spacecraft-background'
+    if(destination === 'spacecrafts' && imageNumber === 1) choice = 'spacecraft-background-1'
+    if(destination === 'spacecrafts' && imageNumber === 2) choice = 'spacecraft-background-2'
+    if(destination === 'spacecrafts' && imageNumber === 3) choice = 'spacecraft-background-3'
+    if(destination === 'spacecrafts' && imageNumber === 4) choice = 'spacecraft-background-4'
 
     if(destination === 'spaceports') choice = 'spaceport-background'
 
-    if(destination === 'planets') choice = 'planet-background'
+    if(destination === 'planets' && planetNumber === 1) choice = 'planet-background-1'
+    if(destination === 'planets' && planetNumber === 2) choice = 'planet-background-2'
+    if(destination === 'planets' && planetNumber === 3) choice = 'planet-background-3'
+    if(destination === 'planets' && planetNumber === 4) choice = 'planet-background-4'
+    if(destination === 'planets' && planetNumber === 5) choice = 'planet-background-5'
+    if(destination === 'planets' && planetNumber === 6) choice = 'planet-background-6'
+    if(destination === 'planets' && planetNumber === 7) choice = 'planet-background-7'
+    if(destination === 'planets' && planetNumber === 8) choice = 'planet-background-8'
 
     if(destination === 'landing') choice = 'landing-page-background'
 
