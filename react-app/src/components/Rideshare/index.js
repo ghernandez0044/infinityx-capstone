@@ -48,7 +48,7 @@ function Rideshare(){
                         <input id='user_kg' type='number' value={userKg} onChange={(e) => setUserKg(e.target.value)} required />
                     </div>
                     <div>
-                        <label>Flight Class</label>
+                        <label>Travel Class</label>
                     </div>
                     <div>
                         <div>Estimated Price</div>
