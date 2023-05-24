@@ -34,10 +34,11 @@ body{
 }
 
 .spacecraft-background{
-    background-image: url('../../assets/rocket-launch-ge07909d54_1920.jpg');
+    background-image: url('../../assets/spacecraft-background-6.jpg');
 }
 
 .spaceport-background{
+    /* background-image: url('../../assets/rocket-launch-ge07909d54_1920.jpg'); */
     background-image: url('../../assets/rocket-launch-g564b45938_1920.jpg');
 }
 
