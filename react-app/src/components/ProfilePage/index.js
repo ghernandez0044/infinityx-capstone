@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import { getOneProfile } from '../../store/profile'
+import { getOneWallet } from '../../store/wallet'
 import TransactionCard from '../TransactionCard'
 import MembershipCard from '../MembershipCard'
 import SignupFormModal from '../SignupFormModal'
@@ -22,6 +23,7 @@ function ProfilePage(){
     // Render profile upon component render
     useEffect(() => {
         dispatch(getOneProfile(id))
+        dispatch(getOneWallet(id))
     }, [dispatch, id])
 
     // Function to share profile
@@ -49,11 +51,14 @@ function ProfilePage(){
     
     // Subscribe to current user slice of state
     const user = useSelector(state => state.session.user)
+
+    // Subscribe to single wallet slice of state
+    const singleWallet = useSelector(state => state)
+
+    console.log('single wallet: ', singleWallet.wallets.singleWallet)
     
     // Check to see if current user owns profile
     const currentUserProfile = user?.id === profile.id
-
-    console.log('transactions: ', profile?.transactions)
         
     if(Object.values(profile).length === 0) return null
 
@@ -104,17 +109,17 @@ function ProfilePage(){
                     ))}
                 </div> */}
             </div>
-                {currentUserProfile && (
+                {currentUserProfile && singleWallet && (
                     <div className='bottom-content-container'>
                         <div className='wallet-header-container'>
                             <div>Wallet</div>
-                            <div>Address: {profile?.wallet[0]?.address}</div>
-                            <div>Funds: ${profile?.wallet[0]?.funds.toLocaleString()}</div>
+                            <div>Address: {singleWallet?.address}</div>
+                            {/* <div>Funds: ${singleWallet.funds.toLocaleString()}</div> */}
                         </div>
                         <div className='transactions-container'>
                             <div style={{textAlign: 'center' }}>Transactions</div>
                             {profile?.transactions?.map(transaction => (
-                            <TransactionCard key={transaction.id}       transaction={transaction} />
+                            <TransactionCard key={transaction.id} transaction={transaction} />
                             ))}
                         </div>
                     </div>

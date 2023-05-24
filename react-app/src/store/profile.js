@@ -80,7 +80,7 @@ const profileReducer = (state = initialState, action) => {
             newState.singleProfile = action.profile
             return newState
         case UPDATE_PROFILE:
-            return {...state, allProfiles: {...state.allProfiles, [action.profile.id]: action.profile}}
+            return {...state, allProfiles: {...state.allProfiles, [action.profile.id]: action.profile}, singleProfile: action.profile}
         default:
             return state
     }

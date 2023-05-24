@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import User, PlanetComment, FrequentFlyer, Wallet, Transaction
-from app.forms import SignUpForm
+from app.forms import SignUpForm, ProfileForm
 from ..models import db
 
 user_routes = Blueprint('users', __name__)
@@ -38,10 +38,9 @@ def update_user_profile(id):
     user = current_user
     if current_user:
         if current_user.id == id:
-            form = SignUpForm()
+            form = ProfileForm()
             form['csrf_token'].data = request.cookies['csrf_token']
             if form.validate_on_submit():
-                user.admin = form.data["admin"]
                 user.first_name = form.data["first_name"]
                 user.last_name = form.data["last_name"]
                 user.phone = form.data["phone"]

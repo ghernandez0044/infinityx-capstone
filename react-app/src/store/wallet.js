@@ -54,8 +54,8 @@ export const getAllWallets = () => async (dispatch) => {
     return res
 }
 
-export const getOneWallet = (id) => async (dispatch) => {
-    const res = await fetch(`/api/wallets/${id}`)
+export const getOneWallet = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/wallets/${userId}`)
     if(res.ok){
         const wallet = await res.json()
         dispatch(actionLoadWallet(wallet))
