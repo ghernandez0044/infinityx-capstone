@@ -13,13 +13,20 @@ function Rideshare(){
     const [ orbit, setOrbit ] = useState('')
     const [ userKg, setUserKg ] = useState('')
     const [ earliestDate, setEarliestDate ] = useState('')
-    const [ travelClass, setTravelClass ] = useState('')
+    const [ travelClass, setTravelClass ] = useState('Base Class')
+    const [ num, setNum ] = useState(0)
 
     // Load planets into redux store upon component render
     useEffect(() => {
         dispatch(getAllPlanets())
         dispatch(getAllTravelClasses())
     }, [dispatch])
+
+    useEffect(() => {
+        if(travelClass === 'Base Class') setNum(6250)
+        if(travelClass === 'Cruise Class') setNum(7250)
+        if(travelClass === 'Launch Class') setNum(9250)
+    }, [userKg, travelClass, num])
 
     // Subscribe to planets slice of state
     const planets = useSelector(state => Object.values(state.planets.allPlanets))
@@ -28,6 +35,8 @@ function Rideshare(){
 
     // Subcribe to travel classes slice of state
     const travelClasses = useSelector(state => Object.values(state.travelClasses.allTravelClasses))
+
+    console.log('travelClasses: ', travelClasses)
 
     const travelClassesArray = Array.from(travelClasses, travelClass => travelClass.name)
 
@@ -65,6 +74,7 @@ function Rideshare(){
                     </div>
                     <div>
                         <div className='content-font'>Estimated Price</div>
+                        <div>${(userKg * num).toLocaleString()}</div>
                     </div>
                 </div>
             </div>
