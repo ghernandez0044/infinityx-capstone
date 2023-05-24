@@ -3,21 +3,22 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import { createWallet } from "../../store/wallet";
+import { updateProfile } from "../../store/profile";
 import "./SignupForm.css";
 
-function SignupFormModal() {
+function SignupFormModal({ edit, payload }) {
 	// Create dispatch method
 	const dispatch = useDispatch();
 
 	// Create state variables
 	const [ admin, setAdmin ] = useState(true)
-	const [ firstName, setFirstName ] = useState('')
-	const [ lastName, setLastName ] = useState('')
-	const [ phone, setPhone ] = useState('')
-	const [ passport, setPassport ] = useState('Earthling')
-	const [ profilePic, setProfilePic ] = useState('')
-	const [email, setEmail] = useState("");
-	const [username, setUsername] = useState("");
+	const [ firstName, setFirstName ] = useState(payload?.first_name || '')
+	const [ lastName, setLastName ] = useState(payload?.last_name || '')
+	const [ phone, setPhone ] = useState(payload?.phone || '')
+	const [ passport, setPassport ] = useState(payload?.passport || 'Earthling')
+	const [ profilePic, setProfilePic ] = useState(payload?.profile_pic || '')
+	const [email, setEmail] = useState(payload?.email || "");
+	const [username, setUsername] = useState(payload?.username || "");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
@@ -39,24 +40,31 @@ function SignupFormModal() {
 		const day = dateString.getDate()
 		const created_at = `${year}-${month}-${day}`
 
-		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, password, admin, firstName, lastName, phone, passport, profilePic, created_at));
-			await dispatch(createWallet())
-			if (data) {
-				setErrors(data);
+		if(!edit){
+			if (password === confirmPassword) {
+				const data = await dispatch(signUp(username, email, password, admin, firstName, lastName, phone, passport, profilePic, created_at));
+				await dispatch(createWallet())
+				if (data) {
+					setErrors(data);
+				} else {
+					closeModal();
+				}
 			} else {
-				closeModal();
+				setErrors([
+					"Confirm Password field must be the same as the Password field",
+				]);
 			}
 		} else {
-			setErrors([
-				"Confirm Password field must be the same as the Password field",
-			]);
+			dispatch(updateProfile({username, email, admin, "first_name": firstName, "last_name": lastName, phone, passport, "profile_pic": profilePic}, payload.id))
+			closeModal()
 		}
+
+		
 	};
 
 	return (
 		<div className="signup-modal-container">
-			<h1 className="header-font" style={{ textAlign: 'center' }}>Sign Up</h1>
+			<h1 className="header-font" style={{ textAlign: 'center' }}>{!edit ? 'Create User' : 'Edit User'}</h1>
 			<form className="signup-form-container" onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
@@ -141,10 +149,37 @@ function SignupFormModal() {
                   // add a key prop here
                 ))}
               </select>
-				<label className='label-font'>
+			  {!edit ? (
+				<>
+					<label className='label-font'>
 					Password
-				</label>
-				<input
+					</label>
+					<input
+						id='password'
+						type="password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						required
+					/>
+					<label className='label-font'>
+					Confirm Password
+					</label>
+					<input
+						id='password'
+						type="password"
+						value={confirmPassword}
+						onChange={(e) => setConfirmPassword(e.target.value)}
+						required
+					/>
+				</>
+			  ) : ( 
+				<>
+				</>
+			   )}
+				 {/* <label className='label-font'>
+				 	Password
+				 </label>
+				 <input
 						id='password'
 						type="password"
 						value={password}
@@ -160,13 +195,13 @@ function SignupFormModal() {
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
-				/>
+				/> */}
 				{/* <label>Admin</label>
 				<input id='admin' type='radio' checked={checked} value={admin} onClick={() => setChecked(!checked)} onChange={(e) => setAdmin(true)} /> */}
 				{/* <button type="submit">Sign Up</button> */}
 				<div onClick={handleSubmit} className="button animate">
           			<div className="hover-effect"></div>
-          			<span className="signup-button-font">Sign Up</span>
+          			<span className="signup-button-font">{!edit ? 'Create User' : 'Edit User'}</span>
        			 </div>
 			</form>
 		</div>

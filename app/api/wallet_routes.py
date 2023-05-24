@@ -15,9 +15,9 @@ def get_all_wallets():
     return [wallet.to_dict() for wallet in all_wallets]
 
 # Get one wallet route
-@wallet_routes.route('/<int:id>')
-def get_one_wallet(id):
-    one_wallet = Wallet.query.get(id)
+@wallet_routes.route('/<int:userId>')
+def get_one_wallet(userId):
+    one_wallet = Wallet.query.filter(Wallet.user_id == userId).first()
     return one_wallet.to_dict()
 
 # Create a wallet route 

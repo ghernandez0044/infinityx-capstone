@@ -57,6 +57,8 @@ function ProfileButton({ user, set, setter }) {
     e.preventDefault();
     dispatch(logout());
     closeMenu()
+    setShowMenu(false);
+    setShow(false)
     setter(false)
     history.push('/')
   };
@@ -64,36 +66,48 @@ function ProfileButton({ user, set, setter }) {
   const redirectSpacecraft = () => {
     history.push('/spacecrafts/new')
     closeMenu()
+    setShowMenu(false);
+    setShow(false)
     setter(false)
   }
 
   // Function to redirect to Spacecraft gallery
 	const redirectSpacecraftGallery = () => {
 		history.push('/spacecrafts')
+    setShowMenu(false);
+    setShow(false)
     setter(false)
 	}
 
   // Function to redirect to Spaceport gallery
 	const redirectSpaceportGallery = () => {
 		history.push('/spaceports')
+    setShowMenu(false);
+    setShow(false)
     setter(false)
 	}
 
   // Function to redirect to Planet gallery
 	const redirectPlanetGallery = () => {
 		history.push('/planets')
+    setShowMenu(false);
+    setShow(false)
     setter(false)
 	}
 
   const redirectSpaceport = () => {
     history.push('/spaceports/new')
     closeMenu()
+    setShowMenu(false);
+    setShow(false)
     setter(false)
   }
 
   const redirectPlanet = () => {
     history.push('/planets/new')
     closeMenu()
+    setShowMenu(false);
+    setShow(false)
     setter(false)
   }
 
@@ -101,6 +115,8 @@ function ProfileButton({ user, set, setter }) {
   const redirectUserPage = () => {
     history.push(`/users/${user.id}`)
     closeMenu()
+    setShowMenu(false);
+    setShow(false)
   }
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");

@@ -33,16 +33,57 @@ body{
     min-width: 450px;
 }
 
-.spacecraft-background{
-    background-image: url('../../assets/rocket-launch-ge07909d54_1920.jpg');
+.spacecraft-background-1{
+    background-image: url('../../assets/spacecraft-background-1.jpg');
+}
+
+.spacecraft-background-2{
+    background-image: url('../../assets/spacecraft-background-2.jpg');
+}
+
+.spacecraft-background-3{
+    background-image: url('../../assets/spacecraft-background-3.jpg');
+}
+
+.spacecraft-background-4{
+    background-image: url('../../assets/spacecraft-background-6.jpg');
 }
 
 .spaceport-background{
+    /* background-image: url('../../assets/rocket-launch-ge07909d54_1920.jpg'); */
     background-image: url('../../assets/rocket-launch-g564b45938_1920.jpg');
 }
 
-.planet-background{
+.planet-background-1{
+    background-image: url('../../assets/mercury-g08e7b2d02_1920.jpg');
+}
+
+.planet-background-2{
+    background-image: url('../../assets/venus.jpg');
+}
+
+.planet-background-3{
     background-image: url('../../assets/earth-gef7361121_1920.jpg');
+}
+
+.planet-background-4{
+    background-image: url('../../assets/mars-g0a36a1981_1920.jpg');
+}
+
+.planet-background-5{
+    background-image: url('../../assets/jupiter-g40361f59d_1920.jpg');
+}
+
+.planet-background-6{
+    background-image: url('../../assets/saturn-gd65cd9c3a_640.png');
+}
+
+.planet-background-7{
+    background-image: url('../../assets/uranus-g8bb036f46_1920.jpg');
+}
+
+.planet-background-8{
+    background-image: url('../../assets/neptune-gfb9730857_1920.jpg');
 }
 
 .landing-page-background{
