@@ -15,6 +15,7 @@ function Rideshare(){
     const [ earliestDate, setEarliestDate ] = useState('')
     const [ travelClass, setTravelClass ] = useState('Base Class')
     const [ num, setNum ] = useState(0)
+    const [ errors, setErrors ] = useState({})
 
     // Load planets into redux store upon component render
     useEffect(() => {
@@ -28,6 +29,12 @@ function Rideshare(){
         if(travelClass === 'Launch Class') setNum(9250)
     }, [userKg, travelClass, num])
 
+    useEffect(() => {
+        let errors = {}
+        if(userKg.length <= 0) errors.userKgErr = 'Payload Mass Required'
+        setErrors(errors)
+    }, [userKg])
+
     // Subscribe to planets slice of state
     const planets = useSelector(state => Object.values(state.planets.allPlanets))
 
@@ -36,9 +43,19 @@ function Rideshare(){
     // Subcribe to travel classes slice of state
     const travelClasses = useSelector(state => Object.values(state.travelClasses.allTravelClasses))
 
-    console.log('travelClasses: ', travelClasses)
-
     const travelClassesArray = Array.from(travelClasses, travelClass => travelClass.name)
+
+    // Function to redirect to available flights page
+    const redirectAvailableFlights = (e) => {
+        e.preventDefault()
+        const payload = {
+            userKg,
+            earliestDate,
+            travelClass,
+            orbit
+        }
+        console.log('payload: ', payload)
+    }
 
     return planets && (
         <div>
@@ -75,6 +92,12 @@ function Rideshare(){
                     <div>
                         <div className='content-font'>Estimated Price</div>
                         <div>${(userKg * num).toLocaleString()}</div>
+                    </div>
+                    <div className={Object.values(errors).length > 0 ? 'hidden' : ''}>
+                        <div onClick={redirectAvailableFlights} className="button animate resize">
+                            <div className="hover-effect"></div>
+                            <i className='fa-solid fa-arrow-right fa-2xl' />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -13,6 +13,7 @@ class Flight(db.Model):
     spacecraft_seat_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spacecraft_seats.id')))
     schedule_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('schedules.id')))
     flight_status_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('flight_status.id')))
+    orbit = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.String(100), nullable=False)
 
     # relationships

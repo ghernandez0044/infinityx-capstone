@@ -9,6 +9,7 @@ def seed_flights():
         spacecraft_seat_id = 3,
         schedule_id = 1,
         flight_status_id = 1,
+        orbit = 'Mars',
         created_at = '2021-01-01'
     )
     flight2 = Flight(
@@ -18,6 +19,7 @@ def seed_flights():
         spacecraft_seat_id = 5,
         schedule_id = 2,
         flight_status_id = 2,
+        orbit = 'Venus',
         created_at = '2021-02-01'
     )
     flight3 = Flight(
@@ -27,6 +29,7 @@ def seed_flights():
         spacecraft_seat_id = 24,
         schedule_id = 3,
         flight_status_id = 3,
+        orbit = 'Mercury',
         created_at = '2021-03-01'
     )
     flight4 = Flight(
@@ -36,6 +39,7 @@ def seed_flights():
         spacecraft_seat_id = 12,
         schedule_id = 4,
         flight_status_id = 1,
+        orbit = 'Neptune',
         created_at = '2021-04-01'
     )
     flight5 = Flight(
@@ -45,6 +49,7 @@ def seed_flights():
         spacecraft_seat_id = 16,
         schedule_id = 5,
         flight_status_id = 1,
+        orbit = 'Saturn',
         created_at = '2022-01-01'
     )
     flight6 = Flight(
@@ -54,6 +59,7 @@ def seed_flights():
         spacecraft_seat_id = 20,
         schedule_id = 6,
         flight_status_id = 1,
+        orbit = 'Mars',
         created_at = '2022-03-01'
     )
 
