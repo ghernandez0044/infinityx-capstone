@@ -26,7 +26,7 @@ function SpaceportGallery(){
                     <SpaceportCard key={spaceport.id} spaceport={spaceport} />
                 ))} */}
                 {spaceports.map(spaceport => (
-                    <GalleryCard key={spaceport.id} smallTag='Spaceport' bigTag={spaceport.name} buttonText='Explore' destination='spaceports' payload={spaceport} />
+                    <GalleryCard key={spaceport.id} smallTag='Spaceport' bigTag={spaceport.name} buttonText='See More' destination='spaceports' payload={spaceport} />
                 ))}
             </div>
         </div>

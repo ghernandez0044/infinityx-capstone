@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import './GalleryCard.css'
 
-function GalleryCard({ smallTag, bigTag, buttonText, destination, imageNumber, planetNumber, payload }){
+function GalleryCard({ smallTag, bigTag, buttonText, destination, imageNumber, planetNumber, payload, disable }){
 
     let choice = ''
 
@@ -45,10 +45,12 @@ function GalleryCard({ smallTag, bigTag, buttonText, destination, imageNumber, p
             <div className="section-content">
                 <div className="gallery-card-font">{smallTag}</div>
                 <div className="gallery-card-font-2">{bigTag}</div>
+                {!disable && ( 
                 <div onClick={onClick} className="button animate">
                     <div className="hover-effect"></div>
                     <span className="button-font">{buttonText}</span>
                 </div>
+                 )}
             </div>
         </div>
     )

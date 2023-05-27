@@ -21,7 +21,7 @@ function PlanetGallery(){
         <div>
             <div className="spacecraft-gallery-container">
                 {planets.map((planet, i) => (
-                    <GalleryCard key={planet.id} smallTag='Planet' bigTag={planet.name} buttonText='Explore' destination='planets' planetNumber={i + 1} payload={planet} />
+                    <GalleryCard key={planet.id} smallTag='Planet' bigTag={planet.name} buttonText='See More' destination='planets' planetNumber={i + 1} payload={planet} />
                 ))}
             </div>
         </div>

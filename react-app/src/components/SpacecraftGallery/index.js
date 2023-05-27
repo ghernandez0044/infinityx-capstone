@@ -24,7 +24,7 @@ function SpacecraftGallery(){
                     <SpacecraftCard key={spacecraft.id} spacecraft={spacecraft} />
                 ))} */}
                 {spacecrafts.map((spacecraft, i) => (
-                    <GalleryCard key={spacecraft.id} smallTag='Spacecraft' bigTag={spacecraft.model} buttonText='Explore' destination='spacecrafts' imageNumber={i + 1} payload={spacecraft} />
+                    <GalleryCard key={spacecraft.id} smallTag='Spacecraft' bigTag={spacecraft.model} buttonText='See More' destination='spacecrafts' imageNumber={i + 1} payload={spacecraft} />
                 ))}
             </div>
         </div>
