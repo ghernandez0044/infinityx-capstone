@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: ce4eb3ae362e
+Revision ID: 2ce1756ff1cf
 Revises: 
-Create Date: 2023-04-26 21:29:22.971802
+Create Date: 2023-05-26 17:33:26.331704
 
 """
 from alembic import op
@@ -14,7 +14,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = 'ce4eb3ae362e'
+revision = '2ce1756ff1cf'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -60,8 +60,8 @@ def upgrade():
     sa.Column('description', sa.Text(), nullable=True),
     sa.Column('city', sa.String(length=255), nullable=False),
     sa.Column('state', sa.String(length=255), nullable=False),
-    sa.Column('lat', sa.Float(), nullable=True),
-    sa.Column('lng', sa.Float(), nullable=True),
+    sa.Column('lat', sa.Float(), nullable=False),
+    sa.Column('lng', sa.Float(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('tiers',
@@ -149,6 +149,7 @@ def upgrade():
     sa.Column('spacecraft_seat_id', sa.Integer(), nullable=True),
     sa.Column('schedule_id', sa.Integer(), nullable=True),
     sa.Column('flight_status_id', sa.Integer(), nullable=True),
+    sa.Column('orbit', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.String(length=100), nullable=False),
     sa.ForeignKeyConstraint(['flight_status_id'], ['flight_status.id'], ),
     sa.ForeignKeyConstraint(['schedule_id'], ['schedules.id'], ),
@@ -189,7 +190,6 @@ def upgrade():
         op.execute(f"ALTER TABLE transactions SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE travel_classes SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE wallets SET SCHEMA {SCHEMA};")
-
     # ### end Alembic commands ###
 
 
