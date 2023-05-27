@@ -49,6 +49,10 @@ body{
     background-image: url('../../assets/spacecraft-background-6.jpg');
 }
 
+.spacecraft-background-5{
+    background-image: url('https://as1.ftcdn.net/v2/jpg/02/75/83/96/1000_F_275839620_QtkM2u4Eu9N4eKcJJwlr2mk7CQSo3UOK.jpg');
+}
+
 .spaceport-background{
     /* background-image: url('../../assets/rocket-launch-ge07909d54_1920.jpg'); */
     background-image: url('../../assets/rocket-launch-g564b45938_1920.jpg');
@@ -84,6 +88,10 @@ body{
 
 .planet-background-8{
     background-image: url('../../assets/neptune-gfb9730857_1920.jpg');
+}
+
+.planet-background-9{
+    background-image: url('https://as1.ftcdn.net/v2/jpg/03/77/06/58/1000_F_377065808_1LIDKlKsJlBEB80g2Ws122o0vxobsS5k.jpg');
 }
 
 .landing-page-background{

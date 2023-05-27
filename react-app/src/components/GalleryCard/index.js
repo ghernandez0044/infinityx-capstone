@@ -12,6 +12,7 @@ function GalleryCard({ smallTag, bigTag, buttonText, destination, imageNumber, p
     if(destination === 'spacecrafts' && imageNumber === 2) choice = 'spacecraft-background-2'
     if(destination === 'spacecrafts' && imageNumber === 3) choice = 'spacecraft-background-3'
     if(destination === 'spacecrafts' && imageNumber === 4) choice = 'spacecraft-background-4'
+    if(destination === 'spacecrafts' && imageNumber > 4) choice = 'spacecraft-background-5'
 
     if(destination === 'spaceports') choice = 'spaceport-background'
 
@@ -23,6 +24,7 @@ function GalleryCard({ smallTag, bigTag, buttonText, destination, imageNumber, p
     if(destination === 'planets' && planetNumber === 6) choice = 'planet-background-6'
     if(destination === 'planets' && planetNumber === 7) choice = 'planet-background-7'
     if(destination === 'planets' && planetNumber === 8) choice = 'planet-background-8'
+    if(destination === 'planets' && planetNumber > 8) choice = 'planet-background-9'
 
     if(destination === 'landing') choice = 'landing-page-background'
 
