@@ -82,6 +82,32 @@ function SpacecraftForm({ edit, payload }){
 
     if(!user.admin) return <h1>User Is Not An Admin</h1>
 
+    // Function to generate a spacecraft that meets all data validations
+    const validSpacecraft = () => {
+        setModel('SpaceshipX-2323')
+        setYear(2023)
+        setDescription('A small description about this SpaceshipX-2323 Model roocketship')
+        setLoadCapacity(100000)
+        setHeight(20)
+        setDiameter(16)
+        setMass(2000000)
+        setCapsuleVolume(12)
+        setTrunkVolume(12)
+    }
+
+    // Function to generate a spacecraft that does not meet all data validations
+    const invalidSpacecraft = () => {
+        setModel('Invalid Spaceship')
+        setYear(1999)
+        setDescription('A small description')
+        setLoadCapacity(300000)
+        setHeight(300)
+        setDiameter(120)
+        setMass(20000000)
+        setCapsuleVolume(150)
+        setTrunkVolume(150)
+    }
+
     // Create onSubmit function
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -176,6 +202,8 @@ function SpacecraftForm({ edit, payload }){
                     <div className="hover-effect"></div>
                     <span className="signup-button-font">{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</span>
                 </div>
+                <div id='valid-spacecraft' className="hoverable" onClick={validSpacecraft}>Generate Valid Spacecraft</div>
+                <div id='invalid-spacecraft' className="hoverable" onClick={invalidSpacecraft}>Generate Invalid Spacecraft</div>
             </form>
         </div>
     )
