@@ -91,7 +91,16 @@ function PlanetForm({ edit, payload }){
 
     // Function to generate a planet that does not meet all data validations
     const invalidPlanet = () => {
-        
+        setName('')
+        setDescription('invalid planet')
+        setDistance(111000000000)
+        setMass(120)
+        setVolume(120)
+        setDensity(110)
+        setGravity(150)
+        setVelocity(180)
+        setSynodic(400)
+        setTemperature(700)
     }
 
     // Create onSubmit function
@@ -176,7 +185,7 @@ function PlanetForm({ edit, payload }){
                             Add Distance From Earth for this Planet between the range of 0 and 100,000,000,000 kilometers
                         </p>
                     </div>
-                    <label className="label-font size">Distance From Earth (Measured In Kilometers) </label>
+                    <label className="label-font size">Distance From Earth </label>
                     <br/>
                     {isSubmitted && errors.distanceErr && ( <div className='label-font spacecraft-errors'>{errors.distanceErr}</div> )}
                     <input id='distance_from_earth_km' type='number' value={distance} onChange={(e) => setDistance(e.target.value)} required placeholder="Required" />
@@ -187,7 +196,7 @@ function PlanetForm({ edit, payload }){
                             Add Mass measured in Earths for this Planet between the range of 0 and 100 Earths
                         </p>
                     </div>
-                    <label className="label-font size">Mass (Measured In Earths) </label>
+                    <label className="label-font size">Mass</label>
                     <br/>
                     {isSubmitted && errors.massErr && ( <div className='label-font spacecraft-errors'>{errors.massErr}</div> )}
                     <input id='mass_measured_in_earths' type='number' value={mass} onChange={(e) => setMass(e.target.value)} />
@@ -198,7 +207,7 @@ function PlanetForm({ edit, payload }){
                             Add Volume measured in Earths for this Planet between the range of 0 and 100 Earths
                         </p>
                     </div>
-                    <label className="label-font size">Volume (Measured In Earths) </label>
+                    <label className="label-font size">Volume </label>
                     <br/>
                     {isSubmitted && errors.volumeErr && ( <div className='label-font spacecraft-errors'>{errors.volumeErr}</div> )}
                     <input id='volume_measured_in_earths' type='number' value={volume} onChange={(e) => setVolume(e.target.value)} />
@@ -209,7 +218,7 @@ function PlanetForm({ edit, payload }){
                             Add Mean Density measured in Grams per Centimeter Cubed for this Planet between the range of 0 and 100 grams per cm cubed
                         </p>
                     </div>
-                    <label className="label-font size">Mean Density (Measured In Grams Per Centimeter Cubed) </label>
+                    <label className="label-font size">Mean Density </label>
                     <br/>
                     {isSubmitted && errors.densityErr && ( <div className='label-font spacecraft-errors'>{errors.densityErr}</div> )}
                     <input id='mean_density_in_g_cm_cubed' type='number' value={density} onChange={(e) => setDensity(e.target.value)} />
@@ -220,7 +229,7 @@ function PlanetForm({ edit, payload }){
                             Add Surface Gravity measured in Meters Squared for this Planet between the range of 0 and 100 meters squared
                         </p>
                     </div>
-                    <label className="label-font size">Surface Gravity (Measured In Meters Squared) </label>
+                    <label className="label-font size">Surface Gravity </label>
                     <br/>
                     {isSubmitted && errors.gravityErr && ( <div className='label-font spacecraft-errors'>{errors.gravityErr}</div> )}
                     <input id='surface_gravity_in_m_squared' type='number' value={gravity} onChange={(e) => setGravity(e.target.value)} />
@@ -231,7 +240,7 @@ function PlanetForm({ edit, payload }){
                             Add Escape Velocity measured in Kilometers Per Second for this Planet between the range of 0 and 100 kilometer per seconds
                         </p>
                     </div>
-                    <label className="label-font size">Escape Velocity (Measured In Kilometers Per Second) </label>
+                    <label className="label-font size">Escape Velocity </label>
                     <br/>
                     {isSubmitted && errors.velocityErr && ( <div className='label-font spacecraft-errors'>{errors.velocityErr}</div> )}
                     <input id='surface_gravity_in_m_squared' type='number' value={velocity} onChange={(e) => setVelocity(e.target.value)} />
@@ -242,7 +251,7 @@ function PlanetForm({ edit, payload }){
                             Add Synodic Rotation measured in Earth Days for this Planet between the range of 0 and 365 days
                         </p>
                     </div>
-                    <label className="label-font size">Synodic Rotation (Measured In Days) </label>
+                    <label className="label-font size">Synodic Rotation </label>
                     <br/>
                     {isSubmitted && errors.synodicErr && ( <div className='label-font spacecraft-errors'>{errors.synodicErr}</div> )}
                     <input id='synodic_rotation_period_in_days' type='number' value={synodic} onChange={(e) => setSynodic(e.target.value)} />
@@ -253,7 +262,7 @@ function PlanetForm({ edit, payload }){
                             Add Average Temperature for this Planet between the range of 0 and 600 Kalvin
                         </p>
                     </div>
-                    <label className="label-font">Average Temperature (Measured In Kalvin) </label>
+                    <label className="label-font">Average Temperature </label>
                     <br/>
                     {isSubmitted && errors.temperatureErr && ( <div className='label-font spacecraft-errors'>{errors.temperatureErr}</div> )}
                     <input id='temperature_in_k' type='number' value={temperature} onChange={(e) => setTemperature(e.target.value)} />
