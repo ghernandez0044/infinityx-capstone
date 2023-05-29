@@ -45,8 +45,8 @@ function GalleryCard({ smallTag, bigTag, buttonText, destination, imageNumber, p
     return (
         <div className={`section-a-container sizing ${choice}`}>
             <div className="section-content">
-                <div className="gallery-card-font">{smallTag}</div>
-                <div className="gallery-card-font-2">{bigTag}</div>
+                <div className="gallery-card-font shadow">{smallTag}</div>
+                <div className="gallery-card-font-2 shadow">{bigTag}</div>
                 {!disable && ( 
                 <div onClick={onClick} className="button animate">
                     <div className="hover-effect"></div>
