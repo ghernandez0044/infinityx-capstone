@@ -1,5 +1,5 @@
 .spacecraft-form-container{
-    border: 3px solid lime;
+    /* border: 3px solid lime; */
     min-width: 700px;
     width: fit-content;
     margin: 0 auto;
@@ -18,7 +18,7 @@
 }
 
 .first-info-container{
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,7 +26,7 @@
 
 .first-info-container > div {
     margin: 0 10px;
-    border: 3px solid pink;
+    /* border: 3px solid pink; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,7 +34,7 @@
 }
 
 .load-capacity-container{
-    border: 3px solid yellow;
+    /* border: 3px solid yellow; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,7 +42,7 @@
 }
 
 .spacecraft-height-container{
-    border: 3px solid purple;
+    /* border: 3px solid purple; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,9 +50,28 @@
 }
 
 .spacecraft-diameter-container{
-    border: 3px solid brown;
+    /* border: 3px solid brown; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.spacecraft-generators-container{
+    /* border: 3px solid brown; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+}
+
+.form-header{
+    font-size: 44px;
+}
+
+.width{
+    width: 100%;
+    margin: 5px;
+    border-bottom: 1px solid gray;
 }

@@ -154,7 +154,7 @@ function SpacecraftForm({ edit, payload }){
 
     return user.admin && (
         <div className="spacecraft-form-container">
-            <h1 className="header-font" style={{ textAlign: 'center' }}>{!edit ? 'Create A Spacecraft' : 'Edit A Spacecraft'}</h1>
+            <h1 className="header-font form-header" style={{ textAlign: 'center' }}>{!edit ? 'Create A Spacecraft' : 'Edit A Spacecraft'}</h1>
             <form className="form" onSubmit={onSubmit}>
                 {/* <ul>
 					{backendErrors.map((error, idx) => (
@@ -166,7 +166,7 @@ function SpacecraftForm({ edit, payload }){
                         Write Model, Year, and a short description for this spacecraft
                     </p>
                 </div>
-                <div className="first-info-container">
+                <div className="first-info-container width">
                     <div>
                         <label className='label-font'>Model </label>
                         <br/>
@@ -189,7 +189,7 @@ function SpacecraftForm({ edit, payload }){
                         </textarea>
                     </div>
                 </div>
-                <div className="load-capacity-container">
+                <div className="load-capacity-container width">
                     <div>
                         <p>
                             Add Load Capacity for this Spacecraft in Kilograms within the range between 2,000 and 250,000 kg
@@ -201,7 +201,7 @@ function SpacecraftForm({ edit, payload }){
                     <input id='load_capacity_kg' type='number' value={loadCapacity} onChange={(e) => setLoadCapacity(e.target.value)} required placeholder="Required">
                     </input>
                 </div>
-                <div className="spacecraft-height-container">
+                <div className="spacecraft-height-container width">
                     <div>
                         <p>
                             Add Height for this Spacecraft within the range between 1 and 200 meters
@@ -213,7 +213,7 @@ function SpacecraftForm({ edit, payload }){
                     <input id='height_m' type='number' value={height} onChange={(e) => setHeight(e.target.value)} required placeholder="Required">
                     </input>
                 </div>
-                <div className="spacecraft-diameter-container">
+                <div className="spacecraft-diameter-container width">
                     <div>
                         <p>
                             Add Diameter for this Spacecraft within the range between 1 and 100 meters
@@ -225,7 +225,7 @@ function SpacecraftForm({ edit, payload }){
                     <input id='diameter_m' type='number' value={diameter} onChange={(e) => setDiameter(e.target.value)} required placeholder="Required">
                     </input>
                 </div>
-                <div className="spacecraft-diameter-container">
+                <div className="spacecraft-diameter-container width">
                     <div>
                         <p>
                             Add Mass for this Spacecraft within the range 10 and 10,000,000 kilograms
@@ -237,7 +237,7 @@ function SpacecraftForm({ edit, payload }){
                     <input id='mass_kg' type='number' value={mass} onChange={(e) => setMass(e.target.value)} required placeholder="Required">
                     </input>
                 </div>
-                <div className="spacecraft-diameter-container">
+                <div className="spacecraft-diameter-container width">
                     <div>
                         <p>
                             Add Capsule Volume for this Spacecraft within the range between 1 and 100 meters
@@ -249,7 +249,7 @@ function SpacecraftForm({ edit, payload }){
                     <input id='capsule_volume_kg' type='number' value={capsuleVolume} onChange={(e) => setCapsuleVolume(e.target.value)} required placeholder="Required">
                     </input>
                 </div>
-                <div className="spacecraft-diameter-container">
+                <div className="spacecraft-diameter-container width">
                     <div>
                         <p>
                             Add Trunk Volume for this Spacecraft within the range between 1 and 100 meters
@@ -262,12 +262,16 @@ function SpacecraftForm({ edit, payload }){
                     </input>
                 </div>
                 {/* <button type='submit'>{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</button> */}
-                <div onClick={onSubmit} className="button animate">
-                    <div className="hover-effect"></div>
-                    <span className="signup-button-font">{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</span>
+                <div className="spacecraft-diameter-container">
+                    <div onClick={onSubmit} className="button animate">
+                        <div className="hover-effect"></div>
+                        <span className="signup-button-font">{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</span>
+                    </div>
                 </div>
-                <div id='valid-spacecraft' className="hoverable" onClick={validSpacecraft}>Generate Valid Spacecraft</div>
-                <div id='invalid-spacecraft' className="hoverable" onClick={invalidSpacecraft}>Generate Invalid Spacecraft</div>
+                <div className="spacecraft-generators-container">
+                    <div id='valid-spacecraft' className="hoverable" onClick={validSpacecraft}>Generate Valid Spacecraft</div>
+                    <div id='invalid-spacecraft' className="hoverable" onClick={invalidSpacecraft}>Generate Invalid Spacecraft</div>
+                </div>
             </form>
         </div>
     )
