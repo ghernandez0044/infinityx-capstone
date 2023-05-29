@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;700&family=Merriweather:wght@400;700&family=Roboto+Mono:ital,wght@0,400;0,700;1,300&display=swap');
+
 .spacecraft-form-container{
     /* border: 3px solid lime; */
     min-width: 700px;
@@ -75,3 +77,15 @@
     margin: 5px;
     border-bottom: 1px solid gray;
 }
+
+.form-paragraph-font{
+    font-family: 'Merriweather', serif;
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+.size{
+    font-size: 20px;
+    text-shadow: 0 0 5px white;
+}
+

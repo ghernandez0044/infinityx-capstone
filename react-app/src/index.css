@@ -1,4 +1,6 @@
 /* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;700&family=Merriweather:wght@400;700&family=Roboto+Mono:ital,wght@0,400;0,700;1,300&display=swap');
+
 a {
     text-decoration: none;
     color: black;
@@ -11,4 +13,11 @@ a {
 
 body{
     background-color: black;
+}
+
+input::placeholder, textarea::placeholder {
+    font-family: 'Joseph Sans', serif;
+    font-weight: lighter;
+    text-transform: uppercase;
+    /* color: lightgray; */
 }

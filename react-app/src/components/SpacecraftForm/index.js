@@ -162,27 +162,27 @@ function SpacecraftForm({ edit, payload }){
 					))}
 				</ul> */}
                 <div>
-                    <p>
+                    <p className='form-paragraph-font'>
                         Write Model, Year, and a short description for this spacecraft
                     </p>
                 </div>
                 <div className="first-info-container width">
                     <div>
-                        <label className='label-font'>Model </label>
+                        <label className='label-font size'>Model </label>
                         <br/>
                         {isSubmitted && errors.modelErr && ( <div className='label-font spacecraft-errors'>{errors.modelErr}</div> )}
                         <input id='model' type='text' value={model} onChange={(e) => setModel(e.target.value)} required placeholder="Required">
                         </input>
                     </div>
                     <div>
-                        <label className='label-font'>Year </label>
+                        <label className='label-font size'>Year </label>
                         <br/>
                         {isSubmitted && errors.yearErr && ( <div className='label-font spacecraft-errors'>{errors.yearErr}</div> )}
                         <input id='year' type='number' value={year} onChange={(e) => setYear(e.target.value)} required placeholder="Required">
                         </input>
                     </div>
                     <div>
-                        <label className='label-font'>Description </label>
+                        <label className='label-font size'>Description </label>
                         <br/>
                         {isSubmitted && errors.descriptionErr && ( <div className='label-font spacecraft-errors'>{errors.descriptionErr}</div> )}
                         <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required placeholder="Required">
@@ -191,11 +191,11 @@ function SpacecraftForm({ edit, payload }){
                 </div>
                 <div className="load-capacity-container width">
                     <div>
-                        <p>
+                        <p className='form-paragraph-font'>
                             Add Load Capacity for this Spacecraft in Kilograms within the range between 2,000 and 250,000 kg
                         </p>
                     </div>
-                    <label className='label-font'>Load Capacity In Kilograms </label>
+                    <label className='label-font size'>Load Capacity In Kilograms </label>
                     <br/>
                     {isSubmitted && errors.loadCapacityErr && ( <div className='label-font spacecraft-errors'>{errors.loadCapacityErr}</div> )}
                     <input id='load_capacity_kg' type='number' value={loadCapacity} onChange={(e) => setLoadCapacity(e.target.value)} required placeholder="Required">
@@ -203,11 +203,11 @@ function SpacecraftForm({ edit, payload }){
                 </div>
                 <div className="spacecraft-height-container width">
                     <div>
-                        <p>
+                        <p className='form-paragraph-font'>
                             Add Height for this Spacecraft within the range between 1 and 200 meters
                         </p>
                     </div>
-                    <label className='label-font'>Height In Meters </label>
+                    <label className='label-font size'>Height In Meters </label>
                     <br/>
                     {isSubmitted && errors.heightErr && ( <div className='label-font spacecraft-errors'>{errors.heightErr}</div> )}
                     <input id='height_m' type='number' value={height} onChange={(e) => setHeight(e.target.value)} required placeholder="Required">
@@ -215,11 +215,11 @@ function SpacecraftForm({ edit, payload }){
                 </div>
                 <div className="spacecraft-diameter-container width">
                     <div>
-                        <p>
+                        <p className='form-paragraph-font'>
                             Add Diameter for this Spacecraft within the range between 1 and 100 meters
                         </p>
                     </div>
-                    <label className='label-font'>Diameter In Meters </label>
+                    <label className='label-font size'>Diameter In Meters </label>
                     <br/>
                     {isSubmitted && errors.diameterErr && ( <div className='label-font spacecraft-errors'>{errors.diameterErr}</div> )}
                     <input id='diameter_m' type='number' value={diameter} onChange={(e) => setDiameter(e.target.value)} required placeholder="Required">
@@ -227,11 +227,11 @@ function SpacecraftForm({ edit, payload }){
                 </div>
                 <div className="spacecraft-diameter-container width">
                     <div>
-                        <p>
+                        <p className='form-paragraph-font'>
                             Add Mass for this Spacecraft within the range 10 and 10,000,000 kilograms
                         </p>
                     </div>
-                    <label className='label-font'>Mass In Kilograms </label>
+                    <label className='label-font size'>Mass In Kilograms </label>
                     <br/>
                     {isSubmitted && errors.massErr && ( <div className='label-font spacecraft-errors'>{errors.massErr}</div> )}
                     <input id='mass_kg' type='number' value={mass} onChange={(e) => setMass(e.target.value)} required placeholder="Required">
@@ -239,11 +239,11 @@ function SpacecraftForm({ edit, payload }){
                 </div>
                 <div className="spacecraft-diameter-container width">
                     <div>
-                        <p>
+                        <p className='form-paragraph-font'>
                             Add Capsule Volume for this Spacecraft within the range between 1 and 100 meters
                         </p>
                     </div>
-                    <label className='label-font'>Capsule Volume In Meters Squared </label>
+                    <label className='label-font size'>Capsule Volume In Meters Squared </label>
                     <br/>
                     {isSubmitted && errors.capsuleVolumeErr && ( <div className='label-font spacecraft-errors'>{errors.capsuleVolumeErr}</div> )}
                     <input id='capsule_volume_kg' type='number' value={capsuleVolume} onChange={(e) => setCapsuleVolume(e.target.value)} required placeholder="Required">
@@ -251,11 +251,11 @@ function SpacecraftForm({ edit, payload }){
                 </div>
                 <div className="spacecraft-diameter-container width">
                     <div>
-                        <p>
+                        <p className='form-paragraph-font'>
                             Add Trunk Volume for this Spacecraft within the range between 1 and 100 meters
                         </p>
                     </div>
-                    <label className='label-font'>Trunk Volume In Meters Squared </label>
+                    <label className='label-font size'>Trunk Volume In Meters Squared </label>
                     <br/>
                     {isSubmitted && errors.trunkVolumeErr && ( <div className='label-font spacecraft-errors'>{errors.trunkVolumeErr}</div> )}
                     <input id='trunk_volume_m' type='number' value={trunkVolume} onChange={(e) => setTrunkVolume(e.target.value)} required placeholder="Required">
