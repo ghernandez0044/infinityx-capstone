@@ -201,26 +201,66 @@ function SpacecraftForm({ edit, payload }){
                     <input id='load_capacity_kg' type='number' value={loadCapacity} onChange={(e) => setLoadCapacity(e.target.value)} required placeholder="Required">
                     </input>
                 </div>
-                <label className='label-font'>Height In Meters </label>
-                {isSubmitted && errors.heightErr && ( <div className='label-font spacecraft-errors'>{errors.heightErr}</div> )}
-                <input id='height_m' type='number' value={height} onChange={(e) => setHeight(e.target.value)} required placeholder="Required">
-                </input>
-                <label className='label-font'>Diameter In Meters </label>
-                {isSubmitted && errors.diameterErr && ( <div className='label-font spacecraft-errors'>{errors.diameterErr}</div> )}
-                <input id='diameter_m' type='number' value={diameter} onChange={(e) => setDiameter(e.target.value)} required placeholder="Required">
-                </input>
-                <label className='label-font'>Mass In Kilograms </label>
-                {isSubmitted && errors.massErr && ( <div className='label-font spacecraft-errors'>{errors.massErr}</div> )}
-                <input id='mass_kg' type='number' value={mass} onChange={(e) => setMass(e.target.value)} required placeholder="Required">
-                </input>
-                <label className='label-font'>Capsule Volume In Meters Squared </label>
-                {isSubmitted && errors.capsuleVolumeErr && ( <div className='label-font spacecraft-errors'>{errors.capsuleVolumeErr}</div> )}
-                <input id='capsule_volume_kg' type='number' value={capsuleVolume} onChange={(e) => setCapsuleVolume(e.target.value)} required placeholder="Required">
-                </input>
-                <label className='label-font'>Trunk Volume In Meters Squared </label>
-                {isSubmitted && errors.trunkVolumeErr && ( <div className='label-font spacecraft-errors'>{errors.trunkVolumeErr}</div> )}
-                <input id='trunk_volume_m' type='number' value={trunkVolume} onChange={(e) => setTrunkVolume(e.target.value)} required placeholder="Required">
-                </input>
+                <div className="spacecraft-height-container">
+                    <div>
+                        <p>
+                            Add Height for this Spacecraft within the range between 1 and 200 meters
+                        </p>
+                    </div>
+                    <label className='label-font'>Height In Meters </label>
+                    <br/>
+                    {isSubmitted && errors.heightErr && ( <div className='label-font spacecraft-errors'>{errors.heightErr}</div> )}
+                    <input id='height_m' type='number' value={height} onChange={(e) => setHeight(e.target.value)} required placeholder="Required">
+                    </input>
+                </div>
+                <div className="spacecraft-diameter-container">
+                    <div>
+                        <p>
+                            Add Diameter for this Spacecraft within the range between 1 and 100 meters
+                        </p>
+                    </div>
+                    <label className='label-font'>Diameter In Meters </label>
+                    <br/>
+                    {isSubmitted && errors.diameterErr && ( <div className='label-font spacecraft-errors'>{errors.diameterErr}</div> )}
+                    <input id='diameter_m' type='number' value={diameter} onChange={(e) => setDiameter(e.target.value)} required placeholder="Required">
+                    </input>
+                </div>
+                <div className="spacecraft-diameter-container">
+                    <div>
+                        <p>
+                            Add Mass for this Spacecraft within the range 10 and 10,000,000 kilograms
+                        </p>
+                    </div>
+                    <label className='label-font'>Mass In Kilograms </label>
+                    <br/>
+                    {isSubmitted && errors.massErr && ( <div className='label-font spacecraft-errors'>{errors.massErr}</div> )}
+                    <input id='mass_kg' type='number' value={mass} onChange={(e) => setMass(e.target.value)} required placeholder="Required">
+                    </input>
+                </div>
+                <div className="spacecraft-diameter-container">
+                    <div>
+                        <p>
+                            Add Capsule Volume for this Spacecraft within the range between 1 and 100 meters
+                        </p>
+                    </div>
+                    <label className='label-font'>Capsule Volume In Meters Squared </label>
+                    <br/>
+                    {isSubmitted && errors.capsuleVolumeErr && ( <div className='label-font spacecraft-errors'>{errors.capsuleVolumeErr}</div> )}
+                    <input id='capsule_volume_kg' type='number' value={capsuleVolume} onChange={(e) => setCapsuleVolume(e.target.value)} required placeholder="Required">
+                    </input>
+                </div>
+                <div className="spacecraft-diameter-container">
+                    <div>
+                        <p>
+                            Add Trunk Volume for this Spacecraft within the range between 1 and 100 meters
+                        </p>
+                    </div>
+                    <label className='label-font'>Trunk Volume In Meters Squared </label>
+                    <br/>
+                    {isSubmitted && errors.trunkVolumeErr && ( <div className='label-font spacecraft-errors'>{errors.trunkVolumeErr}</div> )}
+                    <input id='trunk_volume_m' type='number' value={trunkVolume} onChange={(e) => setTrunkVolume(e.target.value)} required placeholder="Required">
+                    </input>
+                </div>
                 {/* <button type='submit'>{!edit ? 'Create Spacecraft' : 'Edit Spacecraft'}</button> */}
                 <div onClick={onSubmit} className="button animate">
                     <div className="hover-effect"></div>
