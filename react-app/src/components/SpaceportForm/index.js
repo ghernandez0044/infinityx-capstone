@@ -134,7 +134,7 @@ function SpaceportForm({ edit, payload }){
                             Add a Name to this Spaceport
                         </p>
                     </div>
-                    <label className="label-font size">Name: </label>
+                    <label className="label-font size">Name </label>
                     <br/>
                     {isSubmitted && errors.nameErr && ( <div className='label-font spacecraft-errors'>{errors.nameErr}</div> )}
                     <input id='name' type='text' value={name} onChange={(e) => setName(e.target.value)} required placeholder="Required"></input>
@@ -145,7 +145,7 @@ function SpaceportForm({ edit, payload }){
                             Add a short Description for this Spaceport
                         </p>
                     </div>
-                    <label className="label-font size">Description: </label>
+                    <label className="label-font size">Description </label>
                     <br/>
                     <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                 </div>
@@ -155,7 +155,7 @@ function SpaceportForm({ edit, payload }){
                             Add a City for this Spaceport
                         </p>
                     </div>
-                    <label className="label-font size">City: </label>
+                    <label className="label-font size">City </label>
                     <br/>
                     {isSubmitted && errors.cityErr && ( <div className='label-font spacecraft-errors'>{errors.cityErr}</div> )}
                     <input id='city' type='text' value={city} onChange={(e) => setCity(e.target.value)} required placeholder="Required"></input>
@@ -166,7 +166,7 @@ function SpaceportForm({ edit, payload }){
                             Add a State for this Spaceport
                         </p>
                     </div>
-                    <label className="label-font size">State: </label>
+                    <label className="label-font size">State </label>
                     <br/>
                     {isSubmitted && errors.stateErr && ( <div className='label-font spacecraft-errors'>{errors.stateErr}</div> )}
                     <input id='state' type='text' value={state} onChange={(e) => setState(e.target.value)} required placeholder="Required"></input>
@@ -177,7 +177,7 @@ function SpaceportForm({ edit, payload }){
                             Add Latitude for this Spaceport between 0 and 90 degrees
                         </p>
                     </div>
-                    <label className="label-font size">Latitude: </label>
+                    <label className="label-font size">Latitude </label>
                     <br/>
                     {isSubmitted && errors.latErr && ( <div className='label-font spacecraft-errors'>{errors.latErr}</div> )}
                     <input id='latitude' type='number' value={lat} onChange={(e) => setLat(e.target.value)} placeholder="Required" ></input>
@@ -188,7 +188,7 @@ function SpaceportForm({ edit, payload }){
                             Add Longitude for this Spaceport between -180 to 180 degrees
                         </p>
                     </div>
-                    <label className="label-font size">Longitude: </label>
+                    <label className="label-font size">Longitude </label>
                     <br/>
                     {isSubmitted && errors.lngErr && ( <div className='label-font spacecraft-errors'>{errors.lngErr}</div> )}
                     <input id='longitude' type='number' value={lng} onChange={(e) => setLng(e.target.value)} placeholder="Required" ></input>
