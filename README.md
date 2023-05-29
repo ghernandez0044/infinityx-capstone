@@ -1,148 +1,67 @@
-# Flask React Project
+# InfinityX Project
 
-This is the starter for the Flask React project.
+Inspiration is drawn from the functionality and overall look of websites such as SpaceX, Social Media Sites (Posts, Comments, Profiles), and airline systems (Flights/Bookings, FrequentFlyer, TravelClasses). Components include a Backend API server and database (Flask-SQLAlchemy) to handle data, requests, and responses as well as a Frontend (React) to display data on a frontend application.
 
-## Getting started
-1. Clone this repository (only this branch)
+## Technologies Used
 
-2. Install dependencies
+Technologies used include Python, SQL, SQLAlchemy, Flask, PostgreSQL, React and Redux.
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+## Deployed Live Link
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+https://infinityx.onrender.com/
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+## MVP Core Features 
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+1. Spacecrafts (Create, Read, Update, Delete)
+2. Spaceports (Create, Read, Update, Delete)
+3. Planets (Create, Read, Update, Delete)
+4. Planet Comments (Create, Read, Update, Delete)
+5. Profiles (Create, Read, Update)
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+## Future Implementations
 
-   ```bash
-   pipenv shell
-   ```
+1. Flights (Create, Read, Update, Delete)
+2. Transactions (Create, Read)
+3. Wallets (Create, Read, Update)
+4. FrequentFlyer (Create, Read, Update, Delete)
 
-   ```bash
-   flask db upgrade
-   ```
+## Screenshots
 
-   ```bash
-   flask seed all
-   ```
+### Landing Page
+<img width="1502" alt="LandingPage" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/06046d4a-5b71-43ea-bde5-c3b33a5917d7">
 
-   ```bash
-   flask run
-   ```
+### Spacecraft Gallery
+<img width="1502" alt="SpacecraftGallery" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/0741c223-f757-4e45-8816-c2f498ef800b">
 
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+### Spacecraft Details
+<img width="1502" alt="SpacecraftDetails" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/e6744066-c6c0-4e31-b37e-b2bfc0fc01cb">
+
+### Spaceport Gallery
+<img width="1502" alt="SpaceportGallery" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/eaa308c2-fd07-4c03-a799-9ab0e64e03fe">
+
+### Spaceport Details
+<img width="1502" alt="SpaceportDetails" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/1bf9b2ad-3e5f-47fc-9aac-9f65e04e8f01">
+
+### Planet Gallery
+<img width="1502" alt="PlanetGallery" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/0f432fbd-ca35-4557-83e1-aa354816c8b8">
+
+### Planet Details
+<img width="1502" alt="PlanetDetails" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/3ef6c8aa-b3be-4d1d-bd12-7f268892cbd0">
+
+### Planet Comment Gallery
+<img width="1502" alt="PlanetCommentGallery" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/a38ad59e-071b-4e43-963c-53f95cf25dcc">
+
+### Profile Gallery
+<img width="1502" alt="ProfileGallery" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/ee7d9919-b0b9-4503-ab3c-1c6bc97818a1">
+
+### Profile Page
+<img width="1502" alt="ProfilePage" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/e1f4db3c-832c-4534-abe7-3d7f46c32ea0">
 
 
-## Deployment through Render.com
+## Links
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
+### LinkedIn
+https://www.linkedin.com/in/guillermo-hernandez-32a307180/
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
-
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
-
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
-
-### Part A: Configure the Start and Build Commands
-
-Start by giving your application a name.
-
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
-
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
-
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
-
-For your Flask project, enter the following command into the Build field, all in
-one line:
-
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
-```
-
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
-
-Now, add your start command in the Start field:
-
-```shell
-# start script
-gunicorn app:app
-```
-
-_If you are using websockets, use the following start command instead for increased performance:_
-
-`gunicorn --worker-class eventlet -w 1 app:app`
-
-### Part B: Add the Environment Variables
-
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
-
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
-
-Add the following keys and values in the Render GUI form:
-
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
-
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
-
-Add the following keys and values:
-
-- DATABASE_URL (copy value from Internal Database URL field)
-
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
-
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
-
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
-
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+### GitHub
+https://github.com/ghernandez0044
