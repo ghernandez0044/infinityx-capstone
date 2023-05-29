@@ -161,22 +161,46 @@ function SpacecraftForm({ edit, payload }){
 						<li key={idx}>{error}</li>
 					))}
 				</ul> */}
-                <label className='label-font'>Model </label>
-                {isSubmitted && errors.modelErr && ( <div className='label-font spacecraft-errors'>{errors.modelErr}</div> )}
-                <input id='model' type='text' value={model} onChange={(e) => setModel(e.target.value)} required placeholder="Required">
-                </input>
-                <label className='label-font'>Year </label>
-                {isSubmitted && errors.yearErr && ( <div className='label-font spacecraft-errors'>{errors.yearErr}</div> )}
-                <input id='year' type='number' value={year} onChange={(e) => setYear(e.target.value)} required placeholder="Required">
-                </input>
-                <label className='label-font'>Load Capacity In Kilograms </label>
-                {isSubmitted && errors.loadCapacityErr && ( <div className='label-font spacecraft-errors'>{errors.loadCapacityErr}</div> )}
-                <input id='load_capacity_kg' type='number' value={loadCapacity} onChange={(e) => setLoadCapacity(e.target.value)} required placeholder="Required">
-                </input>
-                <label className='label-font'>Description </label>
-                {isSubmitted && errors.descriptionErr && ( <div className='label-font spacecraft-errors'>{errors.descriptionErr}</div> )}
-                <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required placeholder="Required">
-                </textarea>
+                <div>
+                    <p>
+                        Write Model, Year, and a short description for this spacecraft
+                    </p>
+                </div>
+                <div className="first-info-container">
+                    <div>
+                        <label className='label-font'>Model </label>
+                        <br/>
+                        {isSubmitted && errors.modelErr && ( <div className='label-font spacecraft-errors'>{errors.modelErr}</div> )}
+                        <input id='model' type='text' value={model} onChange={(e) => setModel(e.target.value)} required placeholder="Required">
+                        </input>
+                    </div>
+                    <div>
+                        <label className='label-font'>Year </label>
+                        <br/>
+                        {isSubmitted && errors.yearErr && ( <div className='label-font spacecraft-errors'>{errors.yearErr}</div> )}
+                        <input id='year' type='number' value={year} onChange={(e) => setYear(e.target.value)} required placeholder="Required">
+                        </input>
+                    </div>
+                    <div>
+                        <label className='label-font'>Description </label>
+                        <br/>
+                        {isSubmitted && errors.descriptionErr && ( <div className='label-font spacecraft-errors'>{errors.descriptionErr}</div> )}
+                        <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required placeholder="Required">
+                        </textarea>
+                    </div>
+                </div>
+                <div className="load-capacity-container">
+                    <div>
+                        <p>
+                            Add Load Capacity for this Spacecraft in Kilograms within the range between 2,000 and 250,000 kg
+                        </p>
+                    </div>
+                    <label className='label-font'>Load Capacity In Kilograms </label>
+                    <br/>
+                    {isSubmitted && errors.loadCapacityErr && ( <div className='label-font spacecraft-errors'>{errors.loadCapacityErr}</div> )}
+                    <input id='load_capacity_kg' type='number' value={loadCapacity} onChange={(e) => setLoadCapacity(e.target.value)} required placeholder="Required">
+                    </input>
+                </div>
                 <label className='label-font'>Height In Meters </label>
                 {isSubmitted && errors.heightErr && ( <div className='label-font spacecraft-errors'>{errors.heightErr}</div> )}
                 <input id='height_m' type='number' value={height} onChange={(e) => setHeight(e.target.value)} required placeholder="Required">
