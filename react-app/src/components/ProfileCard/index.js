@@ -15,7 +15,7 @@ function ProfileCard({ profile }){
             <div className='profile-card-image-container'>
                 <img className='pointer' onClick={onClick} style={{ height: '35px', width: '35px', borderRadius: '15px' }} src={profile.profile_pic} alt='' />
                 <div onClick={onClick} className='small-content-font pointer'>@{profile.username}</div>
-                <div>{profile.passport}</div>
+                <div className='passport-font'>{profile.passport}</div>
             </div>
             <div className='profile-card-button-container'>
                 <div onClick={onClick} className="button animate">
