@@ -75,6 +75,34 @@ function PlanetForm({ edit, payload }){
         setErrors(validationErrors)
     }, [ name, description, distance, mass, volume, density, gravity, velocity, synodic, temperature ])
 
+    // Function to generate a planet that meets all data validations
+    const validPlanet = () => {
+        setName('A Brand New Planet')
+        setDescription('A small, short description regarding this new planet I have created')
+        setDistance(2000000)
+        setMass(12.5)
+        setVolume(10)
+        setDensity(15.4)
+        setGravity(7.8)
+        setVelocity(22.2)
+        setSynodic(6)
+        setTemperature(273)
+    }
+
+    // Function to generate a planet that does not meet all data validations
+    const invalidPlanet = () => {
+        setName('')
+        setDescription('invalid planet')
+        setDistance(111000000000)
+        setMass(120)
+        setVolume(120)
+        setDensity(110)
+        setGravity(150)
+        setVelocity(180)
+        setSynodic(400)
+        setTemperature(700)
+    }
+
     // Create onSubmit function
     const onSubmit = (e) => {
         e.preventDefault()
@@ -127,42 +155,128 @@ function PlanetForm({ edit, payload }){
 
     return user.admin && (
         <div className="spacecraft-form-container">
-            <h1 className="header-font" style={{ textAlign: 'center' }}>{!edit ? 'Create A Planet' : 'Edit A Planet'}</h1>
+            <h1 className="header-font form-header" style={{ textAlign: 'center' }}>{!edit ? 'Create A Planet' : 'Edit A Planet'}</h1>
             <form className="form" onSubmit={onSubmit}>
-                <label className="label-font">Name </label>
-                {isSubmitted && errors.nameErr && ( <div className='label-font spacecraft-errors'>{errors.nameErr}</div> )}
-                <input id='model' type='text' value={name} onChange={(e) => setName(e.target.value)} required placeholder="Required" />
-                <label className="label-font">Description </label>
-                {isSubmitted && errors.descriptionErr && ( <div className='label-font spacecraft-errors'>{errors.descriptionErr}</div> )}
-                <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required placeholder="Required" />
-                <label className="label-font">Distance From Earth (Measured In Kilometers) </label>
-                {isSubmitted && errors.distanceErr && ( <div className='label-font spacecraft-errors'>{errors.distanceErr}</div> )}
-                <input id='distance_from_earth_km' type='number' value={distance} onChange={(e) => setDistance(e.target.value)} required placeholder="Required" />
-                <label className="label-font">Mass (Measured In Earths) </label>
-                {isSubmitted && errors.massErr && ( <div className='label-font spacecraft-errors'>{errors.massErr}</div> )}
-                <input id='mass_measured_in_earths' type='number' value={mass} onChange={(e) => setMass(e.target.value)} />
-                <label className="label-font">Volume (Measured In Earths) </label>
-                {isSubmitted && errors.volumeErr && ( <div className='label-font spacecraft-errors'>{errors.volumeErr}</div> )}
-                <input id='volume_measured_in_earths' type='number' value={volume} onChange={(e) => setVolume(e.target.value)} />
-                <label className="label-font">Mean Density (Measured In Grams Per Centimeter Cubed) </label>
-                {isSubmitted && errors.densityErr && ( <div className='label-font spacecraft-errors'>{errors.densityErr}</div> )}
-                <input id='mean_density_in_g_cm_cubed' type='number' value={density} onChange={(e) => setDensity(e.target.value)} />
-                <label className="label-font">Surface Gravity (Measured In Meters Squared) </label>
-                {isSubmitted && errors.gravityErr && ( <div className='label-font spacecraft-errors'>{errors.gravityErr}</div> )}
-                <input id='surface_gravity_in_m_squared' type='number' value={gravity} onChange={(e) => setGravity(e.target.value)} />
-                <label className="label-font">Escape Velocity (Measured In Kilometers Per Second) </label>
-                {isSubmitted && errors.velocityErr && ( <div className='label-font spacecraft-errors'>{errors.velocityErr}</div> )}
-                <input id='surface_gravity_in_m_squared' type='number' value={velocity} onChange={(e) => setVelocity(e.target.value)} />
-                <label className="label-font">Synodic Rotation (Measured In Days) </label>
-                {isSubmitted && errors.synodicErr && ( <div className='label-font spacecraft-errors'>{errors.synodicErr}</div> )}
-                <input id='synodic_rotation_period_in_days' type='number' value={synodic} onChange={(e) => setSynodic(e.target.value)} />
-                <label className="label-font">Average Temperature (Measured In Kalvin) </label>
-                {isSubmitted && errors.temperatureErr && ( <div className='label-font spacecraft-errors'>{errors.temperatureErr}</div> )}
-                <input id='temperature_in_k' type='number' value={temperature} onChange={(e) => setTemperature(e.target.value)} />
+                <div className="spacecraft-diameter-container width">
+                    <div>
+                        <p className="form-paragraph-font">
+                            Add a Name to this Planet
+                        </p>
+                    </div>
+                    <label className="label-font size">Name </label>
+                    <br/>
+                    {isSubmitted && errors.nameErr && ( <div className='label-font spacecraft-errors'>{errors.nameErr}</div> )}
+                    <input id='model' type='text' value={name} onChange={(e) => setName(e.target.value)} required placeholder="Required" />
+                </div>
+                <div className="spacecraft-diameter-container width">
+                    <div>
+                        <p className="form-paragraph-font">
+                            Add a short Description for this Planet
+                        </p>
+                    </div>
+                    <label className="label-font size">Description </label>
+                    <br/>
+                    {isSubmitted && errors.descriptionErr && ( <div className='label-font spacecraft-errors'>{errors.descriptionErr}</div> )}
+                    <textarea id='description' value={description} onChange={(e) => setDescription(e.target.value)} required placeholder="Required" />
+                </div>
+                <div className="spacecraft-diameter-container width">
+                    <div>
+                        <p className="form-paragraph-font">
+                            Add Distance From Earth for this Planet between the range of 0 and 100,000,000,000 kilometers
+                        </p>
+                    </div>
+                    <label className="label-font size">Distance From Earth </label>
+                    <br/>
+                    {isSubmitted && errors.distanceErr && ( <div className='label-font spacecraft-errors'>{errors.distanceErr}</div> )}
+                    <input id='distance_from_earth_km' type='number' value={distance} onChange={(e) => setDistance(e.target.value)} required placeholder="Required" />
+                </div>
+                <div className="spacecraft-diameter-container width">
+                    <div>
+                        <p className="form-paragraph-font">
+                            Add Mass measured in Earths for this Planet between the range of 0 and 100 Earths
+                        </p>
+                    </div>
+                    <label className="label-font size">Mass</label>
+                    <br/>
+                    {isSubmitted && errors.massErr && ( <div className='label-font spacecraft-errors'>{errors.massErr}</div> )}
+                    <input id='mass_measured_in_earths' type='number' value={mass} onChange={(e) => setMass(e.target.value)} />
+                </div>
+                <div className="spacecraft-diameter-container width">
+                    <div>
+                        <p className="form-paragraph-font">
+                            Add Volume measured in Earths for this Planet between the range of 0 and 100 Earths
+                        </p>
+                    </div>
+                    <label className="label-font size">Volume </label>
+                    <br/>
+                    {isSubmitted && errors.volumeErr && ( <div className='label-font spacecraft-errors'>{errors.volumeErr}</div> )}
+                    <input id='volume_measured_in_earths' type='number' value={volume} onChange={(e) => setVolume(e.target.value)} />
+                </div>
+                <div className="spacecraft-diameter-container width">
+                    <div>
+                        <p className="form-paragraph-font">
+                            Add Mean Density measured in Grams per Centimeter Cubed for this Planet between the range of 0 and 100 grams per cm cubed
+                        </p>
+                    </div>
+                    <label className="label-font size">Mean Density </label>
+                    <br/>
+                    {isSubmitted && errors.densityErr && ( <div className='label-font spacecraft-errors'>{errors.densityErr}</div> )}
+                    <input id='mean_density_in_g_cm_cubed' type='number' value={density} onChange={(e) => setDensity(e.target.value)} />
+                </div>
+                <div className="spacecraft-diameter-container width">
+                    <div>
+                        <p className="form-paragraph-font">
+                            Add Surface Gravity measured in Meters Squared for this Planet between the range of 0 and 100 meters squared
+                        </p>
+                    </div>
+                    <label className="label-font size">Surface Gravity </label>
+                    <br/>
+                    {isSubmitted && errors.gravityErr && ( <div className='label-font spacecraft-errors'>{errors.gravityErr}</div> )}
+                    <input id='surface_gravity_in_m_squared' type='number' value={gravity} onChange={(e) => setGravity(e.target.value)} />
+                </div>
+                <div className="spacecraft-diameter-container width">
+                    <div>
+                        <p className="form-paragraph-font">
+                            Add Escape Velocity measured in Kilometers Per Second for this Planet between the range of 0 and 100 kilometer per seconds
+                        </p>
+                    </div>
+                    <label className="label-font size">Escape Velocity </label>
+                    <br/>
+                    {isSubmitted && errors.velocityErr && ( <div className='label-font spacecraft-errors'>{errors.velocityErr}</div> )}
+                    <input id='surface_gravity_in_m_squared' type='number' value={velocity} onChange={(e) => setVelocity(e.target.value)} />
+                </div>
+                <div className="spacecraft-diameter-container width">
+                    <div>
+                        <p className="form-paragraph-font">
+                            Add Synodic Rotation measured in Earth Days for this Planet between the range of 0 and 365 days
+                        </p>
+                    </div>
+                    <label className="label-font size">Synodic Rotation </label>
+                    <br/>
+                    {isSubmitted && errors.synodicErr && ( <div className='label-font spacecraft-errors'>{errors.synodicErr}</div> )}
+                    <input id='synodic_rotation_period_in_days' type='number' value={synodic} onChange={(e) => setSynodic(e.target.value)} />
+                </div>
+                <div className="spacecraft-diameter-container width">
+                    <div>
+                        <p className="form-paragraph-font">
+                            Add Average Temperature for this Planet between the range of 0 and 600 Kalvin
+                        </p>
+                    </div>
+                    <label className="label-font">Average Temperature </label>
+                    <br/>
+                    {isSubmitted && errors.temperatureErr && ( <div className='label-font spacecraft-errors'>{errors.temperatureErr}</div> )}
+                    <input id='temperature_in_k' type='number' value={temperature} onChange={(e) => setTemperature(e.target.value)} />
+                </div>
                 {/* <button type='submit'>{!edit ? 'Create Planet' : 'Edit Planet'}</button> */}
-                <div onClick={onSubmit} className="button animate">
-                    <div className="hover-effect"></div>
-                    <span className="signup-button-font">{!edit ? 'Create Planet' : 'Edit Planet'}</span>
+                <div className="spacecraft-diameter-container">
+                    <div onClick={onSubmit} className="button animate">
+                        <div className="hover-effect"></div>
+                        <span className="signup-button-font">{!edit ? 'Create Planet' : 'Edit Planet'}</span>
+                    </div>
+                </div>
+                <div className="spacecraft-generators-container">
+                    <div id='valid-planet' className="hoverable" onClick={validPlanet}>Generate Valid Planet</div>
+                    <div id='invalid-spaceport' className="hoverable" onClick={invalidPlanet}>Generate Invalid Planet</div>
                 </div>
             </form>
         </div>

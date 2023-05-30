@@ -20,6 +20,7 @@ import CreatePlanet from "./components/CreatePlanet";
 import EditPlanet from "./components/EditPlanet";
 import ProfilePage from "./components/ProfilePage";
 import ProfileGallery from "./components/ProfileGallery";
+import Rideshare from "./components/Rideshare";
 import Footer from "./components/Footer";
 
 
@@ -51,6 +52,9 @@ function App() {
             </Route>
             <Route exact path="/users/:id">
               <ProfilePage />
+            </Route>
+            <Route exact path="/rideshare">
+              {/* <Rideshare /> */}
             </Route>
             <Route exact path="/spacecrafts/:id/edit">
               <EditSpacecraft />

@@ -54,8 +54,8 @@ function PlanetCommentCard({ comment }){
                 <div onClick={redirectProfile} className="pointer">
                     <img style={{ height: '45px', widht: '45px', borderRadius: '15px' }} src={user?.profile_pic} alt='' />
                 </div>
-                <div onClick={redirectProfile} className="pointer">@{user?.username}</div>
-                <div>{user?.passport}</div>
+                <div onClick={redirectProfile} className="small-content-font pointer">@{user?.username}</div>
+                <div className="passport-font">{user?.passport}</div>
                 {userPlanetComment && ( 
                     <div className="delete-icon pointer">
                         {/* <i className="fa-solid fa-trash" /> */}
@@ -70,7 +70,7 @@ function PlanetCommentCard({ comment }){
                  )}
             </div>
             <div className="comment-info">
-                <div>{comment.content}</div>
+                <div className="dropdown-menu-font">{comment.content}</div>
             </div>
         </div>
     )

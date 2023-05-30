@@ -63,7 +63,7 @@ function PlanetDetails(){
                     <div className='content-font'>Mass (Measured In Earths): {planet.mass_measured_in_earths} Earths</div>
                     <div className='content-font'>Volume (Measured In Earths): {planet.volume_measured_in_earths} Earths</div>
                     <div className='content-font'>Mean Density (Measured In Grams Per Centimeter Cubed): {planet.mean_density_in_g_cm_cubed} g/cm^3</div>
-                    <div className='content-font'>Surface Gravity (Measured In Meters Squared): {planet.surface_gravity_in_m_squared} g/cm^3</div>
+                    <div className='content-font'>Surface Gravity (Measured In Meters Squared): {planet.surface_gravity_in_m_squared} m^2</div>
                     <div className='content-font'>Escape Velocity (Measured In Kilometers Per Second): {planet.escape_velocity_in_km_per_sec} km/s</div>
                     <div className='content-font'>Synodic Rotation Period (Measured In Days): {planet.synodic_rotation_period_in_days} days</div>
                     <div className='content-font'>Average Temperature (Measured In Kalvin): {planet.temperature_in_k} K</div>

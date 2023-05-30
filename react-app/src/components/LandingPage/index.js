@@ -23,7 +23,7 @@ function LandingPage(){
 
     return (
         <div className='whole-content-container'>
-            <GalleryCard smallTag='Welcome' bigTag='An Intergalactic Hub' buttonText='Explore' destination='landing' />
+            <GalleryCard smallTag='Welcome To InfinityX' bigTag='An Intergalactic Hub' buttonText='Explore' destination='landing' disable={true} />
         </div>
     )
 }

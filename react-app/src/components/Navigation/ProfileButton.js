@@ -119,6 +119,14 @@ function ProfileButton({ user, set, setter }) {
     setShow(false)
   }
 
+  // Function to redirect to space travelers page
+  const redirectSpaceTravelers = () => {
+    history.push('/users')
+    closeMenu()
+    setShowMenu(false);
+    setShow(false)
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
@@ -148,8 +156,9 @@ function ProfileButton({ user, set, setter }) {
             <div onClick={redirectSpacecraftGallery} className="mobile-menu pointer dropdown-menu-font">Spacecrafts</div>
             <div onClick={redirectSpaceportGallery} className="mobile-menu pointer dropdown-menu-font">Spaceports</div>
             <div onClick={redirectPlanetGallery} className="mobile-menu pointer dropdown-menu-font">Planets</div>
-            <div className="mobile-menu pointer dropdown-menu-font">Rideshare</div>
-            <div className="mobile-menu pointer dropdown-menu-font">Group Chats</div>
+            <div onClick={redirectSpaceTravelers} className="mobile-menu pointer dropdown-menu-font">Space Travelers</div>
+            {/* <div className="mobile-menu pointer dropdown-menu-font">Rideshare</div> */}
+            {/* <div className="mobile-menu pointer dropdown-menu-font">Group Chats</div> */}
             <div>
               {/* <button onClick={handleLogout}>Log Out</button> */}
               <div onClick={handleLogout} className="button animate">

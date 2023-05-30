@@ -8,6 +8,8 @@
   justify-content: center;
   align-items: center;
   z-index: 10;
+  height: 100vh;
+  /* border: 3px solid lime; */
 }
 
 #modal-background {
@@ -20,9 +22,11 @@
 }
 
 #modal-content {
+  /* border: 3px solid red; */
   position: absolute;
   background-color:black;
   min-height: 600px;
   height: fit-content;
-  min-width: 800px;
+  min-width: 500px;
+  width: fit-content;
 }

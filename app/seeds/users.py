@@ -34,7 +34,7 @@ def seed_users():
         first_name='Elon',
         last_name='Musk',
         phone='4086367588',
-        passport='Earthling',
+        passport='Martian',
         profile_pic='https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg',
         created_at="2018-02-01")
     bernard = User(
@@ -45,7 +45,7 @@ def seed_users():
         first_name='Bernanrd',
         last_name='Arnault',
         phone='4085767388',
-        passport='Earthling',
+        passport='Venitian',
         profile_pic='https://upload.wikimedia.org/wikipedia/commons/d/de/Bernard_Arnault_%283%29_-_2017_%28cropped%29.jpg',
         created_at="2018-03-15")
     jeff = User(
@@ -56,7 +56,7 @@ def seed_users():
         first_name='Jeff',
         last_name='Bezos',
         phone='4084397088',
-        passport='Earthling',
+        passport='Uranian',
         profile_pic='https://live.staticflickr.com/8076/8362040192_e0ea688efb_b.jpg',
         created_at="2018-04-28")
     bill = User(
@@ -78,7 +78,7 @@ def seed_users():
         first_name='Larry',
         last_name='Page',
         phone='4085397780',
-        passport='Earthling',
+        passport='Mercurian',
         profile_pic='https://live.staticflickr.com/3651/5790205085_a49af0fc66_b.jpg',
         created_at="2019-04-30")
     warren = User(
@@ -89,7 +89,7 @@ def seed_users():
         first_name='Warren',
         last_name='Buffet',
         phone='4084068579',
-        passport='Earthling',
+        passport='Uranian',
         profile_pic='https://live.staticflickr.com/4215/35649960832_e76a799b6c_b.jpg',
         created_at="2020-01-01")
     sergey = User(
@@ -100,7 +100,7 @@ def seed_users():
         first_name='Sergey',
         last_name='Brin',
         phone='4085391252',
-        passport='Earthling',
+        passport='Venitian',
         profile_pic='https://live.staticflickr.com/2422/3570577093_e91027ae63.jpg',
         created_at="2021-03-24")
     steve = User(
@@ -111,7 +111,7 @@ def seed_users():
         first_name='Steve',
         last_name='Ballmer',
         phone='4084596688',
-        passport='Earthling',
+        passport='Uranian',
         profile_pic='https://live.staticflickr.com/5084/5245935215_95d86a5b77_b.jpg',
         created_at="2021-04-27")
     serena = User(
@@ -133,7 +133,7 @@ def seed_users():
         first_name='Catherine',
         last_name='Wales',
         phone='4084097181',
-        passport='Earthling',
+        passport='Martian',
         profile_pic='https://upload.wikimedia.org/wikipedia/commons/5/51/Coat_of_arms_of_Catherine%2C_Princess_of_Wales.svg',
         created_at="2021-05-17")
     alexandria = User(
@@ -144,7 +144,7 @@ def seed_users():
         first_name='Alexandria',
         last_name='Cortez',
         phone='4085594388',
-        passport='Earthling',
+        passport='Mercurian',
         profile_pic='https://live.staticflickr.com/7919/46438133315_57f4781f4d_b.jpg',
         created_at="2021-06-23")
     miley = User(
@@ -155,7 +155,7 @@ def seed_users():
         first_name='Miley',
         last_name='Cyrus',
         phone='4087894356',
-        passport='Earthling',
+        passport='Venitian',
         profile_pic='https://live.staticflickr.com/1232/4724939047_0f87353eba_b.jpg',
         created_at="2021-07-11")
     nicki = User(
@@ -177,7 +177,7 @@ def seed_users():
         first_name='Cristiano',
         last_name='Ronaldo',
         phone='4087995699',
-        passport='Earthling',
+        passport='Mercurian',
         profile_pic='https://upload.wikimedia.org/wikipedia/commons/3/3f/Cristiano_Ronaldo_Madrid.jpg',
         created_at="2021-11-27")
     lionel = User(
@@ -188,7 +188,7 @@ def seed_users():
         first_name='Lionel',
         last_name='Messi',
         phone='4085391369',
-        passport='Earthling',
+        passport='Venitian',
         profile_pic='https://upload.wikimedia.org/wikipedia/commons/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg',
         created_at="2022-01-17")
     kylie = User(
@@ -199,7 +199,7 @@ def seed_users():
         first_name='Kylie',
         last_name='Jenner',
         phone='4085194569',
-        passport='Earthling',
+        passport='Martian',
         profile_pic='https://live.staticflickr.com/351/31835100192_c83d6b4182.jpg',
         created_at="2022-02-16")
     selena = User(
@@ -265,7 +265,7 @@ def seed_users():
         first_name='Ariana',
         last_name='Grande',
         phone='4087896989',
-        passport='Earthling',
+        passport='Uranian',
         profile_pic='https://live.staticflickr.com/3820/33269921925_405a790081_b.jpg',
         created_at="2022-06-25")
     kim = User(
@@ -296,7 +296,7 @@ def seed_users():
         password='password',
         admin=False,
         first_name='Justin',
-        last_name='Bieber',
+        last_name='Martian',
         phone='4084054783',
         passport='Earthling',
         profile_pic='https://live.staticflickr.com/1318/4592640616_e42121eb63_b.jpg',
@@ -309,7 +309,7 @@ def seed_users():
         first_name='Taylor',
         last_name='Swift',
         phone='4086664783',
-        passport='Earthling',
+        passport='Uranian',
         profile_pic='https://live.staticflickr.com/7067/6820799756_8c3ef01322_b.jpg',
         created_at="2022-10-18")
     jennifer = User(

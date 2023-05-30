@@ -21,6 +21,9 @@ function PlanetCommentGallery(){
         dispatch(getOnePlanetComment(id))
     }, [dispatch, id])
 
+    // Subscribe to current user slice of state
+    const currentUser = useSelector(state => state.session.user)
+
     // Subscribe to slice of state for planet comments
     const planetComments = useSelector(state => Object.values(state.planetComments.singlePlanetComments))
 
@@ -53,6 +56,7 @@ function PlanetCommentGallery(){
                     ))}
                 </div>
             </div>
+            {currentUser && ( 
             <div className="planet-comment-text-input-container">
                 <div className="comment-label-info">
                     <label className="label-font">Comment: </label>
@@ -66,6 +70,7 @@ function PlanetCommentGallery(){
                     </div>
                 </div>
             </div>
+             )}
         </>
     )
 }

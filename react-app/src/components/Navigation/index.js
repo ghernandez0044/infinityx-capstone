@@ -38,7 +38,7 @@ function Navigation({ isLoaded }){
 
 	// Function to redirect to Rideshare tab
 	const redirectRideshare = () => {
-	alert('Feature coming soon!')
+		history.push('/rideshare')
 	}
 
 	return (
@@ -57,12 +57,12 @@ function Navigation({ isLoaded }){
 				{sessionUser && ( 
 					<div className='hoverable navbar-font' onClick={redirectSpaceTravelers}>Space Travelers</div>
 				 )}
-				{sessionUser && ( 
+				{/* {sessionUser && ( 
 					<div className='hoverable navbar-font' onClick={redirectRideshare}>Rideshare</div>
-				 )}
-				{sessionUser && ( 
+				 )} */}
+				{/* {sessionUser && ( 
 					<div className='hoverable navbar-font' onClick={redirectRideshare}>Group Chats</div>
-				 )}
+				 )} */}
 			</div>
 			{isLoaded && (
 				<div className='profile-button-container'>
