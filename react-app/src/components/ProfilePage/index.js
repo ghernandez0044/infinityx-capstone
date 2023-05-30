@@ -53,9 +53,7 @@ function ProfilePage(){
     const user = useSelector(state => state.session.user)
 
     // Subscribe to single wallet slice of state
-    const singleWallet = useSelector(state => state)
-
-    console.log('single wallet: ', singleWallet.wallets.singleWallet)
+    const singleWallet = useSelector(state => state.wallets.singleWallet)
     
     // Check to see if current user owns profile
     const currentUserProfile = user?.id === profile.id
@@ -71,17 +69,17 @@ function ProfilePage(){
                 <div className='big-content-font'>{profile.first_name}, {profile.last_name}</div>
                 <div className='small-content-font'>@{profile.username}</div>
                 <div className='profile-buttons-container'>
-                    <div onClick={share} className="button animate">
+                    {/* <div onClick={share} className="button animate">
                         <div className="hover-effect"></div>
                         <span className="signup-button-font">Message</span>
-                    </div>
+                    </div> */}
                     {currentUserProfile && (
                     <OpenModalButton modalComponent={<SignupFormModal edit={true} payload={profile} />} buttonText='Edit Profile' />
                     )}
                 </div>
                 <div className='passport-font'>{profile.passport}</div>
             </div>
-            <div className='middle-content-container'>
+            {/* <div className='middle-content-container'>
                 <div className='profile-tabs-container'>
                     <div className='hoverable middle-header-font' onClick={membershipGallery}>Membership</div>
                     <div className='hoverable middle-header-font' onClick={flightsGallery}>Flights</div>
@@ -102,19 +100,19 @@ function ProfilePage(){
                         <div style={{textAlign: 'center' }}>Flight</div>
                     </div>
                 )}
-                {/* <div className='membership-content-container'>
+                <div className='membership-content-container'>
                     <div style={{textAlign: 'center' }}>Membership</div>
                     {profile?.membership?.map(membership => (
                         <MembershipCard key={membership.id} membership={membership} profile={profile} />
                     ))}
-                </div> */}
-            </div>
-                {currentUserProfile && singleWallet && (
+                </div>
+            </div> */}
+                {/* {currentUserProfile && singleWallet && (
                     <div className='bottom-content-container'>
                         <div className='wallet-header-container'>
                             <div>Wallet</div>
                             <div>Address: {singleWallet?.address}</div>
-                            {/* <div>Funds: ${singleWallet.funds.toLocaleString()}</div> */}
+                            <div>Funds: ${singleWallet.funds.toLocaleString()}</div>
                         </div>
                         <div className='transactions-container'>
                             <div style={{textAlign: 'center' }}>Transactions</div>
@@ -123,7 +121,7 @@ function ProfilePage(){
                             ))}
                         </div>
                     </div>
-                )}
+                )} */}
             {/* <div className='bottom-content-container'>
                 <div className='wallet-header-container'>
                     <div>Wallet</div>
