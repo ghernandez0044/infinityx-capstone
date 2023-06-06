@@ -199,7 +199,7 @@ function PlanetForm({ edit, payload }){
                     <label className="label-font size">Mass</label>
                     <br/>
                     {isSubmitted && errors.massErr && ( <div className='label-font spacecraft-errors'>{errors.massErr}</div> )}
-                    <input id='mass_measured_in_earths' type='number' value={mass} onChange={(e) => setMass(e.target.value)} />
+                    <input id='mass_measured_in_earths' type='number' value={mass} onChange={(e) => setMass(e.target.value)} required placeholder="Required" />
                 </div>
                 <div className="spacecraft-diameter-container width">
                     <div>
@@ -210,7 +210,7 @@ function PlanetForm({ edit, payload }){
                     <label className="label-font size">Volume </label>
                     <br/>
                     {isSubmitted && errors.volumeErr && ( <div className='label-font spacecraft-errors'>{errors.volumeErr}</div> )}
-                    <input id='volume_measured_in_earths' type='number' value={volume} onChange={(e) => setVolume(e.target.value)} />
+                    <input id='volume_measured_in_earths' type='number' value={volume} onChange={(e) => setVolume(e.target.value)} required placeholder="Required" />
                 </div>
                 <div className="spacecraft-diameter-container width">
                     <div>
@@ -221,7 +221,7 @@ function PlanetForm({ edit, payload }){
                     <label className="label-font size">Mean Density </label>
                     <br/>
                     {isSubmitted && errors.densityErr && ( <div className='label-font spacecraft-errors'>{errors.densityErr}</div> )}
-                    <input id='mean_density_in_g_cm_cubed' type='number' value={density} onChange={(e) => setDensity(e.target.value)} />
+                    <input id='mean_density_in_g_cm_cubed' type='number' value={density} onChange={(e) => setDensity(e.target.value)} required placeholder="Required" />
                 </div>
                 <div className="spacecraft-diameter-container width">
                     <div>
@@ -232,7 +232,7 @@ function PlanetForm({ edit, payload }){
                     <label className="label-font size">Surface Gravity </label>
                     <br/>
                     {isSubmitted && errors.gravityErr && ( <div className='label-font spacecraft-errors'>{errors.gravityErr}</div> )}
-                    <input id='surface_gravity_in_m_squared' type='number' value={gravity} onChange={(e) => setGravity(e.target.value)} />
+                    <input id='surface_gravity_in_m_squared' type='number' value={gravity} onChange={(e) => setGravity(e.target.value)} required placeholder="Required" />
                 </div>
                 <div className="spacecraft-diameter-container width">
                     <div>
@@ -243,7 +243,7 @@ function PlanetForm({ edit, payload }){
                     <label className="label-font size">Escape Velocity </label>
                     <br/>
                     {isSubmitted && errors.velocityErr && ( <div className='label-font spacecraft-errors'>{errors.velocityErr}</div> )}
-                    <input id='surface_gravity_in_m_squared' type='number' value={velocity} onChange={(e) => setVelocity(e.target.value)} />
+                    <input id='surface_gravity_in_m_squared' type='number' value={velocity} onChange={(e) => setVelocity(e.target.value)} required placeholder="Required" />
                 </div>
                 <div className="spacecraft-diameter-container width">
                     <div>
@@ -254,7 +254,7 @@ function PlanetForm({ edit, payload }){
                     <label className="label-font size">Synodic Rotation </label>
                     <br/>
                     {isSubmitted && errors.synodicErr && ( <div className='label-font spacecraft-errors'>{errors.synodicErr}</div> )}
-                    <input id='synodic_rotation_period_in_days' type='number' value={synodic} onChange={(e) => setSynodic(e.target.value)} />
+                    <input id='synodic_rotation_period_in_days' type='number' value={synodic} onChange={(e) => setSynodic(e.target.value)} required placeholder="Required" />
                 </div>
                 <div className="spacecraft-diameter-container width">
                     <div>
@@ -265,7 +265,7 @@ function PlanetForm({ edit, payload }){
                     <label className="label-font">Average Temperature </label>
                     <br/>
                     {isSubmitted && errors.temperatureErr && ( <div className='label-font spacecraft-errors'>{errors.temperatureErr}</div> )}
-                    <input id='temperature_in_k' type='number' value={temperature} onChange={(e) => setTemperature(e.target.value)} />
+                    <input id='temperature_in_k' type='number' value={temperature} onChange={(e) => setTemperature(e.target.value)} required placeholder="Required" />
                 </div>
                 {/* <button type='submit'>{!edit ? 'Create Planet' : 'Edit Planet'}</button> */}
                 <div className="spacecraft-diameter-container">
