@@ -35,18 +35,24 @@
 .signup-form-container input{
     width: 220px;
     height: 35px;
-    background-color: #292929;
-    border: none;
+    /* background-color: #292929; */
+    background-color: black;
+    border: 1px solid white;
+    box-shadow: 0 0 3px lightgrey;
     color: #fff;
     margin: 5px auto;
 }
 
 .signup-form-container select{
-    width: 120px;
+    width: 160px;
     height: 45px;
-    background-color: #292929;
-    border: none;
+    /* background-color: #292929; */
+    background-color: black;
+    border: 1px solid white;
+    box-shadow: 0 0 3px lightgrey;
     color: #fff;
+    font-family: 'Vina Sans', cursive;
+    font-size: 32px;
 }
 
 

@@ -182,29 +182,8 @@ function SignupFormModal({ edit, payload }) {
 					</>
 				)}
 				</div>
-				 {/* <label className='label-font'>
-				 	Password
-				 </label>
-				 <input
-						id='password'
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-				/>
-				<label className='label-font'>
-					Confirm Password
-				</label>
-				<input
-						id='password'
-						type="password"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
-				/> */}
 				{/* <label>Admin</label>
 				<input id='admin' type='radio' checked={checked} value={admin} onClick={() => setChecked(!checked)} onChange={(e) => setAdmin(true)} /> */}
-				{/* <button type="submit">Sign Up</button> */}
 			</form>
 			<div style={{ margin: '25px auto', width: '500px' }} onClick={handleSubmit} className="button animate">
           		<div className="hover-effect"></div>
