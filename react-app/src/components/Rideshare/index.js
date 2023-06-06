@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllPlanets } from '../../store/planet'
 import { getAllTravelClasses } from '../../store/travelClass'
+import FlightGallery from '../FlightGallery'
 import './Rideshare.css'
 
 function Rideshare(){
@@ -10,12 +11,14 @@ function Rideshare(){
     const dispatch = useDispatch()
 
     // Create state variables
-    const [ orbit, setOrbit ] = useState('')
+    const [ orbit, setOrbit ] = useState('Mars')
     const [ userKg, setUserKg ] = useState('')
     const [ earliestDate, setEarliestDate ] = useState('')
     const [ travelClass, setTravelClass ] = useState('Base Class')
     const [ num, setNum ] = useState(0)
     const [ errors, setErrors ] = useState({})
+    const [ isSubmitted, setIsSubmitted ] = useState(false)
+    const [ price, setPrice ] = useState(0)
 
     // Load planets into redux store upon component render
     useEffect(() => {
@@ -45,16 +48,23 @@ function Rideshare(){
 
     const travelClassesArray = Array.from(travelClasses, travelClass => travelClass.name)
 
+    // Subscribe to current user slice of state
+    const currentUser = useSelector(state => state.session.user)
+
     // Function to redirect to available flights page
     const redirectAvailableFlights = (e) => {
         e.preventDefault()
+        setIsSubmitted(true)
         const payload = {
+            userId: currentUser.id,
             userKg,
             earliestDate,
             travelClass,
             orbit
         }
         console.log('payload: ', payload)
+        console.log('price: ', price)
+
     }
 
     return planets && (
@@ -79,7 +89,10 @@ function Rideshare(){
                     </div>
                     <div>
                         <label className='label-font'>Payload Mass in Kg</label>
-                        <input id='user_kg' type='number' value={userKg} onChange={(e) => setUserKg(e.target.value)} required />
+                        <input id='user_kg' type='number' value={userKg} onChange={(e) => {
+                            setUserKg(e.target.value)
+                            setPrice(e.target.value * num)
+                            }} required />
                     </div>
                     <div>
                         <label className='label-font'>Travel Class</label>
@@ -101,6 +114,13 @@ function Rideshare(){
                     </div>
                 </div>
             </div>
+
+            {isSubmitted && ( 
+            <div className='flight-gallery-container'>
+                <FlightGallery orbit={orbit} earlyDate={earliestDate} mass={userKg} travelClass={travelClass} price={price} />
+            </div>
+             )}
+
         </div>
     )
 }

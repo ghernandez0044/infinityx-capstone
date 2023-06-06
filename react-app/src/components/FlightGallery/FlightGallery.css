@@ -1,0 +1,31 @@
+.flight-gallery-container{
+    border: 3px solid lime;
+    height: 600px;
+    background-color: white;
+}
+
+.flight-gallery-header{
+    font-size: 30px;
+}
+
+.dark-font{
+    color: #212529;
+}
+
+.flight-gallery-navbar{
+    border: 3px solid red;
+    background-color: #f3f3f3;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flight-gallery-navbar > div{
+    border: 3px solid purple;
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

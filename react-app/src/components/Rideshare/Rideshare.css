@@ -1,5 +1,5 @@
 .rideshare-container{
-    border: 3px solid red;
+    /* border: 3px solid red; */
     margin: 15px auto;
     height: 500px;
     width: 100%;
@@ -10,7 +10,7 @@
 }
 
 .rideshare-content-container{
-    border: 3px solid lime;
+    /* border: 3px solid lime; */
     height: fit-content;
     width: 750px;
     margin: 5px auto;
@@ -28,7 +28,7 @@
 }
 
 .rideshare-dropdowns-container{
-    border: 3px solid purple;
+    /* border: 3px solid purple; */
     height: 80px;
     /* width: 950px; */
     /* max-width: fit-content; */
