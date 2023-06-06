@@ -2,6 +2,7 @@
 
 .signup-modal-container{
     /* border: 3px solid lime; */
+    border-radius: 15px;
     color: white;
     background-color: black;
     height: 100%;
