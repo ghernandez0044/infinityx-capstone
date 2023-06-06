@@ -12,12 +12,17 @@
 
 .signup-form-container{
     /* border: 3px solid blue; */
+    padding: 10px;
     height: 100%;
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.signup-form-container > div{
+    margin: 0 20px;
 }
 
 .signup-form-container > ul > li{
@@ -60,4 +65,28 @@
 .signup-button-font{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
+}
+
+.first-section-container{
+    /* border: 3px solid purple; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.second-section-container{
+    /* border: 3px solid orange; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.third-section-container{
+    /* border: 3px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
