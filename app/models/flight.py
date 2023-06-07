@@ -37,6 +37,11 @@ class Flight(db.Model):
         back_populates='flights'
     )
 
+    bookings = db.relationship(
+        'Booking',
+        back_populates='flight'
+    )
+
     # schedule = db.relationship(
     #     'Schedule',
     #     back_populates='flight'
