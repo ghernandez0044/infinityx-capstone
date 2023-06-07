@@ -20,17 +20,17 @@ class Spaceport(db.Model):
         back_populates='spaceport'
     )
 
-    launching_schedules = db.relationship(
-        'Schedule',
-        back_populates='launch_spaceport',
-        foreign_keys="Schedule.launch_spaceport_id"
-    )
+    # launching_schedules = db.relationship(
+    #     'Schedule',
+    #     back_populates='launch_spaceport',
+    #     foreign_keys="Schedule.launch_spaceport_id"
+    # )
 
-    landing_schedules = db.relationship(
-        'Schedule',
-        back_populates='landing_spaceport',
-        foreign_keys="Schedule.landing_spaceport_id"
-    )
+    # landing_schedules = db.relationship(
+    #     'Schedule',
+    #     back_populates='landing_spaceport',
+    #     foreign_keys="Schedule.landing_spaceport_id"
+    # )
 
     def to_dict(self):
         return {

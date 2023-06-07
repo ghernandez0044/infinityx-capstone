@@ -23,10 +23,10 @@ class Transaction(db.Model):
         back_populates='transactions'
     )
 
-    seat = db.relationship(
-        'SpacecraftSeat',
-        back_populates='transactions'
-    )
+    # seat = db.relationship(
+    #     'SpacecraftSeat',
+    #     back_populates='transactions'
+    # )
 
     def to_dict(self):
         return {
