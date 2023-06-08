@@ -14,3 +14,8 @@ def get_all_flights():
     all_flights = Flight.query.all()
     return [flight.to_dict() for flight in all_flights]
 
+# Get one flight details route
+@flight_routes.route('/<int:id>')
+def get_one_flight(id):
+    flight = Flight.query.get(id)
+    return flight.to_dict()
