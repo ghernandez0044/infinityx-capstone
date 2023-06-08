@@ -32,14 +32,15 @@ class Flight(db.Model):
     #     foreign_keys='Flight.flight_status_id'
     # )
 
-    spaceport = db.relationship(
-        'Spaceport',
-        back_populates='flights'
-    )
+    # spaceport = db.relationship(
+    #     'Spaceport',
+    #     back_populates='flights'
+    # )
 
     bookings = db.relationship(
         'Booking',
-        back_populates='flight'
+        back_populates='flight',
+        cascade="all, delete-orphan"
     )
 
     # schedule = db.relationship(

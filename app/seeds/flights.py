@@ -218,7 +218,7 @@ def seed_flights():
         orbit = 'Neptune',
         created_at = '2023-03-01'
     )
-    flight17 = Flight(
+    flight25 = Flight(
         launch_spaceport_id = 4,
         landing_spaceport_id = 1,
         spacecraft_id = 4,
@@ -227,7 +227,7 @@ def seed_flights():
         orbit = 'Neptune',
         created_at = '2023-01-01'
     )
-    flight18 = Flight(
+    flight26 = Flight(
         launch_spaceport_id = 4,
         landing_spaceport_id = 2,
         spacecraft_id = 4,
@@ -236,7 +236,7 @@ def seed_flights():
         orbit = 'Uranus',
         created_at = '2023-02-01'
     )
-    flight19 = Flight(
+    flight27 = Flight(
         launch_spaceport_id = 4,
         landing_spaceport_id = 3,
         spacecraft_id = 4,
@@ -245,7 +245,7 @@ def seed_flights():
         orbit = 'Saturn',
         created_at = '2023-03-01'
     )
-    flight20 = Flight(
+    flight28 = Flight(
         launch_spaceport_id = 4,
         landing_spaceport_id = 5,
         spacecraft_id = 4,
@@ -254,7 +254,7 @@ def seed_flights():
         orbit = 'Jupiter',
         created_at = '2023-04-01'
     )
-    flight21 = Flight(
+    flight29 = Flight(
         launch_spaceport_id = 4,
         landing_spaceport_id = 6,
         spacecraft_id = 4,
@@ -263,7 +263,7 @@ def seed_flights():
         orbit = 'Mars',
         created_at = '2024-01-01'
     )
-    flight22 = Flight(
+    flight30 = Flight(
         launch_spaceport_id = 4,
         landing_spaceport_id = 2,
         spacecraft_id = 4,
@@ -272,7 +272,7 @@ def seed_flights():
         orbit = 'Earth',
         created_at = '2024-03-01'
     )
-    flight23 = Flight(
+    flight31 = Flight(
         launch_spaceport_id = 4,
         landing_spaceport_id = 5,
         spacecraft_id = 4,
@@ -281,7 +281,7 @@ def seed_flights():
         orbit = 'Venus',
         created_at = '2024-03-01'
     )
-    flight24 = Flight(
+    flight32 = Flight(
         launch_spaceport_id = 4,
         landing_spaceport_id = 6,
         spacecraft_id = 4,
@@ -315,6 +315,14 @@ def seed_flights():
     db.session.add(flight22)
     db.session.add(flight23)
     db.session.add(flight24)
+    db.session.add(flight25)
+    db.session.add(flight26)
+    db.session.add(flight27)
+    db.session.add(flight28)
+    db.session.add(flight29)
+    db.session.add(flight30)
+    db.session.add(flight31)
+    db.session.add(flight32)
     db.session.commit()
 
 

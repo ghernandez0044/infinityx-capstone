@@ -48,7 +48,8 @@ class User(db.Model, UserMixin):
 
     bookings = db.relationship(
         'Booking',
-        back_populates='user'
+        back_populates='user',
+        cascade="all, delete-orphan"
     )
 
     @property

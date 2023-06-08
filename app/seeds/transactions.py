@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 def seed_transactions():
     transaction1 = Transaction(
         user_id = 1,
-        seat_id = 3,
+        travelclass_id = 2,
         quantity = 1,
         unit_price = 7_250,
         user_kg = 60,
@@ -16,7 +16,7 @@ def seed_transactions():
 
     transaction2 = Transaction(
         user_id = 1,
-        seat_id = 5,
+        travelclass_id = 3,
         quantity = 1,
         unit_price = 9_250,
         user_kg = 62,
@@ -27,7 +27,7 @@ def seed_transactions():
     )
     transaction3 = Transaction(
         user_id = 1,
-        seat_id = 24,
+        travelclass_id = 3,
         quantity = 1,
         unit_price = 9_250,
         user_kg = 62,
@@ -38,7 +38,7 @@ def seed_transactions():
     )
     transaction4 = Transaction(
         user_id = 2,
-        seat_id = 12,
+        travelclass_id = 3,
         quantity = 1,
         unit_price = 9_250,
         user_kg = 64,
@@ -49,7 +49,7 @@ def seed_transactions():
     )
     transaction5 = Transaction(
         user_id = 2,
-        seat_id = 16,
+        travelclass_id = 2,
         quantity = 1,
         unit_price = 7_250,
         user_kg = 64,
@@ -60,7 +60,7 @@ def seed_transactions():
     )
     transaction6 = Transaction(
         user_id = 3,
-        seat_id = 20,
+        travelclass_id = 1,
         quantity = 1,
         unit_price = 6_250,
         user_kg = 58,

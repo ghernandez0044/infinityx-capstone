@@ -15,10 +15,11 @@ class Spaceport(db.Model):
     lng = db.Column(db.Float, nullable=False)
 
     # relationships
-    flights = db.relationship(
-        'Flight',
-        back_populates='spaceport'
-    )
+    # flights = db.relationship(
+    #     'Flight',
+    #     back_populates='spaceport',
+    #     cascade="all, delete-orphan"
+    # )
 
     # launching_schedules = db.relationship(
     #     'Schedule',
