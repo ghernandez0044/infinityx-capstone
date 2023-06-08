@@ -26,3 +26,24 @@ export const actionSearchFlights = (flights) => {
         flights
     }
 }
+
+// Thunks
+export const getAllFlights = () => async (dispatch) => {
+    const res = await fetch('/api/flights')
+    if(res.ok){
+        const flights = await res.json()
+        dispatch(actionLoadFlights(flights))
+        return flights
+    }
+    return res
+}
+
+export const getOneFlight = () => async (dispatch) => {
+    const res = await fetch(`/api/flights/${id}`)
+    if(res.ok){
+        const flight = await res.json()
+        dispatch(actionLoadFlight(flight))
+        return flight
+    }
+    return res
+}
