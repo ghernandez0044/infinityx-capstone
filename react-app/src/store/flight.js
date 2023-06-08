@@ -47,3 +47,17 @@ export const getOneFlight = () => async (dispatch) => {
     }
     return res
 }
+
+export const searchFlights = (payload) => async (dispatch) => {
+    const res = await fetch('/api/flights/search', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+    if(res.ok){
+        const searched_flights = await res.json()
+        dispatch(actionSearchFlights(flights))
+        return searched_flights
+    }
+    return res
+}
