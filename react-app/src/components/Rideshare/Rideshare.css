@@ -44,8 +44,8 @@
     width: 80px;
 }
 
-#earliest-date{
-    width: 120px;
+#date{
+    width: 240px;
 }
 
 .rideshare-dropdowns-container > div{
@@ -70,4 +70,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.price-container{
+    font-family: 'Vina Sans', cursive;
+    font-size: 28px;
 }

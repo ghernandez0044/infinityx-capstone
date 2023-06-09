@@ -102,7 +102,7 @@ function Rideshare(){
                         </div>
                         <div>
                             <div className='content-font'>Estimated Price</div>
-                            <div>${(userKg * num).toLocaleString()}</div>
+                            <div className='price-container'>${(userKg * num).toLocaleString()}</div>
                         </div>
                         <div className={Object.values(errors).length > 0 ? 'hidden' : ''}>
                             <div type='submit' onClick={redirectAvailableFlights} className="button animate resize">
