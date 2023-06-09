@@ -1,3 +1,5 @@
+import { normalizingData } from "./spacecraft"
+
 // Type Variables
 const LOAD_FLIGHTS = "flights/loadFlights"
 const LOAD_FLIGHT = "flights/loadFlight"
@@ -61,3 +63,30 @@ export const searchFlights = (payload) => async (dispatch) => {
     }
     return res
 }
+
+// Initial State
+const initialState = {
+    allFlights: {},
+    singleFlight: {},
+    searchedFlights: {}
+}
+
+// Reducer
+const flightReducer = (state = initialState, action) => {
+    let newState = {...state}
+    switch(action.type){
+        case LOAD_FLIGHTS:
+            const flights = normalizingData(action.flights)
+            newState.allFlights = {...flights}
+            return newState
+        case LOAD_FLIGHT:
+            return {...state, singleFlight: {...action.flight}}
+        case SEARCH_FLIGHTS:
+            const searched_flights = normalizingData(action.flights)
+            newState.searchedFlights = {...searched_flights}
+        default:
+            return state
+    }
+}
+
+export default flightReducer

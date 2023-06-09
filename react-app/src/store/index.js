@@ -9,6 +9,7 @@ import walletReducer from './wallet';
 import planetCommentReducer from './planetComments';
 import apiReducer from './api';
 import travelClassReducer from './travelClass';
+import flightReducer from './flight';
 
 const rootReducer = combineReducers({
   session,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   wallets: walletReducer,
   planetComments: planetCommentReducer,
   api: apiReducer,
-  travelClasses: travelClassReducer
+  travelClasses: travelClassReducer,
+  flights: flightReducer
 });
 
 let enhancer;
