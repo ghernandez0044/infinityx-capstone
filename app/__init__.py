@@ -14,6 +14,7 @@ from .api.planet_comment_routes import planet_comment_routes
 from .api.wallet_routes import wallet_routes
 from .api.travel_class_routes import travel_class_routes
 from .api.flight_routes import flight_routes
+from .api.booking_routes import booking_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -42,6 +43,7 @@ app.register_blueprint(planet_comment_routes, url_prefix='/api/comments')
 app.register_blueprint(wallet_routes, url_prefix='/api/wallets')
 app.register_blueprint(travel_class_routes, url_prefix='/api/travelclasses')
 app.register_blueprint(flight_routes, url_prefix='/api/flights')
+app.register_blueprint(booking_routes, url_prefix='/api/bookings')
 db.init_app(app)
 Migrate(app, db)
 

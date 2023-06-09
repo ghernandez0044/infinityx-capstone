@@ -20,3 +20,4 @@ def get_all_bookings():
 def get_one_booking(id):
     one_booking = Booking.query.get(id)
     return one_booking.to_dict()
+
