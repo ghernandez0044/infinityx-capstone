@@ -14,3 +14,9 @@ booking_routes = Blueprint('bookings', __name__)
 def get_all_bookings():
     all_bookings = Booking.query.all()
     return [booking.to_dict() for booking in all_bookings]
+
+# Get one booking details route
+@booking_routes.route('/<int:id>')
+def get_one_booking(id):
+    one_booking = Booking.query.get(id)
+    return one_booking.to_dict()
