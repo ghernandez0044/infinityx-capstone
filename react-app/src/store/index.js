@@ -10,6 +10,7 @@ import planetCommentReducer from './planetComments';
 import apiReducer from './api';
 import travelClassReducer from './travelClass';
 import flightReducer from './flight';
+import bookingReducer from './bookings';
 
 const rootReducer = combineReducers({
   session,
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   planetComments: planetCommentReducer,
   api: apiReducer,
   travelClasses: travelClassReducer,
-  flights: flightReducer
+  flights: flightReducer,
+  bookings: bookingReducer
 });
 
 let enhancer;

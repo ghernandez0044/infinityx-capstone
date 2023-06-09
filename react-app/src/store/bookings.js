@@ -1,12 +1,22 @@
+import { normalizingData } from "./spacecraft"
+
 // Type Variables
 const LOAD_BOOKINGS = "bookings/loadBookings"
 const LOAD_BOOKING = "bookings/loadBooking"
+const LOAD_USER_BOOKINGS = "bookings/loadUserBookings"
 const CREATE_BOOKING = "bookings/createBooking"
 
 // Action Creators
 export const actionLoadBookings = (bookings) => {
     return {
         type: LOAD_BOOKINGS,
+        bookings
+    }
+}
+
+export const actionLoadUserBookings = (bookings) => {
+    return {
+        type: LOAD_USER_BOOKINGS,
         bookings
     }
 }
@@ -36,6 +46,16 @@ export const getAllBookings = () => async (dispatch) => {
     return res
 }
 
+export const getUserBookings = (id) => async (dispatch) => {
+    const res = await fetch(`/api/${id}/bookings`)
+    if(res.ok){
+        const bookings = await res.json()
+        dispatch(actionLoadUserBookings(bookings))
+        return bookings
+    }
+    return res
+}
+
 export const getOneBooking = (id) => async (dispatch) => {
     const res = await fetch(`/api/bookings/${id}`)
     if(res.ok){
@@ -59,3 +79,33 @@ export const createBooking = (booking, user_id) => async (dispatch) => {
     }
     return res
 }
+
+// Initial State
+const initialState = {
+    allBookings: {},
+    singleBooking: {},
+    userBookings: {}
+}
+
+// Reducer
+const bookingReducer = (state = initialState, action) => {
+    let newState = {...state}
+    switch(action.type){
+        case LOAD_BOOKINGS:
+            const bookings = normalizingData(action.bookings)
+            newState.allBookings = {...bookings}
+            return newState
+        case LOAD_USER_BOOKINGS:
+            const userBookings = normalizingData(action.bookings)
+            newState.userBookings = {...userBookings}
+            return newState
+        case LOAD_BOOKING:
+            return {...state, singleBooking: {...action.booking}}
+        case CREATE_BOOKING:
+            return {...state, allBookings: {...state.allBookings, [action.booking.id]: action.booking}}
+        default:
+            return state
+    }
+}
+
+export default bookingReducer
