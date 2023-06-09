@@ -31,27 +31,27 @@ function TransactionReceipt({ transaction }){
                 <img style={{ height: '75px', width: '75px' }} src={logo} alt='' />
             </div>
             <div className="company-info-container">
-                <div>InfinityX</div>
-                <div>Addres Goes Here</div>
-                <div>Maybe Phone Number Goes Here</div>
+                <div className="profile-font">InfinityX</div>
+                <div className="profile-font">Addres Goes Here</div>
+                <div className="profile-font">Maybe Phone Number Goes Here</div>
             </div>
             <div className="receipt-date-container">
-                <div>{transaction.created_at}</div>
+                <div className="profile-font">{transaction.created_at}</div>
             </div>
             <div className="user-information-container">
-                <div>{profile?.first_name}, {profile?.last_name}</div>
+                <div className="profile-font">{profile?.first_name}, {profile?.last_name}</div>
             </div>
             <div className="membership-receipt-container">
-                <div>Account Number:{profile?.membership[0]?.account_no}</div>
-                <div>Points:{profile?.membership[0]?.points}</div>
+                <div className="profile-font">Account Number:{profile?.membership[0]?.account_no}</div>
+                <div className="profile-font">Points:{profile?.membership[0]?.points}</div>
             </div>
             <div className="main-receipt-content-container">
-                <div>Price Per kg: ${transaction.unit_price.toLocaleString()}
+                <div className="profile-font">Price Per kg: ${transaction.unit_price.toLocaleString()}
                 </div>
-                <div>User kg: {transaction.user_kg} kg</div>
-                <div>Tax Percentage: {transaction.tax_percentage}%</div>
-                <div>Tax Total: ${transaction.tax_total.toLocaleString()}</div>
-                <div>Purchase Total: ${transaction.total.toLocaleString()}</div>
+                <div className="profile-font">User kg: {transaction.user_kg} kg</div>
+                <div className="profile-font">Tax Percentage: {transaction.tax_percentage}%</div>
+                <div className="profile-font">Tax Total: ${transaction.tax_total.toLocaleString()}</div>
+                <div className="profile-font">Purchase Total: ${transaction.total.toLocaleString()}</div>
             </div>
             <div>
                 <div onClick={() => closeModal()} className="button animate">
