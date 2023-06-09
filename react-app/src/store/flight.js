@@ -40,7 +40,7 @@ export const getAllFlights = () => async (dispatch) => {
     return res
 }
 
-export const getOneFlight = () => async (dispatch) => {
+export const getOneFlight = (id) => async (dispatch) => {
     const res = await fetch(`/api/flights/${id}`)
     if(res.ok){
         const flight = await res.json()
@@ -58,7 +58,7 @@ export const searchFlights = (payload) => async (dispatch) => {
     })
     if(res.ok){
         const searched_flights = await res.json()
-        dispatch(actionSearchFlights(flights))
+        dispatch(actionSearchFlights(searched_flights))
         return searched_flights
     }
     return res

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllPlanets } from '../../store/planet'
 import { getAllTravelClasses } from '../../store/travelClass'
+import { searchFlights } from '../../store/flight'
 import FlightGallery from '../FlightGallery'
 import './Rideshare.css'
 
@@ -64,56 +65,62 @@ function Rideshare(){
         }
         console.log('payload: ', payload)
         console.log('price: ', price)
-
+        const search = {
+            orbit,
+            "date": earliestDate
+        }
+        dispatch(searchFlights(search))
     }
 
     return planets && (
         <div>
-            <div className='rideshare-container'>
-                <div className='rideshare-content-container'>
-                    <div className='header-font rideshare-header'>Intergalactic Rideshare Program</div>
-                    <div className='small-content-font'>Dedicated Rideshare Missions as Low as $275k*. Search Flights Below.</div>
-                </div>
-                <div className='rideshare-dropdowns-container'>
-                    <div>
-                        <label className='label-font'>Desired Orbit</label>
-                        <select id='orbit' onChange={(e) => setOrbit(e.target.value)} value={orbit} name='orbit' placeholder='Choose An Orbit'>
-                        {planetsArray.map((c) => (
-                            <option key={c} value={c}>{c}</option>
-                        ))}
-                        </select>
+            <form onSubmit={redirectAvailableFlights} method='post'>
+                <div className='rideshare-container'>
+                    <div className='rideshare-content-container'>
+                        <div className='header-font rideshare-header'>Intergalactic Rideshare Program</div>
+                        <div className='small-content-font'>Dedicated Rideshare Missions as Low as $275k*. Search Flights Below.</div>
                     </div>
-                    <div>
-                        <label className='label-font'>Earliest Date</label>
-                        <input id='earliest-date' type='date' value={earliestDate} onChange={(e) => setEarliestDate(e.target.value)} required />
-                    </div>
-                    <div>
-                        <label className='label-font'>Payload Mass in Kg</label>
-                        <input id='user_kg' type='number' value={userKg} onChange={(e) => {
-                            setUserKg(e.target.value)
-                            setPrice(e.target.value * num)
-                            }} required />
-                    </div>
-                    <div>
-                        <label className='label-font'>Travel Class</label>
-                        <select id='travel_class' onChange={(e) => setTravelClass(e.target.value)} value={travelClass} name='travel_class' placeholder='Choose A Travel Class'>
-                        {travelClassesArray.map((c) => (
-                            <option key={c} value={c}>{c}</option>
-                        ))}
-                        </select>
-                    </div>
-                    <div>
-                        <div className='content-font'>Estimated Price</div>
-                        <div>${(userKg * num).toLocaleString()}</div>
-                    </div>
-                    <div className={Object.values(errors).length > 0 ? 'hidden' : ''}>
-                        <div onClick={redirectAvailableFlights} className="button animate resize">
-                            <div className="hover-effect"></div>
-                            <i className='fa-solid fa-arrow-right fa-2xl' />
+                    <div className='rideshare-dropdowns-container'>
+                        <div>
+                            <label className='label-font'>Desired Orbit</label>
+                            <select id='orbit' onChange={(e) => setOrbit(e.target.value)} value={orbit} name='orbit' placeholder='Choose An Orbit'>
+                            {planetsArray.map((c) => (
+                                <option key={c} value={c}>{c}</option>
+                            ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label className='label-font'>Earliest Date</label>
+                            <input id='date' type='date' value={earliestDate} onChange={(e) => setEarliestDate(e.target.value)} required />
+                        </div>
+                        <div>
+                            <label className='label-font'>Payload Mass in Kg</label>
+                            <input id='user_kg' type='number' value={userKg} onChange={(e) => {
+                                setUserKg(e.target.value)
+                                setPrice(e.target.value * num)
+                                }} required />
+                        </div>
+                        <div>
+                            <label className='label-font'>Travel Class</label>
+                            <select id='travel_class' onChange={(e) => setTravelClass(e.target.value)} value={travelClass} name='travel_class' placeholder='Choose A Travel Class'>
+                            {travelClassesArray.map((c) => (
+                                <option key={c} value={c}>{c}</option>
+                            ))}
+                            </select>
+                        </div>
+                        <div>
+                            <div className='content-font'>Estimated Price</div>
+                            <div>${(userKg * num).toLocaleString()}</div>
+                        </div>
+                        <div className={Object.values(errors).length > 0 ? 'hidden' : ''}>
+                            <div type='submit' onClick={redirectAvailableFlights} className="button animate resize">
+                                <div className="hover-effect"></div>
+                                <i className='fa-solid fa-arrow-right fa-2xl' />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
 
             {isSubmitted && ( 
             <div className='flight-gallery-container'>
