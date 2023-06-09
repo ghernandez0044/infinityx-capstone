@@ -26,15 +26,10 @@ def get_one_flight(id):
 @flight_routes.route('/search', methods=["POST"])
 def search_flight():
     user = current_user
-    form = SearchFlightForm()
     flight_data = request.get_data().decode('utf-8')
-    print('FORM____________________: ', request.get_data().decode('utf-8'))
-    # form.csrf_token.data = request.cookies["csrf_token"]
     formatted_data = json.loads(flight_data)
     desired_orbit = formatted_data['orbit']
     earliest_date = formatted_data['date']
-
-    # available_flights = Flight.query.filter(Flight.orbit.ilike(f"{desired_orbit}") ).filter(Flight.departure_time.like(f"{earliest_date}")).all()
     available_flights = Flight.query.filter(Flight.orbit.ilike(f"{desired_orbit}") ).filter(Flight.departure_time >= f"{earliest_date}").all()
 
     return [flight.to_dict() for flight in available_flights]
