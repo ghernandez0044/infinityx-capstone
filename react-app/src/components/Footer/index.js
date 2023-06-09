@@ -12,12 +12,12 @@ function Footer(){
             <div style={{ color: '#aaa' }}>
                 InfinityX &copy; 2023
             </div>
-            <NavLink exact to='https://github.com/ghernandez0044'>
+            <a href='https://github.com/ghernandez0044' target="_blank">
                 <i className="fa-brands fa-github fa-xl" />
-            </NavLink>
-            <NavLink exact to='https://www.linkedin.com/in/guillermo-hernandez-32a307180/'>
+            </a>
+             <a href='https://www.linkedin.com/in/guillermo-hernandez-32a307180/' target="_blank">
                 <i className="fa-brands fa-linkedin fa-xl" />
-            </NavLink>
+            </a>
             {/* <div>
                 Image by <a href="https://pixabay.com/users/wikiimages-1897/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=67724">WikiImages</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=67724">Pixabay</a>
 

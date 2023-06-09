@@ -21,8 +21,6 @@ function FlightGallery({ orbit, earlyDate, mass, travelClass, price }){
     // Subscribe to search flights slice of state
     const searchedFlights = useSelector(state => Object.values(state.flights.searchedFlights))
 
-    console.log('searched flights: ', searchedFlights)
-
     return (
         <div className="flight-gallery-container">
             <div className="flight-gallery-navbar">

@@ -38,28 +38,28 @@ function FlightCard({ flight, mass, travelClass, price }){
     return spacecraft && spaceports && (
         <div className="flight-card-container">
             <div className="spacecraft-name-container">
-                <h2 className="dark-font">Spacecraft</h2>
-                <div className="dark-font">{spacecraft.model}</div>
+                <div className="section-header">Spacecraft</div>
+                <div className="dark-font flight-section-content">{spacecraft.model}</div>
             </div>
             <div className="flght-departure-container">
-                <h2 className="dark-font">Departure Date</h2>
-                <div className="dark-font">{flight.departure_time}</div>
+                <div className="section-header">Departure Date</div>
+                <div className="dark-font flight-section-content">{flight.departure_time.split('T')[0]}</div>
             </div>
             <div className="flght-arrival-container">
-                <h2 className="dark-font">Arrival Date</h2>
-                <div className="dark-font">{flight.arrival_time}</div>
+                <div className="section-header">Arrival Date</div>
+                <div className="dark-font flight-section-content">{flight.arrival_time.split('T')[0]}</div>
             </div>
             <div className="flght-orbit-container">
-                <h2 className="dark-font">Orbit</h2>
-                <div className="dark-font">{flight.orbit}</div>
+                <div className="section-header">Orbit</div>
+                <div className="dark-font flight-section-content">{flight.orbit}</div>
             </div>
             <div className="flght-departing-container">
-                <h2 className="dark-font">Departing Spaceport</h2>
-                <div className="dark-font">{launch_port.city}, {landing_port['state']}</div>
+                <div className="section-header">Launching</div>
+                <div className="dark-font flight-section-content">{launch_port.city}, {launch_port['state']}</div>
             </div>
             <div className="flght-landing-container">
-                <h2 className="dark-font">Landing Spaceport</h2>
-                <div className="dark-font">{landing_port.city}, {landing_port['state']}</div>
+                <div className="section-header">Landing</div>
+                <div className="dark-font flight-section-content">{landing_port.city}, {landing_port['state']}</div>
             </div>
             <div type='submit' onClick={bookFlight} className="button animate resize">
                 <div className="hover-effect"></div>

@@ -8,4 +8,31 @@
 .flight-card-container > div{
     border: 3px solid purple;
     margin: 0 15px;
+    min-height: 90px;
+    height: fit-content;
+    width: 130px;
+}
+
+.section-header{
+    border: 2px solid brown;
+    margin-top: 0;
+    color: #999;
+    font-size: 14px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.flight-section-content{
+    border: 2px solid pink;
+    background-color: #f3f3f3;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #212529;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 8px;
 }

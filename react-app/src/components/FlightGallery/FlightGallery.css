@@ -1,20 +1,22 @@
 .flight-gallery-container{
-    border: 3px solid lime;
+    /* border: 3px solid lime; */
     min-height: 600px;
     height: fit-content;
     background-color: white;
 }
 
-.flight-gallery-header{
+/* .flight-gallery-header{
     font-size: 30px;
-}
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: capitalize;
+} */
 
 .dark-font{
     color: #212529;
 }
 
 .flight-gallery-navbar{
-    border: 3px solid red;
+    /* border: 3px solid red; */
     background-color: #f3f3f3;
     height: 130px;
     display: flex;
@@ -23,7 +25,7 @@
 }
 
 .flight-gallery-navbar > div{
-    border: 3px solid purple;
+    /* border: 3px solid purple; */
     margin: 0 15px;
     margin-left: 15%;
     display: flex;
@@ -31,4 +33,7 @@
     justify-content: center;
     align-items: center;
     font-size: 30px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
 }
