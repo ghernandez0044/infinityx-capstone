@@ -34,6 +34,7 @@ def search_flight():
     desired_orbit = formatted_data['orbit']
     earliest_date = formatted_data['date']
 
-    available_flights = Flight.query.filter(Flight.orbit.ilike(f"%{desired_orbit}%") ).filter(Flight.departure_time.like(f"%{earliest_date}%"))
+    # available_flights = Flight.query.filter(Flight.orbit.ilike(f"{desired_orbit}") ).filter(Flight.departure_time.like(f"{earliest_date}")).all()
+    available_flights = Flight.query.filter(Flight.orbit.ilike(f"{desired_orbit}") ).filter(Flight.departure_time >= f"{earliest_date}").all()
 
     return [flight.to_dict() for flight in available_flights]

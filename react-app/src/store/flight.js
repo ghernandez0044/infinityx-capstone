@@ -84,6 +84,7 @@ const flightReducer = (state = initialState, action) => {
         case SEARCH_FLIGHTS:
             const searched_flights = normalizingData(action.flights)
             newState.searchedFlights = {...searched_flights}
+            return newState
         default:
             return state
     }
