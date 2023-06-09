@@ -56,5 +56,6 @@ class Flight(db.Model):
             'landing_spaceport_id': self.landing_spaceport_id,
             'departure_time': self.departure_time,
             'arrival_time': self.arrival_time,
-            'created_at': self.created_at
+            'orbit': self.orbit,
+            'created_at': self.created_at,
         }

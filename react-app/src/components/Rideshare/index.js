@@ -56,15 +56,7 @@ function Rideshare(){
     const redirectAvailableFlights = (e) => {
         e.preventDefault()
         setIsSubmitted(true)
-        const payload = {
-            userId: currentUser.id,
-            userKg,
-            earliestDate,
-            travelClass,
-            orbit
-        }
-        console.log('payload: ', payload)
-        console.log('price: ', price)
+
         const search = {
             orbit,
             "date": earliestDate
