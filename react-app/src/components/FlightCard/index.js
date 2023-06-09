@@ -37,32 +37,32 @@ function FlightCard({ flight, mass, travelClass, price }){
 
     return spacecraft && spaceports && (
         <div className="flight-card-container">
-            <div className="spacecraft-name-container">
+            <div className="flight-card-container-div">
                 <div className="section-header">Spacecraft</div>
                 <div className="dark-font flight-section-content">{spacecraft.model}</div>
             </div>
-            <div className="flght-departure-container">
+            <div className="flight-card-container-div">
                 <div className="section-header">Departure Date</div>
                 <div className="dark-font flight-section-content">{flight.departure_time.split('T')[0]}</div>
             </div>
-            <div className="flght-arrival-container">
+            <div className="flight-card-container-div">
                 <div className="section-header">Arrival Date</div>
                 <div className="dark-font flight-section-content">{flight.arrival_time.split('T')[0]}</div>
             </div>
-            <div className="flght-orbit-container">
+            <div className="flight-card-container-div">
                 <div className="section-header">Orbit</div>
                 <div className="dark-font flight-section-content">{flight.orbit}</div>
             </div>
-            <div className="flght-departing-container">
+            <div className="flight-card-container-div">
                 <div className="section-header">Launching</div>
                 <div className="dark-font flight-section-content">{launch_port.city}, {launch_port['state']}</div>
             </div>
-            <div className="flght-landing-container">
+            <div className="flight-card-container-div">
                 <div className="section-header">Landing</div>
                 <div className="dark-font flight-section-content">{landing_port.city}, {landing_port['state']}</div>
             </div>
-            <div type='submit' onClick={bookFlight} className="button animate resize">
-                <div className="hover-effect"></div>
+            <div onClick={bookFlight} className="button-alternate resize">
+                <div className="hover-effect-alternate"></div>
                 <i className='fa-solid fa-arrow-right fa-2xl' />
             </div>
         </div>
