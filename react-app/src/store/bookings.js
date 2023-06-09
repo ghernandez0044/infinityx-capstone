@@ -24,3 +24,38 @@ export const actionCreateBooking = (booking) => {
         booking
     }
 }
+
+// Thunks
+export const getAllBookings = () => async (dispatch) => {
+    const res = await fetch('/api/bookings')
+    if(res.ok){
+        const bookings = await res.json()
+        dispatch(actionLoadBookings(bookings))
+        return bookings
+    }
+    return res
+}
+
+export const getOneBooking = (id) => async (dispatch) => {
+    const res = await fetch(`/api/bookings/${id}`)
+    if(res.ok){
+        const booking = await res.json()
+        dispatch(actionLoadBooking(booking))
+        return booking
+    }
+    return res
+}
+
+export const createBooking = (booking, user_id) => async (dispatch) => {
+    const res = await fetch(`/api/users/${user_id}/bookings`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(booking)
+    })
+    if(res.ok){
+        const booking = await res.json()
+        dispatch(actionCreateBooking(booking))
+        return booking
+    }
+    return res
+}
