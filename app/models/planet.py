@@ -21,7 +21,8 @@ class Planet(db.Model):
     # relationships
     planet_comments = db.relationship(
         'PlanetComment',
-        back_populates='planet'
+        back_populates='planet',
+        cascade="all, delete-orphan"
     )
 
     def to_dict(self):

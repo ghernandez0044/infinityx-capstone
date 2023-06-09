@@ -7,49 +7,55 @@ class Flight(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
-    spaceport_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spaceports.id')))
+    launch_spaceport_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spaceports.id')))
+    landing_spaceport_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spaceports.id')))
     spacecraft_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spacecrafts.id')))
-    spacecraft_seat_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spacecraft_seats.id')))
-    schedule_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('schedules.id')))
-    flight_status_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('flight_status.id')))
+    departure_time = db.Column(db.String(100), nullable=False)
+    arrival_time = db.Column(db.String(100), nullable=False)
     orbit = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.String(100), nullable=False)
 
-    # relationships
-    seat = db.relationship(
-        'SpacecraftSeat',
-        back_populates='flight'
-    )
+    # # relationships
+    # seat = db.relationship(
+    #     'SpacecraftSeat',
+    #     back_populates='flight'
+    # )
 
     spacecraft = db.relationship(
         'Spacecraft',
         back_populates='flights'
     )
 
-    flight_status = db.relationship(
-        'FlightStatus',
+    # flight_status = db.relationship(
+    #     'FlightStatus',
+    #     back_populates='flight',
+    #     foreign_keys='Flight.flight_status_id'
+    # )
+
+    # spaceport = db.relationship(
+    #     'Spaceport',
+    #     back_populates='flights'
+    # )
+
+    bookings = db.relationship(
+        'Booking',
         back_populates='flight',
-        foreign_keys='Flight.flight_status_id'
+        cascade="all, delete-orphan"
     )
 
-    spaceport = db.relationship(
-        'Spaceport',
-        back_populates='flights'
-    )
-
-    schedule = db.relationship(
-        'Schedule',
-        back_populates='flight'
-    )
+    # schedule = db.relationship(
+    #     'Schedule',
+    #     back_populates='flight'
+    # )
 
     def to_dict(self):
         return {
             'id': self.id,
-            'spaceport_id': self.spaceport_id,
             'spacecraft_id': self.spacecraft_id,
-            'spacecraft_seat_id': self.spacecraft_seat_id,
-            'schedule_id': self.schedule_id,
-            'flight_status_id': self.flight_status_id,
-            'created_at': self.created_at
+            'launch_spaceport_id': self.launch_spaceport_id,
+            'landing_spaceport_id': self.landing_spaceport_id,
+            'departure_time': self.departure_time,
+            'arrival_time': self.arrival_time,
+            'orbit': self.orbit,
+            'created_at': self.created_at,
         }

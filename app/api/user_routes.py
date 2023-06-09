@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, PlanetComment, FrequentFlyer, Wallet, Transaction
+from app.models import User, PlanetComment, FrequentFlyer, Wallet, Transaction, Booking
 from app.forms import SignUpForm, ProfileForm
 from ..models import db
 
@@ -58,13 +58,21 @@ def update_user_profile(id):
 
     
 
-# Get all planet comments for current user
+# Get all planet comments for user
 @user_routes.route('<int:id>/comments')
 def get_user_comments(id):
     user_comments = PlanetComment.query.filter(PlanetComment.user_id == id).all()
     if user_comments:
         return {"comments": [comment.to_dict() for comment in user_comments], "count": PlanetComment.query.filter(PlanetComment.user_id == id).count()}
     return {"message": "user has no comments"}
+
+# Get all bookings for user
+@user_routes.route('<int:id>/bookings')
+def get_user_bookings(id):
+    user_bookings = Booking.query.filter(Booking.user_id == id).all()
+    if user_bookings:
+        return [booking.to_dict() for booking in user_bookings]
+    return {"message": "user has no bookings"}
 
 
 

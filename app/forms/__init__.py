@@ -5,3 +5,4 @@ from .spaceport_form import SpaceportForm
 from .planet_form import PlanetForm
 from .planet_comment_form import PlanetCommentForm
 from .profile_form import ProfileForm
+from .search_flight_form import SearchFlightForm

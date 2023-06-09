@@ -8,7 +8,7 @@ class Transaction(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
-    seat_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('spacecraft_seats.id')))
+    travelclass_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('travel_classes.id')))
     quantity = db.Column(db.Integer, nullable=False)
     unit_price = db.Column(db.Float, nullable=False)
     user_kg = db.Column(db.Float, nullable=False)
@@ -23,16 +23,16 @@ class Transaction(db.Model):
         back_populates='transactions'
     )
 
-    seat = db.relationship(
-        'SpacecraftSeat',
-        back_populates='transactions'
-    )
+    # seat = db.relationship(
+    #     'SpacecraftSeat',
+    #     back_populates='transactions'
+    # )
 
     def to_dict(self):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'seat_id': self.seat_id,
+            'travelclass_id': self.travelclass_id,
             'quantity': self.quantity,
             'user_kg': self.user_kg,
             'unit_price': self.unit_price,

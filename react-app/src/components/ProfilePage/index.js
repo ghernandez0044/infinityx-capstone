@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import { getOneProfile } from '../../store/profile'
 import { getOneWallet } from '../../store/wallet'
+// import { getUserBookings } from '../../store/bookings'
+// import FlightGallery from '../FlightGallery'
 import TransactionCard from '../TransactionCard'
 import MembershipCard from '../MembershipCard'
 import SignupFormModal from '../SignupFormModal'
@@ -24,6 +26,7 @@ function ProfilePage(){
     useEffect(() => {
         dispatch(getOneProfile(id))
         dispatch(getOneWallet(id))
+        // dispatch(getUserBookings(id))
     }, [dispatch, id])
 
     // Function to share profile
@@ -54,6 +57,9 @@ function ProfilePage(){
 
     // Subscribe to single wallet slice of state
     const singleWallet = useSelector(state => state.wallets.singleWallet)
+
+    // // Subscribe to user bookings slice of state
+    // const userBookings = useSelector(state => Object.values(state.bookings.userBookings))
     
     // Check to see if current user owns profile
     const currentUserProfile = user?.id === profile.id
@@ -79,14 +85,14 @@ function ProfilePage(){
                 </div>
                 <div className='passport-font'>{profile.passport}</div>
             </div>
-            {/* <div className='middle-content-container'>
+            <div className='middle-content-container'>
                 <div className='profile-tabs-container'>
                     <div className='hoverable middle-header-font' onClick={membershipGallery}>Membership</div>
                     <div className='hoverable middle-header-font' onClick={flightsGallery}>Flights</div>
                 </div>
                 <div className='icons-container'>
-                    <i className='fa-solid fa-bars' />
-                    <i className='fa-solid fa-plus' />
+                    {/* <i className='fa-solid fa-bars' />
+                    <i className='fa-solid fa-plus' /> */}
                 </div>
                 {membership ? (
                     <div className='membership-content-container'>
@@ -96,32 +102,32 @@ function ProfilePage(){
                         ))}
                     </div>
                 ) : (
-                    <div className='flight-content-container'>
-                        <div style={{textAlign: 'center' }}>Flight</div>
+                    <div className='bookings-content-container'>
+                        <div style={{textAlign: 'center' }}>Bookings</div>
                     </div>
                 )}
-                <div className='membership-content-container'>
+                {/* <div className='membership-content-container'>
                     <div style={{textAlign: 'center' }}>Membership</div>
                     {profile?.membership?.map(membership => (
                         <MembershipCard key={membership.id} membership={membership} profile={profile} />
                     ))}
-                </div>
-            </div> */}
-                {/* {currentUserProfile && singleWallet && (
+                </div> */}
+            </div>
+                {currentUserProfile && singleWallet && (
                     <div className='bottom-content-container'>
                         <div className='wallet-header-container'>
-                            <div>Wallet</div>
-                            <div>Address: {singleWallet?.address}</div>
-                            <div>Funds: ${singleWallet.funds.toLocaleString()}</div>
+                            <div id='wallet'>Wallet</div>
+                            <div className='profile-font'>Address: {singleWallet?.address}</div>
+                            <div className='profile-font'>Funds: ${singleWallet.funds.toLocaleString()}</div>
                         </div>
                         <div className='transactions-container'>
-                            <div style={{textAlign: 'center' }}>Transactions</div>
+                            <div style={{textAlign: 'center', fontSize: '60px', fontFamily: 'Josefin Sans', margin: '35px auto' }}>Transactions</div>
                             {profile?.transactions?.map(transaction => (
                             <TransactionCard key={transaction.id} transaction={transaction} />
                             ))}
                         </div>
                     </div>
-                )} */}
+                )}
             {/* <div className='bottom-content-container'>
                 <div className='wallet-header-container'>
                     <div>Wallet</div>

@@ -23,7 +23,7 @@ function TransactionCard({ transaction }){
 
     return (
         <div className="transaction-card-container">
-            <div id='date'>Date: {transaction.created_at}</div>
+            <div id='transaction-date'>Date: {transaction.created_at}</div>
             <div className="details-container">
                 <div id='price'>Price Per Kg: ${transaction.unit_price.toLocaleString()}</div>
                 <div id='quantity'>Quantity: {transaction.quantity}</div>

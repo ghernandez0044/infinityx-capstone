@@ -9,11 +9,14 @@
     margin: 3px auto;
 }
 
-#date{
+#transaction-date{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 36px;
     text-align: center;
     margin: 15px auto;
+    /* border: 3px solid lime; */
+    width: fit-content;
+    padding: 10px;
 }
 
 .details-container{
@@ -22,4 +25,10 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.details-container > div{
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+    text-transform: uppercase;
 }

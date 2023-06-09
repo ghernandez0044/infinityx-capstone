@@ -114,3 +114,14 @@
     justify-content: space-evenly;
     align-items: center;
 }
+
+#wallet{
+    font-size: 60px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.profile-font{
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+    text-transform: uppercase;
+}

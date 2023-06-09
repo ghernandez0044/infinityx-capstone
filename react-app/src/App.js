@@ -54,7 +54,7 @@ function App() {
               <ProfilePage />
             </Route>
             <Route exact path="/rideshare">
-              {/* <Rideshare /> */}
+              <Rideshare />
             </Route>
             <Route exact path="/spacecrafts/:id/edit">
               <EditSpacecraft />

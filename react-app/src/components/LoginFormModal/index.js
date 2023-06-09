@@ -35,7 +35,7 @@ function LoginFormModal() {
 
   return (
     <div className="login-modal-container">
-      <h1 className="header-font" style={{ textAlign: 'center' }}>Log In</h1>
+      <h1 className="header-font" style={{ textAlign: 'center', fontSize: '44px' }}>Log In</h1>
       <form className="form-container" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -66,7 +66,7 @@ function LoginFormModal() {
           <span className="signup-button-font">Log In</span>
         </div>
         {/* <div id='demo' className="hoverable" onClick={demoLogin}>Demo User</div> */}
-        <div id='admin' className="hoverable label-font" onClick={adminLogin}>Demo User</div>
+        <div id='admin' className="hoverable label-font" style={{ margin: '35px auto' }} onClick={adminLogin}>Demo User</div>
       </form>
     </div>
   );
