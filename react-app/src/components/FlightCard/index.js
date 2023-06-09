@@ -30,11 +30,6 @@ function FlightCard({ flight, mass, travelClass, price }){
         alert('booked!')
     }
 
-    console.log('flight: ', flight)
-    console.log('spacecraft: ', spacecraft)
-    console.log('launch port: ', launch_port)
-    console.log('landing port: ', landing_port)
-
     return spacecraft && spaceports && (
         <div className="flight-card-container">
             <div className="flight-card-container-div">
