@@ -116,7 +116,7 @@ function Rideshare(){
 
             {isSubmitted && ( 
             <div className='flight-gallery-container'>
-                <FlightGallery orbit={orbit} earlyDate={earliestDate} mass={userKg} travelClass={travelClass} price={price} />
+                <FlightGallery orbit={orbit} earlyDate={earliestDate} mass={userKg} travelClass={travelClass} num={num} price={price} />
             </div>
              )}
 

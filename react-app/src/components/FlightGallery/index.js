@@ -5,7 +5,7 @@ import { searchFlights } from "../../store/flight"
 import FlightCard from "../FlightCard"
 import './FlightGallery.css'
 
-function FlightGallery({ orbit, earlyDate, mass, travelClass, price }){
+function FlightGallery({ orbit, earlyDate, mass, travelClass, price, num }){
     // Create dispatch method
     const dispatch = useDispatch()
 
@@ -30,7 +30,7 @@ function FlightGallery({ orbit, earlyDate, mass, travelClass, price }){
             </div>
             <div className="flights-container">
                 {searchedFlights.map(flight => (
-                    <FlightCard key={flight.id} flight={flight} mass={mass} travelClass={travelClass} price={price} />
+                    <FlightCard key={flight.id} flight={flight} mass={mass} travelClass={travelClass} num={num} price={price} />
                 ))}
             </div>
         </div>

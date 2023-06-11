@@ -6,7 +6,12 @@ import { getAllSpaceport } from "../../store/spaceport"
 import { NavLink } from "react-router-dom"
 import './FlightCard.css'
 
-function FlightCard({ flight, mass, travelClass, price }){
+function FlightCard({ flight, mass, travelClass, price, num }){
+    let classId
+    if(travelClass === 'Base Class') classId = 1
+    if(travelClass === 'Cruise Class') classId = 2
+    if(travelClass === 'Launch Class') classId = 3
+
     // Create dispatch method
     const dispatch = useDispatch()
 
@@ -14,6 +19,9 @@ function FlightCard({ flight, mass, travelClass, price }){
     useEffect(() => {
         dispatch(getOneSpacecraft(flight.spacecraft_id)).then(res => dispatch(getAllSpaceport()))
     }, [dispatch])
+
+    // Subscribe to current user slice of state
+    const currentUser = useSelector(state => state.session.user)
 
     // Subscribe to single spacecraft slice of state
     const spacecraft = useSelector(state => state.spacecrafts.singleSpacecraft)
@@ -28,7 +36,28 @@ function FlightCard({ flight, mass, travelClass, price }){
 
     // Function to create a booking
     const bookFlight = () => {
-        alert('booked!')
+        alert(`booked!`)
+        const today = new Date()
+        const formattedToday = today.toISOString().split('T')[0]
+        const booking = {
+            'user_id': currentUser.id,
+            'flightId': flight.id,
+            'created_at': formattedToday
+        }
+        console.log('booking: ', booking)
+        const transaction = {
+            'user_id': currentUser.id,
+            'travelclass_id': classId,
+            'quantity': 1,
+            'unit_price': num,
+            'user_kg': Number(mass),
+            'tax_percentage': .0725,
+            'tax_total': (num * mass) * .0725,
+            'created_at': formattedToday
+        }
+        console.log('transaction: ', transaction)
+        const totalPrice = ((num * mass) * .0725) + price
+        console.log('totalPrice: ', totalPrice)
     }
 
     return spacecraft && spaceports && (
