@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getOneSpacecraft } from "../../store/spacecraft"
 import { getAllSpaceport } from "../../store/spaceport"
+import { NavLink } from "react-router-dom"
 import './FlightCard.css'
 
 function FlightCard({ flight, mass, travelClass, price }){
