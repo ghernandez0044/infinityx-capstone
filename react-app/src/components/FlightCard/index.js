@@ -57,7 +57,7 @@ function FlightCard({ flight, mass, travelClass, price, num }){
         }
         console.log('transaction: ', transaction)
         const totalPrice = ((num * mass) * .0725) + price
-        console.log('totalPrice: ', totalPrice)
+        console.log('totalPrice: ', Number(totalPrice.toFixed(2)))
     }
 
     return spacecraft && spaceports && (
