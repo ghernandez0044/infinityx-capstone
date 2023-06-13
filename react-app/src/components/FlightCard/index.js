@@ -3,8 +3,10 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getOneSpacecraft } from "../../store/spacecraft"
 import { getAllSpaceport } from "../../store/spaceport"
-import { NavLink } from "react-router-dom"
+import OpenModalIcon from "../OpenModalIcon"
+import { NavLink, Redirect } from "react-router-dom"
 import './FlightCard.css'
+import RideshareConfirmation from "../RideshareConfirmation"
 
 function FlightCard({ flight, mass, travelClass, price, num }){
     let classId
@@ -36,7 +38,7 @@ function FlightCard({ flight, mass, travelClass, price, num }){
 
     // Function to create a booking
     const bookFlight = () => {
-        alert(`booked!`)
+        // alert(`booked!`)
         const today = new Date()
         const formattedToday = today.toISOString().split('T')[0]
         const booking = {
@@ -58,6 +60,8 @@ function FlightCard({ flight, mass, travelClass, price, num }){
         console.log('transaction: ', transaction)
         const totalPrice = ((num * mass) * .0725) + price
         console.log('totalPrice: ', Number(totalPrice.toFixed(2)))
+
+        return <RideshareConfirmation />
     }
 
     return spacecraft && spaceports && (
@@ -89,6 +93,7 @@ function FlightCard({ flight, mass, travelClass, price, num }){
             <div onClick={bookFlight} className="button-alternate resize">
                 <div className="hover-effect-alternate"></div>
                 <i className='fa-solid fa-arrow-right fa-2xl' />
+                {/* <OpenModalIcon modalComponent={<h1>Confirmation</h1>} icon='fa-solid fa-arrow-right fa-2xl' /> */}
             </div>
         </div>
     )
