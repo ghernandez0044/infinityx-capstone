@@ -7,8 +7,10 @@ function RideshareConfirmation(){
     
 
     return (
-        <div>
-            null
+        <div className='flight-gallery-container'>
+            <div className='flight-gallery-navbar'>
+                <div className='dark-font flight-gallery-header'>Add Ons</div>
+            </div>
         </div>
     )
 }

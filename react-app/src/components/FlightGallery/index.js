@@ -3,11 +3,15 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { searchFlights } from "../../store/flight"
 import FlightCard from "../FlightCard"
+import RideshareConfirmation from "../RideshareConfirmation"
 import './FlightGallery.css'
 
 function FlightGallery({ orbit, earlyDate, mass, travelClass, price, num }){
     // Create dispatch method
     const dispatch = useDispatch()
+
+    // Create state variables
+    const [ showConfirmation, setShowConfirmation ] = useState(false)
 
     // Search flights upon component mount
     useEffect(() => {
@@ -22,18 +26,28 @@ function FlightGallery({ orbit, earlyDate, mass, travelClass, price, num }){
     const searchedFlights = useSelector(state => Object.values(state.flights.searchedFlights))
 
     return (
-        <div className="flight-gallery-container">
-            <div className="flight-gallery-navbar">
-                <div className="dark-font flight-gallery-header">
-                    Available Flights
+        <>
+            <div className="flight-gallery-container">
+                <div className="flight-gallery-navbar">
+                    <div className="dark-font flight-gallery-header">
+                        Available Flights
+                    </div>
+                </div>
+                <div className="flights-container">
+                    {searchedFlights.map(flight => (
+                        <FlightCard key={flight.id} flight={flight} mass={mass} travelClass={travelClass} num={num} price={price} showConfirmation={showConfirmation} setShowConfirmation={setShowConfirmation} />
+                    ))}
                 </div>
             </div>
-            <div className="flights-container">
-                {searchedFlights.map(flight => (
-                    <FlightCard key={flight.id} flight={flight} mass={mass} travelClass={travelClass} num={num} price={price} />
-                ))}
+            <div className="confirmation-container">
+            {showConfirmation && ( 
+                <div className="confirmation-container">
+                    <RideshareConfirmation flight={flight} />
+                </div>
+            )}
             </div>
-        </div>
+        
+        </>
     )
 }
 

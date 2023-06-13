@@ -8,7 +8,7 @@ import { NavLink, Redirect } from "react-router-dom"
 import './FlightCard.css'
 import RideshareConfirmation from "../RideshareConfirmation"
 
-function FlightCard({ flight, mass, travelClass, price, num }){
+function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, setShowConfirmation }){
     let classId
     if(travelClass === 'Base Class') classId = 1
     if(travelClass === 'Cruise Class') classId = 2
@@ -61,7 +61,7 @@ function FlightCard({ flight, mass, travelClass, price, num }){
         const totalPrice = ((num * mass) * .0725) + price
         console.log('totalPrice: ', Number(totalPrice.toFixed(2)))
 
-        return <RideshareConfirmation />
+        setShowConfirmation(!showConfirmation)
     }
 
     return spacecraft && spaceports && (
