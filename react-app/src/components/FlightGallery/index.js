@@ -12,6 +12,9 @@ function FlightGallery({ orbit, earlyDate, mass, travelClass, price, num }){
 
     // Create state variables
     const [ showConfirmation, setShowConfirmation ] = useState(false)
+    const [ selectedFlight, setSelectedFlight ] = useState({})
+    const [ selectedBooking, setSelectedBooking ] = useState({})
+    const [ selectedTransaction, setSelectedTransaction ] = useState({})
 
     // Search flights upon component mount
     useEffect(() => {
@@ -35,14 +38,14 @@ function FlightGallery({ orbit, earlyDate, mass, travelClass, price, num }){
                 </div>
                 <div className="flights-container">
                     {searchedFlights.map(flight => (
-                        <FlightCard key={flight.id} flight={flight} mass={mass} travelClass={travelClass} num={num} price={price} showConfirmation={showConfirmation} setShowConfirmation={setShowConfirmation} />
+                        <FlightCard key={flight.id} flight={flight} mass={mass} travelClass={travelClass} num={num} price={price} showConfirmation={showConfirmation} setShowConfirmation={setShowConfirmation} setSelectedTransaction={setSelectedTransaction} setSelectedBooking={setSelectedBooking} setSelectedFlight={setSelectedFlight} />
                     ))}
                 </div>
             </div>
             <div className="confirmation-container">
             {showConfirmation && ( 
                 <div className="confirmation-container">
-                    <RideshareConfirmation flight={flight} />
+                    <RideshareConfirmation mass={mass} travelClass={travelClass} num={num} price={price} transaction={selectedTransaction} booking={selectedBooking} flight={selectedFlight} />
                 </div>
             )}
             </div>

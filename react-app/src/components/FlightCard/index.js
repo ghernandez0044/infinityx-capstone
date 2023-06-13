@@ -8,7 +8,7 @@ import { NavLink, Redirect } from "react-router-dom"
 import './FlightCard.css'
 import RideshareConfirmation from "../RideshareConfirmation"
 
-function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, setShowConfirmation }){
+function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, setShowConfirmation, setSelectedTransaction, setSelectedBooking, setSelectedFlight }){
     let classId
     if(travelClass === 'Base Class') classId = 1
     if(travelClass === 'Cruise Class') classId = 2
@@ -39,6 +39,7 @@ function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, s
     // Function to create a booking
     const bookFlight = () => {
         // alert(`booked!`)
+        setSelectedFlight(flight)
         const today = new Date()
         const formattedToday = today.toISOString().split('T')[0]
         const booking = {
@@ -47,6 +48,7 @@ function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, s
             'created_at': formattedToday
         }
         console.log('booking: ', booking)
+        setSelectedBooking(booking)
         const transaction = {
             'user_id': currentUser.id,
             'travelclass_id': classId,
@@ -55,11 +57,13 @@ function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, s
             'user_kg': Number(mass),
             'tax_percentage': .0725,
             'tax_total': (num * mass) * .0725,
+            'total': ((num * mass) * .0725) + price,
             'created_at': formattedToday
         }
         console.log('transaction: ', transaction)
         const totalPrice = ((num * mass) * .0725) + price
         console.log('totalPrice: ', Number(totalPrice.toFixed(2)))
+        setSelectedTransaction(transaction)
 
         setShowConfirmation(!showConfirmation)
     }
