@@ -15,6 +15,7 @@
     min-height: 120px;
     height: fit-content;
     max-height: fit-content;
+    padding: 15px;
 }
 
 .rideshare-header-font{

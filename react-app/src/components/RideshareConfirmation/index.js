@@ -51,14 +51,40 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                 </div>
                 <div className='flight-origin-container'>
                     <div className='rideshare-header-font'>Flight Origin</div>
-                    <div className='rideshare-confirmation-content-font'>{spaceports[flight.launch_spaceport_id].city}, {spaceports[flight.launch_spaceport_id].state}</div>
-                    <div className='rideshare-confirmation-content-font'>{flight.departure_time}</div>
+                    <div className='flexed'>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Spaceport</div>
+                            <div className='rideshare-confirmation-content-font'>{spaceports[flight.launch_spaceport_id].city}, {spaceports[flight.launch_spaceport_id].state}</div>
+                        </div>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Departure Date</div>
+                            <div className='rideshare-confirmation-content-font'>{flight.departure_time.split('T')[0]}</div>
+                        </div>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Departure Time</div>
+                            <div className='rideshare-confirmation-content-font'>{flight.departure_time.split('T')[1]}</div>
+                        </div>
+                    </div>
                 </div>
                 <div className='flight-destination-container'>
                     <div className='rideshare-header-font'>Flight Destination</div>
-                    <div className='rideshare-confirmation-content-font'>{spaceports[flight.landing_spaceport_id].city}, {spaceports[flight.landing_spaceport_id].state}</div>
-                    <div className='rideshare-confirmation-content-font'>{flight.arrival_time}</div>
+                    <div className='flexed'>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Spaceport</div>
+                            <div className='rideshare-confirmation-content-font'>{spaceports[flight.landing_spaceport_id].city}, {spaceports[flight.landing_spaceport_id].state}</div>
+                        </div>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Arrival Date</div>
+                            <div className='rideshare-confirmation-content-font'>{flight.arrival_time.split('T')[0]}</div>
+                        </div>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Arrival Time</div>
+                            <div className='rideshare-confirmation-content-font'>{flight.arrival_time.split('T')[1]}</div>
+                        </div>
+                    </div>
                 </div>
+
+
                 <div className='flight-spacecraft-container'>
                     <div className='rideshare-header-font'>Spacecraft</div>
                     <div className='flexed'>
@@ -69,6 +95,10 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Year</div>
                             <div className='rideshare-confirmation-content-font'>{spacecrafts[flight.spacecraft_id].year}</div>
+                        </div>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Load Capacity</div>
+                            <div className='rideshare-confirmation-content-font'>{spacecrafts[flight.spacecraft_id].load_capacity_kg.toLocaleString()} kg</div>
                         </div>
                     </div>
                 </div>
