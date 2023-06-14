@@ -6,7 +6,7 @@ import { getAllSpaceport } from '../../store/spaceport'
 import { getAllTravelClasses } from '../../store/travelClass'
 import './RideshareConfirmation.css'
 
-function RideshareConfirmation({ transaction, booking, flight, mass, travelClass, num, price }){
+function RideshareConfirmation({ transaction, booking, flight, mass, travelClass, num, price, bookingTotalPrice }){
 
     console.log('transaction confirmation: ', transaction)
     console.log('booking confirmation: ', booking)
@@ -83,8 +83,6 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                         </div>
                     </div>
                 </div>
-
-
                 <div className='flight-spacecraft-container'>
                     <div className='rideshare-header-font'>Spacecraft</div>
                     <div className='flexed'>
@@ -102,8 +100,38 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                         </div>
                     </div>
                 </div>
-                <div className='pricing-container'>
-
+                <div className='flight-pricing-container'>
+                <div className='rideshare-header-font'>Pricing</div>
+                    <div className='flexed'>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Travel Class</div>
+                            <div className='rideshare-confirmation-content-font'>{travelClass}</div>
+                        </div>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Price Per Kg</div>
+                            <div className='rideshare-confirmation-content-font'>${num.toLocaleString()}</div>
+                        </div>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>User Mass In Kg</div>
+                            <div className='rideshare-confirmation-content-font'>{mass} kg</div>
+                        </div>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Subtotal</div>
+                            <div className='rideshare-confirmation-content-font'>${price.toLocaleString()}</div>
+                        </div>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Tax Percentage</div>
+                            <div className='rideshare-confirmation-content-font'>7.25%</div>
+                        </div>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Tax Total</div>
+                            <div className='rideshare-confirmation-content-font'>${transaction.tax_total.toLocaleString()}</div>
+                        </div>
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Total Price</div>
+                            <div className='rideshare-confirmation-content-font'>${bookingTotalPrice.toLocaleString()}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -83,3 +83,7 @@
     /* margin: 10px 6px; */
     text-transform: uppercase;
 }
+
+.flight-pricing-container{
+    border: 3px solid blue;
+}
