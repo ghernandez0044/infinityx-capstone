@@ -1,6 +1,6 @@
 .flight-gallery-container{
     /* border: 3px solid lime; */
-    min-height: 600px;
+    min-height: 450px;
     height: fit-content;
     background-color: white;
 }
