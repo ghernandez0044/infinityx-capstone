@@ -143,15 +143,15 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                         </div>
                     </div>
                 </div>
-                <div className='rideshare-confirmation-buttons-container'>
-                    <div onClick={handleBooking} className="button-alternate2 resizing">
-                        <div className="hover-effect-alternate2"></div>
-                        <span className="signup-button-font">Book Flight</span>
-                    </div>
-                    <div onClick={handleBooking} className="button-alternate2-error resizing">
-                        <div className="hover-effect-alternate2-error"></div>
-                        <span className="signup-button-font">Go Home</span>
-                    </div>
+            </div>
+            <div className='rideshare-confirmation-buttons-container'>
+                <div onClick={handleBooking} className="button-alternate2 resizing">
+                    <div className="hover-effect-alternate2"></div>
+                    <span className="signup-button-font">Book Flight</span>
+                </div>
+                <div onClick={handleBooking} className="button-alternate2-error resizing">
+                    <div className="hover-effect-alternate2-error"></div>
+                    <span className="signup-button-font">Go Home</span>
                 </div>
             </div>
         </div>
