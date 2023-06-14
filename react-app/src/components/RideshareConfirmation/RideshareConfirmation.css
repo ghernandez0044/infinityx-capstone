@@ -1,3 +1,84 @@
 .rideshare-confirmation-header{
     color: #212529;
 }
+
+.flight-time-confirmation-container{
+    border: 3px solid lime;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flight-time-confirmation-container > div{
+    width: 70%;
+    min-height: 120px;
+    height: fit-content;
+    max-height: fit-content;
+}
+
+.rideshare-header-font{
+    color: #212529;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 6px;
+    text-transform: uppercase;
+}
+
+.rideshare-confirmation-content-font{
+    color: #212529;
+    font-family: 'Merriweather', serif;
+    font-weight: lighter;
+    font-size: 12px;
+    margin: 10px 6px;
+}
+
+.planet-orbit-container{
+    border: 3px solid brown;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.flight-origin-container{
+    border: 3px solid green;
+}
+
+.flight-destination-container{
+    border: 3px solid blue;
+}
+
+.flight-spacecraft-container{
+    border: 3px solid purple;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.flexed{
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.flexed-column{
+    border: 1px solid orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    padding: 15px;
+}
+
+.rideshare-subheader-font{
+    color: #212529;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    font-weight: lighter;
+    /* margin: 10px 6px; */
+    text-transform: uppercase;
+}
