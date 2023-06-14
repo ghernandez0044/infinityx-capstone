@@ -87,3 +87,103 @@
 .flight-pricing-container{
     border: 3px solid blue;
 }
+
+.flight-travelclass-container{
+    border: 3px solid pink;
+}
+
+.rideshare-confirmation-buttons-container{
+    border: 3px solid yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-alternate2 {
+    position: relative;
+    display: inline-block;
+    width: 130px;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: black;
+    cursor: pointer;
+    text-align: center;
+    padding: 15px 20px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.button-alternate2-error {
+    position: relative;
+    display: inline-block;
+    width: 130px;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: black;
+    cursor: pointer;
+    text-align: center;
+    padding: 15px 20px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.button-alternate2:hover span{
+    color: rgb(0, 0, 0);
+    transition: color 0.6s ease-in-out;
+}
+
+.button-alternate2-error:hover span{
+    color: rgb(255, 255, 255);
+    transition: color 0.6s ease-in-out;
+}
+
+.button-alternate2 > i{
+    color: rgb(255, 255, 255);
+}
+
+.button-alternate2:hover i{
+    color: rgb(0, 0, 0);
+    transition: color 0.6s ease-in-out;
+}
+
+.button-alternate2 .hover-effect-alternate2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    z-index: -1;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.button-alternate2:hover .hover-effect-alternate2{
+    transform: translateY(0);
+}
+
+.button-alternate2-error .hover-effect-alternate2-error{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(241, 47, 47);
+    color: rgb(255, 255, 255);
+    z-index: -1;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.button-alternate2-error:hover .hover-effect-alternate2-error{
+    transform: translateY(0);
+}
+
+.resizing{
+    width: 80%;
+    margin: 5px auto;
+}

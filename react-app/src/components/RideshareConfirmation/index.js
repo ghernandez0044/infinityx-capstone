@@ -37,7 +37,13 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
 
     console.log('spaceports: ', spaceports)
 
+    // Function to handle booking
+    const handleBooking = () => {
+        alert('booking')
+    }
+
     if(!spacecrafts || !spaceports || Object.values(spacecrafts).length === 0 || Object.values(spaceports).length === 0) return null
+
 
     return (
         <div className='flight-gallery-container'>
@@ -100,6 +106,10 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                         </div>
                     </div>
                 </div>
+                <div className='flight-travelclass-container'>
+                    <div className='rideshare-header-font'>Travel Class</div>
+                    <div className='rideshare-confirmation-content-font'>{travelClass}</div>
+                </div>
                 <div className='flight-pricing-container'>
                 <div className='rideshare-header-font'>Pricing</div>
                     <div className='flexed'>
@@ -131,6 +141,16 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                             <div className='rideshare-subheader-font'>Total Price</div>
                             <div className='rideshare-confirmation-content-font'>${bookingTotalPrice.toLocaleString()}</div>
                         </div>
+                    </div>
+                </div>
+                <div className='rideshare-confirmation-buttons-container'>
+                    <div onClick={handleBooking} className="button-alternate2 resizing">
+                        <div className="hover-effect-alternate2"></div>
+                        <span className="signup-button-font">Book Flight</span>
+                    </div>
+                    <div onClick={handleBooking} className="button-alternate2-error resizing">
+                        <div className="hover-effect-alternate2-error"></div>
+                        <span className="signup-button-font">Go Home</span>
                     </div>
                 </div>
             </div>
