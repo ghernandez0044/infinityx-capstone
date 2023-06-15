@@ -9,3 +9,16 @@ export const actionLoadFlightBooking = (flightBooking) => {
         flightBooking
     }
 }
+
+export const actionCreateFlightBooking = (flightBooking) => {
+    return {
+        type: CREATE_FLIGHT_BOOKING,
+        flightBooking
+    }
+}
+
+// Initial State
+const initialState = {
+    currentFlightBooking: {}
+}
+
