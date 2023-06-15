@@ -22,3 +22,19 @@ const initialState = {
     currentFlightBooking: {}
 }
 
+// Reducer
+const flightBookingReducer = (state = initialState, action) => {
+    let newState = {...state}
+    switch(action.type){
+        case LOAD_FLIGHT_BOOKING:
+            newState.currentFlightBooking = action.flightBooking
+            return newState
+        case CREATE_FLIGHT_BOOKING:
+            newState.currentFlightBooking = action.flightBooking
+            return newState
+        default:
+            return state
+    }
+}
+
+export default flightBookingReducer
