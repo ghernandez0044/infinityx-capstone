@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getOneSpacecraft } from "../../store/spacecraft"
 import { getAllSpaceport } from "../../store/spaceport"
+import { actionCreateFlightBooking } from "../../store/flightBooking"
 import OpenModalIcon from "../OpenModalIcon"
 import { NavLink, Redirect } from "react-router-dom"
 import './FlightCard.css'
@@ -66,6 +67,25 @@ function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, s
         console.log('totalPrice: ', Number(totalPrice.toFixed(2)))
         setSelectedTransaction(transaction)
         setBookingTotalPrice(total)
+
+        const flightBooking = {
+            'user_id': currentUser.id,
+            'flightId': flight.id,
+            'launch_spaceport_id': flight.launch_spaceport_id,
+            'landing_spaceport_id': flight.landing_spaceport_id,
+            'travelclass_id': classId,
+            'quantity': 1,
+            'unit_price': num,
+            'user_kg': Number(mass),
+            'tax_percentage': .0725,
+            'tax_total': (num * mass) * .0725,
+            'total': total,
+            'created_at': formattedToday
+        }
+
+        dispatch(actionCreateFlightBooking(flightBooking))
+
+
         setShowConfirmation(!showConfirmation)
     }
 

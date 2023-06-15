@@ -43,6 +43,11 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
     console.log('spaceports: ', spaceports)
     console.log('spaceport: ', spaceports[flight.launch_spaceport_id])
 
+    // Subscribe to flightBooking slice of state
+    const flightBooking = useSelector(state => state.flightBookings.currentFlightBooking)
+
+    console.log('flightBooking: ', flightBooking)
+
     // Function to handle booking
     const handleBooking = () => {
         alert('booking')
