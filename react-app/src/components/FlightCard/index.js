@@ -15,13 +15,15 @@ function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, s
     if(travelClass === 'Cruise Class') classId = 2
     if(travelClass === 'Launch Class') classId = 3
 
+    console.log('FlightCard flight: ', flight)
+
     // Create dispatch method
     const dispatch = useDispatch()
 
     // Load Spacecraft upon component render
     useEffect(() => {
         dispatch(getOneSpacecraft(flight.spacecraft_id)).then(res => dispatch(getAllSpaceport()))
-    }, [dispatch])
+    }, [dispatch, flight])
 
     // Subscribe to current user slice of state
     const currentUser = useSelector(state => state.session.user)
@@ -73,13 +75,15 @@ function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, s
             'flightId': flight.id,
             'launch_spaceport_id': flight.launch_spaceport_id,
             'landing_spaceport_id': flight.landing_spaceport_id,
+            'flightObject': flight,
             'travelclass_id': classId,
             'quantity': 1,
             'unit_price': num,
             'user_kg': Number(mass),
+            'subtotal': (num * mass),
             'tax_percentage': .0725,
             'tax_total': (num * mass) * .0725,
-            'total': total,
+            'total': ((num * mass) + ((num * mass) * .0725)),
             'created_at': formattedToday
         }
 
@@ -118,7 +122,6 @@ function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, s
             <div onClick={bookFlight} className="button-alternate resize">
                 <div className="hover-effect-alternate"></div>
                 <i className='fa-solid fa-arrow-right fa-2xl' />
-                {/* <OpenModalIcon modalComponent={<h1>Confirmation</h1>} icon='fa-solid fa-arrow-right fa-2xl' /> */}
             </div>
         </div>
     )

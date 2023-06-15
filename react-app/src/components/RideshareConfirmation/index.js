@@ -133,29 +133,49 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                             <div className='rideshare-subheader-font'>Travel Class</div>
                             <div className='rideshare-confirmation-content-font'>{travelClass}</div>
                         </div>
-                        <div className='flexed-column'>
+                        {/* <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Price Per Kg</div>
                             <div className='rideshare-confirmation-content-font'>${num.toLocaleString()}</div>
-                        </div>
+                        </div> */}
                         <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Price Per Kg</div>
+                            <div className='rideshare-confirmation-content-font'>${flightBooking.unit_price.toLocaleString()}</div>
+                        </div>
+                        {/* <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>User Mass In Kg</div>
                             <div className='rideshare-confirmation-content-font'>{mass} kg</div>
-                        </div>
+                        </div> */}
                         <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>User Mass In Kg</div>
+                            <div className='rideshare-confirmation-content-font'>{flightBooking.user_kg} kg</div>
+                        </div>
+                        {/* <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Subtotal</div>
                             <div className='rideshare-confirmation-content-font'>${price.toLocaleString()}</div>
+                        </div> */}
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Subtotal</div>
+                            <div className='rideshare-confirmation-content-font'>${flightBooking.subtotal.toLocaleString()}</div>
                         </div>
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Tax Percentage</div>
                             <div className='rideshare-confirmation-content-font'>7.25%</div>
                         </div>
-                        <div className='flexed-column'>
+                        {/* <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Tax Total</div>
                             <div className='rideshare-confirmation-content-font'>${transaction.tax_total.toLocaleString()}</div>
-                        </div>
+                        </div> */}
                         <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Tax Total</div>
+                            <div className='rideshare-confirmation-content-font'>${flightBooking.tax_total.toLocaleString()}</div>
+                        </div>
+                        {/* <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Total Price</div>
                             <div className='rideshare-confirmation-content-font'>${bookingTotalPrice.toLocaleString()}</div>
+                        </div> */}
+                        <div className='flexed-column'>
+                            <div className='rideshare-subheader-font'>Total Price</div>
+                            <div className='rideshare-confirmation-content-font'>${flightBooking.total.toLocaleString()}</div>
                         </div>
                     </div>
                 </div>
