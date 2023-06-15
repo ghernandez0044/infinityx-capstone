@@ -66,7 +66,6 @@ function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, s
         console.log('totalPrice: ', Number(totalPrice.toFixed(2)))
         setSelectedTransaction(transaction)
         setBookingTotalPrice(total)
-
         setShowConfirmation(!showConfirmation)
     }
 

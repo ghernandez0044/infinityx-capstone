@@ -19,7 +19,7 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
 
     // Create history method
     const history = useHistory()
-    
+
     // Load spacecrafts and spaceports into state upon component render
     useEffect(() => {
         console.log('useEffect running')
@@ -35,11 +35,13 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
     const spacecrafts = useSelector(state => state.spacecrafts.allSpacecraft)
 
     console.log('spacecrafts: ', spacecrafts)
+    console.log('spacecraft: ', spacecrafts[flight.spacecraft_id])
 
     // Subscribe to spaceports slice of state
     const spaceports = useSelector(state => state.spaceports.allSpaceports)
 
     console.log('spaceports: ', spaceports)
+    console.log('spaceport: ', spaceports[flight.launch_spaceport_id])
 
     // Function to handle booking
     const handleBooking = () => {
@@ -47,6 +49,9 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
     }
 
     // Function to go home
+    const goHome = () => {
+        history.push('/')
+    }
 
     if(!spacecrafts || !spaceports || Object.values(spacecrafts).length === 0 || Object.values(spaceports).length === 0) return null
 
@@ -155,7 +160,7 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                     <div className="hover-effect-alternate2"></div>
                     <span className="signup-button-font">Book Flight</span>
                 </div>
-                <div onClick={handleBooking} className="button-alternate2-error resizing">
+                <div onClick={goHome} className="button-alternate2-error resizing">
                     <div className="hover-effect-alternate2-error"></div>
                     <span className="signup-button-font">Go Home</span>
                 </div>
