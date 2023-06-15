@@ -1,6 +1,7 @@
 // Necessary imports
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { getAllSpacecraft } from '../../store/spacecraft'
 import { getAllSpaceport } from '../../store/spaceport'
 import { getAllTravelClasses } from '../../store/travelClass'
@@ -16,6 +17,9 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
     // Create dispatch method
     const dispatch = useDispatch()
 
+    // Create history method
+    const history = useHistory()
+    
     // Load spacecrafts and spaceports into state upon component render
     useEffect(() => {
         console.log('useEffect running')
@@ -41,6 +45,8 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
     const handleBooking = () => {
         alert('booking')
     }
+
+    // Function to go home
 
     if(!spacecrafts || !spaceports || Object.values(spacecrafts).length === 0 || Object.values(spaceports).length === 0) return null
 
