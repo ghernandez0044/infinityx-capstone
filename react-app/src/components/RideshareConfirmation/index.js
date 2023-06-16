@@ -7,7 +7,7 @@ import { getAllSpaceport } from '../../store/spaceport'
 import { getAllTravelClasses } from '../../store/travelClass'
 import './RideshareConfirmation.css'
 
-function RideshareConfirmation({ transaction, booking, flight, mass, travelClass, num, price, bookingTotalPrice }){
+function RideshareConfirmation({ transaction, booking, flight, travelClass }){
 
     console.log('transaction confirmation: ', transaction)
     console.log('booking confirmation: ', booking)
@@ -29,38 +29,36 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
     // Subscribe to travel classes slice of state
     const allTravelClasses = useSelector(state => state.travelClasses.allTravelClasses)
 
-    console.log('allTravelClasses: ', allTravelClasses)
-
     // Subscribe to spacecrafts slice of state
     const spacecrafts = useSelector(state => state.spacecrafts.allSpacecraft)
 
     console.log('spacecrafts: ', spacecrafts)
-    console.log('spacecraft: ', spacecrafts[flight.spacecraft_id])
-
+    
     // Subscribe to spaceports slice of state
     const spaceports = useSelector(state => state.spaceports.allSpaceports)
-
+    
     console.log('spaceports: ', spaceports)
-    console.log('spaceport: ', spaceports[flight.launch_spaceport_id])
-
+    
     // Subscribe to flightBooking slice of state
     const flightBooking = useSelector(state => state.flightBookings.currentFlightBooking)
-
+    
     console.log('flightBooking: ', flightBooking)
-
+    
     // Function to handle booking
     const handleBooking = () => {
         alert('booking')
     }
-
+    
     // Function to go home
     const goHome = () => {
         history.push('/')
     }
-
-    if(!spacecrafts || !spaceports || Object.values(spacecrafts).length === 0 || Object.values(spaceports).length === 0) return null
-
-
+    
+    if(!spacecrafts || !spaceports || Object.values(spacecrafts).length === 0 || Object.values(spaceports).length === 0 || !flightBooking || Object.values(flightBooking).length === 0) return null
+    
+    console.log('spacecraft: ', spacecrafts[flightBooking.spacecraft_id])
+    console.log('spaceport: ', spaceports[flightBooking.launch_spaceport_id])
+    
     return (
         <div className='flight-gallery-container'>
             <div className='flight-gallery-navbar'>
@@ -76,7 +74,7 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                     <div className='flexed'>
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Spaceport</div>
-                            <div className='rideshare-confirmation-content-font'>{spaceports[flight.launch_spaceport_id].city}, {spaceports[flight.launch_spaceport_id].state}</div>
+                            <div className='rideshare-confirmation-content-font'>{spaceports[flightBooking.launch_spaceport_id].city}, {spaceports[flightBooking.launch_spaceport_id].state}</div>
                         </div>
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Departure Date</div>
@@ -93,7 +91,7 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                     <div className='flexed'>
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Spaceport</div>
-                            <div className='rideshare-confirmation-content-font'>{spaceports[flight.landing_spaceport_id].city}, {spaceports[flight.landing_spaceport_id].state}</div>
+                            <div className='rideshare-confirmation-content-font'>{spaceports[flightBooking.landing_spaceport_id].city}, {spaceports[flightBooking.landing_spaceport_id].state}</div>
                         </div>
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Arrival Date</div>
@@ -133,26 +131,14 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                             <div className='rideshare-subheader-font'>Travel Class</div>
                             <div className='rideshare-confirmation-content-font'>{travelClass}</div>
                         </div>
-                        {/* <div className='flexed-column'>
-                            <div className='rideshare-subheader-font'>Price Per Kg</div>
-                            <div className='rideshare-confirmation-content-font'>${num.toLocaleString()}</div>
-                        </div> */}
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Price Per Kg</div>
                             <div className='rideshare-confirmation-content-font'>${flightBooking.unit_price.toLocaleString()}</div>
                         </div>
-                        {/* <div className='flexed-column'>
-                            <div className='rideshare-subheader-font'>User Mass In Kg</div>
-                            <div className='rideshare-confirmation-content-font'>{mass} kg</div>
-                        </div> */}
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>User Mass In Kg</div>
                             <div className='rideshare-confirmation-content-font'>{flightBooking.user_kg} kg</div>
                         </div>
-                        {/* <div className='flexed-column'>
-                            <div className='rideshare-subheader-font'>Subtotal</div>
-                            <div className='rideshare-confirmation-content-font'>${price.toLocaleString()}</div>
-                        </div> */}
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Subtotal</div>
                             <div className='rideshare-confirmation-content-font'>${flightBooking.subtotal.toLocaleString()}</div>
@@ -161,18 +147,10 @@ function RideshareConfirmation({ transaction, booking, flight, mass, travelClass
                             <div className='rideshare-subheader-font'>Tax Percentage</div>
                             <div className='rideshare-confirmation-content-font'>7.25%</div>
                         </div>
-                        {/* <div className='flexed-column'>
-                            <div className='rideshare-subheader-font'>Tax Total</div>
-                            <div className='rideshare-confirmation-content-font'>${transaction.tax_total.toLocaleString()}</div>
-                        </div> */}
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Tax Total</div>
                             <div className='rideshare-confirmation-content-font'>${flightBooking.tax_total.toLocaleString()}</div>
                         </div>
-                        {/* <div className='flexed-column'>
-                            <div className='rideshare-subheader-font'>Total Price</div>
-                            <div className='rideshare-confirmation-content-font'>${bookingTotalPrice.toLocaleString()}</div>
-                        </div> */}
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Total Price</div>
                             <div className='rideshare-confirmation-content-font'>${flightBooking.total.toLocaleString()}</div>
