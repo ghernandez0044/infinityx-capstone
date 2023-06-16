@@ -21,3 +21,7 @@ input::placeholder, textarea::placeholder {
     text-transform: uppercase;
     /* color: lightgray; */
 }
+
+html{
+    position: relative;
+}
