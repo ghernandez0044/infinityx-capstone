@@ -17,6 +17,8 @@ function FlightGallery({ orbit, earlyDate, mass, travelClass, price, num }){
     const [ selectedTransaction, setSelectedTransaction ] = useState({})
     const [ bookingTotalPrice, setBookingTotalPrice ] = useState(0)
     const [ selectedSpacecraft, setSelectedSpacecraft ] = useState('')
+    const [ launchSpaceport, setLaunchSpaceport ] = useState('')
+    const [ landingSpaceport, setLandingSpaceport ] = useState('')
 
     // Search flights upon component mount
     useEffect(() => {
@@ -40,14 +42,14 @@ function FlightGallery({ orbit, earlyDate, mass, travelClass, price, num }){
                 </div>
                 <div className="flights-container">
                     {searchedFlights.map(flight => (
-                        <FlightCard key={flight.id} flight={flight} mass={mass} travelClass={travelClass} num={num} price={price} showConfirmation={showConfirmation} setShowConfirmation={setShowConfirmation} setSelectedTransaction={setSelectedTransaction} setSelectedBooking={setSelectedBooking} setSelectedFlight={setSelectedFlight} setBookingTotalPrice={setBookingTotalPrice} setSelectedSpacecraft={setSelectedSpacecraft} />
+                        <FlightCard key={flight.id} flight={flight} mass={mass} travelClass={travelClass} num={num} price={price} showConfirmation={showConfirmation} setShowConfirmation={setShowConfirmation} setSelectedTransaction={setSelectedTransaction} setSelectedBooking={setSelectedBooking} setSelectedFlight={setSelectedFlight} setBookingTotalPrice={setBookingTotalPrice} setSelectedSpacecraft={setSelectedSpacecraft} setLaunchSpaceport={setLaunchSpaceport} setLandingSpaceport={setLandingSpaceport} />
                     ))}
                 </div>
             </div>
             <div className="confirmation-container">
             {showConfirmation && ( 
                 <div className="confirmation-container">
-                    <RideshareConfirmation mass={mass} travelClass={travelClass} num={num} price={price} transaction={selectedTransaction} booking={selectedBooking} flight={selectedFlight} bookingTotalPrice={bookingTotalPrice} spacecraft={selectedSpacecraft} />
+                    <RideshareConfirmation mass={mass} travelClass={travelClass} num={num} price={price} transaction={selectedTransaction} booking={selectedBooking} flight={selectedFlight} bookingTotalPrice={bookingTotalPrice} spacecraft={selectedSpacecraft} launchSpaceport={launchSpaceport} landingSpaceport={landingSpaceport} />
                 </div>
             )}
             </div>

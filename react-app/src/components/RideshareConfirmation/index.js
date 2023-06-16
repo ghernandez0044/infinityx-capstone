@@ -7,7 +7,7 @@ import { getAllSpaceport } from '../../store/spaceport'
 import { getAllTravelClasses } from '../../store/travelClass'
 import './RideshareConfirmation.css'
 
-function RideshareConfirmation({ transaction, booking, flight, travelClass, spacecraft }){
+function RideshareConfirmation({ transaction, booking, flight, travelClass, spacecraft, launchSpaceport, landingSpaceport }){
 
     console.log('transaction confirmation: ', transaction)
     console.log('booking confirmation: ', booking)
@@ -74,7 +74,7 @@ function RideshareConfirmation({ transaction, booking, flight, travelClass, spac
                     <div className='flexed'>
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Spaceport</div>
-                            <div className='rideshare-confirmation-content-font'>{spaceports[flightBooking.launch_spaceport_id].city}, {spaceports[flightBooking.launch_spaceport_id].state}</div>
+                            <div className='rideshare-confirmation-content-font'>{launchSpaceport.city}, {launchSpaceport.state}</div>
                         </div>
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Departure Date</div>
@@ -91,7 +91,7 @@ function RideshareConfirmation({ transaction, booking, flight, travelClass, spac
                     <div className='flexed'>
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Spaceport</div>
-                            <div className='rideshare-confirmation-content-font'>{spaceports[flightBooking.landing_spaceport_id].city}, {spaceports[flightBooking.landing_spaceport_id].state}</div>
+                            <div className='rideshare-confirmation-content-font'>{landingSpaceport.city}, {landingSpaceport.state}</div>
                         </div>
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Arrival Date</div>
