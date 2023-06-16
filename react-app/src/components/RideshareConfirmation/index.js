@@ -46,7 +46,7 @@ function RideshareConfirmation({ transaction, booking, flight, travelClass, spac
     
     // Function to handle booking
     const handleBooking = () => {
-        alert('booking')
+        alert('Feature Coming Soon!')
     }
     
     // Function to go home
