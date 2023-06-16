@@ -11,6 +11,7 @@ import apiReducer from './api';
 import travelClassReducer from './travelClass';
 import flightReducer from './flight';
 import bookingReducer from './bookings';
+import flightBookingReducer from './flightBooking';
 
 const rootReducer = combineReducers({
   session,
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
   api: apiReducer,
   travelClasses: travelClassReducer,
   flights: flightReducer,
-  bookings: bookingReducer
+  bookings: bookingReducer,
+  flightBookings: flightBookingReducer
 });
 
 let enhancer;

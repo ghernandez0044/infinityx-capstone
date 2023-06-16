@@ -3,16 +3,30 @@ import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getOneSpacecraft } from "../../store/spacecraft"
 import { getAllSpaceport } from "../../store/spaceport"
+import { actionCreateFlightBooking } from "../../store/flightBooking"
+import OpenModalIcon from "../OpenModalIcon"
+import { NavLink, Redirect } from "react-router-dom"
 import './FlightCard.css'
+import RideshareConfirmation from "../RideshareConfirmation"
 
-function FlightCard({ flight, mass, travelClass, price }){
+function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, setShowConfirmation, setSelectedTransaction, setSelectedBooking, setSelectedFlight, setBookingTotalPrice, setSelectedSpacecraft, setLaunchSpaceport, setLandingSpaceport }){
+    let classId
+    if(travelClass === 'Base Class') classId = 1
+    if(travelClass === 'Cruise Class') classId = 2
+    if(travelClass === 'Launch Class') classId = 3
+
+    console.log('FlightCard flight: ', flight)
+
     // Create dispatch method
     const dispatch = useDispatch()
 
     // Load Spacecraft upon component render
     useEffect(() => {
         dispatch(getOneSpacecraft(flight.spacecraft_id)).then(res => dispatch(getAllSpaceport()))
-    }, [dispatch])
+    }, [dispatch, flight])
+
+    // Subscribe to current user slice of state
+    const currentUser = useSelector(state => state.session.user)
 
     // Subscribe to single spacecraft slice of state
     const spacecraft = useSelector(state => state.spacecrafts.singleSpacecraft)
@@ -27,7 +41,60 @@ function FlightCard({ flight, mass, travelClass, price }){
 
     // Function to create a booking
     const bookFlight = () => {
-        alert('booked!')
+        // alert(`booked!`)
+        setSelectedFlight(flight)
+        const today = new Date()
+        const formattedToday = today.toISOString().split('T')[0]
+        const booking = {
+            'user_id': currentUser.id,
+            'flightId': flight.id,
+            'created_at': formattedToday
+        }
+        console.log('booking: ', booking)
+        setSelectedBooking(booking)
+        const total = ((num * mass) * .0725) + price
+        const transaction = {
+            'user_id': currentUser.id,
+            'travelclass_id': classId,
+            'quantity': 1,
+            'unit_price': num,
+            'user_kg': Number(mass),
+            'tax_percentage': .0725,
+            'tax_total': (num * mass) * .0725,
+            'total': total,
+            'created_at': formattedToday
+        }
+        console.log('transaction: ', transaction)
+        const totalPrice = ((num * mass) * .0725) + price
+        console.log('totalPrice: ', Number(totalPrice.toFixed(2)))
+        setSelectedTransaction(transaction)
+        setBookingTotalPrice(total)
+
+        setSelectedSpacecraft(spacecraft)
+        setLaunchSpaceport(launch_port)
+        setLandingSpaceport(landing_port)
+
+        const flightBooking = {
+            'user_id': currentUser.id,
+            'flightId': flight.id,
+            'launch_spaceport_id': flight.launch_spaceport_id,
+            'landing_spaceport_id': flight.landing_spaceport_id,
+            'flightObject': flight,
+            'travelclass_id': classId,
+            'quantity': 1,
+            'unit_price': num,
+            'user_kg': Number(mass),
+            'subtotal': (num * mass),
+            'tax_percentage': .0725,
+            'tax_total': (num * mass) * .0725,
+            'total': ((num * mass) + ((num * mass) * .0725)),
+            'created_at': formattedToday
+        }
+
+        dispatch(actionCreateFlightBooking(flightBooking))
+
+
+        setShowConfirmation(!showConfirmation)
     }
 
     return spacecraft && spaceports && (

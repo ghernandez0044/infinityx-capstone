@@ -47,7 +47,7 @@ export const getAllBookings = () => async (dispatch) => {
 }
 
 export const getUserBookings = (id) => async (dispatch) => {
-    const res = await fetch(`/api/${id}/bookings`)
+    const res = await fetch(`/api/users/${id}/bookings`)
     if(res.ok){
         const bookings = await res.json()
         dispatch(actionLoadUserBookings(bookings))

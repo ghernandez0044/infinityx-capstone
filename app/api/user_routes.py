@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, PlanetComment, FrequentFlyer, Wallet, Transaction, Booking
+from app.models import User, PlanetComment, FrequentFlyer, Wallet, Transaction, Booking, Flight
 from app.forms import SignUpForm, ProfileForm
 from ..models import db
 
@@ -69,9 +69,10 @@ def get_user_comments(id):
 # Get all bookings for user
 @user_routes.route('<int:id>/bookings')
 def get_user_bookings(id):
-    user_bookings = Booking.query.filter(Booking.user_id == id).all()
+    user_bookings = Booking.query.join(Flight).filter(Booking.user_id == id).all()
     if user_bookings:
         return [booking.to_dict() for booking in user_bookings]
+        # return {booking: booking.flight for booking in user_bookings}
     return {"message": "user has no bookings"}
 
 

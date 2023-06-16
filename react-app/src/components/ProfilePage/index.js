@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import { getOneProfile } from '../../store/profile'
 import { getOneWallet } from '../../store/wallet'
-// import { getUserBookings } from '../../store/bookings'
+import { getUserBookings } from '../../store/bookings'
 // import FlightGallery from '../FlightGallery'
 import TransactionCard from '../TransactionCard'
 import MembershipCard from '../MembershipCard'
@@ -24,9 +24,7 @@ function ProfilePage(){
 
     // Render profile upon component render
     useEffect(() => {
-        dispatch(getOneProfile(id))
-        dispatch(getOneWallet(id))
-        // dispatch(getUserBookings(id))
+        dispatch(getOneProfile(id)).then(res => dispatch(getOneWallet(id))).then(res => dispatch(getUserBookings(id)))
     }, [dispatch, id])
 
     // Function to share profile
@@ -58,8 +56,10 @@ function ProfilePage(){
     // Subscribe to single wallet slice of state
     const singleWallet = useSelector(state => state.wallets.singleWallet)
 
-    // // Subscribe to user bookings slice of state
-    // const userBookings = useSelector(state => Object.values(state.bookings.userBookings))
+    // Subscribe to user bookings slice of state
+    const userBookings = useSelector(state => state.bookings.userBookings)
+
+    console.log('userBookings: ', userBookings)
     
     // Check to see if current user owns profile
     const currentUserProfile = user?.id === profile.id
@@ -75,24 +75,20 @@ function ProfilePage(){
                 <div className='big-content-font'>{profile.first_name}, {profile.last_name}</div>
                 <div className='small-content-font'>@{profile.username}</div>
                 <div className='profile-buttons-container'>
-                    {/* <div onClick={share} className="button animate">
-                        <div className="hover-effect"></div>
-                        <span className="signup-button-font">Message</span>
-                    </div> */}
                     {currentUserProfile && (
                     <OpenModalButton modalComponent={<SignupFormModal edit={true} payload={profile} />} buttonText='Edit Profile' />
                     )}
                 </div>
                 <div className='passport-font'>{profile.passport}</div>
             </div>
-            <div className='middle-content-container'>
+            {/* <div className='middle-content-container'>
                 <div className='profile-tabs-container'>
                     <div className='hoverable middle-header-font' onClick={membershipGallery}>Membership</div>
                     <div className='hoverable middle-header-font' onClick={flightsGallery}>Flights</div>
                 </div>
                 <div className='icons-container'>
-                    {/* <i className='fa-solid fa-bars' />
-                    <i className='fa-solid fa-plus' /> */}
+                    <i className='fa-solid fa-bars' />
+                    <i className='fa-solid fa-plus' />
                 </div>
                 {membership ? (
                     <div className='membership-content-container'>
@@ -104,21 +100,18 @@ function ProfilePage(){
                 ) : (
                     <div className='bookings-content-container'>
                         <div style={{textAlign: 'center' }}>Bookings</div>
+                        {userBookings.map(booking => (
+                            <div>{booking.flightId}</div>
+                        ))}
                     </div>
                 )}
-                {/* <div className='membership-content-container'>
-                    <div style={{textAlign: 'center' }}>Membership</div>
-                    {profile?.membership?.map(membership => (
-                        <MembershipCard key={membership.id} membership={membership} profile={profile} />
-                    ))}
-                </div> */}
-            </div>
+            </div> */}
                 {currentUserProfile && singleWallet && (
                     <div className='bottom-content-container'>
                         <div className='wallet-header-container'>
                             <div id='wallet'>Wallet</div>
                             <div className='profile-font'>Address: {singleWallet?.address}</div>
-                            <div className='profile-font'>Funds: ${singleWallet.funds.toLocaleString()}</div>
+                            <div className='profile-font'>Funds: ${singleWallet?.funds?.toLocaleString()}</div>
                         </div>
                         <div className='transactions-container'>
                             <div style={{textAlign: 'center', fontSize: '60px', fontFamily: 'Josefin Sans', margin: '35px auto' }}>Transactions</div>
