@@ -17,15 +17,15 @@ function Footer(){
             </div>
             <a href='https://github.com/ghernandez0044' target="_blank">
                 {/* <i className="fa-brands fa-github fa-xl" /> */}
-                <div className="footer-font">GitHub</div>
+                <div className="footer-font hoverable">GitHub</div>
             </a>
              <a href='https://www.linkedin.com/in/guillermo-hernandez-32a307180/' target="_blank">
                 {/* <i className="fa-brands fa-linkedin fa-xl" /> */}
-                <div className="footer-font">LinkedIn</div>
+                <div className="footer-font hoverable">LinkedIn</div>
             </a>
              <a href='https://github.com/ghernandez0044/infinityx-capstone' target="_blank">
                 {/* <i className="fa-brands fa-linkedin fa-xl" /> */}
-                <div className="footer-font">GitHub Project Repo</div>
+                <div className="footer-font hoverable">GitHub Project Repo</div>
             </a>
         </footer>
     )
