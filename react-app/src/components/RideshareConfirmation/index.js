@@ -7,7 +7,7 @@ import { getAllSpaceport } from '../../store/spaceport'
 import { getAllTravelClasses } from '../../store/travelClass'
 import './RideshareConfirmation.css'
 
-function RideshareConfirmation({ transaction, booking, flight, travelClass }){
+function RideshareConfirmation({ transaction, booking, flight, travelClass, spacecraft }){
 
     console.log('transaction confirmation: ', transaction)
     console.log('booking confirmation: ', booking)
@@ -108,15 +108,15 @@ function RideshareConfirmation({ transaction, booking, flight, travelClass }){
                     <div className='flexed'>
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Model</div>
-                            <div className='rideshare-confirmation-content-font'>{spacecrafts[flight.spacecraft_id].model}</div>
+                            <div className='rideshare-confirmation-content-font'>{spacecraft.model}</div>
                         </div>
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Year</div>
-                            <div className='rideshare-confirmation-content-font'>{spacecrafts[flight.spacecraft_id].year}</div>
+                            <div className='rideshare-confirmation-content-font'>{spacecraft.year}</div>
                         </div>
                         <div className='flexed-column'>
                             <div className='rideshare-subheader-font'>Load Capacity</div>
-                            <div className='rideshare-confirmation-content-font'>{spacecrafts[flight.spacecraft_id].load_capacity_kg.toLocaleString()} kg</div>
+                            <div className='rideshare-confirmation-content-font'>{spacecraft.load_capacity_kg.toLocaleString()} kg</div>
                         </div>
                     </div>
                 </div>

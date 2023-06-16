@@ -9,7 +9,7 @@ import { NavLink, Redirect } from "react-router-dom"
 import './FlightCard.css'
 import RideshareConfirmation from "../RideshareConfirmation"
 
-function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, setShowConfirmation, setSelectedTransaction, setSelectedBooking, setSelectedFlight, setBookingTotalPrice }){
+function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, setShowConfirmation, setSelectedTransaction, setSelectedBooking, setSelectedFlight, setBookingTotalPrice, setSelectedSpacecraft }){
     let classId
     if(travelClass === 'Base Class') classId = 1
     if(travelClass === 'Cruise Class') classId = 2
@@ -69,6 +69,8 @@ function FlightCard({ flight, mass, travelClass, price, num, showConfirmation, s
         console.log('totalPrice: ', Number(totalPrice.toFixed(2)))
         setSelectedTransaction(transaction)
         setBookingTotalPrice(total)
+
+        setSelectedSpacecraft(spacecraft)
 
         const flightBooking = {
             'user_id': currentUser.id,
