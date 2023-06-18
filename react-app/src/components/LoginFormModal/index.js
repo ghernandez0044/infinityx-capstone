@@ -60,13 +60,14 @@ function LoginFormModal() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        {/* <button type="submit">Log In</button> */}
         <div onClick={handleSubmit} className="button animate">
           <div className="hover-effect"></div>
           <span className="signup-button-font">Log In</span>
         </div>
-        <div id='demo' className="hoverable" onClick={demoLogin}>Demo User</div>
-        <div id='admin' className="hoverable label-font" style={{ margin: '35px auto' }} onClick={adminLogin}>Admin User</div>
+        <div className="demo-users-container">
+          <div id='demo' className="hoverable label-font" style={{ margin: '35px auto' }} onClick={demoLogin}>Demo User</div>
+          <div id='admin' className="hoverable label-font" style={{ margin: '35px auto' }} onClick={adminLogin}>Admin User</div>
+        </div>
       </form>
     </div>
   );
