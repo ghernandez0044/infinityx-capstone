@@ -73,7 +73,7 @@ def get_user_bookings(id):
     if user_bookings:
         return [booking.to_dict() for booking in user_bookings]
         # return {booking: booking.flight for booking in user_bookings}
-    return {"message": "user has no bookings"}
+    return []
 
 
 

@@ -22,13 +22,17 @@ function SignupFormModal({ edit, payload }) {
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
-	const [ checked, setChecked ] = useState(false)
+	const [ backendErrors, setBackendErrors ] = useState({})
+	const [ typeofUser, setTypeofUser ] = useState('')
 
 	// Consume useModal context
 	const { closeModal } = useModal();
 
 	// Create array of passports
 	const passports = ['Earthling', 'Martian', 'Uranian', 'Venitian', 'Mercurian']
+
+	// Create array of type of users
+	const types = ['Regular', 'Admin']
 	
 
 	const handleSubmit = async (e) => {
@@ -40,15 +44,22 @@ function SignupFormModal({ edit, payload }) {
 		const day = dateString.getDate()
 		const created_at = `${year}-${month}-${day}`
 
+		console.log('before')
+		if(typeofUser === 'Regular') setAdmin(false)
+		if(typeofUser === 'Admin') setAdmin(true)
+		console.log('after')
+
 		if(!edit){
 			if (password === confirmPassword) {
-				const data = await dispatch(signUp(username, email, password, admin, firstName, lastName, phone, passport, profilePic, created_at));
-				await dispatch(createWallet())
+				const data = dispatch(signUp(username, email, password, admin, firstName, lastName, phone, passport, profilePic, created_at)).then(res => dispatch(createWallet()))
+				
 				if (data) {
-					setErrors(data);
+					setBackendErrors(data);
 				} else {
 					closeModal();
 				}
+				console.log('typeofUser: ', typeofUser)
+				console.log('admin: ', admin)
 			} else {
 				setErrors([
 					"Confirm Password field must be the same as the Password field",
@@ -67,10 +78,13 @@ function SignupFormModal({ edit, payload }) {
 			<h1 className="header-font" style={{ textAlign: 'center', fontSize: '44px' }}>{!edit ? 'Create User' : 'Edit User'}</h1>
 			<form className="signup-form-container" onSubmit={handleSubmit}>
 				<ul>
-					{errors.map((error, idx) => (
+					{errors?.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
+				<div>
+					{backendErrors?.errors[0]}
+				</div>
 				<div className="first-section-container">
 					<label className='label-font'>
 						Email
@@ -144,12 +158,10 @@ function SignupFormModal({ edit, payload }) {
 					name="passport"
 					placeholder="Choose A Passport"
 				>
-					{/* <option value=""></option> */}
 					{passports.map((c) => (
 					<option value={c} key={c}>
 						{c}
 					</option>
-					// add a key prop here
 					))}
 				</select>
 				</div>
@@ -182,8 +194,25 @@ function SignupFormModal({ edit, payload }) {
 					</>
 				)}
 				</div>
-				{/* <label>Admin</label>
-				<input id='admin' type='radio' checked={checked} value={admin} onClick={() => setChecked(!checked)} onChange={(e) => setAdmin(true)} /> */}
+				<div className="fourth-section-container">
+					<label className='label-font'>Choose A User Type</label>
+					<br/>
+					<select
+						id="typeof-user"
+						onChange={(e) => {
+						setTypeofUser(e.target.value);
+						}}
+						value={typeofUser}
+						name="typeof-user"
+						placeholder="Choose A User Type"
+					>
+						{types.map((c) => (
+						<option value={c} key={c}>
+							{c}
+						</option>
+						))}
+					</select>
+				</div>
 			</form>
 			<div style={{ margin: '25px auto', width: '500px' }} onClick={handleSubmit} className="button animate">
           		<div className="hover-effect"></div>
