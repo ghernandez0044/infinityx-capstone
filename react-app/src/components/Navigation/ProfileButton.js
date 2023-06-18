@@ -41,7 +41,7 @@ function ProfileButton({ user, set, setter }) {
     if(!set) setter(true)
 
     const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
+      if (!ulRef?.current?.contains(e.target)) {
         setShowMenu(false);
         setShow(false)
         setter(false)

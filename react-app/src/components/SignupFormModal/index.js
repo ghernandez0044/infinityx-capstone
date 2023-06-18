@@ -11,7 +11,7 @@ function SignupFormModal({ edit, payload }) {
 	const dispatch = useDispatch();
 
 	// Create state variables
-	const [ admin, setAdmin ] = useState(true)
+	const [ admin, setAdmin ] = useState(false)
 	const [ firstName, setFirstName ] = useState(payload?.first_name || '')
 	const [ lastName, setLastName ] = useState(payload?.last_name || '')
 	const [ phone, setPhone ] = useState(payload?.phone || '')
@@ -32,7 +32,7 @@ function SignupFormModal({ edit, payload }) {
 	const passports = ['Earthling', 'Martian', 'Uranian', 'Venitian', 'Mercurian']
 
 	// Create array of type of users
-	const types = ['Regular', 'Admin']
+	const types = ['', 'Regular', 'Admin']
 	
 
 	const handleSubmit = async (e) => {
@@ -45,12 +45,20 @@ function SignupFormModal({ edit, payload }) {
 		const created_at = `${year}-${month}-${day}`
 
 		console.log('before')
-		if(typeofUser === 'Regular') setAdmin(false)
-		if(typeofUser === 'Admin') setAdmin(true)
+		// if(typeofUser === 'Regular'){
+		// 	console.log('inside of regular typeofUser')
+		// 	setAdmin(false)
+		// }
+		// if(typeofUser === 'Admin'){
+		// 	console.log('inside of admin typeofUser')
+		// 	setAdmin(true)
+		// } 
 		console.log('after')
 
 		if(!edit){
 			if (password === confirmPassword) {
+				console.log('typeofUser: ', typeofUser)
+				console.log('admin: ', admin)
 				const data = dispatch(signUp(username, email, password, admin, firstName, lastName, phone, passport, profilePic, created_at)).then(res => dispatch(createWallet()))
 				
 				if (data) {
@@ -58,8 +66,6 @@ function SignupFormModal({ edit, payload }) {
 				} else {
 					closeModal();
 				}
-				console.log('typeofUser: ', typeofUser)
-				console.log('admin: ', admin)
 			} else {
 				setErrors([
 					"Confirm Password field must be the same as the Password field",
@@ -83,7 +89,7 @@ function SignupFormModal({ edit, payload }) {
 					))}
 				</ul>
 				<div>
-					{backendErrors?.errors[0]}
+					{backendErrors?.errors}
 				</div>
 				<div className="first-section-container">
 					<label className='label-font'>
@@ -148,7 +154,7 @@ function SignupFormModal({ edit, payload }) {
 							onChange={(e) => setProfilePic(e.target.value)}
 							required
 					/>
-					<label className='label-font'>Choose A Passport </label>
+				<label className='label-font'>Choose A Passport </label>
 				<select
 					id="passport"
 					onChange={(e) => {
@@ -196,22 +202,14 @@ function SignupFormModal({ edit, payload }) {
 				</div>
 				<div className="fourth-section-container">
 					<label className='label-font'>Choose A User Type</label>
-					<br/>
-					<select
-						id="typeof-user"
-						onChange={(e) => {
-						setTypeofUser(e.target.value);
-						}}
-						value={typeofUser}
-						name="typeof-user"
-						placeholder="Choose A User Type"
-					>
-						{types.map((c) => (
-						<option value={c} key={c}>
-							{c}
-						</option>
-						))}
-					</select>
+					<div>
+						<label>Admin</label>
+						<input type="radio" id="admin" name="admin" value={true} onChange={(e) => setAdmin(true)}></input>
+					</div>
+					<div>
+						<label>Regular</label>
+						<input type="radio" id="admin" name="admin" value={false} onChange={(e) => setAdmin(false)}></input>
+					</div>
 				</div>
 			</form>
 			<div style={{ margin: '25px auto', width: '500px' }} onClick={handleSubmit} className="button animate">
