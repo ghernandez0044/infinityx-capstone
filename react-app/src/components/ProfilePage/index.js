@@ -12,6 +12,7 @@ import SignupFormModal from '../SignupFormModal'
 import OpenModalButton from '../OpenModalButton'
 import AddFunds from '../AddFunds'
 import './ProfilePage.css'
+import { getAllUserTransactions } from '../../store/transactions'
 
 function ProfilePage(){
     // Extract desired parameter from params object
@@ -25,13 +26,13 @@ function ProfilePage(){
 
     // Render profile upon component render
     useEffect(() => {
-        dispatch(getOneProfile(id)).then(res => dispatch(getOneWallet(id))).then(res => dispatch(getUserBookings(id)))
+        dispatch(getOneProfile(id)).then(res => dispatch(getOneWallet(id))).then(res => dispatch(getUserBookings(id))).then(res => dispatch(getAllUserTransactions(id)))
     }, [dispatch, id])
 
-    // Function to share profile
-    const share = () => {
-        alert('feature coming soon')
-    }
+    // Subscribe to user transactions slice of state
+    const userTransactions = useSelector(state => Object.values(state.transactions.userTransactions))
+
+    console.log('userTransactions: ', userTransactions)
 
     // Function to redirect to edit profile page
     const editProfile = () => {
@@ -117,10 +118,10 @@ function ProfilePage(){
                         </div>
                     </div>
                 )}
-                {currentUserProfile && profile.transactions.length > 0 && (
+                {currentUserProfile && userTransactions.length > 0 && (
                     <div className='transactions-container'>
                         <div style={{textAlign: 'center', fontSize: '60px', fontFamily: 'Josefin Sans', margin: '35px auto' }}>Transactions</div>
-                        {profile?.transactions?.map(transaction => (
+                        {userTransactions.map(transaction => (
                             <TransactionCard key={transaction.id} transaction={transaction} />
                         ))}
                     </div>

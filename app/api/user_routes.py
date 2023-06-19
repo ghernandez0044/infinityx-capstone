@@ -99,6 +99,7 @@ def create_booking(id):
 @user_routes.route('<int:id>/transactions')
 def get_user_transactions(id):
     user_transactions = Transaction.query.filter(Transaction.user_id == id).all()
+    print('USER TRANSACTIONS: --------------', user_transactions)
     if user_transactions:
         return [transaction.to_dict() for transaction in user_transactions]
     return []
@@ -124,7 +125,7 @@ def create_transaction(id):
         db.session.add(new_transaction)
         db.session.commit()
         return new_transaction.to_dict()
-    return {"message": 'no user logged in'}
+    return []
     
 
 

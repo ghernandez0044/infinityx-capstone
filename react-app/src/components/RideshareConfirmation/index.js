@@ -7,6 +7,7 @@ import { getAllSpaceport } from '../../store/spaceport'
 import { getAllTravelClasses } from '../../store/travelClass'
 import './RideshareConfirmation.css'
 import { createBookingThunk } from '../../store/bookings'
+import { createOneTransaction, getAllUserTransactions } from '../../store/transactions'
 
 function RideshareConfirmation({ transaction, booking, flight, travelClass, spacecraft, launchSpaceport, landingSpaceport }){
 
@@ -53,7 +54,7 @@ function RideshareConfirmation({ transaction, booking, flight, travelClass, spac
         alert('Feature Coming Soon!')
         console.log('transaction: ', transaction)
         console.log('booking: ', booking)
-        dispatch(createBookingThunk(booking))
+        dispatch(createBookingThunk(booking)).then(res => dispatch(createOneTransaction(transaction))).then(res => getAllUserTransactions(currentUser.id)).then(res => history.push(`/users/${currentUser.id}`))
     }
     
     // Function to go home
