@@ -1,7 +1,6 @@
 // Necessary imports
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import './GalleryCard.css'
 
 function GalleryCard({ smallTag, bigTag, buttonText, destination, imageNumber, planetNumber, payload, disable }){

@@ -1,8 +1,7 @@
 // Necessary imports
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getAllPlanets } from "../../store/planet"
-import PlanetCard from "../PlanetCard"
 import GalleryCard from "../GalleryCard"
 import './PlanetGallery.css'
 

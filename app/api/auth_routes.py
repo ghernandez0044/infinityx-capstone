@@ -61,14 +61,22 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print('form in route: -------------- ', form.data)
     if form.validate_on_submit():
+        print('admin from auth sign up route: ---------------------------- ', form.data['admin'])
+        if form.data['admin'] == 'False':
+            boolean = False
+        if form.data['admin'] == 'True':
+            boolean = True
+        print('boolean from auth sign up route: ---------------------------- ', boolean)
+        
         user = User(
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password'],
             first_name=form.data['first_name'],
             last_name=form.data['last_name'],
-            admin=form.data['admin'],
+            admin=boolean,
             phone=form.data['phone'],
             profile_pic=form.data['profile_pic'],
             passport=form.data['passport']

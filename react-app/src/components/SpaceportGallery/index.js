@@ -1,5 +1,5 @@
 // Necessary imports
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getAllSpaceport } from "../../store/spaceport"
 import SpaceportCard from "../SpaceportCard"
@@ -22,9 +22,6 @@ function SpaceportGallery(){
     return (
         <div>
             <div className="spacecraft-gallery-container">
-                {/* {spaceports.map(spaceport => (
-                    <SpaceportCard key={spaceport.id} spaceport={spaceport} />
-                ))} */}
                 {spaceports.map(spaceport => (
                     <GalleryCard key={spaceport.id} smallTag='Spaceport' bigTag={spaceport.name} buttonText='See More' destination='spaceports' payload={spaceport} />
                 ))}

@@ -77,8 +77,8 @@ export const createWallet = () => async (dispatch) => {
     return res
 }
 
-export const updateWallet = (wallet, id) => async (dispatch) => {
-    const res = await fetch(`/api/wallets/${Number(id)}`, {
+export const updateWallet = (wallet, walletId) => async (dispatch) => {
+    const res = await fetch(`/api/wallets/${Number(walletId)}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(wallet)

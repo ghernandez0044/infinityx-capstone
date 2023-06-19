@@ -11,7 +11,7 @@ function SignupFormModal({ edit, payload }) {
 	const dispatch = useDispatch();
 
 	// Create state variables
-	const [ admin, setAdmin ] = useState(true)
+	const [ admin, setAdmin ] = useState(false)
 	const [ firstName, setFirstName ] = useState(payload?.first_name || '')
 	const [ lastName, setLastName ] = useState(payload?.last_name || '')
 	const [ phone, setPhone ] = useState(payload?.phone || '')
@@ -22,13 +22,17 @@ function SignupFormModal({ edit, payload }) {
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
-	const [ checked, setChecked ] = useState(false)
+	const [ backendErrors, setBackendErrors ] = useState({})
+	const [ typeofUser, setTypeofUser ] = useState('')
 
 	// Consume useModal context
 	const { closeModal } = useModal();
 
 	// Create array of passports
 	const passports = ['Earthling', 'Martian', 'Uranian', 'Venitian', 'Mercurian']
+
+	// Create array of type of users
+	const types = ['', 'Regular', 'Admin']
 	
 
 	const handleSubmit = async (e) => {
@@ -42,13 +46,14 @@ function SignupFormModal({ edit, payload }) {
 
 		if(!edit){
 			if (password === confirmPassword) {
-				const data = await dispatch(signUp(username, email, password, admin, firstName, lastName, phone, passport, profilePic, created_at));
-				await dispatch(createWallet())
-				if (data) {
-					setErrors(data);
-				} else {
-					closeModal();
-				}
+				const data = dispatch(signUp(username, email, password, admin, firstName, lastName, phone, passport, profilePic, created_at)).then(res => dispatch(createWallet()))
+				closeModal()
+				
+				// if (data) {
+				// 	setBackendErrors(data);
+				// } else {
+				// 	closeModal();
+				// }
 			} else {
 				setErrors([
 					"Confirm Password field must be the same as the Password field",
@@ -67,10 +72,13 @@ function SignupFormModal({ edit, payload }) {
 			<h1 className="header-font" style={{ textAlign: 'center', fontSize: '44px' }}>{!edit ? 'Create User' : 'Edit User'}</h1>
 			<form className="signup-form-container" onSubmit={handleSubmit}>
 				<ul>
-					{errors.map((error, idx) => (
+					{errors?.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
+				<div>
+					{backendErrors?.errors}
+				</div>
 				<div className="first-section-container">
 					<label className='label-font'>
 						Email
@@ -134,7 +142,7 @@ function SignupFormModal({ edit, payload }) {
 							onChange={(e) => setProfilePic(e.target.value)}
 							required
 					/>
-					<label className='label-font'>Choose A Passport </label>
+				<label className='label-font'>Choose A Passport </label>
 				<select
 					id="passport"
 					onChange={(e) => {
@@ -144,12 +152,10 @@ function SignupFormModal({ edit, payload }) {
 					name="passport"
 					placeholder="Choose A Passport"
 				>
-					{/* <option value=""></option> */}
 					{passports.map((c) => (
 					<option value={c} key={c}>
 						{c}
 					</option>
-					// add a key prop here
 					))}
 				</select>
 				</div>
@@ -182,8 +188,23 @@ function SignupFormModal({ edit, payload }) {
 					</>
 				)}
 				</div>
-				{/* <label>Admin</label>
-				<input id='admin' type='radio' checked={checked} value={admin} onClick={() => setChecked(!checked)} onChange={(e) => setAdmin(true)} /> */}
+				{!edit ? ( 
+					<div className="fourth-section-container">
+						<label className='label-font'>Choose A User Type</label>
+						<div>
+							<label>Admin</label>
+							<input type="radio" id="admin" name="user-type" value={true} onChange={(e) => setAdmin(true)}></input>
+						</div>
+						<div>
+							<label>Regular</label>
+							<input type="radio" id="admin" name="user-type" value={false} onChange={(e) => setAdmin(false)}></input>
+						</div>
+					</div>
+				 ) : (
+					<>
+					</>
+				 )}
+				
 			</form>
 			<div style={{ margin: '25px auto', width: '500px' }} onClick={handleSubmit} className="button animate">
           		<div className="hover-effect"></div>

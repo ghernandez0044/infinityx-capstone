@@ -23,16 +23,3 @@ def get_one_booking(id):
     one_booking = Booking.query.get(id)
     return one_booking.to_dict()
 
-# Create a booking route
-@booking_routes.route('/', methods=["POST"])
-def create_booking():
-    user = current_user
-    booking_data = request.get_data().decode('utf-8')
-    formatted_data = json.loads(booking_data)
-    if user:
-        new_booking = Booking(
-          user_id = user.id,
-          flight_id = formatted_data['flight_id'],
-          created_at =  datetime.datetime.now().strftime('%Y-%m-%d') 
-        )
-    return {"message": 'no user logged in'}

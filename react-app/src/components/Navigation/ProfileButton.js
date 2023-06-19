@@ -41,7 +41,7 @@ function ProfileButton({ user, set, setter }) {
     if(!set) setter(true)
 
     const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
+      if (!ulRef?.current?.contains(e.target)) {
         setShowMenu(false);
         setShow(false)
         setter(false)
@@ -157,7 +157,7 @@ function ProfileButton({ user, set, setter }) {
             <div onClick={redirectSpaceportGallery} className="mobile-menu pointer dropdown-menu-font">Spaceports</div>
             <div onClick={redirectPlanetGallery} className="mobile-menu pointer dropdown-menu-font">Planets</div>
             <div onClick={redirectSpaceTravelers} className="mobile-menu pointer dropdown-menu-font">Space Travelers</div>
-            {/* <div className="mobile-menu pointer dropdown-menu-font">Rideshare</div> */}
+            <div className="mobile-menu pointer dropdown-menu-font">Rideshare</div>
             {/* <div className="mobile-menu pointer dropdown-menu-font">Group Chats</div> */}
             <div>
               {/* <button onClick={handleLogout}>Log Out</button> */}

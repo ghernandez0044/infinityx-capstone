@@ -1,19 +1,16 @@
 // Necessary imports
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getAllSpacecraft } from '../../store/spacecraft'
 import { getAllSpaceport } from '../../store/spaceport'
 import { getAllTravelClasses } from '../../store/travelClass'
 import './RideshareConfirmation.css'
+import { createBookingThunk } from '../../store/bookings'
+import { createOneTransaction, getAllUserTransactions } from '../../store/transactions'
+import { getOneWallet, updateWallet } from '../../store/wallet'
 
 function RideshareConfirmation({ transaction, booking, flight, travelClass, spacecraft, launchSpaceport, landingSpaceport }){
-
-    console.log('transaction confirmation: ', transaction)
-    console.log('booking confirmation: ', booking)
-    console.log('flight confirmation: ', flight)
-    console.log('travelClass confirmation: ', travelClass)
-
     // Create dispatch method
     const dispatch = useDispatch()
 
@@ -23,8 +20,14 @@ function RideshareConfirmation({ transaction, booking, flight, travelClass, spac
     // Load spacecrafts and spaceports into state upon component render
     useEffect(() => {
         console.log('useEffect running')
-        dispatch(getAllSpacecraft()).then(res => dispatch(getAllSpaceport())).then(res => dispatch(getAllTravelClasses()))
+        dispatch(getAllSpacecraft()).then(res => dispatch(getAllSpaceport())).then(res => dispatch(getAllTravelClasses())).then(res => dispatch(getOneWallet(currentUser.id)))
     }, [dispatch, flight])
+
+    // Subscribe to current user slice of state
+    const currentUser = useSelector(state => state.session.user)
+
+    // Subscribe to single wallet slice of state
+    const singleWallet = useSelector(state => state.wallets.singleWallet)
 
     // Subscribe to travel classes slice of state
     const allTravelClasses = useSelector(state => state.travelClasses.allTravelClasses)
@@ -32,21 +35,25 @@ function RideshareConfirmation({ transaction, booking, flight, travelClass, spac
     // Subscribe to spacecrafts slice of state
     const spacecrafts = useSelector(state => state.spacecrafts.allSpacecraft)
 
-    console.log('spacecrafts: ', spacecrafts)
-    
     // Subscribe to spaceports slice of state
     const spaceports = useSelector(state => state.spaceports.allSpaceports)
-    
-    console.log('spaceports: ', spaceports)
     
     // Subscribe to flightBooking slice of state
     const flightBooking = useSelector(state => state.flightBookings.currentFlightBooking)
     
-    console.log('flightBooking: ', flightBooking)
-    
     // Function to handle booking
     const handleBooking = () => {
-        alert('Feature Coming Soon!')
+        const newAmount = Number(singleWallet.funds) - Number(transaction.total)
+        if(newAmount > 0){
+            const newWallet = {
+                'user_id': singleWallet.user_id,
+                'address': singleWallet.address,
+                'funds': newAmount
+            }
+            dispatch(createBookingThunk(booking)).then(res => dispatch(createOneTransaction(transaction))).then(res => getAllUserTransactions(currentUser.id)).then(res => dispatch(updateWallet(newWallet, singleWallet.id))).then(res => dispatch(getOneWallet(singleWallet.id))).then(res => history.push(`/users/${currentUser.id}`))
+        } else {
+            alert('not enough funds')
+        }
     }
     
     // Function to go home
@@ -55,9 +62,6 @@ function RideshareConfirmation({ transaction, booking, flight, travelClass, spac
     }
     
     if(!spacecrafts || !spaceports || Object.values(spacecrafts).length === 0 || Object.values(spaceports).length === 0 || !flightBooking || Object.values(flightBooking).length === 0) return null
-    
-    console.log('spacecraft: ', spacecrafts[flightBooking.spacecraft_id])
-    console.log('spaceport: ', spaceports[flightBooking.launch_spaceport_id])
     
     return (
         <div className='flight-gallery-container'>

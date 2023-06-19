@@ -1,6 +1,6 @@
 // Necessary imports
 import { useParams, useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneSpacecraft } from "../../store/spacecraft";
 import { useModal } from "../../context/Modal";
@@ -45,8 +45,6 @@ function SpacecraftDetails(){
         history.push('/spacecrafts')
     }
 
-    console.log('user: ', user)
-
     return spacecraft && (
         <div className="grid-container">
             <div id='spacecraft-image' className="spacecraft-details-img-container">
@@ -65,7 +63,6 @@ function SpacecraftDetails(){
             </div>
             {user?.admin && (
                 <div id='manage-buttons' className="manage-buttons">
-                    {/* <button onClick={redirect}>Edit</button> */}
                     <div onClick={redirect} className="button animate">
                         <div className="hover-effect"></div>
                         <span className="signup-button-font">Edit</span>

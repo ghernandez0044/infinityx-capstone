@@ -1,7 +1,7 @@
 // Necessary import
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
-import { useParams, useHistory } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { getOneSpaceport } from "../../store/spaceport"
 import SpaceportForm from "../SpaceportForm"
 

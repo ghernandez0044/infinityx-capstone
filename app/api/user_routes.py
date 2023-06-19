@@ -3,6 +3,8 @@ from flask_login import login_required, current_user
 from app.models import User, PlanetComment, FrequentFlyer, Wallet, Transaction, Booking, Flight
 from app.forms import SignUpForm, ProfileForm
 from ..models import db
+import json
+import datetime
 
 user_routes = Blueprint('users', __name__)
 
@@ -73,7 +75,59 @@ def get_user_bookings(id):
     if user_bookings:
         return [booking.to_dict() for booking in user_bookings]
         # return {booking: booking.flight for booking in user_bookings}
-    return {"message": "user has no bookings"}
+    return []
+
+# Create a booking route
+@user_routes.route('<int:id>/bookings', methods=["POST"])
+def create_booking(id):
+    user = current_user
+    booking_data = request.get_data().decode('utf-8')
+    formatted_data = json.loads(booking_data)
+    print('FORMATTED DATA: ---------------------- ', formatted_data)
+    if user:
+        new_booking = Booking(
+          user_id = user.id,
+          flight_id = formatted_data['flightId'],
+          created_at =  datetime.datetime.now().strftime('%Y-%m-%d') 
+        )
+        db.session.add(new_booking)
+        db.session.commit()
+        return new_booking.to_dict()
+    return {"message": 'no user logged in'}
+
+# Get all transactions for user
+@user_routes.route('<int:id>/transactions')
+def get_user_transactions(id):
+    user_transactions = Transaction.query.filter(Transaction.user_id == id).all()
+    print('USER TRANSACTIONS: --------------', user_transactions)
+    if user_transactions:
+        return [transaction.to_dict() for transaction in user_transactions]
+    return []
+
+# Create a transaction route
+@user_routes.route('<int:id>/transactions', methods=["POST"])
+def create_transaction(id):
+    user = current_user
+    transaction_data = request.get_data().decode('utf-8')
+    formatted_data = json.loads(transaction_data)
+    if user:
+        new_transaction = Transaction(
+            user_id = user.id,
+            travelclass_id = formatted_data['travelclass_id'],
+            quantity = formatted_data['quantity'],
+            unit_price = formatted_data['unit_price'],
+            user_kg = formatted_data['user_kg'],
+            tax_percentage = formatted_data['tax_percentage'],
+            tax_total = formatted_data['tax_total'],
+            total = formatted_data['total'],
+            created_at = formatted_data['created_at']
+        )
+        db.session.add(new_transaction)
+        db.session.commit()
+        return new_transaction.to_dict()
+    return []
+    
+
 
 
 
