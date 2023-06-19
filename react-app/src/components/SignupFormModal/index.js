@@ -204,11 +204,11 @@ function SignupFormModal({ edit, payload }) {
 					<label className='label-font'>Choose A User Type</label>
 					<div>
 						<label>Admin</label>
-						<input type="radio" id="admin" name="admin" value={true} onChange={(e) => setAdmin(true)}></input>
+						<input type="radio" id="admin" name="user-type" value={true} onChange={(e) => setAdmin(true)}></input>
 					</div>
 					<div>
 						<label>Regular</label>
-						<input type="radio" id="admin" name="admin" value={false} onChange={(e) => setAdmin(false)}></input>
+						<input type="radio" id="admin" name="user-type" value={false} onChange={(e) => setAdmin(false)}></input>
 					</div>
 				</div>
 			</form>
