@@ -1,3 +1,5 @@
+import { normalizingData } from "./spacecraft"
+
 // Type Variables
 const LOAD_TRANSACTIONS = "transactions/loadTransactions"
 const LOAD_USER_TRANSACTIONS = "transactions/loadUserTransactions"
@@ -73,3 +75,33 @@ export const createOneTransaction = (transaction) => async (dispatch) => {
     }
     return res
 }
+
+// Initial State
+const initialState = {
+    allTransactions: {},
+    singleTransaction: {},
+    userTransactions: {}
+}
+
+// Reducer
+const transactionReducer = (state = initialState, action) => {
+    let newState = {...state}
+    switch(action.type){
+        case LOAD_TRANSACTIONS:
+            const transactions = normalizingData(action.transactions)
+            newState.allTransactions = {...transactions}
+            return newState
+        case LOAD_USER_TRANSACTIONS:
+            const userTransactions = normalizingData(action.transactions)
+            newState.userTransactions = {...userTransactions}
+            return newState
+        case LOAD_TRANSACTION:
+            return {...state, singleTransaction: {...action.transaction}}
+        case CREATE_TRANSACTION:
+            return {...state, allTransactions: {...state.allTransactions, [action.transaction.id]: action.transaction}}
+        default:
+            return state
+    }
+}
+
+export default transactionReducer
