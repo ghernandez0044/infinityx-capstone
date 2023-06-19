@@ -95,6 +95,14 @@ def create_booking(id):
         return new_booking.to_dict()
     return {"message": 'no user logged in'}
 
+# Get all transactions for user
+@user_routes.route('<int:id>/transactions')
+def get_user_transactions(id):
+    user_transactions = Transaction.query.filter(Transaction.user_id == id).all()
+    if user_transactions:
+        return [transaction.to_dict() for transaction in user_transactions]
+    return []
+
 
 
 
