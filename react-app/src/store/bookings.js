@@ -66,8 +66,8 @@ export const getOneBooking = (id) => async (dispatch) => {
     return res
 }
 
-export const createBooking = (booking, user_id) => async (dispatch) => {
-    const res = await fetch(`/api/users/${user_id}/bookings`, {
+export const createBookingThunk = (booking) => async (dispatch) => {
+    const res = await fetch(`/api/users/${booking.user_id}/bookings`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(booking)

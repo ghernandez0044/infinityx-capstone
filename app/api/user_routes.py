@@ -3,6 +3,8 @@ from flask_login import login_required, current_user
 from app.models import User, PlanetComment, FrequentFlyer, Wallet, Transaction, Booking, Flight
 from app.forms import SignUpForm, ProfileForm
 from ..models import db
+import json
+import datetime
 
 user_routes = Blueprint('users', __name__)
 
@@ -74,6 +76,25 @@ def get_user_bookings(id):
         return [booking.to_dict() for booking in user_bookings]
         # return {booking: booking.flight for booking in user_bookings}
     return []
+
+# Create a booking route
+@user_routes.route('<int:id>/bookings', methods=["POST"])
+def create_booking(id):
+    user = current_user
+    booking_data = request.get_data().decode('utf-8')
+    formatted_data = json.loads(booking_data)
+    print('FORMATTED DATA: ---------------------- ', formatted_data)
+    if user:
+        new_booking = Booking(
+          user_id = user.id,
+          flight_id = formatted_data['flightId'],
+          created_at =  datetime.datetime.now().strftime('%Y-%m-%d') 
+        )
+        db.session.add(new_booking)
+        db.session.commit()
+        return new_booking.to_dict()
+    return {"message": 'no user logged in'}
+
 
 
 

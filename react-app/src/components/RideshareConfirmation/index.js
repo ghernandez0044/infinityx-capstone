@@ -6,6 +6,7 @@ import { getAllSpacecraft } from '../../store/spacecraft'
 import { getAllSpaceport } from '../../store/spaceport'
 import { getAllTravelClasses } from '../../store/travelClass'
 import './RideshareConfirmation.css'
+import { createBookingThunk } from '../../store/bookings'
 
 function RideshareConfirmation({ transaction, booking, flight, travelClass, spacecraft, launchSpaceport, landingSpaceport }){
 
@@ -25,6 +26,9 @@ function RideshareConfirmation({ transaction, booking, flight, travelClass, spac
         console.log('useEffect running')
         dispatch(getAllSpacecraft()).then(res => dispatch(getAllSpaceport())).then(res => dispatch(getAllTravelClasses()))
     }, [dispatch, flight])
+
+    // Subscribe to current user slice of state
+    const currentUser = useSelector(state => state.session.user)
 
     // Subscribe to travel classes slice of state
     const allTravelClasses = useSelector(state => state.travelClasses.allTravelClasses)
@@ -47,6 +51,9 @@ function RideshareConfirmation({ transaction, booking, flight, travelClass, spac
     // Function to handle booking
     const handleBooking = () => {
         alert('Feature Coming Soon!')
+        console.log('transaction: ', transaction)
+        console.log('booking: ', booking)
+        dispatch(createBookingThunk(booking))
     }
     
     // Function to go home
