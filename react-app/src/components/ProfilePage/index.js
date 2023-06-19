@@ -10,6 +10,7 @@ import TransactionCard from '../TransactionCard'
 import MembershipCard from '../MembershipCard'
 import SignupFormModal from '../SignupFormModal'
 import OpenModalButton from '../OpenModalButton'
+import AddFunds from '../AddFunds'
 import './ProfilePage.css'
 
 function ProfilePage(){
@@ -112,7 +113,7 @@ function ProfilePage(){
                             <div id='wallet'>Wallet</div>
                             <div className='profile-font'>Address: {singleWallet?.address}</div>
                             <div className='profile-font'>Funds: ${singleWallet?.funds?.toLocaleString()}</div>
-                            <OpenModalButton modalComponent={<h2>Add Funds</h2>} buttonText='Add Funds' />
+                            <OpenModalButton modalComponent={<AddFunds />} buttonText='Add Funds' />
                         </div>
                     </div>
                 )}
