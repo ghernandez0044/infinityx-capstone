@@ -3,12 +3,18 @@ import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { getOneWallet, updateWallet } from "../../store/wallet";
 
-
-function AddFunds(){
+function AddFunds({ wallet }){
     // Create state variables
-    const [ amount, setAmount ] = useState(0)
+    const [ amount, setAmount ] = useState('')
     const [ errors, setErrors ] = useState({})
+
+    // Create dispatch method
+    const dispatch = useDispatch()
+
+    // Consume modal context
+    const { closeModal } = useModal()
 
     // Check input validation on change
     useEffect(() => {
@@ -18,11 +24,23 @@ function AddFunds(){
         setErrors(newErrors)
     }, [amount])
 
+    console.log('wallet: ', wallet)
 
     // Function to handle form submission
     const handleSubmit = (e) => {
         e.preventDefault()
-        alert(`the amount is ${amount}`)
+        if(Object.values(errors).length === 0){
+            const newAmount = Number(amount) + Number(wallet?.funds)
+            const newWallet = {
+                'user_id': wallet.user_id,
+                'address': wallet.address,
+                'funds': newAmount
+            }
+            dispatch(updateWallet(newWallet, wallet.id)).then(res => dispatch(getOneWallet(wallet.id))).then(res => closeModal())
+        }
+        else {
+            return
+        }
     }
 
 
