@@ -68,9 +68,15 @@ export const getOneTransaction = (transactionId) => async (dispatch) => {
 }
 
 export const createOneTransaction = (transaction) => async (dispatch) => {
-    const res = await fetch(`/api/users/${transaction.user_id}/transactions`)
+    const res = await fetch(`/api/users/${transaction.user_id}/transactions`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(transaction)
+
+    })
     if(res.ok){
         const transaction = await res.json()
+        console.log('created transaction thunk: ', transaction)
         dispatch(actionCreateTransaction(transaction))
         return transaction
     }
