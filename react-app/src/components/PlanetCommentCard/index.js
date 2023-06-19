@@ -1,5 +1,5 @@
 // Necessary imports
-import { NavLink, useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useModal } from "../../context/Modal";

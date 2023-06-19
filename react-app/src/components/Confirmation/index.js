@@ -12,8 +12,6 @@ function Confirmation({ label, message, onYes, onNo, yesLabel, noLabel }){
                     <p className='content-font confirmation-content'>{message}</p>
                 </div>
                 <div className='confirmation-buttons-container'>
-                    {/* <button onClick={onYes} className='confirmation-button yes'><p>Yes {yesLabel ? `(${yesLabel})`: ''}</p></button> */}
-
                     <div onClick={onYes} className="button animate">
                         <div className="hover-effect"></div>
                         <span className="button-font">Yes{yesLabel ? `(${yesLabel})`: ''}</span>
@@ -22,8 +20,6 @@ function Confirmation({ label, message, onYes, onNo, yesLabel, noLabel }){
                         <div className="hover-effect"></div>
                         <span className="button-font">No{noLabel ? `(${noLabel})`: ''}</span>
                     </div>
-
-                    {/* <button onClick={onNo} className='confirmation-button no'><p>No {noLabel ? `(${noLabel})`: ''}</p></button> */}
                 </div>
             </div>
         </>

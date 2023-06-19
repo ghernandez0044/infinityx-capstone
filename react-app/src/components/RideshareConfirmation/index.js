@@ -1,5 +1,5 @@
 // Necessary imports
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getAllSpacecraft } from '../../store/spacecraft'
@@ -11,12 +11,6 @@ import { createOneTransaction, getAllUserTransactions } from '../../store/transa
 import { getOneWallet, updateWallet } from '../../store/wallet'
 
 function RideshareConfirmation({ transaction, booking, flight, travelClass, spacecraft, launchSpaceport, landingSpaceport }){
-
-    console.log('transaction confirmation: ', transaction)
-    console.log('booking confirmation: ', booking)
-    console.log('flight confirmation: ', flight)
-    console.log('travelClass confirmation: ', travelClass)
-
     // Create dispatch method
     const dispatch = useDispatch()
 
@@ -41,12 +35,8 @@ function RideshareConfirmation({ transaction, booking, flight, travelClass, spac
     // Subscribe to spacecrafts slice of state
     const spacecrafts = useSelector(state => state.spacecrafts.allSpacecraft)
 
-    console.log('spacecrafts: ', spacecrafts)
-    
     // Subscribe to spaceports slice of state
     const spaceports = useSelector(state => state.spaceports.allSpaceports)
-    
-    console.log('spaceports: ', spaceports)
     
     // Subscribe to flightBooking slice of state
     const flightBooking = useSelector(state => state.flightBookings.currentFlightBooking)

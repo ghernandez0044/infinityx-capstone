@@ -1,7 +1,5 @@
 // Necessary imports
-import { NavLink, useHistory, Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 function SpaceportCard({ spaceport }){
 

@@ -1,5 +1,5 @@
 // Necessary imports
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getAllProfiles } from "../../store/profile"
 import ProfileCard from "../ProfileCard"

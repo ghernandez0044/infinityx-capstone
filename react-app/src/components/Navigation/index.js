@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import logo from '../../assets/logo-black.png'
 import logo2 from '../../assets/logo-no-background.svg'
 import './Navigation.css';
 

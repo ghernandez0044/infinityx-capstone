@@ -1,7 +1,7 @@
 // Necessary imports
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams, Redirect } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { createPlanet, updatePlanet } from "../../store/planet";
 

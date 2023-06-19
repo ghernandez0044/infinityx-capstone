@@ -1,8 +1,7 @@
 // Necessary imports
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getAllSpacecraft } from "../../store/spacecraft"
-import SpacecraftCard from "../SpacecraftCard"
 import GalleryCard from "../GalleryCard"
 import './SpacecraftGallery.css'
 
