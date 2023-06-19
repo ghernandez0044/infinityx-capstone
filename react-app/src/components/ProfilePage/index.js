@@ -112,6 +112,7 @@ function ProfilePage(){
                             <div id='wallet'>Wallet</div>
                             <div className='profile-font'>Address: {singleWallet?.address}</div>
                             <div className='profile-font'>Funds: ${singleWallet?.funds?.toLocaleString()}</div>
+                            <OpenModalButton modalComponent={<h2>Add Funds</h2>} buttonText='Add Funds' />
                         </div>
                     </div>
                 )}
