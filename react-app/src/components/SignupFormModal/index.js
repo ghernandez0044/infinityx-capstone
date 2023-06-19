@@ -60,12 +60,13 @@ function SignupFormModal({ edit, payload }) {
 				console.log('typeofUser: ', typeofUser)
 				console.log('admin: ', admin)
 				const data = dispatch(signUp(username, email, password, admin, firstName, lastName, phone, passport, profilePic, created_at)).then(res => dispatch(createWallet()))
+				closeModal()
 				
-				if (data) {
-					setBackendErrors(data);
-				} else {
-					closeModal();
-				}
+				// if (data) {
+				// 	setBackendErrors(data);
+				// } else {
+				// 	closeModal();
+				// }
 			} else {
 				setErrors([
 					"Confirm Password field must be the same as the Password field",
