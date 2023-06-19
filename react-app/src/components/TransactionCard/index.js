@@ -28,9 +28,9 @@ function TransactionCard({ transaction }){
                 <div id='price'>Price Per Kg: ${transaction.unit_price.toLocaleString()}</div>
                 <div id='quantity'>Quantity: {transaction.quantity}</div>
                 <div id='total'>Total: ${transaction.total.toLocaleString()}</div>
-                <div className="pointer">
+                {/* <div className="pointer">
                     <OpenModalIcon modalComponent={<TransactionReceipt transaction={transaction} />} icon='fa-solid fa-receipt' />
-                </div>
+                </div> */}
             </div>
         </div>
     )
