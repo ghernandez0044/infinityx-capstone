@@ -103,6 +103,30 @@ def get_user_transactions(id):
         return [transaction.to_dict() for transaction in user_transactions]
     return []
 
+# Create a transaction route
+@user_routes.route('<int:id>/transactions', methods=["POST"])
+def create_transaction(id):
+    user = current_user
+    transaction_data = request.get_data().decode('utf-8')
+    formatted_data = json.loads(transaction_data)
+    if user:
+        new_transaction = Transaction(
+            user_id = user.id,
+            travelclass_id = formatted_data['travelclass_id'],
+            quantity = formatted_data['quantity'],
+            unit_price = formatted_data['unit_price'],
+            user_kg = formatted_data['user_kg'],
+            tax_percentage = formatted_data['tax_percentage'],
+            tax_total = formatted_data['tax_total'],
+            total = formatted_data['total'],
+            created_at = formatted_data['created_at']
+        )
+        db.session.add(new_transaction)
+        db.session.commit()
+        return new_transaction.to_dict()
+    return {"message": 'no user logged in'}
+    
+
 
 
 
