@@ -44,21 +44,8 @@ function SignupFormModal({ edit, payload }) {
 		const day = dateString.getDate()
 		const created_at = `${year}-${month}-${day}`
 
-		console.log('before')
-		// if(typeofUser === 'Regular'){
-		// 	console.log('inside of regular typeofUser')
-		// 	setAdmin(false)
-		// }
-		// if(typeofUser === 'Admin'){
-		// 	console.log('inside of admin typeofUser')
-		// 	setAdmin(true)
-		// } 
-		console.log('after')
-
 		if(!edit){
 			if (password === confirmPassword) {
-				console.log('typeofUser: ', typeofUser)
-				console.log('admin: ', admin)
 				const data = dispatch(signUp(username, email, password, admin, firstName, lastName, phone, passport, profilePic, created_at)).then(res => dispatch(createWallet()))
 				closeModal()
 				
@@ -201,17 +188,23 @@ function SignupFormModal({ edit, payload }) {
 					</>
 				)}
 				</div>
-				<div className="fourth-section-container">
-					<label className='label-font'>Choose A User Type</label>
-					<div>
-						<label>Admin</label>
-						<input type="radio" id="admin" name="user-type" value={true} onChange={(e) => setAdmin(true)}></input>
+				{!edit ? ( 
+					<div className="fourth-section-container">
+						<label className='label-font'>Choose A User Type</label>
+						<div>
+							<label>Admin</label>
+							<input type="radio" id="admin" name="user-type" value={true} onChange={(e) => setAdmin(true)}></input>
+						</div>
+						<div>
+							<label>Regular</label>
+							<input type="radio" id="admin" name="user-type" value={false} onChange={(e) => setAdmin(false)}></input>
+						</div>
 					</div>
-					<div>
-						<label>Regular</label>
-						<input type="radio" id="admin" name="user-type" value={false} onChange={(e) => setAdmin(false)}></input>
-					</div>
-				</div>
+				 ) : (
+					<>
+					</>
+				 )}
+				
 			</form>
 			<div style={{ margin: '25px auto', width: '500px' }} onClick={handleSubmit} className="button animate">
           		<div className="hover-effect"></div>
