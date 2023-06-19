@@ -1,5 +1,3 @@
-
-
 // Type Variables
 const LOAD_APOD = 'api/loadApod'
 
