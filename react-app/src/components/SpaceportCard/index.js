@@ -3,11 +3,6 @@ import { NavLink } from "react-router-dom";
 
 function SpaceportCard({ spaceport }){
 
-    // Create onClick function
-    const onClick = () => {
-        console.log('click')
-    }
-
     return (
         <NavLink exact to={`/spaceports/${spaceport.id}`} onClick={onClick}>
             <div className="spaceport-card-container">

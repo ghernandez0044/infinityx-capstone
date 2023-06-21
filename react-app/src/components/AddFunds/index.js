@@ -23,8 +23,6 @@ function AddFunds({ wallet }){
         setErrors(newErrors)
     }, [amount])
 
-    console.log('wallet: ', wallet)
-
     // Function to handle form submission
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -41,7 +39,6 @@ function AddFunds({ wallet }){
             return
         }
     }
-
 
     return (
         <div className="add-funds-container">

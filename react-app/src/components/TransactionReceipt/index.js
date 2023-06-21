@@ -14,16 +14,11 @@ function TransactionReceipt({ transaction }){
     // Consume useModal context
     const { closeModal } = useModal()
 
-    console.log('transaction: ', transaction)
-
-    // let profile = ''
     useEffect(() => {
         dispatch(getOneProfile(transaction.user_id))
     }, [dispatch, transaction, transaction.user_id])
 
     const profile = useSelector(state => state.profiles.singleProfile)
-
-    console.log('profile: ', profile)
 
     return (
         <div className="transaction-receipt-container">
