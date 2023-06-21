@@ -4,12 +4,6 @@ import { NavLink } from "react-router-dom";
 
 function PlanetCard({ planet }){
 
-    // Create onClick function
-    const onClick = () => {
-        console.log('click')
-    }
-
-
     return (
         <NavLink exact to={`/planets/${planet.id}`}>
             <div className="spaceport-card-container">

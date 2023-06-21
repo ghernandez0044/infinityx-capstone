@@ -32,13 +32,6 @@ function ProfilePage(){
     // Subscribe to user transactions slice of state
     const userTransactions = useSelector(state => Object.values(state.transactions.userTransactions))
 
-    console.log('userTransactions: ', userTransactions)
-
-    // Function to redirect to edit profile page
-    const editProfile = () => {
-        alert('feature coming soon')
-    }
-
     // Function to open membership gallery
     const membershipGallery = () => {
         setMembership(true)
@@ -61,8 +54,6 @@ function ProfilePage(){
     // Subscribe to user bookings slice of state
     const userBookings = useSelector(state => state.bookings.userBookings)
 
-    console.log('userBookings: ', userBookings)
-    
     // Check to see if current user owns profile
     const currentUserProfile = user?.id === profile.id
         

@@ -50,7 +50,6 @@ export const getAllUserTransactions = (userId) => async (dispatch) => {
     const res = await fetch(`/api/users/${userId}/transactions`)
     if(res.ok){
         const transactions = await res.json()
-        console.log('inside thunk all user transactions: ', transactions)
         dispatch(actionLoadUserTransactions(transactions))
         return transactions
     }
@@ -76,7 +75,6 @@ export const createOneTransaction = (transaction) => async (dispatch) => {
     })
     if(res.ok){
         const transaction = await res.json()
-        console.log('created transaction thunk: ', transaction)
         dispatch(actionCreateTransaction(transaction))
         return transaction
     }

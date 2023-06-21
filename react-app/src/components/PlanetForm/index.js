@@ -124,7 +124,6 @@ function PlanetForm({ edit, payload }){
     
             // If the edit flag is true, run the edit dispatch, if it is false, run the create dispatch
             if(edit){
-                console.log('edit block is running')
                 dispatch(updatePlanet(payload, id)).then(res => {
                     setIsSubmitted(false)
                     reset()

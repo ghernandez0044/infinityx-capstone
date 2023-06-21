@@ -56,7 +56,6 @@ export const getAllPlanetComments = () => async (dispatch) => {
 }
 
 export const getOnePlanetComment = (id) => async (dispatch) => {
-    console.log('inside getOnePlanetComment')
     const res = await fetch(`/api/comments/planet/${id}`)
     if(res.ok){
         const comments = await res.json()

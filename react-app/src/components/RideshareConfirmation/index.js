@@ -19,7 +19,6 @@ function RideshareConfirmation({ transaction, booking, flight, travelClass, spac
 
     // Load spacecrafts and spaceports into state upon component render
     useEffect(() => {
-        console.log('useEffect running')
         dispatch(getAllSpacecraft()).then(res => dispatch(getAllSpaceport())).then(res => dispatch(getAllTravelClasses())).then(res => dispatch(getOneWallet(currentUser.id)))
     }, [dispatch, flight])
 
