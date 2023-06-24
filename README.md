@@ -3,9 +3,6 @@
 Inspiration is drawn from the functionality and overall look of websites such as SpaceX, Social Media Sites (Posts, Comments, Profiles), and airline systems (Flights/Bookings, FrequentFlyer, TravelClasses). Components include a Backend API server and database (Flask-SQLAlchemy) to handle data, requests, and responses as well as a Frontend (React) to display data on a frontend application.
 
 ## Technologies Used
-
-Technologies used include Python, SQL, SQLAlchemy, Flask, PostgreSQL, React and Redux.
-
 HTML
  <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a>
 
