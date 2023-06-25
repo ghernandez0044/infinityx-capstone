@@ -64,10 +64,10 @@ https://infinityx.onrender.com/
 ### Spacecraft Gallery
 <img width="1502" alt="SpacecraftGallery" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/0741c223-f757-4e45-8816-c2f498ef800b">
 
-![Uploading ezgif.com-video-to-gif (2).gif…]()
-
 ### Spacecraft Details
 <img width="1502" alt="SpacecraftDetails" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/e6744066-c6c0-4e31-b37e-b2bfc0fc01cb">
+
+https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/c4f91dc7-133d-4b0d-890b-75b8e1ba5542
 
 ### Spaceport Gallery
 <img width="1502" alt="SpaceportGallery" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/eaa308c2-fd07-4c03-a799-9ab0e64e03fe">
