@@ -64,6 +64,8 @@ https://infinityx.onrender.com/
 ### Spacecraft Gallery
 <img width="1502" alt="SpacecraftGallery" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/0741c223-f757-4e45-8816-c2f498ef800b">
 
+https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/89fca0d6-26b2-4f8f-a112-866487a94b67
+
 ### Spacecraft Details
 <img width="1502" alt="SpacecraftDetails" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/e6744066-c6c0-4e31-b37e-b2bfc0fc01cb">
 
