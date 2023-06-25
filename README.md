@@ -80,6 +80,8 @@ https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/c4f91dc7-1
 ### Planet Gallery
 <img width="1502" alt="PlanetGallery" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/0f432fbd-ca35-4557-83e1-aa354816c8b8">
 
+https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/19d8a9a8-60b0-486d-b46e-8860e10bcf52
+
 ### Planet Details
 <img width="1502" alt="PlanetDetails" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/3ef6c8aa-b3be-4d1d-bd12-7f268892cbd0">
 
