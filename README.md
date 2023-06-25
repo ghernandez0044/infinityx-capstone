@@ -95,7 +95,7 @@ https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/19d8a9a8-6
 <img width="1502" alt="ProfilePage" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/e1f4db3c-832c-4534-abe7-3d7f46c32ea0">
 
 
-## Links
+## My Links
 
 ### LinkedIn
 https://www.linkedin.com/in/guillermo-hernandez-32a307180/
