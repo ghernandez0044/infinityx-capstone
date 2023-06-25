@@ -59,6 +59,9 @@ https://infinityx.onrender.com/
 ### Landing Page
 <img width="1502" alt="LandingPage" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/06046d4a-5b71-43ea-bde5-c3b33a5917d7">
 
+![ezgif com-video-to-gif](https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/40d577d2-f8e0-46d5-b89d-d03a41761679)
+
+
 ### Spacecraft Gallery
 <img width="1502" alt="SpacecraftGallery" src="https://github.com/ghernandez0044/infinityx-capstone/assets/100185260/0741c223-f757-4e45-8816-c2f498ef800b">
 
