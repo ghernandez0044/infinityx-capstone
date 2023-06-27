@@ -61,6 +61,8 @@ function SignupFormModal({ edit, payload }) {
 		if(passport.length <= 0) validationErrors.passportErr = 'Passport is required'
 		if(profilePic.length <= 0) validationErrors.profilePicErr = 'Profile picture is required'
 		if(email.length <= 0) validationErrors.emailErr = 'Email is required'
+		if(!email.includes('@')) validationErrors.emailInvalidErr = 'Email must be valid'
+		if(!email.includes('.com')) validationErrors.emailInvalidErr = 'Email must be valid'
 		if(username.length <= 0) validationErrors.usernameErr = 'Username is required'
 		if(password.length <= 0) validationErrors.passwordErr = 'Password is required'
 		if(confirmPassword.length <= 0) validationErrors.confirmPasswordErr = 'Confirm password is required'
@@ -81,21 +83,20 @@ function SignupFormModal({ edit, payload }) {
 		const created_at = `${year}-${month}-${day}`
 
 		if(Object.values(errors).length === 0){
-			console.log('inside no errors')
 			if(!edit){
 				if (password === confirmPassword) {
-					const data = dispatch(signUp(username, email, password, admin, firstName, lastName, phone, passport, profilePic, created_at)).then(res => dispatch(createWallet())).then(res => {
+					dispatch(signUp(username, email, password, admin, firstName, lastName, phone, passport, profilePic, created_at)).then(res => dispatch(createWallet())).then(res => {
 						closeModal()
 						reset()
+					}).catch(async error => {
+						const errObj = {}
+						const formattedError = error.json()
+						console.log('error: ', formattedError)
 					})
 
 
 					
-					// if (data) {
-					// 	setBackendErrors(data);
-					// } else {
-					// 	closeModal();
-					// }
+
 				} else {
 					const errors = {}
 					errors.passwordMatchErr = 'Confirm Password field must be the same as the Password field'
@@ -124,6 +125,7 @@ function SignupFormModal({ edit, payload }) {
 					</label>
 					<br/>
                         {isSubmitted && errors.emailErr && ( <div className='label-font spacecraft-errors'>{errors.emailErr}</div> )}
+                        {isSubmitted && errors.emailInvalidErr && ( <div className='label-font spacecraft-errors'>{errors.emailInvalidErr}</div> )}
 					<input
 							id='email'
 							type="email"
